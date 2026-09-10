@@ -48,3 +48,8 @@ next-env.d.ts
 # build is given, so build output can never show up as untracked again.
 .next-*/
 social-out/
+
+# stray scratch artifacts from verification scripts
+/priv.html
+/sitemap.xml
+/*.html
