@@ -2,7 +2,6 @@ import { createTranslator } from "next-intl";
 
 import { staticMessages } from "@/lib/static-messages";
 
-import { AffiliateBanner } from "@/components/AffiliateBanner";
 import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
@@ -91,7 +90,6 @@ export function PageShell(props: PageShellProps) {
               </header>
             )}
             {showChart ? <TradingViewChart currency={chartCurrency} /> : null}
-            <AffiliateBanner />
             {children}
             <StoresMarquee />
             {showFaq ? <Faq /> : null}

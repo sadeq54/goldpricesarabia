@@ -3,7 +3,6 @@ import { withLocales } from "@/lib/static-params";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
-import { AffiliateBanner } from "@/components/AffiliateBanner";
 import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { PriceChartSkeleton } from "@/components/skeletons";
@@ -142,8 +141,6 @@ export default async function HistoricalPage({
             </Suspense>
 
             <TradingViewChart />
-
-            <AffiliateBanner />
 
             <Suspense fallback={<PriceChartSkeleton />}>
               <MonthlyTable yearNum={yearNum} promise={histPromise} locale={locale} />

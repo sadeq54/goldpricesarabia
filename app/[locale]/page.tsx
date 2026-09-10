@@ -3,7 +3,6 @@ import type React from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { AdSensePlacement } from "@/components/AdSensePlacement";
-import { AffiliateBanner } from "@/components/AffiliateBanner";
 import { BidAskGauge } from "@/components/BidAskGauge";
 import { Calculator } from "@/components/Calculator";
 import { CurrencyTable } from "@/components/CurrencyTable";
@@ -24,7 +23,6 @@ import { ResearchTeaser } from "@/components/ResearchTeaser";
 import { Sidebar } from "@/components/Sidebar";
 import { FollowCta } from "@/components/FollowCta";
 import { StoresMarquee } from "@/components/StoresMarquee";
-import { TradeGoldCta } from "@/components/TradeGoldCta";
 
 // Heavy / below-the-fold widgets — defer JS to improve LCP/FCP/TTI.
 // Wrapped in <LazyMount> below for IntersectionObserver-gated client mount.
@@ -219,8 +217,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               </Suspense>
             </LazyMount>
 
-            <AffiliateBanner />
-
             <LazyMount minHeight={500}>
               <TradingViewChart />
             </LazyMount>
@@ -230,8 +226,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 <BidAskSection promise={metalsPromise} />
               </Suspense>
             </LazyMount>
-
-            <TradeGoldCta locale={locale} tag={`${locale}-home`} />
 
             <Suspense fallback={<KaratGridSkeleton />}>
               <KaratGridSection mPromise={metalsPromise} fxPromise={fxPromise} />

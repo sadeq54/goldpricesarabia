@@ -1,7 +1,6 @@
 import { useTranslations } from "next-intl";
 
 import { AdSensePlacement } from "@/components/AdSensePlacement";
-import { AdSlot } from "@/components/AdSlot";
 import { Link } from "@/i18n/navigation";
 
 const KARAT_LINKS = [
@@ -18,16 +17,19 @@ const COUNTRY_LINKS = [
 ];
 
 /**
- * Right column: one XM affiliate slot on top, quick links, and (desktop only)
- * the tall AdSense unit — rendered only once the publisher id + slot id exist.
+ * Right column: quick links, and (desktop only) the tall AdSense unit —
+ * rendered only once the publisher id + slot id exist.
+ *
+ * The XM affiliate slot that used to sit on top was removed on 2026-09-10:
+ * the owner ended the XM partnership, and a CFD-broker unit on every page was
+ * a named problem in the AdSense rejection ("affiliate program content should
+ * form only a minor part of the content of your site").
  */
 export function Sidebar() {
   const t = useTranslations("Sidebar");
 
   return (
     <aside className="space-y-4 lg:sticky lg:top-[96px] lg:self-start">
-      <AdSlot slot={0} label={t("adTop")} />
-
       <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5">
         <h2 className="mb-3 text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-dim)]">
           {t("quickLinks")}
