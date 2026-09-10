@@ -141,9 +141,6 @@
   },
   "Sidebar": {
     "quickLinks": "Liens rapides",
-    "adTop": "Emplacement pub — Haut de colonne",
-    "adBottom": "Emplacement pub — Bas de colonne",
-    "adsense": "AdSense {client}",
     "linkKarat24": "Prix de l'or 24 carats",
     "linkKarat21": "Prix de l'or 21 carats",
     "linkKarat18": "Prix de l'or 18 carats",
@@ -151,27 +148,6 @@
     "linkSaudi": "Or en Arabie saoudite",
     "linkUAE": "Prix de l'or aux Émirats",
     "linkEgypt": "Prix de l'or en Égypte"
-  },
-  "AffiliateBanner": {
-    "label": "Sponsorisé",
-    "items": [
-      {
-        "title": "Cours spot en direct dans toute la région MENA",
-        "subtitle": "USD, JOD, SAR, AED, EGP — chaque carat, chaque minute."
-      },
-      {
-        "title": "Suivez l'or comme un pro",
-        "subtitle": "Graphiques, calculateurs et détail par carat au même endroit."
-      },
-      {
-        "title": "Comparez les carats d'un coup d'œil",
-        "subtitle": "24K, 21K, 18K, 14K — données pures, sans marge."
-      },
-      {
-        "title": "Conçu pour le monde arabe",
-        "subtitle": "Gold Prices Arabia livre l'or à la source — sans superflu."
-      }
-    ]
   },
   "LiveStream": {
     "heading": "Flux en direct",
@@ -412,10 +388,10 @@
     "editorialIndependence": "Aucun annonceur, partenaire d'affiliation ou sponsor de contenu n'influence le calcul des prix, la méthodologie ou ce que nous publions. Le contenu sponsorisé, lorsqu'il existe, est clairement signalé et visuellement séparé de l'éditorial.",
     "editorialAccuracyH2": "Exactitude et corrections",
     "editorialAccuracy": "Les chiffres spot, carat et change sont tirés en direct de flux tiers ; les pannes visibles en amont sont signalées. Si vous repérez une erreur de calcul, écrivez à support@goldpricesarabia.com — les corrections sont publiées sous 24 h et toute page en cache est purgée.",
-    "editorialAffiliateH2": "Divulgation d'affiliation",
-    "editorialAffiliate": "Certaines pages « Acheter de l'or » renvoient vers des négociants en lingots via des programmes d'affiliation. Nous pouvons percevoir une commission lorsque vous ouvrez un compte ou effectuez un achat. Les commissions n'influencent ni les prix affichés ni le référencement des négociants.",
+    "editorialAffiliateH2": "Financement et indépendance",
+    "editorialAffiliate": "Le site ne contient aucun lien d'affiliation et n'a aucun accord de partage de revenus avec un négociant, un courtier ou un produit financier. La publicité via Google AdSense est notre seule source de revenus. Rien de ce que nous percevons n'influence un prix publié, notre méthodologie, ni les marchés que nous couvrons.",
     "editorialAdsH2": "Politique publicitaire",
-    "editorialAds": "La publicité display est diffusée via Google AdSense et une courte liste de partenaires financiers vérifiés. Nous refusons la publicité pour des produits que nous jugeons prédateurs, frauduleux ou non conformes à la réglementation financière locale.",
+    "editorialAds": "La publicité display est diffusée uniquement via Google AdSense. Nous ne pratiquons aucune vente directe d'espace, aucun placement sponsorisé et aucun accord d'affiliation.",
     "editorialPrivacyH2": "Confidentialité et cookies",
     "editorialPrivacy": "Aucune donnée personnelle n'est collectée sans consentement. L'analyse d'audience utilise des cookies internes ; les cookies publicitaires requièrent un consentement explicite conformément au RGPD / à la PDPL saoudienne. Écrivez à support@goldpricesarabia.com pour demander la suppression de vos données.",
     "lastUpdated": "Dernière mise à jour"
@@ -452,8 +428,8 @@
     "accuracy": "Les prix en direct proviennent d'API tierces (Binance, Coinbase, Kraken via PAXG/USD ; STOOQ pour l'argent, le platine et le palladium ; cours moyens de change des banques centrales). Les pannes, la latence ou les erreurs en amont échappent à notre contrôle. Les prix de détail en bijouterie, les écarts des négociants, la perte d'affinage et les taxes locales ne sont PAS inclus. Le prix réel payé chez un bijoutier ou un négociant différera du cours spot affiché ici.",
     "noLiabilityH2": "Absence de responsabilité",
     "noLiability": "Dans toute la mesure permise par la loi, Gold Prices Arabia, son fondateur, ses contributeurs et ses organisations mères déclinent toute responsabilité pour toute perte ou tout dommage — direct, indirect, accessoire, consécutif ou autre — découlant de l'utilisation de ce site, de ses données ou de toute décision prise sur la base de son contenu. Vous utilisez le site à vos propres risques.",
-    "affiliateH2": "Divulgation d'affiliation",
-    "affiliate": "Certaines pages peuvent contenir des liens d'affiliation vers des négociants en lingots ou des produits financiers. Si vous cliquez puis ouvrez un compte ou effectuez un achat, nous pouvons percevoir une commission. Cela n'influence ni les prix que nous affichons ni les négociants que nous référençons. Voir /editorial-standards pour la politique d'affiliation complète.",
+    "affiliateH2": "Divulgation du financement",
+    "affiliate": "Ce site ne contient aucun lien d'affiliation et ne perçoit aucune commission de négociants, de courtiers ou de produits financiers. La publicité via Google AdSense est notre seule source de revenus et n'influence jamais les prix affichés ni les marchés couverts.",
     "thirdPartyH2": "Contenu tiers",
     "thirdParty": "Les articles d'actualité, graphiques, widgets et publicités peuvent provenir de tiers. Nous n'approuvons, ne vérifions ni ne garantissons aucun contenu tiers. Les liens externes s'ouvrent dans un nouvel onglet ; consultez-les à votre discrétion.",
     "jurisdictionH2": "Juridiction et mises à jour",

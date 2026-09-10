@@ -141,9 +141,6 @@
   },
   "Sidebar": {
     "quickLinks": "Quick Links",
-    "adTop": "Ad Slot — Sidebar Top",
-    "adBottom": "Ad Slot — Sidebar Bottom",
-    "adsense": "AdSense {client}",
     "linkKarat24": "24K Gold Price",
     "linkKarat21": "21K Gold Price",
     "linkKarat18": "18K Gold Price",
@@ -151,27 +148,6 @@
     "linkSaudi": "Saudi Arabia Gold",
     "linkUAE": "UAE Gold Price",
     "linkEgypt": "Egypt Gold Price"
-  },
-  "AffiliateBanner": {
-    "label": "Sponsored",
-    "items": [
-      {
-        "title": "Live spot pricing across MENA",
-        "subtitle": "USD, JOD, SAR, AED, EGP — every karat, every minute."
-      },
-      {
-        "title": "Track gold like a pro",
-        "subtitle": "Charts, calculators and karat breakdowns in one place."
-      },
-      {
-        "title": "Compare karats at a glance",
-        "subtitle": "24K, 21K, 18K, 14K — pure data, no markups."
-      },
-      {
-        "title": "Built for the Arab world",
-        "subtitle": "Gold Prices Arabia brings gold from the source — no fluff."
-      }
-    ]
   },
   "LiveStream": {
     "heading": "Live Stream",
@@ -412,10 +388,10 @@
     "editorialIndependence": "No advertiser, affiliate partner or content sponsor influences price calculation, methodology or what we publish. Sponsored content, where present, is clearly labelled and visually separated from editorial.",
     "editorialAccuracyH2": "Accuracy & corrections",
     "editorialAccuracy": "Spot, karat and FX numbers are pulled live from third-party feeds; visible upstream outages are flagged. If you spot a calculation error, email support@goldpricesarabia.com — corrections are issued within 24h and any cached page is purged.",
-    "editorialAffiliateH2": "Affiliate disclosure",
-    "editorialAffiliate": "Some 'Buy gold' pages link to bullion dealers via affiliate programmes. We may earn a commission when you open an account or purchase. Commissions do not influence the prices we show or whether dealers are listed.",
+    "editorialAffiliateH2": "Funding and independence",
+    "editorialAffiliate": "The site carries no affiliate links and has no revenue-sharing arrangement with any dealer, broker or financial product. Advertising through Google AdSense is our only source of revenue. Nothing we earn influences a published price, our methodology, or which dealers or markets we cover.",
     "editorialAdsH2": "Advertising policy",
-    "editorialAds": "Display advertising is served via Google AdSense and a small allowlist of vetted finance partners. We do not accept advertising from products we judge to be predatory, scammy or non-compliant with local financial regulation.",
+    "editorialAds": "Display advertising is served via Google AdSense and nothing else. We run no direct ad sales, no sponsored placements and no affiliate arrangements.",
     "editorialPrivacyH2": "Privacy & cookies",
     "editorialPrivacy": "No personal data is collected without consent. Analytics use first-party cookies; advertising cookies require explicit opt-in under GDPR / Saudi PDPL. Email us at support@goldpricesarabia.com to request data deletion.",
     "lastUpdated": "Last updated"
@@ -452,8 +428,8 @@
     "accuracy": "Live prices come from third-party APIs (Binance, Coinbase, Kraken via PAXG/USD; STOOQ for silver/platinum/palladium; central-bank mid-market FX). Upstream outages, latency, or errors are outside our control. Retail jewellery prices, dealer spreads, refining loss, and local taxes are NOT included. The actual price you pay at a jeweller or dealer will differ from the spot price shown here.",
     "noLiabilityH2": "No liability",
     "noLiability": "To the maximum extent permitted by law, Gold Prices Arabia, its founder, contributors, and parent organisations accept no liability for any loss or damage — direct, indirect, incidental, consequential, or otherwise — arising from use of this site, its data, or any decision made based on its content. Use of the site is at your own risk.",
-    "affiliateH2": "Affiliate disclosure",
-    "affiliate": "Some pages may contain affiliate links to bullion dealers or financial products. If you click through and open an account or make a purchase, we may earn a commission. This does not influence the prices we display or which dealers we list. See /editorial-standards for the full affiliate policy.",
+    "affiliateH2": "Funding disclosure",
+    "affiliate": "This site carries no affiliate links and earns no commission from dealers, brokers or financial products. Advertising through Google AdSense is our only source of revenue, and it never influences the prices we display or the markets we cover.",
     "thirdPartyH2": "Third-party content",
     "thirdParty": "News articles, charts, widgets, and advertisements may originate from third parties. We do not endorse, verify, or guarantee any third-party content. External links open in a new tab; visit at your own discretion.",
     "jurisdictionH2": "Jurisdiction and updates",

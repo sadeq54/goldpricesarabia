@@ -141,9 +141,6 @@
   },
   "Sidebar": {
     "quickLinks": "Hızlı Bağlantılar",
-    "adTop": "Reklam Alanı — Kenar Çubuğu Üst",
-    "adBottom": "Reklam Alanı — Kenar Çubuğu Alt",
-    "adsense": "AdSense {client}",
     "linkKarat24": "24 Ayar Altın Fiyatı",
     "linkKarat21": "21 Ayar Altın Fiyatı",
     "linkKarat18": "18 Ayar Altın Fiyatı",
@@ -151,27 +148,6 @@
     "linkSaudi": "Suudi Arabistan Altın Fiyatı",
     "linkUAE": "BAE Altın Fiyatı",
     "linkEgypt": "Mısır Altın Fiyatı"
-  },
-  "AffiliateBanner": {
-    "label": "Sponsorlu",
-    "items": [
-      {
-        "title": "MENA genelinde canlı spot fiyatlar",
-        "subtitle": "USD, JOD, SAR, AED, EGP — her ayar, her dakika."
-      },
-      {
-        "title": "Altını profesyonel gibi takip edin",
-        "subtitle": "Grafikler, hesaplayıcılar ve ayar dağılımları tek yerde."
-      },
-      {
-        "title": "Ayarları bir bakışta karşılaştırın",
-        "subtitle": "24 ayar, 21 ayar, 18 ayar, 14 ayar — saf veri, marj yok."
-      },
-      {
-        "title": "Arap dünyası için tasarlandı",
-        "subtitle": "Gold Prices Arabia altını kaynağından getirir — dolgu yok."
-      }
-    ]
   },
   "LiveStream": {
     "heading": "Canlı Akış",
@@ -412,10 +388,10 @@
     "editorialIndependence": "Hiçbir reklamveren, iş ortağı veya içerik sponsoru fiyat hesaplamasını, metodolojiyi veya yayımladıklarımızı etkilemez. Sponsorlu içerik, bulunduğunda açıkça etiketlenir ve editoryal içerikten görsel olarak ayrılır.",
     "editorialAccuracyH2": "Doğruluk ve düzeltmeler",
     "editorialAccuracy": "Spot, ayar ve döviz rakamları üçüncü taraf akışlarından canlı çekilir; görünür kaynak kesintileri işaretlenir. Bir hesaplama hatası fark ederseniz support@goldpricesarabia.com adresine yazın — düzeltmeler 24 saat içinde yayımlanır ve önbellekteki sayfalar temizlenir.",
-    "editorialAffiliateH2": "İş ortaklığı beyanı",
-    "editorialAffiliate": "Bazı 'Altın al' sayfaları, iş ortaklığı programları aracılığıyla külçe satıcılarına bağlantı verir. Hesap açtığınızda veya alım yaptığınızda komisyon kazanabiliriz. Komisyonlar, gösterdiğimiz fiyatları veya satıcıların listelenip listelenmediğini etkilemez.",
+    "editorialAffiliateH2": "Finansman ve bağımsızlık",
+    "editorialAffiliate": "Sitede hiçbir ortaklık bağlantısı yoktur ve hiçbir satıcı, aracı kurum veya finansal ürünle gelir paylaşımı anlaşmamız bulunmamaktadır. Google AdSense reklamları tek gelir kaynağımızdır. Kazandığımız hiçbir şey yayımlanan bir fiyatı, yöntemimizi ya da hangi piyasaları kapsadığımızı etkilemez.",
     "editorialAdsH2": "Reklam politikası",
-    "editorialAds": "Görüntülü reklamlar Google AdSense ve onaylı finans ortaklarından oluşan küçük bir izin listesi üzerinden sunulur. Yırtıcı, dolandırıcılık niteliğinde veya yerel finansal mevzuata aykırı olduğunu değerlendirdiğimiz ürünlerden reklam kabul etmiyoruz.",
+    "editorialAds": "Görüntülü reklamlar yalnızca Google AdSense üzerinden sunulur. Doğrudan reklam satışı, sponsorlu yerleşim veya ortaklık anlaşması yapmıyoruz.",
     "editorialPrivacyH2": "Gizlilik ve çerezler",
     "editorialPrivacy": "Onay olmadan kişisel veri toplanmaz. Analitik, birinci taraf çerezler kullanır; reklam çerezleri GDPR / Suudi PDPL kapsamında açık onay gerektirir. Veri silme talebi için support@goldpricesarabia.com adresine e-posta gönderin.",
     "lastUpdated": "Son güncelleme"
@@ -452,8 +428,8 @@
     "accuracy": "Canlı fiyatlar üçüncü taraf API'lerinden gelir (PAXG/USD üzerinden Binance, Coinbase, Kraken; gümüş/platin/paladyum için STOOQ; merkez bankası orta kurları). Kaynak kesintileri, gecikmeler veya hatalar kontrolümüz dışındadır. Perakende kuyumcu fiyatları, satıcı makasları, rafine kaybı ve yerel vergiler dahil DEĞİLDİR. Kuyumcuda veya satıcıda ödeyeceğiniz gerçek fiyat, burada gösterilen spot fiyattan farklı olacaktır.",
     "noLiabilityH2": "Sorumluluk kabul edilmez",
     "noLiability": "Yasaların izin verdiği azami ölçüde Gold Prices Arabia, kurucusu, katkıda bulunanları ve bağlı kuruluşları; bu sitenin veya verilerinin kullanımından ya da içeriğine dayanarak alınan herhangi bir karardan kaynaklanan doğrudan, dolaylı, arızi, sonuçsal veya başka türde hiçbir kayıp ya da zarardan sorumluluk kabul etmez. Sitenin kullanımı riski size aittir.",
-    "affiliateH2": "İş ortaklığı beyanı",
-    "affiliate": "Bazı sayfalar külçe satıcılarına veya finansal ürünlere iş ortaklığı bağlantıları içerebilir. Bağlantıya tıklayıp hesap açar veya alım yaparsanız komisyon kazanabiliriz. Bu, gösterdiğimiz fiyatları veya listelediğimiz satıcıları etkilemez. İş ortaklığı politikasının tamamı için /editorial-standards sayfasına bakın.",
+    "affiliateH2": "Finansman açıklaması",
+    "affiliate": "Bu sitede ortaklık bağlantısı yoktur ve satıcılardan, aracı kurumlardan veya finansal ürünlerden komisyon alınmaz. Google AdSense reklamları tek gelir kaynağımızdır ve gösterdiğimiz fiyatları ya da kapsadığımız piyasaları asla etkilemez.",
     "thirdPartyH2": "Üçüncü taraf içerikleri",
     "thirdParty": "Haberler, grafikler, widget'lar ve reklamlar üçüncü taraflardan gelebilir. Hiçbir üçüncü taraf içeriğini onaylamıyor, doğrulamıyor veya garanti etmiyoruz. Dış bağlantılar yeni sekmede açılır; ziyaret etmek kendi takdirinizdedir.",
     "jurisdictionH2": "Yargı yetkisi ve güncellemeler",
