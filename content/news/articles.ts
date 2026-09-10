@@ -15,6 +15,9 @@
 
 import { GUIDE_ARTICLES } from "@/content/news/guides";
 import { SELLING_ARTICLES } from "@/content/news/guides-selling";
+import { SAVING_ARTICLES } from "@/content/news/guides-saving";
+import { MARKET_ARTICLES } from "@/content/news/guides-market";
+import { REGIONAL_ARTICLES } from "@/content/news/guides-regional";
 
 export type Article = {
   slug: string;
@@ -781,6 +784,9 @@ export const ARTICLES: Article[] = [
   ...NEWS_ARTICLES,
   ...GUIDE_ARTICLES,
   ...SELLING_ARTICLES,
+  ...SAVING_ARTICLES,
+  ...MARKET_ARTICLES,
+  ...REGIONAL_ARTICLES,
 ].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
 export function getArticleBySlug(slug: string): Article | undefined {

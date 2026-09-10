@@ -46,6 +46,15 @@ const NEWS = new Set([
   "selling-gold-back-what-you-actually-get",
   "why-neighbouring-countries-differ",
   "18k-or-21k-for-daily-wear",
+  "gold-vs-bank-deposit-devaluing-currency",
+  "gold-coins-bars-or-jewellery-for-saving",
+  "zakat-on-gold-how-to-calculate",
+  "from-london-benchmark-to-your-jewellers-window",
+  "how-to-read-a-jewellers-daily-board",
+  "why-turkish-gold-prices-move-differently",
+  "carrying-gold-across-borders-what-to-know",
+  "wedding-gold-what-families-actually-buy",
+  "why-subcontinent-gold-differs-from-the-gulf",
 ]);
 const BUY_GOLD_COUNTRIES = new Set(["usa", "uk", "canada", "australia", "saudi-arabia", "uae", "egypt", "morocco"]);
 const BUY_GOLD_TYPES = new Set(["coins", "small-coins", "bars"]);
