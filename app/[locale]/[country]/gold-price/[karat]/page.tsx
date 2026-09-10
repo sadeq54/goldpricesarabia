@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
 import { AdSensePlacement } from "@/components/AdSensePlacement";
-import { AffiliateBanner } from "@/components/AffiliateBanner";
 import { FollowCta } from "@/components/FollowCta";
 import { CountryGoldPriceHeader } from "@/components/CountryGoldPriceHeader";
 import { countryPageText } from "@/components/CountryGoldPriceHeader.i18n";
@@ -18,7 +17,6 @@ import { KaratSwitcher } from "@/components/KaratSwitcher";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { Sidebar } from "@/components/Sidebar";
 import { StoresMarquee } from "@/components/StoresMarquee";
-import { TradeGoldCta } from "@/components/TradeGoldCta";
 import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
@@ -291,7 +289,6 @@ export default async function CountryKaratPage({
                 defaultCurrency={country.currency}
               />
             </Suspense>
-            <AffiliateBanner />
             <Suspense fallback={<BidAskGaugeSkeleton />}>
               <BidAskSection
                 promise={spotPromise}
@@ -299,7 +296,6 @@ export default async function CountryKaratPage({
                 displayCurrency={country.currency}
               />
             </Suspense>
-            <TradeGoldCta locale={locale} countrySlug={slug} tag={`${locale}-${slug}-${karat}`} />
             <TradingViewChart currency={country.currency} />
             <Suspense fallback={<CalculatorSkeleton />}>
               <CalculatorSection

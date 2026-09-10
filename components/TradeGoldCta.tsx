@@ -10,6 +10,13 @@ import { XM_PAGES, xmAllowed, xmPageUrl, type XmLang } from "@/lib/xm-banners";
  * suffer from blindness; a one-line offer with a clear button converts far
  * better. Carries the page as a sub-ID (`t=`) so the partner dashboard shows
  * which page/country produced the click. Hidden where XM does not onboard.
+ *
+ * PLACEMENT IS DELIBERATELY NARROW. This is a server component, so unlike
+ * `AdSlot`/`AffiliateBanner` it cannot self-gate on the pathname — the call
+ * site is the guard. It was on all 1,620 karat pages until 2026-09-10 and was
+ * removed as part of the AdSense affiliate-footprint fix; the homepage is the
+ * only place it belongs. Before adding another call site, check it against the
+ * allow-list in `lib/affiliate-placement.ts` and read the reasoning there.
  */
 const HEADING: LocaleText = {
   en: "Trade gold (XAUUSD) with XM",

@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useLocale } from "next-intl";
 
 import { usePathname } from "@/i18n/navigation";
+import { affiliateAllowed } from "@/lib/affiliate-placement";
 import { COUNTRY_XM_LANG } from "@/lib/countries";
 import {
   bannersFor,
@@ -53,7 +54,10 @@ export function AdSlot({ slot = 0, label }: { slot?: number; label?: string }) {
   }, [banners.length]);
 
   // XM does not onboard some countries — an XM creative there is a wasted slot.
-  if (banners.length === 0 || !xmAllowed(country)) return null;
+  // This slot lives in the sidebar, i.e. on every page; `affiliateAllowed`
+  // keeps that footprint "a minor part of the content" per the AdSense
+  // approval doc. See lib/affiliate-placement.ts.
+  if (banners.length === 0 || !xmAllowed(country) || !affiliateAllowed(pathname)) return null;
   const current = banners[(slot + step) % banners.length];
 
   return (

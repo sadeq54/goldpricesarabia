@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { AdSensePlacement } from "@/components/AdSensePlacement";
-import { AffiliateBanner } from "@/components/AffiliateBanner";
 import { BidAskGauge } from "@/components/BidAskGauge";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { Calculator } from "@/components/Calculator";
@@ -22,7 +21,6 @@ import { PriceTable } from "@/components/PriceTable";
 import { RecentPricesTable } from "@/components/RecentPricesTable";
 import { FollowCta } from "@/components/FollowCta";
 import { StoresMarquee } from "@/components/StoresMarquee";
-import { TradeGoldCta } from "@/components/TradeGoldCta";
 import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
@@ -280,11 +278,9 @@ export default async function KaratPage({
             <Suspense fallback={<PriceChartSkeleton />}>
               <PriceChartSection hPromise={historyPromise} fxPromise={fxPromise} />
             </Suspense>
-            <AffiliateBanner />
             <Suspense fallback={<BidAskGaugeSkeleton />}>
               <BidAskSection promise={spotPromise} />
             </Suspense>
-            <TradeGoldCta locale={locale} tag={`${locale}-${karat}`} />
             <TradingViewChart />
             <Suspense fallback={<CalculatorSkeleton />}>
               <CalculatorSection sPromise={spotPromise} fxPromise={fxPromise} />

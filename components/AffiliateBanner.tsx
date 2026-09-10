@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { usePathname } from "@/i18n/navigation";
+import { affiliateAllowed } from "@/lib/affiliate-placement";
 import { COUNTRY_XM_LANG } from "@/lib/countries";
 import {
   bannersFor,
@@ -56,7 +57,9 @@ export function AffiliateBanner() {
   }, [paused, banners.length]);
 
   // XM does not onboard some countries — an XM creative there is a wasted slot.
-  if (banners.length === 0 || !xmAllowed(slug)) return null;
+  // `affiliateAllowed` keeps the affiliate footprint "a minor part of the
+  // content" per the AdSense approval doc; see lib/affiliate-placement.ts.
+  if (banners.length === 0 || !xmAllowed(slug) || !affiliateAllowed(pathname)) return null;
   const current = banners[i % banners.length];
 
   return (
