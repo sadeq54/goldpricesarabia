@@ -55,6 +55,15 @@ const NEWS = new Set([
   "carrying-gold-across-borders-what-to-know",
   "wedding-gold-what-families-actually-buy",
   "why-subcontinent-gold-differs-from-the-gulf",
+  "storing-gold-safely-home-or-bank",
+  "caring-for-gold-jewellery",
+  "insuring-gold-what-policies-cover",
+  "gold-investment-scams-and-how-they-work",
+  "jeweller-gold-savings-schemes-terms",
+  "paper-gold-vs-physical-what-you-own",
+  "what-actually-moves-the-gold-price",
+  "why-central-banks-buy-gold",
+  "how-much-gold-in-a-family-budget",
 ]);
 const BUY_GOLD_COUNTRIES = new Set(["usa", "uk", "canada", "australia", "saudi-arabia", "uae", "egypt", "morocco"]);
 const BUY_GOLD_TYPES = new Set(["coins", "small-coins", "bars"]);

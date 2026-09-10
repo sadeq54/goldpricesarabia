@@ -18,6 +18,9 @@ import { SELLING_ARTICLES } from "@/content/news/guides-selling";
 import { SAVING_ARTICLES } from "@/content/news/guides-saving";
 import { MARKET_ARTICLES } from "@/content/news/guides-market";
 import { REGIONAL_ARTICLES } from "@/content/news/guides-regional";
+import { CARE_ARTICLES } from "@/content/news/guides-care";
+import { RISK_ARTICLES } from "@/content/news/guides-risk";
+import { CONTEXT_ARTICLES } from "@/content/news/guides-context";
 
 export type Article = {
   slug: string;
@@ -787,6 +790,9 @@ export const ARTICLES: Article[] = [
   ...SAVING_ARTICLES,
   ...MARKET_ARTICLES,
   ...REGIONAL_ARTICLES,
+  ...CARE_ARTICLES,
+  ...RISK_ARTICLES,
+  ...CONTEXT_ARTICLES,
 ].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
 export function getArticleBySlug(slug: string): Article | undefined {
