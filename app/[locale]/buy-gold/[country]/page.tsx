@@ -63,8 +63,11 @@ export default async function BuyGoldCountryPage({
   const fxPromise = getCachedFxRates();
 
   const pageUrl = canonicalPath(locale, `/buy-gold/${slug}`);
-  // Editorial is bilingual (ar/en) only — fr/tr/ur/hi read the English copy via pick().
-  const editorial = BUY_GOLD_EDITORIAL[slug];
+  // Editorial is bilingual (ar/en) only. It used to reach fr/tr/ur/hi through
+  // pick()'s English fallback, which made those pages ~30% English (measured
+  // 2026-10-10). Omit it there rather than ship mixed-language body copy; the
+  // VAT FAQ answer comes from the same source and is omitted with it.
+  const editorial = locale === "ar" || locale === "en" ? BUY_GOLD_EDITORIAL[slug] : undefined;
   const buyFaqs = buyGoldFaqs(locale, {
     name,
     currency: c.currency,

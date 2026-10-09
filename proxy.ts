@@ -2,7 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 
 import { routing } from "./i18n/routing";
-import { SITE_URL } from "./lib/metadata";
+import { BILINGUAL_SECTIONS, SITE_URL } from "./lib/metadata";
 import { isKnownDynamicRoute } from "./lib/valid-routes";
 
 const intlMiddleware = createMiddleware(routing);
@@ -48,6 +48,22 @@ function rejectUnknownRoute(req: NextRequest): NextResponse | null {
   const url = req.nextUrl.clone();
   url.pathname = `/${locale}/__not-found`;
   return NextResponse.rewrite(url, { status: 404 });
+}
+
+/**
+ * fr/tr/ur/hi URLs of an Arabic+English-only section (see BILINGUAL_SECTIONS
+ * in lib/metadata.ts) 308 to the English page instead of rendering the English
+ * copy inside a translated frame as a wrong-language duplicate.
+ */
+function redirectUntranslated(req: NextRequest): NextResponse | null {
+  const segments = req.nextUrl.pathname.split("/").filter(Boolean);
+  if (segments.length < 2) return null;
+  const [locale, section] = segments;
+  if (!LOCALES.has(locale) || locale === "ar" || locale === "en") return null;
+  if (!BILINGUAL_SECTIONS.has(section)) return null;
+  const url = req.nextUrl.clone();
+  url.pathname = `/en/${segments.slice(1).join("/")}`;
+  return withForwardedOrigin(req, NextResponse.redirect(url, 308));
 }
 
 /**
@@ -131,6 +147,9 @@ function first(value: string | null): string | null {
  * it to next-intl's response so its rewrite/redirect decision is preserved.
  */
 export default function middleware(req: NextRequest) {
+  const untranslated = redirectUntranslated(req);
+  if (untranslated) return untranslated;
+
   const rejected = rejectUnknownRoute(req);
   if (rejected) return rejected;
 

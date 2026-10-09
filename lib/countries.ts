@@ -198,6 +198,14 @@ export const COUNTRY_NOTES: Record<string, CountryNote> = {
  * programmatic pages. Returns null only when neither source has the slug.
  */
 export function countryNote(slug: string, locale: string): string | null {
+  // Both sources are written in English and Arabic only. `pick()` falls back
+  // to English, so on fr/tr/ur/hi pages this used to print an English
+  // paragraph inside otherwise-translated body copy — measured 2026-10-10 at
+  // 5–9% of the prose on ~1,060 pages, after four AdSense "content quality"
+  // rejections. Mixed-language body text is worse than no note, so the note
+  // is omitted for locales it was never written in. To restore it, add real
+  // human-checked translations to COUNTRY_NOTES / COUNTRY_FACTS first.
+  if (locale !== "ar" && locale !== "en") return null;
   const note = COUNTRY_NOTES[slug];
   if (note) return pick(locale, note);
   return composeCountryNote(slug, locale);

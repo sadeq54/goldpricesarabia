@@ -10,6 +10,23 @@ export const SITE_METADATA_BASE = new URL(SITE_URL);
 
 /** Site locales — single source of truth is `i18n/routing.ts`. */
 export const LOCALES = routing.locales;
+
+/**
+ * Sections written only in Arabic and English: the articles, the news index
+ * and the research page. Their fr/tr/ur/hi URLs used to render the English
+ * copy inside a translated frame (65–86% English body text on 120+ duplicate
+ * URLs, measured 2026-10-10 after four AdSense "content quality" rejections).
+ * Now those URLs 308 to /en (proxy.ts), and hreflang + the sitemap list only
+ * ar and en for these paths. Translate a section properly before removing it.
+ */
+export const BILINGUAL_SECTIONS: ReadonlySet<string> = new Set(["news", "research"]);
+const BILINGUAL_LOCALES = ["ar", "en"] as const;
+
+/** Locales a locale-agnostic path genuinely exists in. */
+export function localesForPath(path: string): readonly string[] {
+  const section = path.split("/").filter(Boolean)[0];
+  return section && BILINGUAL_SECTIONS.has(section) ? BILINGUAL_LOCALES : LOCALES;
+}
 export type SiteLocale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: SiteLocale = routing.defaultLocale;
 
@@ -40,7 +57,7 @@ export function canonicalPath(locale: string, path: string): string {
  */
 export function buildAlternates(locale: string, path: string) {
   const languages: Record<string, string> = {};
-  for (const l of LOCALES) languages[localeMeta(l).hreflang] = canonicalPath(l, path);
+  for (const l of localesForPath(path)) languages[localeMeta(l).hreflang] = canonicalPath(l, path);
   languages["x-default"] = canonicalPath(DEFAULT_LOCALE, path);
   return { canonical: canonicalPath(locale, path), languages };
 }
