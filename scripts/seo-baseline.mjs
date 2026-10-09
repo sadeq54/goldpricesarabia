@@ -25,8 +25,8 @@ const URLS = [
   "/gold-price/24k",
   "/tr/turkey/gold-price/22k",
   "/hi/india/gold-price/22k",
-  "/ur/pakistan/gold-price/24k",
-  "/fr/jordan/gold-price/21k",
+  "/hi/pakistan/gold-price/24k",
+  "/tr/jordan/gold-price/21k",
   "/historical-gold-prices",
   "/research",
 ];

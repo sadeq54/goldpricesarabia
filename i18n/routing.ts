@@ -2,11 +2,19 @@ import { defineRouting } from "next-intl/routing";
 
 /**
  * Site locales. Arabic is the unprefixed default (`/jordan/...`), every other
- * locale is prefixed (`/en/...`, `/fr/...`). Keep this list in sync with
+ * locale is prefixed (`/en/...`, `/tr/...`). Keep this list in sync with
  * `messages/<locale>.json` — `i18n/request.ts` imports by locale name.
+ *
+ * French and Urdu were removed on 2026-10-10. Over the previous 3 months they
+ * earned 52 of 2,120 Search Console clicks (2.5%) while carrying a third of
+ * the site's templated pages, after four AdSense "content quality"
+ * rejections. Their URLs 308 to English / Arabic in proxy.ts
+ * (REMOVED_LOCALES). The fr/ur fields in LocaleText dictionaries are left
+ * in place, unused, so restoring them needs routing + LOCALE_META + the
+ * deleted messages/fr.json and ur.json (in git history), not a rewrite.
  */
 export const routing = defineRouting({
-  locales: ["ar", "en", "fr", "tr", "ur", "hi"],
+  locales: ["ar", "en", "tr", "hi"],
   defaultLocale: "ar",
   localePrefix: "as-needed",
   localeDetection: false,
@@ -34,9 +42,7 @@ export const isRtl = (locale: string) => RTL_LOCALES.includes(locale);
 export const LOCALE_META = {
   ar: { name: "العربية", english: "Arabic", dir: "rtl", og: "ar_SA", intl: "ar-EG-u-nu-latn-ca-gregory", hreflang: "ar" },
   en: { name: "English", english: "English", dir: "ltr", og: "en_US", intl: "en-GB", hreflang: "en" },
-  fr: { name: "Français", english: "French", dir: "ltr", og: "fr_FR", intl: "fr-FR", hreflang: "fr" },
   tr: { name: "Türkçe", english: "Turkish", dir: "ltr", og: "tr_TR", intl: "tr-TR", hreflang: "tr" },
-  ur: { name: "اردو", english: "Urdu", dir: "rtl", og: "ur_PK", intl: "ur-PK-u-nu-latn", hreflang: "ur" },
   hi: { name: "हिन्दी", english: "Hindi", dir: "ltr", og: "hi_IN", intl: "hi-IN-u-nu-latn", hreflang: "hi" },
 } as const satisfies Record<AppLocale, { name: string; english: string; dir: "rtl" | "ltr"; og: string; intl: string; hreflang: string }>;
 

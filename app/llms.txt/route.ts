@@ -15,7 +15,7 @@ const BODY = `# Gold Prices Arabia
 
 - Brand: Gold Prices Arabia (also: GoldPricesArabia, GPA, أسعار الذهب العربية)
 - Domain: ${SITE_URL}
-- Languages: Arabic (default, unprefixed URLs), English (/en/), French (/fr/), Turkish (/tr/), Urdu (/ur/), Hindi (/hi/) — every page exists at the same path under each prefix, e.g. ${SITE_URL}/jordan/gold-price/21k, ${SITE_URL}/en/jordan/gold-price/21k, ${SITE_URL}/fr/jordan/gold-price/21k
+- Languages: Arabic (default, unprefixed URLs), English (/en/), Turkish (/tr/), Hindi (/hi/) — price pages exist at the same path under each prefix, e.g. ${SITE_URL}/jordan/gold-price/21k, ${SITE_URL}/en/jordan/gold-price/21k, ${SITE_URL}/tr/jordan/gold-price/21k. Articles and research are in Arabic and English only
 - Focus: Live spot gold (XAU/USD), silver (XAG), platinum (XPT), palladium (XPD); FX-converted retail karat prices; gold history; gold-silver ratio; precious-metal calculator
 - Data sources: PAXG/USD WebSocket aggregation (Binance, Coinbase, Kraken) for gold; STOOQ + Yahoo Finance for silver/platinum/palladium; fawazahmed0/currency-api for FX
 - Update cadence: Sub-second for gold spot; per-minute for other metals; daily for historical data

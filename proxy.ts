@@ -51,7 +51,26 @@ function rejectUnknownRoute(req: NextRequest): NextResponse | null {
 }
 
 /**
- * fr/tr/ur/hi URLs of an Arabic+English-only section (see BILINGUAL_SECTIONS
+ * Locales the site no longer serves (see i18n/routing.ts) and where their
+ * URLs now go: French readers to English, Urdu readers to Arabic (the same
+ * script and right-to-left layout). A 308 keeps every external link and
+ * indexed URL working while Google consolidates them.
+ */
+const REMOVED_LOCALES: Record<string, string> = { fr: "en", ur: "ar" };
+
+function redirectRemovedLocale(req: NextRequest): NextResponse | null {
+  const segments = req.nextUrl.pathname.split("/").filter(Boolean);
+  const target = segments.length ? REMOVED_LOCALES[segments[0]] : undefined;
+  if (!target) return null;
+  const rest = segments.slice(1);
+  const url = req.nextUrl.clone();
+  // Arabic is the unprefixed default locale.
+  url.pathname = target === routing.defaultLocale ? `/${rest.join("/")}` : `/${[target, ...rest].join("/")}`;
+  return withForwardedOrigin(req, NextResponse.redirect(url, 308));
+}
+
+/**
+ * tr/hi URLs of an Arabic+English-only section (see BILINGUAL_SECTIONS
  * in lib/metadata.ts) 308 to the English page instead of rendering the English
  * copy inside a translated frame as a wrong-language duplicate.
  */
@@ -147,6 +166,9 @@ function first(value: string | null): string | null {
  * it to next-intl's response so its rewrite/redirect decision is preserved.
  */
 export default function middleware(req: NextRequest) {
+  const removed = redirectRemovedLocale(req);
+  if (removed) return removed;
+
   const untranslated = redirectUntranslated(req);
   if (untranslated) return untranslated;
 

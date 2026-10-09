@@ -408,7 +408,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     url: SITE_URL,
     locale: "ar_AE",
-    alternateLocale: ["en_US", "ar_SA", "ar_JO", "ar_AE", "ar_EG", "fr_FR", "tr_TR", "ur_PK", "hi_IN"],
+    alternateLocale: ["en_US", "ar_SA", "ar_JO", "ar_AE", "ar_EG", "tr_TR", "hi_IN"],
     images: [
       {
         url: "/opengraph-image",
