@@ -8,7 +8,7 @@ Priority URLs for manual indexing submission: [seo-priority-urls.md](./seo-prior
 
 ### Quick reference
 
-- Locales: `ar` (default, unprefixed), `en`, `fr`, `tr`, `ur`, `hi` — single source `i18n/routing.ts` (`routing.locales`, `LOCALE_META`, `isRtl`, `STATIC_LOCALES` = ar+en prerendered, others on demand). Message files `messages/<locale>.json` must keep identical keys.
+- Locales: `ar` (default, unprefixed), `en`, `tr`, `hi` — single source `i18n/routing.ts` (`routing.locales`, `LOCALE_META`, `isRtl`, `STATIC_LOCALES` = ar+en prerendered, others on demand). Message files `messages/<locale>.json` must keep identical keys. **French and Urdu were removed 2026-10-10** (2.5% of clicks, a third of templated pages); `/fr/*` and `/ur/*` 308 to English / Arabic in `proxy.ts`. **News and research are Arabic + English only** (`BILINGUAL_SECTIONS` in `lib/metadata.ts`): tr/hi 308 to `/en`, and hreflang + sitemap list only ar/en. Never let `{en, ar}`-only text reach a tr/hi page through `pick()`'s English fallback — gate it by locale or translate it properly; mixed-language body copy was a measured AdSense quality defect.
 - Inline UI text: `pick(locale, { en, ar, fr, tr, ur, hi })` from `lib/i18n-text.ts` (English is the required fallback). Never add a new `locale === "ar" ? … : …` ternary.
 - Shared helpers (reuse, don't re-invent): `karatLabel()` (`lib/karat-label.ts`), `countryName()` / `sortedCountries()` (`lib/countries.ts`), `canonicalPath()` / `buildPageMetadata()` (`lib/metadata.ts`), `priceTitle()` / `priceDescription()` (`lib/seo.ts`), `localeMeta(locale).intl` for every `Intl` / `toLocaleString` call.
 - Sitemap source: `app/sitemap.ts` — `dual()` emits one URL per locale for each route.
