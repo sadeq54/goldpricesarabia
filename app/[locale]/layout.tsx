@@ -535,7 +535,44 @@ async function AnalyticsGate() {
   const h = await headers();
   const path = h.get("x-pathname") ?? "";
   if (EMBED_PATH.test(path)) return null;
+  return (
+    <>
+      <GoogleTags />
+      <ClarityTag />
+    </>
+  );
+}
 
+/**
+ * Microsoft Clarity (heatmaps, scroll depth, session replays), added
+ * 2026-10-15 to measure the mobile UX changes with real visitors. The project
+ * id is public (it ships in every page), so a default lives here; the env var
+ * can override it per deploy.
+ *
+ * `lazyOnload`: the tag loads after the page has finished loading, so it costs
+ * nothing on LCP / INP. Consent: Clarity reads the Google Consent Mode
+ * defaults set in <head> (ConsentDefaultsScript: denied in the EEA/UK/CH), so
+ * those visitors get cookieless tracking until they accept.
+ * Disclosed in the privacy policy (about/privacy).
+ */
+const CLARITY_RAW_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "yy7t22vqyl";
+// Interpolated into an inline script: accept only a plain Clarity id.
+const CLARITY_ID = /^[a-z0-9]{6,20}$/i.test(CLARITY_RAW_ID) ? CLARITY_RAW_ID : "";
+
+function ClarityTag() {
+  if (!CLARITY_ID) return null;
+  return (
+    <Script
+      id="ms-clarity"
+      strategy="lazyOnload"
+      dangerouslySetInnerHTML={{
+        __html: `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",${JSON.stringify(CLARITY_ID)});`,
+      }}
+    />
+  );
+}
+
+function GoogleTags() {
   if (process.env.NEXT_PUBLIC_GTM_ID) {
     return (
       <>
