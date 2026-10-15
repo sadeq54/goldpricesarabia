@@ -21,11 +21,11 @@
       "jordan": "Ürdün",
       "jordanNote": "Ürdün çarşılarında standart 21 ayardır.",
       "saudi": "Suudi Arabistan",
-      "saudiNote": "Riyad, Cidde, Dammam — canlı SAR fiyatları.",
+      "saudiNote": "Riyad, Cidde ve Dammam: canlı SAR fiyatları.",
       "uae": "BAE",
       "uaeNote": "Dubai Altın Çarşısı fiyatları, AED cinsinden.",
       "egypt": "Mısır",
-      "egyptNote": "Kahire ve İskenderiye — EGP cinsinden."
+      "egyptNote": "Kahire ve İskenderiye: EGP cinsinden."
     },
     "footer": "© {year} Gold Prices Arabia · Kaynağından canlı altın · Fiyatlar yalnızca bilgi amaçlıdır · goldpricesarabia.com · <kormzi>Kormzi</kormzi> altyapısıyla"
   },
@@ -56,7 +56,7 @@
   },
   "PriceChart": {
     "heading": "{metal} · Günlük Kapanış",
-    "titleDynamic": "{period} {metal} Fiyatı, {currency}/{unit}",
+    "titleDynamic": "Son {period} {metal} fiyatı ({unit} başına {currency})",
     "rangeStats": "aralık {low} – {high}",
     "close": "Kapanış",
     "metal": "Metal",

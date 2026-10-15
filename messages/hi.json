@@ -21,11 +21,11 @@
       "jordan": "जॉर्डन",
       "jordanNote": "जॉर्डन के बाज़ारों में 21 कैरेट मानक है।",
       "saudi": "सऊदी अरब",
-      "saudiNote": "रियाद, जेद्दा, दम्माम — लाइव SAR भाव।",
+      "saudiNote": "रियाद, जेद्दा और दम्माम: लाइव SAR भाव।",
       "uae": "यूएई",
       "uaeNote": "दुबई गोल्ड सूक के भाव AED में।",
       "egypt": "मिस्र",
-      "egyptNote": "काहिरा और अलेक्ज़ेंड्रिया — EGP में।"
+      "egyptNote": "काहिरा और अलेक्ज़ेंड्रिया: EGP में।"
     },
     "footer": "© {year} Gold Prices Arabia · स्रोत से लाइव गोल्ड · भाव केवल जानकारी के लिए · goldpricesarabia.com · <kormzi>Kormzi</kormzi> द्वारा संचालित"
   },
@@ -56,7 +56,7 @@
   },
   "PriceChart": {
     "heading": "{metal} · दैनिक क्लोज़",
-    "titleDynamic": "{period} {metal} भाव {currency}/{unit} में",
+    "titleDynamic": "पिछले {period} में {metal} का भाव ({currency} प्रति {unit})",
     "rangeStats": "रेंज {low} – {high}",
     "close": "क्लोज़",
     "metal": "धातु",

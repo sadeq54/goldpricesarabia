@@ -1,32 +1,45 @@
 import { BidAskGauge } from "@/components/BidAskGauge";
 import { Calculator } from "@/components/Calculator";
-import { CurrencyTable } from "@/components/CurrencyTable";
-import { HeroSpot } from "@/components/HeroSpot";
-import { KaratGrid } from "@/components/KaratGrid";
-import { PriceChart } from "@/components/PriceChart";
+import { KaratPriceHero } from "@/components/KaratPriceHero";
 import { PriceTable } from "@/components/PriceTable";
 import { RecentPricesTable } from "@/components/RecentPricesTable";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
-import { chartHistory, type MetalHistory } from "@/lib/history";
+import type { MetalHistory } from "@/lib/history";
 
 /**
  * Streaming sections for the country × karat page. Each awaits its own
  * promises inside the page's Suspense boundaries so the static shell streams
  * first and every block fills in independently.
+ *
+ * The karat cards, the 15-currency table and the interactive 4-metal chart
+ * were removed from this page on 2026-10-15: each repeated prices already in
+ * the karat table (the same numbers appeared four times on one page) and the
+ * page ran to 13 phone screens.
  */
 
-export async function HeroSpotSection({
+/** Units of `currency` per USD, or null when the rate is missing or invalid. */
+function rateFor(fx: FxRates, currency: string): number | null {
+  if (currency === "USD") return 1;
+  const r = fx[currency];
+  return typeof r === "number" && Number.isFinite(r) && r > 0 ? r : null;
+}
+
+export async function KaratHeroSection({
   promise,
   fxPromise,
-  displayCurrency,
+  currency,
+  karat,
+  locale,
 }: {
   promise: Promise<GoldApiResponse | null>;
   fxPromise: Promise<FxRates>;
-  displayCurrency: string;
+  currency: string;
+  karat: string;
+  locale: string;
 }) {
   const [s, fx] = await Promise.all([promise, fxPromise]);
-  return <HeroSpot spot={s} fx={fx} displayCurrency={displayCurrency} />;
+  return <KaratPriceHero spot={s} rate={rateFor(fx, currency)} currency={currency} karat={karat} locale={locale} />;
 }
 
 export async function PriceTableSection({
@@ -88,34 +101,6 @@ export async function RecentPricesSection({
   );
 }
 
-export async function CurrencyTableSection({
-  promise,
-  fxPromise,
-  locale,
-  exclude,
-}: {
-  promise: Promise<GoldApiResponse | null>;
-  fxPromise: Promise<FxRates>;
-  locale: string;
-  exclude: string;
-}) {
-  const [s, fx] = await Promise.all([promise, fxPromise]);
-  return <CurrencyTable spot={s} fx={fx} locale={locale} excludeCurrency={exclude} />;
-}
-
-export async function PriceChartSection({
-  hPromise,
-  fxPromise,
-  defaultCurrency,
-}: {
-  hPromise: Promise<MetalHistory>;
-  fxPromise: Promise<FxRates>;
-  defaultCurrency?: string;
-}) {
-  const [h, fx] = await Promise.all([hPromise, fxPromise]);
-  return <PriceChart histories={chartHistory(h)} fx={fx} defaultCurrency={defaultCurrency} />;
-}
-
 export async function BidAskSection({
   promise,
   fxPromise,
@@ -127,19 +112,6 @@ export async function BidAskSection({
 }) {
   const [s, fx] = await Promise.all([promise, fxPromise]);
   return <BidAskGauge spot={s} fx={fx} displayCurrency={displayCurrency} />;
-}
-
-export async function KaratGridSection({
-  sPromise,
-  fxPromise,
-  displayCurrency,
-}: {
-  sPromise: Promise<GoldApiResponse | null>;
-  fxPromise: Promise<FxRates>;
-  displayCurrency: string;
-}) {
-  const [s, fx] = await Promise.all([sPromise, fxPromise]);
-  return <KaratGrid spot={s} fx={fx} displayCurrency={displayCurrency} />;
 }
 
 export async function CalculatorSection({

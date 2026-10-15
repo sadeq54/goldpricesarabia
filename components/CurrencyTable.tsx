@@ -16,6 +16,9 @@ const MAJOR = [
 ];
 
 const COLS = ["24k", "22k", "21k", "18k"] as const;
+/** Columns a 412px phone shows; the rest appear from md up (still in the HTML). */
+const PHONE_COLS: ReadonlySet<string> = new Set(["24k", "21k"]);
+const phoneHidden = (k: string) => (PHONE_COLS.has(k) ? "" : "hidden md:table-cell");
 
 /**
  * "Gold price in every currency" table — goldprice.org's core promise, done
@@ -58,7 +61,7 @@ export function CurrencyTable({
         {currencyIntro(locale, fmtNum(spot.price, 2))}
       </p>
       <div className="mt-3 overflow-x-auto rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
-        <table className="w-full min-w-[560px] border-collapse">
+        <table className="w-full border-collapse md:min-w-[560px]">
           <caption className="sr-only">
             {tableText(locale, "currencyCaption")}
           </caption>
@@ -66,11 +69,11 @@ export function CurrencyTable({
             <tr>
               <th scope="col" className={`${th} text-start`}>{tableText(locale, "currency")}</th>
               {COLS.map((k) => (
-                <th key={k} scope="col" className={`${th} text-end`}>
+                <th key={k} scope="col" className={`${th} ${phoneHidden(k)} text-end`}>
                   {karatLabel(locale, k)}
                 </th>
               ))}
-              <th scope="col" className={`${th} text-end`}>{tableText(locale, "oz24k")}</th>
+              <th scope="col" className={`${th} hidden text-end md:table-cell`}>{tableText(locale, "oz24k")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--color-border)]">
@@ -98,11 +101,11 @@ export function CurrencyTable({
                     )}
                   </th>
                   {COLS.map((k) => (
-                    <td key={k} dir="ltr" className="num px-3 py-2.5 text-end font-mono text-sm text-[var(--color-text)]">
+                    <td key={k} dir="ltr" className={`num px-3 py-2.5 text-end font-mono text-sm text-[var(--color-text)] ${phoneHidden(k)}`}>
                       {fmtNum(gramUsd(spot, k) * rate, frac)}
                     </td>
                   ))}
-                  <td dir="ltr" className="num px-3 py-2.5 text-end font-mono text-sm text-[var(--color-text-muted)]">
+                  <td dir="ltr" className="num hidden px-3 py-2.5 text-end font-mono text-sm text-[var(--color-text-muted)] md:table-cell">
                     {fmtNum(gramUsd(spot, "24k") * rate * OZ_G, 0)}
                   </td>
                 </tr>

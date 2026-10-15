@@ -82,6 +82,11 @@ export function PriceTable({
 
   const th = "px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--color-text-dim)]";
   const td = "num px-3 py-2.5 font-mono text-sm text-[var(--color-text)]";
+  // Phones get karat · gram · ounce (+ tola where it is the trade unit). Spot
+  // buy/sell per gram differ from the gram price by cents and the kilo price is
+  // a trader figure; on a 412px screen they forced a sideways-scrolling table.
+  // The cells stay in the HTML for crawlers.
+  const wide = "hidden md:table-cell";
 
   return (
     <section aria-labelledby="price-table-heading">
@@ -99,7 +104,7 @@ export function PriceTable({
       </div>
 
       <div className="overflow-x-auto rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
-        <table className="w-full min-w-[560px] border-collapse text-start">
+        <table className="w-full border-collapse text-start md:min-w-[560px]">
           <caption className="sr-only">
             {priceTableCaption(locale, cur)}
           </caption>
@@ -107,11 +112,11 @@ export function PriceTable({
             <tr className="text-start">
               <th scope="col" className={`${th} text-start`}>{tableText(locale, "karat")}</th>
               <th scope="col" className={`${th} text-end`}>{gramHeader(locale, currency)}</th>
-              <th scope="col" className={`${th} text-end`}>{tableText(locale, "bid")}</th>
-              <th scope="col" className={`${th} text-end`}>{tableText(locale, "ask")}</th>
+              <th scope="col" className={`${th} ${wide} text-end`}>{tableText(locale, "bid")}</th>
+              <th scope="col" className={`${th} ${wide} text-end`}>{tableText(locale, "ask")}</th>
               <th scope="col" className={`${th} text-end`}>{tableText(locale, "ounce")}</th>
               {showTola ? <th scope="col" className={`${th} text-end`}>{tableText(locale, "tola")}</th> : null}
-              <th scope="col" className={`${th} text-end`}>{tableText(locale, "kilo")}</th>
+              <th scope="col" className={`${th} ${wide} text-end`}>{tableText(locale, "kilo")}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[var(--color-border)]">
@@ -128,11 +133,11 @@ export function PriceTable({
                     <span className="ms-2 text-[10px] font-medium text-[var(--color-text-dim)]">{r.pct}</span>
                   </th>
                   <td dir="ltr" className={`${td} text-end font-bold`}>{fmtNum(r.gram, frac)}</td>
-                  <td dir="ltr" className={`${td} text-end text-[var(--color-up)]`}>{fmtNum(r.bid, frac)}</td>
-                  <td dir="ltr" className={`${td} text-end text-[var(--color-down)]`}>{fmtNum(r.ask, frac)}</td>
+                  <td dir="ltr" className={`${td} ${wide} text-end text-[var(--color-up)]`}>{fmtNum(r.bid, frac)}</td>
+                  <td dir="ltr" className={`${td} ${wide} text-end text-[var(--color-down)]`}>{fmtNum(r.ask, frac)}</td>
                   <td dir="ltr" className={`${td} text-end`}>{fmtNum(r.oz, frac)}</td>
                   {showTola ? <td dir="ltr" className={`${td} text-end`}>{fmtNum(r.tola, frac)}</td> : null}
-                  <td dir="ltr" className={`${td} text-end`}>{fmtNum(r.kg, 0)}</td>
+                  <td dir="ltr" className={`${td} ${wide} text-end`}>{fmtNum(r.kg, 0)}</td>
                 </tr>
               );
             })}

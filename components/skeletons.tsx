@@ -37,6 +37,34 @@ export function HeroSpotSkeleton() {
   );
 }
 
+/** Same box model as KaratPriceHero (padding, rows, divider) so the swap does not shift the page. */
+export function KaratPriceHeroSkeleton() {
+  return (
+    <div
+      className="hero-spot-bg rounded-2xl border border-[var(--color-border)] p-5 sm:p-6"
+      role="status"
+      aria-busy="true"
+      aria-label="Loading gold price"
+    >
+      <div className="flex h-6 items-center justify-between">
+        <Skel className="h-4 w-36" />
+        <Skel className="h-4 w-24" />
+      </div>
+      <Skel className="mt-3 h-12 w-48 sm:h-[3.75rem]" />
+      <Skel className="mt-2 h-6 w-56" />
+      <Skel className="mt-2 h-4 w-52" />
+      <div className="mt-5 grid grid-cols-3 gap-3 border-t border-[var(--color-border)] pt-4">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div key={i} className="space-y-1.5">
+            <Skel className="h-3 w-12" />
+            <Skel className="h-5 w-16" />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function MetalsStripSkeleton() {
   return (
     <div className="space-y-3" role="status" aria-busy="true" aria-label="Loading metals">

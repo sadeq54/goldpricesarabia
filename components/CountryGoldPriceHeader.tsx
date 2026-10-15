@@ -36,8 +36,15 @@ export function CountryGoldPriceHeader({
   locale: string;
   slug: string;
   karat: string;
-  /** "intro" = flag + H1 + intro + currency chip; "content" = market note + FAQ. */
-  part?: "intro" | "content" | "all";
+  /**
+   * "intro" = flag + H1; "method" = how the price is calculated (intro text +
+   * currency note); "content" = market note + FAQ.
+   *
+   * The method text used to sit between the H1 and the price, so a shopper
+   * read PAXG / 31.1035 g arithmetic and a disclaimer box before the number
+   * they came for (2026-10-15 mobile audit). It now renders after the tables.
+   */
+  part?: "intro" | "method" | "content" | "all";
 }) {
   const country = COUNTRY_BY_SLUG[slug];
   if (!country) return null;
@@ -52,8 +59,9 @@ export function CountryGoldPriceHeader({
   const faq = headerFaq(locale, ctx);
   const note = countryNote(slug, locale);
 
-  const showIntro = part !== "content";
-  const showContent = part !== "intro";
+  const showIntro = part === "intro" || part === "all";
+  const showMethod = part === "method" || part === "all";
+  const showContent = part === "content" || part === "all";
 
   return (
     <>
@@ -68,16 +76,27 @@ export function CountryGoldPriceHeader({
         <Flag cc={country.cc} size={12} className="me-1" />
         {name}
       </a>
-      <h1 className="mt-2 text-3xl font-bold tracking-tight text-[var(--color-gold)]">
+      <h1 className="mt-2 text-2xl font-bold tracking-tight text-[var(--color-gold)] sm:text-3xl">
         {text.h1}
       </h1>
-      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--color-text-muted)]">
-        {text.intro}
-      </p>
-      <div className="mt-3 inline-block rounded-md border border-[var(--color-gold)]/30 bg-[var(--color-gold)]/10 px-3 py-1.5 text-xs text-[var(--color-gold)]">
-        {text.currencyNote}
-      </div>
       </header>
+      ) : null}
+
+      {showMethod ? (
+        <section aria-labelledby={`method-heading-${slug}-${karat}`}>
+          <h2
+            id={`method-heading-${slug}-${karat}`}
+            className="text-base font-semibold text-[var(--color-text)]"
+          >
+            {text.methodHeading}
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--color-text-muted)]">
+            {text.intro}
+          </p>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[var(--color-text-muted)]">
+            {text.currencyNote}
+          </p>
+        </section>
       ) : null}
 
       {showContent ? (

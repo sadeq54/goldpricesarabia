@@ -13,10 +13,8 @@ import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { KaratSwitcher } from "@/components/KaratSwitcher";
 import { RelatedLinks } from "@/components/RelatedLinks";
-import { HeroSpot } from "@/components/HeroSpot";
-import { KaratGrid } from "@/components/KaratGrid";
+import { KaratPriceHero } from "@/components/KaratPriceHero";
 import { Sidebar } from "@/components/Sidebar";
-import { PriceChart } from "@/components/PriceChart";
 import { PriceTable } from "@/components/PriceTable";
 import { RecentPricesTable } from "@/components/RecentPricesTable";
 import { FollowCta } from "@/components/FollowCta";
@@ -24,15 +22,13 @@ import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
   CalculatorSkeleton,
-  HeroSpotSkeleton,
-  KaratGridSkeleton,
-  PriceChartSkeleton,
+  KaratPriceHeroSkeleton,
 } from "@/components/skeletons";
 import { JsonLd } from "@/components/JsonLd";
 import { SeoStaticHeader } from "@/components/SeoStaticHeader";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
-import { chartHistory, type MetalHistory } from "@/lib/history";
+import type { MetalHistory } from "@/lib/history";
 import { pick } from "@/lib/i18n-text";
 import { karatLabel } from "@/lib/karat-label";
 import { buildAlternates, canonicalPath, SITE_URL, buildOpenGraph } from "@/lib/metadata";
@@ -80,8 +76,16 @@ export async function generateMetadata({
   };
 }
 
-async function HeroSpotSection({ promise }: { promise: Promise<GoldApiResponse | null> }) {
-  return <HeroSpot spot={await promise} />;
+async function KaratHeroSection({
+  promise,
+  karat,
+  locale,
+}: {
+  promise: Promise<GoldApiResponse | null>;
+  karat: string;
+  locale: string;
+}) {
+  return <KaratPriceHero spot={await promise} rate={1} currency="USD" karat={karat} locale={locale} />;
 }
 
 async function PriceTableSection({
@@ -127,31 +131,11 @@ async function CurrencyTableSection({
   return <CurrencyTable spot={s} fx={fx} locale={locale} />;
 }
 
-async function PriceChartSection({
-  hPromise,
-  fxPromise,
-}: {
-  hPromise: Promise<MetalHistory>;
-  fxPromise: Promise<FxRates>;
-}) {
-  const [h, fx] = await Promise.all([hPromise, fxPromise]);
-  return <PriceChart histories={chartHistory(h)} fx={fx} />;
-}
 
 async function BidAskSection({ promise }: { promise: Promise<GoldApiResponse | null> }) {
   return <BidAskGauge spot={await promise} />;
 }
 
-async function KaratGridSection({
-  sPromise,
-  fxPromise,
-}: {
-  sPromise: Promise<GoldApiResponse | null>;
-  fxPromise: Promise<FxRates>;
-}) {
-  const [s, fx] = await Promise.all([sPromise, fxPromise]);
-  return <KaratGrid spot={s} fx={fx} />;
-}
 
 async function CalculatorSection({
   sPromise,
@@ -232,13 +216,6 @@ export default async function KaratPage({
         />
         <div className="grid gap-6 lg:grid-cols-[1fr_320px] lg:gap-8">
           <section className="min-w-0 space-y-8">
-            <KaratSwitcher
-              current={karat}
-              basePath="/gold-price"
-              locale={locale}
-              historicalHref="/historical-gold-prices"
-            />
-
             <SeoStaticHeader
               locale={locale}
               namespace="KaratPage"
@@ -248,8 +225,9 @@ export default async function KaratPage({
               introVars={{ karat: kLabel }}
             />
 
-            <Suspense fallback={<HeroSpotSkeleton />}>
-              <HeroSpotSection promise={spotPromise} />
+            {/* This karat, per gram, first (was the 24K ounce price). */}
+            <Suspense fallback={<KaratPriceHeroSkeleton />}>
+              <KaratHeroSection promise={spotPromise} karat={karat} locale={locale} />
             </Suspense>
             <Suspense fallback={null}>
               <PriceTableSection
@@ -259,6 +237,14 @@ export default async function KaratPage({
                 karat={karat}
               />
             </Suspense>
+            {/* Below the price and the karat table (it used to sit above the H1,
+                pushing the price to the bottom of the first phone screen). */}
+            <KaratSwitcher
+              current={karat}
+              basePath="/gold-price"
+              locale={locale}
+              historicalHref="/historical-gold-prices"
+            />
             <Suspense fallback={null}>
               <RecentPricesSection
                 hPromise={historyPromise}
@@ -272,12 +258,8 @@ export default async function KaratPage({
             <Suspense fallback={null}>
               <CurrencyTableSection promise={spotPromise} fxPromise={fxPromise} locale={locale} />
             </Suspense>
-            <Suspense fallback={<KaratGridSkeleton />}>
-              <KaratGridSection sPromise={spotPromise} fxPromise={fxPromise} />
-            </Suspense>
-            <Suspense fallback={<PriceChartSkeleton />}>
-              <PriceChartSection hPromise={historyPromise} fxPromise={fxPromise} />
-            </Suspense>
+            {/* Karat cards and the interactive chart were removed 2026-10-15:
+                they repeated the karat table and the chart image above. */}
             <Suspense fallback={<BidAskGaugeSkeleton />}>
               <BidAskSection promise={spotPromise} />
             </Suspense>

@@ -1,7 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+
+import { localeMeta } from "@/i18n/routing";
+import { pick, type LocaleText } from "@/lib/i18n-text";
+import { currencyName } from "@/lib/seo";
 
 import { LuxurySelect } from "@/components/LuxurySelect";
 import {
@@ -23,12 +27,28 @@ type Currency = string;
 type Unit = "oz" | "g" | "kg";
 type Period = "30D" | "60D" | "90D" | "180D" | "1Y";
 
-const METALS: Array<{ id: Metal; label: string }> = [
-  { id: "XAU", label: "Gold" },
-  { id: "XAG", label: "Silver" },
-  { id: "XPT", label: "Platinum" },
-  { id: "XPD", label: "Palladium" },
+// Localized labels: the Arabic heading used to read "سعر Gold لـ 60D بـ SAR/oz"
+// (English words and codes inside Arabic text, flagged in the 2026-10-15 audit).
+const METALS: Array<{ id: Metal; label: LocaleText }> = [
+  { id: "XAU", label: { en: "Gold", ar: "الذهب", tr: "altın", hi: "सोने" } },
+  { id: "XAG", label: { en: "Silver", ar: "الفضة", tr: "gümüş", hi: "चांदी" } },
+  { id: "XPT", label: { en: "Platinum", ar: "البلاتين", tr: "platin", hi: "प्लैटिनम" } },
+  { id: "XPD", label: { en: "Palladium", ar: "البلاديوم", tr: "paladyum", hi: "पैलेडियम" } },
 ];
+
+const PERIOD_LABEL: Record<Period, LocaleText> = {
+  "30D": { en: "30 days", ar: "30 يومًا", tr: "30 gün", hi: "30 दिनों" },
+  "60D": { en: "60 days", ar: "60 يومًا", tr: "60 gün", hi: "60 दिनों" },
+  "90D": { en: "90 days", ar: "90 يومًا", tr: "90 gün", hi: "90 दिनों" },
+  "180D": { en: "180 days", ar: "180 يومًا", tr: "180 gün", hi: "180 दिनों" },
+  "1Y": { en: "1 year", ar: "سنة", tr: "1 yıl", hi: "1 साल" },
+};
+
+const UNIT_NAME: Record<Unit, LocaleText> = {
+  oz: { en: "ounce", ar: "أونصة", tr: "ons", hi: "औंस" },
+  g: { en: "gram", ar: "جرام", tr: "gram", hi: "ग्राम" },
+  kg: { en: "kilogram", ar: "كيلوغرام", tr: "kilogram", hi: "किलो" },
+};
 
 const CURRENCIES: Currency[] = ["USD", ...ALL_CURRENCIES.filter((c) => c !== "USD")].sort();
 
@@ -80,6 +100,8 @@ export function PriceChartClient({
   defaultCurrency?: Currency;
 }) {
   const t = useTranslations("PriceChart");
+  const locale = useLocale();
+  const intl = localeMeta(locale).intl;
   const [metal, setMetal] = useState<Metal>(initialMetal);
   const [currency, setCurrency] = useState<Currency>(defaultCurrency);
   const [unit, setUnit] = useState<Unit>("oz");
@@ -111,7 +133,8 @@ export function PriceChartClient({
   }, [data]);
 
   const symbol = symbolFor(currency);
-  const metalLabel = METALS.find((m) => m.id === metal)?.label ?? metal;
+  const metalDef = METALS.find((m) => m.id === metal);
+  const metalLabel = metalDef ? pick(locale, metalDef.label) : metal;
   const up = (stats?.ch ?? 0) >= 0;
   const trendColor = up ? "var(--color-up)" : "var(--color-down)";
 
@@ -143,10 +166,10 @@ export function PriceChartClient({
         <div>
           <h2 id="chart-heading" className="text-base font-semibold text-[var(--color-text)]">
             {t("titleDynamic", {
-              period,
+              period: pick(locale, PERIOD_LABEL[period]),
               metal: metalLabel,
-              currency,
-              unit: UNIT_LABEL[unit],
+              currency: currencyName(currency, locale),
+              unit: pick(locale, UNIT_NAME[unit]),
             })}
           </h2>
           {stats ? (
@@ -176,7 +199,7 @@ export function PriceChartClient({
           label={t("metal")}
           value={metal}
           onChange={(v) => setMetal(v as Metal)}
-          options={METALS.map((m) => ({ value: m.id, label: m.label, hint: m.id }))}
+          options={METALS.map((m) => ({ value: m.id, label: pick(locale, m.label), hint: m.id }))}
         />
         <Selector
           label={t("currency")}
@@ -188,13 +211,13 @@ export function PriceChartClient({
           label={t("unit")}
           value={unit}
           onChange={(v) => setUnit(v as Unit)}
-          options={(Object.keys(UNIT_LABEL) as Unit[]).map((u) => ({ value: u, label: UNIT_LABEL[u] }))}
+          options={(Object.keys(UNIT_LABEL) as Unit[]).map((u) => ({ value: u, label: pick(locale, UNIT_NAME[u]) }))}
         />
         <Selector
           label={t("period")}
           value={period}
           onChange={(v) => setPeriod(v as Period)}
-          options={PERIODS.map((p) => ({ value: p.id, label: p.id }))}
+          options={PERIODS.map((p) => ({ value: p.id, label: pick(locale, PERIOD_LABEL[p.id]) }))}
         />
       </div>
 
@@ -213,7 +236,7 @@ export function PriceChartClient({
                   tickLine={false}
                   tickFormatter={(v: string) => {
                     const d = new Date(v);
-                    return d.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+                    return d.toLocaleDateString(intl, { month: "short", day: "numeric" });
                   }}
                   minTickGap={48}
                 />

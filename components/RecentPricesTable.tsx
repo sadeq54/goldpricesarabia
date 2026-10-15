@@ -93,7 +93,9 @@ export function RecentPricesTable({
       </p>
 
       <div className="mt-3 overflow-x-auto rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)]">
-        <table className="w-full min-w-[520px] border-collapse">
+        {/* Phones: date · this page's karat · change. The other karat columns
+            appear from md up (still in the HTML for crawlers). */}
+        <table className="w-full border-collapse md:min-w-[520px]">
           <caption className="sr-only">
             {recentCaption(locale, cur, DAYS)}
           </caption>
@@ -101,7 +103,11 @@ export function RecentPricesTable({
             <tr>
               <th scope="col" className={`${th} text-start`}>{tableText(locale, "date")}</th>
               {cols.map((k) => (
-                <th key={k.key} scope="col" className={`${th} text-end`}>
+                <th
+                  key={k.key}
+                  scope="col"
+                  className={`${th} text-end ${k.key === kDef.key ? "" : "hidden md:table-cell"}`}
+                >
                   {karatLabel(locale, k.label)}
                 </th>
               ))}
@@ -126,7 +132,7 @@ export function RecentPricesTable({
                     <td
                       key={cols[i].key}
                       dir="ltr"
-                      className={`${td} text-end ${cols[i].key === kDef.key ? "font-bold text-[var(--color-text)]" : "text-[var(--color-text-muted)]"}`}
+                      className={`${td} text-end ${cols[i].key === kDef.key ? "font-bold text-[var(--color-text)]" : "hidden text-[var(--color-text-muted)] md:table-cell"}`}
                     >
                       {fmtNum(v, frac)}
                     </td>

@@ -8,12 +8,11 @@ import { Calculator } from "@/components/Calculator";
 import { CurrencyTable } from "@/components/CurrencyTable";
 import { DebugConsole } from "@/components/DebugConsole";
 import { Faq } from "@/components/Faq";
-import { GeoRedirect } from "@/components/GeoRedirect";
+import { Flag } from "@/components/Flag";
 import { Header } from "@/components/Header";
 import { HeroBoard } from "@/components/HeroBoard";
 import { HomepageSeoHeader } from "@/components/HomepageSeoHeader";
 import { JsonLd } from "@/components/JsonLd";
-import { KaratGrid } from "@/components/KaratGrid";
 import { LazyMount } from "@/components/LazyMount";
 import { MetalsStrip } from "@/components/MetalsStrip";
 import { PriceChart } from "@/components/PriceChart";
@@ -26,7 +25,6 @@ import {
   BidAskGaugeSkeleton,
   CalculatorSkeleton,
   HeroSpotSkeleton,
-  KaratGridSkeleton,
   MetalsStripSkeleton,
   PriceChartSkeleton,
 } from "@/components/skeletons";
@@ -41,6 +39,7 @@ import type { ResearchDigest } from "@/lib/research";
 import type { FxRates } from "@/lib/fx";
 import type { MetalsBundle } from "@/lib/goldapi";
 import { chartHistory, type MetalHistory } from "@/lib/history";
+import { pick } from "@/lib/i18n-text";
 import { buildAlternates, buildOpenGraph, SITE_URL } from "@/lib/metadata";
 
 import { homeText } from "./page.i18n";
@@ -110,16 +109,6 @@ async function BidAskSection({ promise }: { promise: Promise<MetalsBundle> }) {
   return <BidAskGauge spot={m.XAU} />;
 }
 
-async function KaratGridSection({
-  mPromise,
-  fxPromise,
-}: {
-  mPromise: Promise<MetalsBundle>;
-  fxPromise: Promise<FxRates>;
-}) {
-  const [m, fx] = await Promise.all([mPromise, fxPromise]);
-  return <KaratGrid spot={m.XAU} fx={fx} />;
-}
 
 async function CalculatorSection({
   mPromise,
@@ -177,18 +166,23 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
 
   const countries = [
-    { c: t("country.jordan"), url: "/jordan/gold-price/21k", note: t("country.jordanNote") },
-    { c: t("country.saudi"), url: "/saudi-arabia/gold-price/21k", note: t("country.saudiNote") },
-    { c: t("country.uae"), url: "/uae/gold-price/21k", note: t("country.uaeNote") },
-    { c: t("country.egypt"), url: "/egypt/gold-price/21k", note: t("country.egyptNote") },
+    { c: t("country.jordan"), cc: "JO", url: "/jordan/gold-price/21k", note: t("country.jordanNote") },
+    { c: t("country.saudi"), cc: "SA", url: "/saudi-arabia/gold-price/21k", note: t("country.saudiNote") },
+    { c: t("country.uae"), cc: "AE", url: "/uae/gold-price/21k", note: t("country.uaeNote") },
+    { c: t("country.egypt"), cc: "EG", url: "/egypt/gold-price/21k", note: t("country.egyptNote") },
   ];
+  const allCountries = pick(locale, {
+    en: "All countries",
+    ar: "كل الدول",
+    tr: "Tüm ülkeler",
+    hi: "सभी देश",
+  });
 
   return (
     <>
       <Suspense fallback={null}>
         <MetaSection mPromise={metalsPromise} fxPromise={fxPromise} />
       </Suspense>
-      <GeoRedirect />
       <Header />
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
@@ -199,6 +193,37 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             <Suspense fallback={<HeroSpotSkeleton />}>
               <HeroBoardSection promise={metalsPromise} />
             </Suspense>
+
+            {/* Country chooser, right under the live price. This replaces the
+                old automatic IP-based redirect (GeoRedirect), which loaded the
+                whole homepage, sent the visitor's IP to ipapi.co, then loaded
+                the country page as well. One tap, no lookup, normal links. */}
+            <section aria-labelledby="countries-heading">
+              <h2 id="countries-heading" className="text-xl font-semibold text-[var(--color-text)]">
+                {t("countriesH2")}
+              </h2>
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                {countries.map((row) => (
+                  <Link
+                    key={row.url}
+                    href={row.url}
+                    className="flex min-h-11 flex-col justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-3 transition hover:border-[var(--color-gold)]/40 sm:p-4"
+                  >
+                    <span className="flex items-center gap-2 text-sm font-semibold text-[var(--color-gold)]">
+                      <Flag cc={row.cc} size={14} alt="" />
+                      {row.c}
+                    </span>
+                    <span className="mt-1 hidden text-xs text-[var(--color-text-muted)] sm:block">{row.note}</span>
+                  </Link>
+                ))}
+              </div>
+              <Link
+                href="/gold-price"
+                className="mt-3 inline-flex min-h-11 items-center text-sm font-medium text-[var(--color-gold)] hover:underline"
+              >
+                {allCountries}
+              </Link>
+            </section>
 
             <Suspense fallback={<MetalsStripSkeleton />}>
               <MetalsStripSection promise={metalsPromise} />
@@ -217,10 +242,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 <BidAskSection promise={metalsPromise} />
               </Suspense>
             </LazyMount>
-
-            <Suspense fallback={<KaratGridSkeleton />}>
-              <KaratGridSection mPromise={metalsPromise} fxPromise={fxPromise} />
-            </Suspense>
 
             <Suspense fallback={null}>
               <CurrencyTableSection mPromise={metalsPromise} fxPromise={fxPromise} locale={locale} />
@@ -291,24 +312,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                   </li>
                 ))}
               </ul>
-            </section>
-
-            <section aria-labelledby="countries-heading">
-              <h2 id="countries-heading" className="text-xl font-semibold text-[var(--color-text)]">
-                {t("countriesH2")}
-              </h2>
-              <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                {countries.map((row) => (
-                  <Link
-                    key={row.url}
-                    href={row.url}
-                    className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 transition hover:border-[var(--color-gold)]/40"
-                  >
-                    <div className="text-sm font-semibold text-[var(--color-gold)]">{row.c}</div>
-                    <div className="mt-1 text-xs text-[var(--color-text-muted)]">{row.note}</div>
-                  </Link>
-                ))}
-              </div>
             </section>
 
             {/* The reader has their answer; give them a reason to come back

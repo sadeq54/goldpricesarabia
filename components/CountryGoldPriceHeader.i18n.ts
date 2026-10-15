@@ -27,13 +27,19 @@ export function countryPageText(locale: string, { karat, country, currency }: Co
       ur: `آج ${country} میں سونے کی قیمت (${k})`,
       hi: `आज ${country} में सोने का भाव (${k})`,
     }),
+    methodHeading: pick(locale, {
+      en: "How this price is calculated",
+      ar: "كيف نحسب هذا السعر",
+      tr: "Bu fiyat nasıl hesaplanır",
+      hi: "यह भाव कैसे निकाला जाता है",
+    }),
     intro: pick(locale, {
-      en: `Today's ${k} gold price in ${country} in ${currency}: the global spot ounce (live median of Binance, Coinbase and Kraken via PAXG/USD) converted to ${currency} at an hourly FX rate, divided by 31.1035 g and scaled by purity.`,
-      ar: `سعر الذهب اليوم في ${country} بعملة ${currency} ل${k}: السعر الفوري العالمي للأونصة (وسيط لحظي من Binance وCoinbase وKraken عبر PAXG/USD) محوّلًا إلى ${currency} بسعر صرف محدّث كل ساعة، ثم مقسومًا على 31.1035 جرامًا ومضروبًا بنسبة النقاء.`,
+      en: `Today's ${k} gold price in ${country} in ${currency}: the global spot ounce (Swissquote, then updated live from the median of Binance, Coinbase and Kraken via PAXG/USD) converted to ${currency} at an hourly FX rate, divided by 31.1035 g and scaled by purity.`,
+      ar: `سعر الذهب اليوم في ${country} بعملة ${currency} ل${k}: السعر الفوري العالمي للأونصة (من Swissquote، ثم يُحدَّث لحظيًا من وسيط Binance وCoinbase وKraken عبر PAXG/USD) محوّلًا إلى ${currency} بسعر صرف محدّث كل ساعة، ثم مقسومًا على 31.1035 جرامًا ومضروبًا بنسبة النقاء.`,
       fr: `Prix de l'or ${k} aujourd'hui – ${country}, en ${currency} : l'once spot mondiale (médiane en direct de Binance, Coinbase et Kraken via PAXG/USD) convertie en ${currency} au taux de change horaire, divisée par 31,1035 g et pondérée par la pureté.`,
-      tr: `${country} için bugünkü ${k} altın fiyatı (${currency}): küresel spot ons fiyatı (Binance, Coinbase ve Kraken'in PAXG/USD üzerinden canlı medyanı) saatlik kurla ${currency} cinsine çevrilir, 31,1035 grama bölünür ve saflık oranıyla çarpılır.`,
+      tr: `${country} için bugünkü ${k} altın fiyatı (${currency}): küresel spot ons fiyatı (Swissquote; ardından Binance, Coinbase ve Kraken'in PAXG/USD üzerinden canlı medyanıyla güncellenir) saatlik kurla ${currency} cinsine çevrilir, 31,1035 grama bölünür ve saflık oranıyla çarpılır.`,
       ur: `${country} میں آج ${k} سونے کی قیمت ${currency} میں: عالمی اسپاٹ اونس (Binance، Coinbase اور Kraken کا PAXG/USD کے ذریعے لائیو میڈین) گھنٹہ وار شرحِ مبادلہ پر ${currency} میں تبدیل، پھر 31.1035 گرام پر تقسیم اور خلوص کے تناسب سے ضرب۔`,
-      hi: `${country} में आज ${k} सोने का भाव ${currency} में: वैश्विक स्पॉट औंस (Binance, Coinbase और Kraken का PAXG/USD के ज़रिए लाइव मीडियन) प्रति घंटा विनिमय दर पर ${currency} में बदला गया, 31.1035 ग्राम से भाग देकर शुद्धता के अनुपात से गुणा।`,
+      hi: `${country} में आज ${k} सोने का भाव ${currency} में: वैश्विक स्पॉट औंस (Swissquote से, फिर Binance, Coinbase और Kraken के PAXG/USD लाइव मीडियन से अपडेट) प्रति घंटा विनिमय दर पर ${currency} में बदला गया, 31.1035 ग्राम से भाग देकर शुद्धता के अनुपात से गुणा।`,
     }),
     currencyNote: pick(locale, {
       en: `All prices in ${currency}. FX refreshes hourly from open data; the figure shown is the spot price before making charges and tax.`,

@@ -21,11 +21,11 @@
       "jordan": "Jordan",
       "jordanNote": "21K is the standard in Jordanian souks.",
       "saudi": "Saudi Arabia",
-      "saudiNote": "Riyadh, Jeddah, Dammam — live SAR rates.",
+      "saudiNote": "Riyadh, Jeddah and Dammam: live SAR rates.",
       "uae": "UAE",
       "uaeNote": "Dubai Gold Souk pricing in AED.",
       "egypt": "Egypt",
-      "egyptNote": "Cairo and Alexandria — EGP-denominated."
+      "egyptNote": "Cairo and Alexandria: priced in EGP."
     },
     "footer": "© {year} Gold Prices Arabia · Live gold from the source · Prices for informational purposes only · goldpricesarabia.com · Powered by <kormzi>Kormzi</kormzi>"
   },
@@ -56,7 +56,7 @@
   },
   "PriceChart": {
     "heading": "{metal} · Daily Close",
-    "titleDynamic": "{period} {metal} Price in {currency}/{unit}",
+    "titleDynamic": "{metal} price over {period} ({currency} per {unit})",
     "rangeStats": "range {low} – {high}",
     "close": "Close",
     "metal": "Metal",

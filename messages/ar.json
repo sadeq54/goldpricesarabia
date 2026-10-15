@@ -21,11 +21,11 @@
       "jordan": "الأردن",
       "jordanNote": "عيار 21 هو المعيار في الأسواق الأردنية.",
       "saudi": "السعودية",
-      "saudiNote": "الرياض، جدة، الدمام — أسعار حية بالريال.",
+      "saudiNote": "الرياض وجدة والدمام: أسعار حية بالريال.",
       "uae": "الإمارات",
       "uaeNote": "أسعار سوق الذهب في دبي بالدرهم.",
       "egypt": "مصر",
-      "egyptNote": "القاهرة والإسكندرية — بالجنيه المصري."
+      "egyptNote": "القاهرة والإسكندرية: بالجنيه المصري."
     },
     "footer": "© {year} Gold Prices Arabia · الذهب من المصدر · الأسعار للأغراض الإعلامية فقط · goldpricesarabia.com · مدعوم من <kormzi>Kormzi</kormzi>"
   },
@@ -56,7 +56,7 @@
   },
   "PriceChart": {
     "heading": "{metal} · إغلاق يومي",
-    "titleDynamic": "سعر {metal} لـ {period} بـ {currency}/{unit}",
+    "titleDynamic": "سعر {metal} خلال {period} ({currency} لكل {unit})",
     "rangeStats": "النطاق {low} – {high}",
     "close": "إغلاق",
     "metal": "المعدن",

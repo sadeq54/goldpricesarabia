@@ -20,9 +20,7 @@ import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
   CalculatorSkeleton,
-  HeroSpotSkeleton,
-  KaratGridSkeleton,
-  PriceChartSkeleton,
+  KaratPriceHeroSkeleton,
 } from "@/components/skeletons";
 import {
   COUNTRIES,
@@ -38,13 +36,10 @@ import { getCachedAllHistory, getCachedFxRates, getCachedSpot } from "@/lib/cach
 import { gramUsd, priceDescription, priceTitle, spotDate } from "@/lib/seo";
 
 import {
-  HeroSpotSection,
+  KaratHeroSection,
   PriceTableSection,
   RecentPricesSection,
-  CurrencyTableSection,
-  PriceChartSection,
   BidAskSection,
-  KaratGridSection,
   CalculatorSection,
 } from "./sections";
 import {
@@ -217,11 +212,15 @@ export default async function CountryKaratPage({
           <section className="min-w-0 space-y-8">
             <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="intro" />
 
-            <Suspense fallback={<HeroSpotSkeleton />}>
-              <HeroSpotSection
+            {/* The number the reader searched for, first: this karat, per gram,
+                in the local currency. */}
+            <Suspense fallback={<KaratPriceHeroSkeleton />}>
+              <KaratHeroSection
                 promise={spotPromise}
                 fxPromise={fxPromise}
-                displayCurrency={country.currency}
+                currency={country.currency}
+                karat={karat}
+                locale={locale}
               />
             </Suspense>
             <Suspense fallback={null}>
@@ -252,26 +251,10 @@ export default async function CountryKaratPage({
               pagePath={`/${slug}/gold-price/${karat}`}
               range="1y"
             />
-            <Suspense fallback={null}>
-              <CurrencyTableSection
-                promise={spotPromise}
-                fxPromise={fxPromise}
-                locale={locale}
-                exclude={country.currency}
-              />
-            </Suspense>
-            <Suspense fallback={<KaratGridSkeleton />}>
-              <KaratGridSection
-                sPromise={spotPromise}
-                fxPromise={fxPromise}
-                displayCurrency={country.currency}
-              />
-            </Suspense>
-
-            {/* Directly above the karat switcher: the reader has just seen
-                every karat priced side by side and is deciding which one they
-                actually want. It is also the only section on this page whose
-                copy differs between the five karat routes. */}
+            {/* The karat table above already prices every karat side by side;
+                the guide helps the reader decide which one they actually want.
+                It is also the only section whose copy differs between the five
+                karat routes. */}
             <KaratGuide locale={locale} slug={slug} karat={karat} countryName={name} />
 
             <KaratSwitcher
@@ -281,21 +264,6 @@ export default async function CountryKaratPage({
               historicalHref="/historical-gold-prices"
             />
 
-            <Suspense fallback={<PriceChartSkeleton />}>
-              <PriceChartSection
-                hPromise={historyPromise}
-                fxPromise={fxPromise}
-                defaultCurrency={country.currency}
-              />
-            </Suspense>
-            <Suspense fallback={<BidAskGaugeSkeleton />}>
-              <BidAskSection
-                promise={spotPromise}
-                fxPromise={fxPromise}
-                displayCurrency={country.currency}
-              />
-            </Suspense>
-            <TradingViewChart currency={country.currency} />
             <Suspense fallback={<CalculatorSkeleton />}>
               <CalculatorSection
                 sPromise={spotPromise}
@@ -306,6 +274,19 @@ export default async function CountryKaratPage({
                 }
               />
             </Suspense>
+
+            <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="method" />
+
+            {/* Trader tools last: day range / spread and the TradingView chart
+                (loads only when tapped). Shoppers have their answer above. */}
+            <Suspense fallback={<BidAskGaugeSkeleton />}>
+              <BidAskSection
+                promise={spotPromise}
+                fxPromise={fxPromise}
+                displayCurrency={country.currency}
+              />
+            </Suspense>
+            <TradingViewChart currency={country.currency} />
 
             <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="content" />
 
