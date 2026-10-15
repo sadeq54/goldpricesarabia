@@ -16,12 +16,13 @@ import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
 import { faqPageSchema } from "@/lib/schemas";
 
+import { BEST_PRICE_COUNTRIES } from "@/lib/valid-routes";
+
 import { bestPriceFaqs } from "./faq.i18n";
 
-const SUPPORTED = ["usa", "canada", "singapore", "switzerland", "uk"] as const;
 
 export function generateStaticParams() {
-  return withLocales(SUPPORTED.map((country) => ({ country })));
+  return withLocales([...BEST_PRICE_COUNTRIES].map((country) => ({ country })));
 }
 
 export async function generateMetadata({

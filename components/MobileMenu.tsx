@@ -6,7 +6,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { Check, Languages, Menu, X } from "lucide-react";
 
 import { Link, usePathname } from "@/i18n/navigation";
-import { LOCALE_META, routing } from "@/i18n/routing";
+import { LOCALE_META, type AppLocale } from "@/i18n/routing";
+import { localesForPath } from "@/lib/metadata";
 import { pick } from "@/lib/i18n-text";
 
 type NavItem = { href: string; label: string };
@@ -173,7 +174,7 @@ export function MobileMenu({
                 {languageLabel}
               </h2>
               <ul className="grid grid-cols-2 gap-1.5">
-                {routing.locales.map((l) => {
+                {(localesForPath(pathname || "/") as AppLocale[]).map((l) => {
                   const current = l === locale;
                   return (
                     <li key={l}>

@@ -43,6 +43,10 @@ function cleanPath(path: string): string {
  */
 export function canonicalPath(locale: string, path: string): string {
   const clean = cleanPath(path);
+  // News and research exist in ar/en only: their canonical URL for any other
+  // locale is the English page (the tr/hi URLs 308 there — see proxy.ts).
+  const section = clean.split("/").filter(Boolean)[0];
+  if (section && BILINGUAL_SECTIONS.has(section) && locale !== "ar" && locale !== "en") locale = "en";
   const known = (LOCALES as readonly string[]).includes(locale);
   if (!known || locale === DEFAULT_LOCALE) return clean === "" ? "/" : clean;
   return `/${locale}${clean}`;

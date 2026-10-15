@@ -4,10 +4,12 @@ import { useEffect, useRef } from "react";
 import { Check, Languages } from "lucide-react";
 
 import { Link, usePathname } from "@/i18n/navigation";
-import { LOCALE_META, routing } from "@/i18n/routing";
+import { LOCALE_META, type AppLocale } from "@/i18n/routing";
+import { localesForPath } from "@/lib/metadata";
 
 /**
- * Six-language menu that preserves the current path. `usePathname()` from
+ * Language menu that preserves the current path, listing only the locales
+ * that path exists in (news and research are Arabic + English only). `usePathname()` from
  * next-intl returns the locale-stripped pathname (e.g. on `/en/spot-gold` it
  * returns `/spot-gold`), so every item is `<Link href={pathname} locale={l}>`
  * and next-intl re-applies the right prefix.
@@ -70,7 +72,7 @@ export function LanguageSwitcher({
         aria-label={label}
         className="absolute end-0 top-full z-50 mt-2 min-w-[10.5rem] overflow-hidden rounded-lg border border-[var(--color-border-strong)] bg-[var(--color-bg-card)] py-1 shadow-2xl"
       >
-        {routing.locales.map((l) => {
+        {(localesForPath(pathname || "/") as AppLocale[]).map((l) => {
           const current = l === locale;
           return (
             <li key={l}>

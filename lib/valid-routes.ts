@@ -67,7 +67,9 @@ const NEWS = new Set([
 ]);
 const BUY_GOLD_COUNTRIES = new Set(["usa", "uk", "canada", "australia", "saudi-arabia", "uae", "egypt", "morocco"]);
 const BUY_GOLD_TYPES = new Set(["coins", "small-coins", "bars"]);
-const BEST_PRICE_COUNTRIES = new Set(["usa", "canada", "singapore", "switzerland", "uk"]);
+/** The only /best-gold-price/{country} pages that exist. Imported by the hub
+ * and the country page so a link can never point at one that does not. */
+export const BEST_PRICE_COUNTRIES: ReadonlySet<string> = new Set(["usa", "canada", "singapore", "switzerland", "uk"]);
 const FIRST_YEAR = 2000;
 const LAST_YEAR = 2026;
 

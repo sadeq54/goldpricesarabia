@@ -9,6 +9,7 @@ import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { countryName, sortedCountries } from "@/lib/countries";
 import { pick } from "@/lib/i18n-text";
 import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
+import { BEST_PRICE_COUNTRIES } from "@/lib/valid-routes";
 
 export async function generateMetadata({
   params,
@@ -84,7 +85,14 @@ export default async function BestGoldPricePage({
                 >
                   <td className="py-3">
                     <Link
-                      href={`/best-gold-price/${country.slug}`}
+                      href={
+                        // Only five countries have their own page here; the rest link
+                        // to their live price page instead of a 404 (48 dead links per
+                        // locale until 2026-10-16).
+                        BEST_PRICE_COUNTRIES.has(country.slug)
+                          ? `/best-gold-price/${country.slug}`
+                          : `/${country.slug}/gold-price/21k`
+                      }
                       className="flex items-center gap-2 font-semibold text-[var(--color-gold)] hover:underline"
                     >
                       <Flag cc={country.cc} size={14} />
