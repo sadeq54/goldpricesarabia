@@ -5,7 +5,6 @@ import { staticMessages } from "@/lib/static-messages";
 import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { Sidebar } from "@/components/Sidebar";
-import { StoresMarquee } from "@/components/StoresMarquee";
 import { TradingViewChart } from "@/components/TradingViewChart";
 
 type PageShellBase = {
@@ -91,7 +90,6 @@ export function PageShell(props: PageShellProps) {
             )}
             {showChart ? <TradingViewChart currency={chartCurrency} /> : null}
             {children}
-            <StoresMarquee />
             {showFaq ? <Faq /> : null}
           </section>
           <Sidebar />

@@ -15,6 +15,7 @@ import {
   getCachedFxRates,
   getCachedSpot,
 } from "@/lib/cached-fetchers";
+import { chartHistory } from "@/lib/history";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
 import { faqPageSchema } from "@/lib/schemas";
 
@@ -68,7 +69,7 @@ export default async function SpotGoldPage({
       <Suspense fallback={<PriceChartSkeleton />}>
         {(async () => {
           const [h, fx] = await Promise.all([historyPromise, fxPromise]);
-          return <PriceChart histories={h} fx={fx} />;
+          return <PriceChart histories={chartHistory(h)} fx={fx} />;
         })()}
       </Suspense>
       <Suspense fallback={<BidAskGaugeSkeleton />}>

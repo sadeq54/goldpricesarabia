@@ -7,7 +7,6 @@ import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { PriceChartSkeleton } from "@/components/skeletons";
 import { Sidebar } from "@/components/Sidebar";
-import { StoresMarquee } from "@/components/StoresMarquee";
 import { TradingViewChart } from "@/components/TradingViewChart";
 import { Link } from "@/i18n/navigation";
 import { isRtl } from "@/i18n/routing";
@@ -158,7 +157,6 @@ export default async function HistoricalPage({
               ))}
             </div>
 
-            <StoresMarquee />
             <Suspense fallback={null}>
               <YearFaq yearNum={yearNum} promise={histPromise} locale={locale} year={year} />
             </Suspense>

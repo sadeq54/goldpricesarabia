@@ -8,7 +8,7 @@ import { PriceTable } from "@/components/PriceTable";
 import { RecentPricesTable } from "@/components/RecentPricesTable";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
-import type { MetalHistory } from "@/lib/history";
+import { chartHistory, type MetalHistory } from "@/lib/history";
 
 /**
  * Streaming sections for the country × karat page. Each awaits its own
@@ -113,7 +113,7 @@ export async function PriceChartSection({
   defaultCurrency?: string;
 }) {
   const [h, fx] = await Promise.all([hPromise, fxPromise]);
-  return <PriceChart histories={h} fx={fx} defaultCurrency={defaultCurrency} />;
+  return <PriceChart histories={chartHistory(h)} fx={fx} defaultCurrency={defaultCurrency} />;
 }
 
 export async function BidAskSection({

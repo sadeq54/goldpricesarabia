@@ -91,6 +91,13 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // The header logo on every page. Next serves public files with
+        // max-age=0, so each page view re-validated it. A week is safe: the
+        // file name never changes, so a new logo reaches everyone within 7 days.
+        source: "/logosvg.svg",
+        headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }],
+      },
+      {
         // Strict security headers for everything EXCEPT the embed routes.
         source: "/((?!(?:en/)?embed/).*)",
         headers: SECURITY_HEADERS,

@@ -16,7 +16,6 @@ import { KaratGuide } from "@/components/KaratGuide";
 import { KaratSwitcher } from "@/components/KaratSwitcher";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { Sidebar } from "@/components/Sidebar";
-import { StoresMarquee } from "@/components/StoresMarquee";
 import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
@@ -309,8 +308,6 @@ export default async function CountryKaratPage({
             </Suspense>
 
             <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="content" />
-
-            <StoresMarquee />
 
             {/* After the price, before the FAQ: the reader has their answer and
                 is deciding whether to leave. */}

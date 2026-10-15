@@ -5,6 +5,7 @@ import { PageShell } from "@/components/PageShell";
 import { PriceChart } from "@/components/PriceChart";
 import { PriceChartSkeleton } from "@/components/skeletons";
 import { getCachedAllHistory, getCachedFxRates } from "@/lib/cached-fetchers";
+import { chartHistory } from "@/lib/history";
 import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -42,7 +43,7 @@ export default async function GoldPriceChartPage({
       <Suspense fallback={<PriceChartSkeleton />}>
         {(async () => {
           const [h, fx] = await Promise.all([historyPromise, fxPromise]);
-          return <PriceChart histories={h} fx={fx} />;
+          return <PriceChart histories={chartHistory(h)} fx={fx} />;
         })()}
       </Suspense>
     </PageShell>

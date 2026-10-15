@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 
 import { currencyForCC } from "@/lib/countries";
+import { pick } from "@/lib/i18n-text";
 
 declare global {
   interface Window {
@@ -128,6 +129,14 @@ function clearChildren(node: HTMLElement) {
   while (node.firstChild) node.removeChild(node.firstChild);
 }
 
+/**
+ * TradingView's advanced chart, loaded only when the reader asks for it.
+ *
+ * Mounting it with the page cost every visitor ~1.8 MB and ~0.8 s of phone
+ * CPU (PageSpeed, 2026-10-15) for a chart most never open — every page that
+ * shows it already has our own price chart. Until the button is pressed,
+ * nothing from TradingView or the geo lookup is requested.
+ */
 export function TradingViewChart({
   symbol,
   currency,
@@ -136,10 +145,11 @@ export function TradingViewChart({
   watchlist = ["TVC:GOLD", "TVC:SILVER", "TVC:PLATINUM", "TVC:PALLADIUM", "FX:EURUSD"],
   className,
 }: Props) {
+  const [active, setActive] = useState(false);
   const [autoCurrency, setAutoCurrency] = useState<string | null>(null);
 
   useEffect(() => {
-    if (currency || symbol) return;
+    if (!active || currency || symbol) return;
     let cancelled = false;
     const cached = readCountryCookie();
     if (cached) {
@@ -157,7 +167,7 @@ export function TradingViewChart({
     return () => {
       cancelled = true;
     };
-  }, [currency, symbol]);
+  }, [active, currency, symbol]);
 
   const effectiveCurrency = currency ?? autoCurrency ?? undefined;
   const resolvedSymbol =
@@ -169,17 +179,18 @@ export function TradingViewChart({
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
+    if (!active) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(readTheme());
     const obs = new MutationObserver(() => setTheme(readTheme()));
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
     return () => obs.disconnect();
-  }, []);
+  }, [active]);
 
   useEffect(() => {
     let cancelled = false;
     const node = ref.current;
-    if (!node) return;
+    if (!active || !node) return;
 
     loadTV()
       .then(() => {
@@ -224,16 +235,40 @@ export function TradingViewChart({
     return () => {
       cancelled = true;
     };
-  }, [resolvedSymbol, interval, theme, locale, watchlist]);
+  }, [active, resolvedSymbol, interval, theme, locale, watchlist]);
 
-  return (
-    <div
-      ref={ref}
-      className={
-        className ??
-        "tradingview-widget-container w-full overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950"
-      }
-      style={{ height }}
-    />
-  );
+  const frame =
+    className ??
+    "tradingview-widget-container w-full overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950";
+
+  if (!active) {
+    return (
+      <div className={frame}>
+        <button
+          type="button"
+          onClick={() => setActive(true)}
+          className="flex w-full flex-col items-center justify-center gap-1 px-6 py-8 text-center transition-colors hover:bg-[var(--color-gold)]/5"
+        >
+          <span className="text-sm font-semibold text-[var(--color-gold)]">
+            {pick(locale, {
+              en: "Open the interactive chart (TradingView)",
+              ar: "افتح الرسم البياني التفاعلي (TradingView)",
+              tr: "Etkileşimli grafiği aç (TradingView)",
+              hi: "इंटरैक्टिव चार्ट खोलें (TradingView)",
+            })}
+          </span>
+          <span className="text-xs text-[var(--color-text-dim)]">
+            {pick(locale, {
+              en: "Candles, indicators, timeframes and other markets",
+              ar: "شموع ومؤشرات وأطر زمنية وأسواق أخرى",
+              tr: "Mumlar, göstergeler, zaman aralıkları ve diğer piyasalar",
+              hi: "कैंडल, इंडिकेटर, टाइमफ़्रेम और दूसरे बाज़ार",
+            })}
+          </span>
+        </button>
+      </div>
+    );
+  }
+
+  return <div ref={ref} className={frame} style={{ height }} />;
 }

@@ -14,21 +14,14 @@ import { HeroBoard } from "@/components/HeroBoard";
 import { HomepageSeoHeader } from "@/components/HomepageSeoHeader";
 import { JsonLd } from "@/components/JsonLd";
 import { KaratGrid } from "@/components/KaratGrid";
-import dynamic from "next/dynamic";
-
 import { LazyMount } from "@/components/LazyMount";
 import { MetalsStrip } from "@/components/MetalsStrip";
 import { PriceChart } from "@/components/PriceChart";
 import { ResearchTeaser } from "@/components/ResearchTeaser";
 import { Sidebar } from "@/components/Sidebar";
 import { FollowCta } from "@/components/FollowCta";
-import { StoresMarquee } from "@/components/StoresMarquee";
-
-// Heavy / below-the-fold widgets — defer JS to improve LCP/FCP/TTI.
-// Wrapped in <LazyMount> below for IntersectionObserver-gated client mount.
-const TradingViewChart = dynamic(() =>
-  import("@/components/TradingViewChart").then((m) => m.TradingViewChart),
-);
+// Renders only a button until tapped; tv.js loads on demand.
+import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
   CalculatorSkeleton,
@@ -47,7 +40,7 @@ import {
 import type { ResearchDigest } from "@/lib/research";
 import type { FxRates } from "@/lib/fx";
 import type { MetalsBundle } from "@/lib/goldapi";
-import type { MetalHistory } from "@/lib/history";
+import { chartHistory, type MetalHistory } from "@/lib/history";
 import { buildAlternates, buildOpenGraph, SITE_URL } from "@/lib/metadata";
 
 import { homeText } from "./page.i18n";
@@ -109,7 +102,7 @@ async function PriceChartSection({
   fxPromise: Promise<FxRates>;
 }) {
   const [h, fx] = await Promise.all([hPromise, fxPromise]);
-  return <PriceChart histories={h} fx={fx} />;
+  return <PriceChart histories={chartHistory(h)} fx={fx} />;
 }
 
 async function BidAskSection({ promise }: { promise: Promise<MetalsBundle> }) {
@@ -217,9 +210,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               </Suspense>
             </LazyMount>
 
-            <LazyMount minHeight={500}>
-              <TradingViewChart />
-            </LazyMount>
+            <TradingViewChart />
 
             <LazyMount minHeight={200} fallback={<BidAskGaugeSkeleton />}>
               <Suspense fallback={<BidAskGaugeSkeleton />}>
@@ -248,10 +239,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
             </Suspense>
 
             <HomepageSeoHeader locale={locale} part="content" />
-
-            <LazyMount minHeight={140}>
-              <StoresMarquee />
-            </LazyMount>
 
             <section aria-labelledby="about-heading">
               <h2 id="about-heading" className="text-xl font-semibold text-[var(--color-text)]">

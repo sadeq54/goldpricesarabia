@@ -16,7 +16,7 @@ import {
 
 import { ALL_CURRENCIES } from "@/lib/countries";
 import type { FxRates } from "@/lib/fx";
-import type { HistoricalPoint, MetalHistory } from "@/lib/history";
+import type { ChartHistory, ChartPoint } from "@/lib/history";
 
 type Metal = "XAU" | "XAG" | "XPT" | "XPD";
 type Currency = string;
@@ -74,7 +74,7 @@ export function PriceChartClient({
   initialMetal = "XAU",
   defaultCurrency = "USD",
 }: {
-  histories: MetalHistory;
+  histories: ChartHistory;
   fx: FxRates;
   initialMetal?: Metal;
   defaultCurrency?: Currency;
@@ -85,7 +85,7 @@ export function PriceChartClient({
   const [unit, setUnit] = useState<Unit>("oz");
   const [period, setPeriod] = useState<Period>("60D");
 
-  const points: HistoricalPoint[] = histories[metal] ?? [];
+  const points: ChartPoint[] = histories[metal] ?? [];
 
   const data = useMemo(() => {
     if (!points.length) return [];

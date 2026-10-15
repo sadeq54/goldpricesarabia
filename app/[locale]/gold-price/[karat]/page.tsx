@@ -20,7 +20,6 @@ import { PriceChart } from "@/components/PriceChart";
 import { PriceTable } from "@/components/PriceTable";
 import { RecentPricesTable } from "@/components/RecentPricesTable";
 import { FollowCta } from "@/components/FollowCta";
-import { StoresMarquee } from "@/components/StoresMarquee";
 import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
@@ -33,7 +32,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { SeoStaticHeader } from "@/components/SeoStaticHeader";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
-import type { MetalHistory } from "@/lib/history";
+import { chartHistory, type MetalHistory } from "@/lib/history";
 import { pick } from "@/lib/i18n-text";
 import { karatLabel } from "@/lib/karat-label";
 import { buildAlternates, canonicalPath, SITE_URL, buildOpenGraph } from "@/lib/metadata";
@@ -136,7 +135,7 @@ async function PriceChartSection({
   fxPromise: Promise<FxRates>;
 }) {
   const [h, fx] = await Promise.all([hPromise, fxPromise]);
-  return <PriceChart histories={h} fx={fx} />;
+  return <PriceChart histories={chartHistory(h)} fx={fx} />;
 }
 
 async function BidAskSection({ promise }: { promise: Promise<GoldApiResponse | null> }) {
@@ -286,8 +285,6 @@ export default async function KaratPage({
             <Suspense fallback={<CalculatorSkeleton />}>
               <CalculatorSection sPromise={spotPromise} fxPromise={fxPromise} />
             </Suspense>
-            <StoresMarquee />
-
             <FollowCta locale={locale} />
 
             <Faq />

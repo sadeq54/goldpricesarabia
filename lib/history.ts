@@ -36,6 +36,21 @@ export type HistoryRange = "1mo" | "3mo" | "6mo" | "1y" | "5y" | "10y" | "max";
 
 export type MetalHistory = Record<"XAU" | "XAG" | "XPT" | "XPD", HistoricalPoint[]>;
 
+/** What the interactive price chart draws: the daily close, to the cent. */
+export type ChartPoint = { date: string; close: number };
+export type ChartHistory = Record<keyof MetalHistory, ChartPoint[]>;
+
+/**
+ * Shrink a history to what `PriceChart` needs before it crosses to the client.
+ * The full OHLC series at float precision (4160.10009765625) was 113 KB of
+ * every chart page's payload — four metals × a year (measured 2026-10-15).
+ */
+export function chartHistory(h: MetalHistory): ChartHistory {
+  const slim = (points: HistoricalPoint[]) =>
+    points.map((p) => ({ date: p.date, close: Math.round(p.close * 100) / 100 }));
+  return { XAU: slim(h.XAU), XAG: slim(h.XAG), XPT: slim(h.XPT), XPD: slim(h.XPD) };
+}
+
 export async function fetchAllHistory(range: HistoryRange = "1y"): Promise<MetalHistory> {
   const metals: Array<"XAU" | "XAG" | "XPT" | "XPD"> = ["XAU", "XAG", "XPT", "XPD"];
   const results = await Promise.all(metals.map((m) => fetchHistory(m, range)));
