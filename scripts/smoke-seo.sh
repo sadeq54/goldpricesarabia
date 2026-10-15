@@ -36,5 +36,9 @@ curl -s "http://localhost:$PORT/sitemap.xml" \
 echo "tr title: $(curl -s "http://localhost:$PORT/tr/turkey/gold-price/22k" | grep -o '<title>[^<]*</title>' | sed 's/<[^>]*>//g')"
 echo "hreflang count (want 7): $(curl -s "http://localhost:$PORT/jordan/gold-price/21k" | grep -oi 'hreflang="[^"]*"' | wc -l)"
 echo "embed footer leak: $(curl -s "http://localhost:$PORT/embed/ticker" | grep -c '<footer')  (want 0)"
+# Every country needs public/flags/{cc}.svg (copied by hand from
+# node_modules/country-flag-icons/3x2/). Six countries shipped without one and
+# rendered as broken images in the footer until 2026-10-15.
+echo "missing flags (want none): $(grep -o 'cc: "[A-Z]*"' lib/countries.ts | sed 's/cc: "\(.*\)"/\1/' | sort -u | while read -r c; do f=$(echo "$c" | tr 'A-Z' 'a-z'); [ -f "public/flags/$f.svg" ] || printf '%s ' "$c"; done)"
 echo "--- server errors:"; grep -iE "error|⨯|MISSING" /tmp/gpa-smoke.log | head -5
 powershell -Command "\$c=Get-NetTCPConnection -LocalPort $PORT -State Listen -ErrorAction SilentlyContinue; if(\$c){Stop-Process -Id (\$c.OwningProcess|Select-Object -First 1) -Force}; 'server stopped'"
