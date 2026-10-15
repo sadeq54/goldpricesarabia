@@ -8,8 +8,7 @@ import {
   HeroSpotSkeleton,
   KaratGridSkeleton,
 } from "@/components/skeletons";
-import { fetchFxRates } from "@/lib/fx";
-import { fetchSpot } from "@/lib/goldapi";
+import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -34,8 +33,8 @@ export default async function ShanghaiGoldPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const spotPromise = fetchSpot("XAU");
-  const fxPromise = fetchFxRates();
+  const spotPromise = getCachedSpot("XAU");
+  const fxPromise = getCachedFxRates();
 
   return (
     <PageShell

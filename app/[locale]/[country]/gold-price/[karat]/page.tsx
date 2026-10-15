@@ -31,12 +31,11 @@ import {
   countryName,
   relatedCountries,
 } from "@/lib/countries";
-import { fetchFxRates, type FxRates } from "@/lib/fx";
-import { fetchSpot, type GoldApiResponse } from "@/lib/goldapi";
-import { fetchAllHistory } from "@/lib/history";
+import type { FxRates } from "@/lib/fx";
+import type { GoldApiResponse } from "@/lib/goldapi";
 import { buildAlternates, buildOpenGraph, canonicalPath, SITE_URL } from "@/lib/metadata";
 import { faqPageSchema } from "@/lib/schemas";
-import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
+import { getCachedAllHistory, getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { gramUsd, priceDescription, priceTitle, spotDate } from "@/lib/seo";
 
 import {
@@ -168,9 +167,10 @@ export default async function CountryKaratPage({
   const related = relatedPageLinks(locale, ctx);
   const nearby = nearbyText(locale, karat);
 
-  const spotPromise = fetchSpot("XAU");
-  const fxPromise = fetchFxRates();
-  const historyPromise = fetchAllHistory("1y");
+  // Cached: an uncached call waited on the upstream timeout on every request.
+  const spotPromise = getCachedSpot("XAU");
+  const fxPromise = getCachedFxRates();
+  const historyPromise = getCachedAllHistory("1y");
 
 
   const pageUrl = canonicalPath(locale, `/${slug}/gold-price/${karat}`);

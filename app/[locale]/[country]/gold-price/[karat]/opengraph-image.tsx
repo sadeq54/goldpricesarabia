@@ -2,8 +2,7 @@ import { ImageResponse } from "next/og";
 
 import { isRtl } from "@/i18n/routing";
 import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
-import { fetchFxRates } from "@/lib/fx";
-import { fetchSpot } from "@/lib/goldapi";
+import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { pick } from "@/lib/i18n-text";
 import { loadFontsFor, OG_FONT_FAMILY, rtlWords } from "@/lib/og-font";
 import { currencyName, dateLabel, fmtNum, gramUsd, karatDef, spotDate } from "@/lib/seo";
@@ -29,8 +28,8 @@ export default async function Image({
   const def = karatDef(karat) ?? karatDef("24k")!;
   const rtl = isRtl(locale);
   const [spot, fx] = await Promise.all([
-    fetchSpot("XAU").catch(() => null),
-    fetchFxRates().catch(() => null),
+    getCachedSpot("XAU").catch(() => null),
+    getCachedFxRates().catch(() => null),
   ]);
   const currency = country?.currency ?? "USD";
   const rawRate = currency === "USD" ? 1 : (fx?.[currency] as number | undefined);

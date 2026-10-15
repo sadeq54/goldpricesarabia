@@ -8,8 +8,7 @@ import {
   CalculatorSkeleton,
   KaratGridSkeleton,
 } from "@/components/skeletons";
-import { fetchFxRates } from "@/lib/fx";
-import { fetchSpot } from "@/lib/goldapi";
+import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
 import { faqPageSchema } from "@/lib/schemas";
 
@@ -37,8 +36,8 @@ export default async function PerGramPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const spotPromise = fetchSpot("XAU");
-  const fxPromise = fetchFxRates();
+  const spotPromise = getCachedSpot("XAU");
+  const fxPromise = getCachedFxRates();
 
   const pageUrl = canonicalPath(locale, "/gold-price-per-gram");
   const perGramFaqSchema = faqPageSchema(pageUrl, perGramFaqs(locale), locale);

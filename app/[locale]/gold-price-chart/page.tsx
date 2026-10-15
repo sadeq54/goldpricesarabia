@@ -4,8 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageShell } from "@/components/PageShell";
 import { PriceChart } from "@/components/PriceChart";
 import { PriceChartSkeleton } from "@/components/skeletons";
-import { fetchFxRates } from "@/lib/fx";
-import { fetchAllHistory } from "@/lib/history";
+import { getCachedAllHistory, getCachedFxRates } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
 
 export async function generateMetadata({
@@ -30,8 +29,8 @@ export default async function GoldPriceChartPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const fxPromise = fetchFxRates();
-  const historyPromise = fetchAllHistory("1y");
+  const fxPromise = getCachedFxRates();
+  const historyPromise = getCachedAllHistory("1y");
 
   return (
     <PageShell

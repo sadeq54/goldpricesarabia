@@ -60,6 +60,9 @@ const EMPTY: LivePrice = {
 
 const Ctx = createContext<LivePrice>(EMPTY);
 
+/** Longest a tick waits before the UI shows it. */
+const FLUSH_MS = 1000;
+
 export function useLivePrice(): LivePrice {
   return useContext(Ctx);
 }
@@ -119,20 +122,35 @@ export function LivePriceProvider({ children }: { children: React.ReactNode }) {
     kraken: 0,
   });
 
+  // Ticks arrive ~25 times a second (measured 2026-10-15, nearly all Binance
+  // bookTicker). Committing each one re-rendered every live component and
+  // restarted their number animations 25 times a second, so a phone's main
+  // thread never went idle (field INP 296 ms). Ticks now accumulate in a ref
+  // and React sees the latest state at most once per FLUSH_MS.
+  const latest = useRef(sources);
+  const dirty = useRef(false);
+
   const patch = useCallback((key: SourceKey, p: Partial<SourceState>) => {
-    setSources((prev) => ({
-      ...prev,
-      [key]: {
-        ...prev[key],
-        ...p,
-        ts: Date.now(),
-        tick_count: prev[key].tick_count + 1,
-      },
-    }));
+    const prev = latest.current[key];
+    latest.current = {
+      ...latest.current,
+      [key]: { ...prev, ...p, ts: Date.now(), tick_count: prev.tick_count + 1 },
+    };
+    dirty.current = true;
   }, []);
 
   const setStatus = useCallback((key: SourceKey, connected: boolean) => {
-    setSources((prev) => ({ ...prev, [key]: { ...prev[key], connected } }));
+    latest.current = { ...latest.current, [key]: { ...latest.current[key], connected } };
+    dirty.current = true;
+  }, []);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      if (!dirty.current) return;
+      dirty.current = false;
+      setSources(latest.current);
+    }, FLUSH_MS);
+    return () => window.clearInterval(id);
   }, []);
 
   useEffect(() => {

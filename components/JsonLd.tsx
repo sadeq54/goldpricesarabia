@@ -357,7 +357,7 @@ export function JsonLd({
         name: "Does Gold Prices Arabia track silver, platinum and palladium?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. Silver (XAG), Platinum (XPT) and Palladium (XPD) prices are tracked and updated every minute via STOOQ aggregated feeds. Gold (XAU) is the only metal currently streamed via real-time WebSocket.",
+          text: "Yes. Silver (XAG), Platinum (XPT) and Palladium (XPD) prices are tracked and updated every few minutes from the Swissquote spot feed. Gold (XAU) is the only metal currently streamed via real-time WebSocket.",
         },
       },
     ],

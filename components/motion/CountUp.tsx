@@ -36,11 +36,16 @@ export function CountUp({
       mv.set(value);
       return;
     }
-    if (!ranOnce.current) {
-      // First post-mount run: count up from 0 to value.
-      ranOnce.current = true;
-      mv.set(0);
+    if (ranOnce.current) {
+      // Later changes are live ticks (up to once a second). Re-running a
+      // 1.1 s animation on each kept a requestAnimationFrame loop going on
+      // every counter for as long as the page was open; jump instead.
+      mv.set(value);
+      return;
     }
+    // First post-mount run: count up from 0 to value.
+    ranOnce.current = true;
+    mv.set(0);
     const controls = animate(mv, value, {
       duration,
       ease: [0.22, 1, 0.36, 1],

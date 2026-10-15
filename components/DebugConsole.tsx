@@ -18,7 +18,7 @@ export function DebugConsole({
     const stamp = new Date().toISOString();
     console.groupCollapsed(`%c[GPA] data fetch @ ${stamp}`, "color:#e2b54e;font-weight:600");
     console.log("%csources", "color:#888", {
-      metals: "stooq.com (CSV) + swissquote.com (bid/ask XAU)",
+      metals: "swissquote.com spot quotes + COMEX futures day (Yahoo)",
       historical: "Yahoo Finance futures (GC=F, SI=F, PL=F, PA=F)",
       fx: fx?.source ?? "unknown",
     });

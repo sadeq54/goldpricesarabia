@@ -51,101 +51,64 @@ const PURITY = {
   k10: 0.417,
 };
 
-const STOOQ_QUOTE = "https://stooq.com/q/l/?s=xauusd+xagusd+xptusd+xpdusd&f=sd2t2ohlcpv&h&e=csv";
-const SWISSQUOTE_XAU = "https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/XAU/USD";
+type Metal = "XAU" | "XAG" | "XPT" | "XPD";
 
-// Last-known-good spot prices (USD/oz) baked into the bundle so that pages
-// rendered when every upstream source times out (cold lambda, network blip)
-// still emit a sensible price in HTML instead of "$0.00" — Googlebot reads
-// the static HTML and would otherwise classify the page as a broken tool.
-// Update these manually when the long-term price drifts significantly.
-const FALLBACK_USD_OZ: Record<"XAU" | "XAG" | "XPT" | "XPD", number> = {
-  XAU: 4530,
-  XAG: 76,
-  XPT: 1980,
-  XPD: 1420,
+/**
+ * Server-side spot prices.
+ *
+ *  - Price + bid/ask: Swissquote's public spot quote feed (real spot, ~0.4 s).
+ *  - Daily change, open, day range: the matching COMEX future on Yahoo Finance.
+ *    Futures trade a little above spot (the basis), so their change is taken as
+ *    a ratio and their range is rescaled onto the spot price — never shown raw.
+ *
+ * Stooq was the source until it stopped answering at all (measured
+ * 2026-10-15: no response from production or locally). Every page then fell
+ * through to the hard-coded fallback below and showed $4,530 while gold traded
+ * near $4,156 — 9% wrong in titles, tables, schema and the Instagram data —
+ * and pages calling this uncached waited out the 2.5 s timeout on every request.
+ */
+const SWISSQUOTE = (m: Metal) =>
+  `https://forex-data-feed.swissquote.com/public-quotes/bboquotes/instrument/${m}/USD`;
+const COMEX_FUTURE: Record<Metal, string> = { XAU: "GC=F", XAG: "SI=F", XPT: "PL=F", XPD: "PA=F" };
+const YAHOO_SESSION = (m: Metal) =>
+  `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(COMEX_FUTURE[m])}?range=1d&interval=1d`;
+
+// Last resort when BOTH sources fail: a price in HTML instead of "$0.00".
+// It is a stale constant, so it is labelled as such (`exchange: "REFERENCE"`)
+// and carries no daily change. Refresh it when the price drifts a lot.
+// Set 2026-10-15 from Swissquote.
+const FALLBACK_USD_OZ: Record<Metal, number> = {
+  XAU: 4155,
+  XAG: 57,
+  XPT: 1620,
+  XPD: 1120,
 };
 
-function buildFallback(metal: "XAU" | "XAG" | "XPT" | "XPD"): GoldApiResponse {
-  const close = FALLBACK_USD_OZ[metal];
-  const now = Math.floor(Date.now() / 1000);
-  const row: StooqRow = {
-    symbol: `${metal}USD`,
-    open: close,
-    high: close,
-    low: close,
-    close,
-    prev: close,
-    ts: now,
-  };
-  return buildResponse(metal, row, null);
-}
+type SpotQuote = { bid: number; ask: number; ts: number };
+/** One trading session of the COMEX future: current price and its day. */
+type FuturesSession = { price: number; prev: number; open: number; high: number; low: number };
 
-type StooqRow = {
-  symbol: string;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  prev: number;
-  ts: number;
-};
+const positive = (n: unknown): n is number => typeof n === "number" && Number.isFinite(n) && n > 0;
 
-type SwissquoteRow = { bid: number; ask: number };
-
-async function fetchStooq(): Promise<Record<string, StooqRow>> {
+async function fetchSpotQuote(metal: Metal): Promise<SpotQuote | null> {
   try {
-    // 120s shared edge cache. Stooq updates per minute; 2-min lag tolerable
-    // for SEO/auditor speed wins. Live WebSocket gives sub-second to logged-in
-    // users via /api/spot anyway.
-    const r = await fetch(STOOQ_QUOTE, {
-      next: { revalidate: 120 },
-      headers: { "User-Agent": "Mozilla/5.0 GoldPricesArabia/1.0" },
-      signal: AbortSignal.timeout(2500),
-    });
-    if (!r.ok) return {};
-    const text = await r.text();
-    const lines = text.trim().split(/\r?\n/);
-    const out: Record<string, StooqRow> = {};
-    for (let i = 1; i < lines.length; i++) {
-      const cols = lines[i].split(",");
-      if (cols.length < 8) continue;
-      const [symbol, date, time, open, high, low, close, prev] = cols;
-      const ts = Math.floor(Date.parse(`${date}T${time}Z`) / 1000);
-      const c = Number(close);
-      if (!Number.isFinite(c)) continue;
-      out[symbol] = {
-        symbol,
-        open: Number(open),
-        high: Number(high),
-        low: Number(low),
-        close: c,
-        prev: Number(prev) || c,
-        ts: Number.isFinite(ts) ? ts : Math.floor(Date.now() / 1000),
-      };
-    }
-    return out;
-  } catch {
-    return {};
-  }
-}
-
-async function fetchSwissquoteXAU(): Promise<SwissquoteRow | null> {
-  try {
-    const r = await fetch(SWISSQUOTE_XAU, {
-      next: { revalidate: 120 },
+    const r = await fetch(SWISSQUOTE(metal), {
+      next: { revalidate: 60 },
       headers: { "User-Agent": "Mozilla/5.0 GoldPricesArabia/1.0" },
       signal: AbortSignal.timeout(2500),
     });
     if (!r.ok) return null;
     const data = (await r.json()) as Array<{
+      ts?: number;
       spreadProfilePrices: Array<{ bid: number; ask: number; spreadProfile: string }>;
     }>;
     for (const layer of data) {
-      const std = layer.spreadProfilePrices?.find((s) => s.spreadProfile === "standard");
-      if (std) return { bid: std.bid, ask: std.ask };
-      const first = layer.spreadProfilePrices?.[0];
-      if (first) return { bid: first.bid, ask: first.ask };
+      const profiles = layer.spreadProfilePrices ?? [];
+      const p = profiles.find((s) => s.spreadProfile === "standard") ?? profiles[0];
+      if (p && positive(p.bid) && positive(p.ask) && p.bid <= p.ask) {
+        const ts = positive(layer.ts) ? Math.floor(layer.ts / 1000) : Math.floor(Date.now() / 1000);
+        return { bid: p.bid, ask: p.ask, ts };
+      }
     }
     return null;
   } catch {
@@ -153,31 +116,80 @@ async function fetchSwissquoteXAU(): Promise<SwissquoteRow | null> {
   }
 }
 
+async function fetchFuturesSession(metal: Metal): Promise<FuturesSession | null> {
+  try {
+    const r = await fetch(YAHOO_SESSION(metal), {
+      next: { revalidate: 120 },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; GoldPricesArabiaBot/1.0)", Accept: "application/json" },
+      signal: AbortSignal.timeout(2500),
+    });
+    if (!r.ok) return null;
+    const data = (await r.json()) as {
+      chart?: {
+        result?: Array<{
+          meta?: Record<string, unknown>;
+          indicators?: { quote?: Array<{ open?: (number | null)[] }> };
+        }> | null;
+      };
+    };
+    const result = data.chart?.result?.[0];
+    const meta = result?.meta ?? {};
+    const price = meta.regularMarketPrice;
+    const prev = meta.chartPreviousClose;
+    if (!positive(price) || !positive(prev)) return null;
+    const opens = result?.indicators?.quote?.[0]?.open ?? [];
+    const open = [...opens].reverse().find(positive) ?? prev;
+    const high = positive(meta.regularMarketDayHigh) ? meta.regularMarketDayHigh : price;
+    const low = positive(meta.regularMarketDayLow) ? meta.regularMarketDayLow : price;
+    return { price, prev, open, high, low };
+  } catch {
+    return null;
+  }
+}
+
+function buildFallback(metal: Metal): GoldApiResponse {
+  const price = FALLBACK_USD_OZ[metal];
+  return buildResponse(metal, price, Math.floor(Date.now() / 1000), null, null, "REFERENCE");
+}
+
+/**
+ * `price` is the spot mid. A futures session, when present, contributes the
+ * day's change (as a ratio) and range (rescaled by spot/futures), so the basis
+ * between the two never leaks into the numbers.
+ */
 function buildResponse(
-  metal: "XAU" | "XAG" | "XPT" | "XPD",
-  row: StooqRow,
-  bidAsk: SwissquoteRow | null
+  metal: Metal,
+  price: number,
+  ts: number,
+  quote: SpotQuote | null,
+  session: FuturesSession | null,
+  exchange: string,
 ): GoldApiResponse {
-  const close = row.close;
-  const grams = close / OZ_TO_GRAM;
-  const fallbackSpread = close * 0.0005;
-  const bid = bidAsk?.bid ?? close - fallbackSpread;
-  const ask = bidAsk?.ask ?? close + fallbackSpread;
+  const grams = price / OZ_TO_GRAM;
+  const fallbackSpread = price * 0.0005;
+  const bid = quote?.bid ?? price - fallbackSpread;
+  const ask = quote?.ask ?? price + fallbackSpread;
+
+  const scale = session ? price / session.price : 1;
+  const prev = session ? price / (session.price / session.prev) : price;
+  const open = session ? session.open * scale : price;
+  const high = session ? Math.max(session.high * scale, price) : price;
+  const low = session ? Math.min(session.low * scale, price) : price;
 
   return {
-    timestamp: row.ts,
+    timestamp: ts,
     metal,
     currency: "USD",
-    exchange: "STOOQ",
-    symbol: `STOOQ:${metal}USD`,
-    prev_close_price: row.prev,
-    open_price: row.open,
-    low_price: row.low,
-    high_price: row.high,
-    open_time: row.ts,
-    price: close,
-    ch: +(close - row.prev).toFixed(4),
-    chp: row.prev ? +(((close - row.prev) / row.prev) * 100).toFixed(4) : 0,
+    exchange,
+    symbol: `${exchange}:${metal}USD`,
+    prev_close_price: +prev.toFixed(4),
+    open_price: +open.toFixed(4),
+    low_price: +low.toFixed(4),
+    high_price: +high.toFixed(4),
+    open_time: ts,
+    price: +price.toFixed(4),
+    ch: +(price - prev).toFixed(4),
+    chp: +(((price - prev) / prev) * 100).toFixed(4),
     ask,
     bid,
     price_gram_24k: +(grams * PURITY.k24).toFixed(4),
@@ -191,26 +203,23 @@ function buildResponse(
   };
 }
 
-export async function fetchSpot(
-  metal: "XAU" | "XAG" | "XPT" | "XPD" = "XAU"
-): Promise<GoldApiResponse | null> {
-  const [stooq, sq] = await Promise.all([
-    fetchStooq(),
-    metal === "XAU" ? fetchSwissquoteXAU() : Promise.resolve(null),
-  ]);
-  const row = stooq[`${metal}USD`];
-  if (!row) return buildFallback(metal);
-  return buildResponse(metal, row, sq);
+/**
+ * Spot first; if Swissquote is down, the COMEX future stands in (within the
+ * basis, well under 1%) — far closer than the constant, which is used only
+ * when both are unreachable.
+ */
+export async function fetchSpot(metal: Metal = "XAU"): Promise<GoldApiResponse | null> {
+  const [quote, session] = await Promise.all([fetchSpotQuote(metal), fetchFuturesSession(metal)]);
+  if (quote) return buildResponse(metal, (quote.bid + quote.ask) / 2, quote.ts, quote, session, "SWISSQUOTE");
+  if (session) return buildResponse(metal, session.price, Math.floor(Date.now() / 1000), null, session, "COMEX");
+  return buildFallback(metal);
 }
 
 export async function fetchMetals(): Promise<MetalsBundle> {
-  const [stooq, sq] = await Promise.all([fetchStooq(), fetchSwissquoteXAU()]);
-  const get = (m: "XAU" | "XAG" | "XPT" | "XPD") => {
-    const row = stooq[`${m}USD`];
-    if (!row) return buildFallback(m);
-    return buildResponse(m, row, m === "XAU" ? sq : null);
-  };
-  return { XAU: get("XAU"), XAG: get("XAG"), XPT: get("XPT"), XPD: get("XPD") };
+  const [XAU, XAG, XPT, XPD] = await Promise.all(
+    (["XAU", "XAG", "XPT", "XPD"] as const).map((m) => fetchSpot(m)),
+  );
+  return { XAU, XAG, XPT, XPD };
 }
 
 export async function fetchHistoricalDay(_metal: string, _date: string) {

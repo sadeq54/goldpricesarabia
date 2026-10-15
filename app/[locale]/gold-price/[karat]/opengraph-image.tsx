@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 import { isRtl } from "@/i18n/routing";
-import { fetchSpot } from "@/lib/goldapi";
+import { getCachedSpot } from "@/lib/cached-fetchers";
 import { pick } from "@/lib/i18n-text";
 import { loadFontsFor, OG_FONT_FAMILY, rtlWords } from "@/lib/og-font";
 import { dateLabel, fmtNum, gramUsd, karatDef, spotDate } from "@/lib/seo";
@@ -24,7 +24,7 @@ export default async function Image({
   const { locale, karat } = await params;
   const rtl = isRtl(locale);
   const def = karatDef(karat) ?? karatDef("24k")!;
-  const spot = await fetchSpot("XAU").catch(() => null);
+  const spot = await getCachedSpot("XAU").catch(() => null);
   const gram = spot ? gramUsd(spot, def.key) : 0;
   const ounce = spot ? (spot.price * def.purity) : 0;
   const when = spotDate(spot);

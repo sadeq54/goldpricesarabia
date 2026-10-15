@@ -5,7 +5,7 @@ import { MetalsStrip } from "@/components/MetalsStrip";
 import { PageShell } from "@/components/PageShell";
 import { MetalsStripSkeleton } from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
-import { fetchMetals } from "@/lib/goldapi";
+import { getCachedMetals } from "@/lib/cached-fetchers";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
 
@@ -37,7 +37,7 @@ export default async function PreciousMetalsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const metalsPromise = fetchMetals();
+  const metalsPromise = getCachedMetals();
 
   return (
     <PageShell

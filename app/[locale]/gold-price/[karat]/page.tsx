@@ -31,14 +31,14 @@ import {
 } from "@/components/skeletons";
 import { JsonLd } from "@/components/JsonLd";
 import { SeoStaticHeader } from "@/components/SeoStaticHeader";
-import { fetchFxRates, type FxRates } from "@/lib/fx";
-import { fetchSpot, type GoldApiResponse } from "@/lib/goldapi";
-import { fetchAllHistory, type MetalHistory } from "@/lib/history";
+import type { FxRates } from "@/lib/fx";
+import type { GoldApiResponse } from "@/lib/goldapi";
+import type { MetalHistory } from "@/lib/history";
 import { pick } from "@/lib/i18n-text";
 import { karatLabel } from "@/lib/karat-label";
 import { buildAlternates, canonicalPath, SITE_URL, buildOpenGraph } from "@/lib/metadata";
 import { faqPageSchema } from "@/lib/schemas";
-import { getCachedSpot } from "@/lib/cached-fetchers";
+import { getCachedAllHistory, getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { gramUsd, priceDescription, priceTitle, spotDate } from "@/lib/seo";
 import { HOME_LABEL, karatCrumbName, karatFaqs, RELATED_HEADING, relatedLinks } from "./karat.i18n";
 
@@ -190,9 +190,10 @@ export default async function KaratPage({
   // label from karatLabel ("21K", "21 carats", "21 ayar", "21 قیراط", "21 कैरेट").
   const kLabel = locale === "ar" ? upper.replace("K", "") : karatLabel(locale, karat);
 
-  const spotPromise = fetchSpot("XAU");
-  const fxPromise = fetchFxRates();
-  const historyPromise = fetchAllHistory("1y");
+  // Cached: an uncached call waited on the upstream timeout on every request.
+  const spotPromise = getCachedSpot("XAU");
+  const fxPromise = getCachedFxRates();
+  const historyPromise = getCachedAllHistory("1y");
 
 
   const pageUrl = canonicalPath(locale, `/gold-price/${karat}`);

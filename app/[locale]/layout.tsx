@@ -647,7 +647,6 @@ export default async function LocaleLayout({
         <link rel="preconnect" href="https://ws-feed.exchange.coinbase.com" />
         <link rel="preconnect" href="https://ws.kraken.com" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <link rel="dns-prefetch" href="https://stooq.com" />
         <link rel="dns-prefetch" href="https://query1.finance.yahoo.com" />
         <link rel="dns-prefetch" href="https://api.coingecko.com" />
       </head>
