@@ -29,17 +29,30 @@ export async function KaratHeroSection({
   promise,
   fxPromise,
   currency,
+  altCurrency,
   karat,
   locale,
 }: {
   promise: Promise<GoldApiResponse | null>;
   fxPromise: Promise<FxRates>;
   currency: string;
+  /** Country.alsoQuoted, e.g. JOD on the Palestine pages. */
+  altCurrency?: string;
   karat: string;
   locale: string;
 }) {
   const [s, fx] = await Promise.all([promise, fxPromise]);
-  return <KaratPriceHero spot={s} rate={rateFor(fx, currency)} currency={currency} karat={karat} locale={locale} />;
+  const altRate = altCurrency ? rateFor(fx, altCurrency) : null;
+  return (
+    <KaratPriceHero
+      spot={s}
+      rate={rateFor(fx, currency)}
+      currency={currency}
+      karat={karat}
+      locale={locale}
+      alt={altCurrency && altRate ? { currency: altCurrency, rate: altRate } : null}
+    />
+  );
 }
 
 export async function PriceTableSection({
@@ -50,6 +63,7 @@ export async function PriceTableSection({
   countryName: cName,
   slug,
   karat,
+  altCurrency,
 }: {
   promise: Promise<GoldApiResponse | null>;
   fxPromise: Promise<FxRates>;
@@ -58,6 +72,7 @@ export async function PriceTableSection({
   countryName: string;
   slug: string;
   karat: string;
+  altCurrency?: string;
 }) {
   const [s, fx] = await Promise.all([promise, fxPromise]);
   return (
@@ -65,6 +80,7 @@ export async function PriceTableSection({
       spot={s}
       fx={fx}
       currency={currency}
+      altCurrency={altCurrency}
       locale={locale}
       countryName={cName}
       slug={slug}

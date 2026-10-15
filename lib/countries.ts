@@ -9,6 +9,13 @@ export type Country = {
   name_ar: string;
   currency: string;
   flag: string;
+  /**
+   * A second currency the local gold trade is quoted in, shown beside the
+   * main one. Palestine: jewellers in the West Bank price in Jordanian dinar,
+   * and Search Console queries ask for it outright ("…فلسطين بالدينار عيار
+   * 21"), while the page showed only shekels (2026-10-15).
+   */
+  alsoQuoted?: string;
 };
 
 export const COUNTRIES: Country[] = [
@@ -47,7 +54,7 @@ export const COUNTRIES: Country[] = [
   { slug: "pakistan", cc: "PK", name_en: "Pakistan", name_ar: "باكستان", currency: "PKR", flag: "🇵🇰" },
   // The West Bank and Gaza use the Israeli shekel as their circulating
   // currency alongside JOD and EGP; ILS is what jewellers actually quote.
-  { slug: "palestine", cc: "PS", name_en: "Palestine", name_ar: "فلسطين", currency: "ILS", flag: "🇵🇸" },
+  { slug: "palestine", cc: "PS", name_en: "Palestine", name_ar: "فلسطين", currency: "ILS", flag: "🇵🇸", alsoQuoted: "JOD" },
   { slug: "philippines", cc: "PH", name_en: "Philippines", name_ar: "الفلبين", currency: "PHP", flag: "🇵🇭" },
   { slug: "qatar", cc: "QA", name_en: "Qatar", name_ar: "قطر", currency: "QAR", flag: "🇶🇦" },
   { slug: "russia", cc: "RU", name_en: "Russia", name_ar: "روسيا", currency: "RUB", flag: "🇷🇺" },

@@ -64,6 +64,18 @@ export async function generateStaticParams() {
   return withLocales(params);
 }
 
+/** Per-gram price in the country's second quoted currency, for the meta description. */
+function altGram(
+  spot: GoldApiResponse | null,
+  fx: FxRates,
+  karat: string,
+  currency: string | undefined,
+): { currency: string; gram: number } | undefined {
+  const r = currency ? fx[currency] : undefined;
+  if (!spot || !currency || typeof r !== "number" || !Number.isFinite(r) || r <= 0) return undefined;
+  return { currency, gram: gramUsd(spot, karat) * r };
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -89,6 +101,7 @@ export async function generateMetadata({
     currency: useLocal ? country.currency : "USD",
     gram: spot ? gramUsd(spot, karat) * (useLocal ? (rawRate as number) : 1) : null,
     date: spotDate(spot),
+    alt: altGram(spot, fx, karat, useLocal ? country.alsoQuoted : undefined),
   };
 
   return {
@@ -219,6 +232,7 @@ export default async function CountryKaratPage({
                 promise={spotPromise}
                 fxPromise={fxPromise}
                 currency={country.currency}
+                altCurrency={country.alsoQuoted}
                 karat={karat}
                 locale={locale}
               />
@@ -228,6 +242,7 @@ export default async function CountryKaratPage({
                 promise={spotPromise}
                 fxPromise={fxPromise}
                 currency={country.currency}
+                altCurrency={country.alsoQuoted}
                 locale={locale}
                 countryName={name}
                 slug={slug}

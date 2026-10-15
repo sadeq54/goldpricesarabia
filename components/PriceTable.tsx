@@ -39,6 +39,7 @@ export function PriceTable({
   countryName,
   slug,
   highlightKarat,
+  altCurrency,
 }: {
   spot: GoldApiResponse | null;
   fx?: FxRates | null;
@@ -47,6 +48,8 @@ export function PriceTable({
   countryName?: string;
   slug?: string;
   highlightKarat?: string;
+  /** Second per-gram column in this currency (Country.alsoQuoted). */
+  altCurrency?: string;
 }) {
   if (!spot) return null;
 
@@ -55,6 +58,8 @@ export function PriceTable({
   if (!rate) return null;
 
   const cur = currencyName(currency, locale);
+  const rawAlt = altCurrency ? (fx?.[altCurrency] as number | undefined) : undefined;
+  const altRate = typeof rawAlt === "number" && Number.isFinite(rawAlt) && rawAlt > 0 ? rawAlt : null;
   const when = spotDate(spot);
   const showTola = slug ? TOLA_MARKETS.has(slug) : false;
   const showPound = slug ? GOLD_POUND_MARKETS.has(slug) : false;
@@ -87,6 +92,8 @@ export function PriceTable({
   // a trader figure; on a 412px screen they forced a sideways-scrolling table.
   // The cells stay in the HTML for crawlers.
   const wide = "hidden md:table-cell";
+  // With a second-currency column the ounce moves to md+ so phones still fit.
+  const ozCls = altRate ? wide : "";
 
   return (
     <section aria-labelledby="price-table-heading">
@@ -112,9 +119,12 @@ export function PriceTable({
             <tr className="text-start">
               <th scope="col" className={`${th} text-start`}>{tableText(locale, "karat")}</th>
               <th scope="col" className={`${th} text-end`}>{gramHeader(locale, currency)}</th>
+              {altRate && altCurrency ? (
+                <th scope="col" className={`${th} text-end`}>{gramHeader(locale, altCurrency)}</th>
+              ) : null}
               <th scope="col" className={`${th} ${wide} text-end`}>{tableText(locale, "bid")}</th>
               <th scope="col" className={`${th} ${wide} text-end`}>{tableText(locale, "ask")}</th>
-              <th scope="col" className={`${th} text-end`}>{tableText(locale, "ounce")}</th>
+              <th scope="col" className={`${th} ${ozCls} text-end`}>{tableText(locale, "ounce")}</th>
               {showTola ? <th scope="col" className={`${th} text-end`}>{tableText(locale, "tola")}</th> : null}
               <th scope="col" className={`${th} ${wide} text-end`}>{tableText(locale, "kilo")}</th>
             </tr>
@@ -133,9 +143,12 @@ export function PriceTable({
                     <span className="ms-2 text-[10px] font-medium text-[var(--color-text-dim)]">{r.pct}</span>
                   </th>
                   <td dir="ltr" className={`${td} text-end font-bold`}>{fmtNum(r.gram, frac)}</td>
+                  {altRate ? (
+                    <td dir="ltr" className={`${td} text-end font-bold`}>{fmtNum((r.gram / rate) * altRate, 2)}</td>
+                  ) : null}
                   <td dir="ltr" className={`${td} ${wide} text-end text-[var(--color-up)]`}>{fmtNum(r.bid, frac)}</td>
                   <td dir="ltr" className={`${td} ${wide} text-end text-[var(--color-down)]`}>{fmtNum(r.ask, frac)}</td>
-                  <td dir="ltr" className={`${td} text-end`}>{fmtNum(r.oz, frac)}</td>
+                  <td dir="ltr" className={`${td} ${ozCls} text-end`}>{fmtNum(r.oz, frac)}</td>
                   {showTola ? <td dir="ltr" className={`${td} text-end`}>{fmtNum(r.tola, frac)}</td> : null}
                   <td dir="ltr" className={`${td} ${wide} text-end`}>{fmtNum(r.kg, 0)}</td>
                 </tr>

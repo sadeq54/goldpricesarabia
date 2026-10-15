@@ -142,6 +142,8 @@ type TitleInput = {
   currency: string; // ISO code
   gram: number | null; // per-gram price in `currency`
   date: Date | null;
+  /** Same gram price in the country's second quoted currency (Country.alsoQuoted). */
+  alt?: { currency: string; gram: number };
 };
 
 /**
@@ -190,7 +192,8 @@ export function priceDescription(i: TitleInput): string {
   if (native) return native;
   if (i.locale === "ar") {
     const where = i.country ? ` في ${i.country}` : "";
-    const price = i.gram ? `الجرام الآن ${fmtNum(i.gram)} ${cur}. ` : "";
+    const altAr = i.alt ? ` (${fmtNum(i.alt.gram)} ${currencyName(i.alt.currency, i.locale)})` : "";
+    const price = i.gram ? `الجرام الآن ${fmtNum(i.gram)} ${cur}${altAr}. ` : "";
     return (
       `سعر الذهب اليوم${where} عيار ${k}: ${price}` +
       `أسعار عيار 24 و22 و21 و18 و14 للجرام والأونصة والكيلو، شراء وبيع، ` +
@@ -199,7 +202,8 @@ export function priceDescription(i: TitleInput): string {
     );
   }
   const where = i.country ? ` in ${i.country}` : "";
-  const price = i.gram ? `${i.currency} ${fmtNum(i.gram)} per gram right now. ` : "";
+  const altEn = i.alt ? ` (${i.alt.currency} ${fmtNum(i.alt.gram)})` : "";
+  const price = i.gram ? `${i.currency} ${fmtNum(i.gram)}${altEn} per gram right now. ` : "";
   return (
     `${i.karat} gold price today${where} in ${cur}: ${price}` +
     `24K, 22K, 21K, 18K and 14K per gram, ounce and kilo with bid/ask, ` +

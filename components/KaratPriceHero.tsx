@@ -28,6 +28,7 @@ export function KaratPriceHero({
   currency,
   karat,
   locale,
+  alt,
 }: {
   spot: GoldApiResponse | null;
   /** Units of `currency` per USD; 1 for USD. */
@@ -35,6 +36,8 @@ export function KaratPriceHero({
   currency: string;
   karat: string;
   locale: string;
+  /** Second currency the local trade quotes in (Country.alsoQuoted), units per USD. */
+  alt?: { currency: string; rate: number } | null;
 }) {
   const live = useLivePrice();
   const def = karatDef(karat);
@@ -112,6 +115,18 @@ export function KaratPriceHero({
           {cur} {perGram}
         </span>
       </p>
+
+      {alt ? (
+        <p className="mt-1 text-lg text-[var(--color-text)]">
+          <span className="text-[var(--color-text-dim)]">≈ </span>
+          <bdi dir="ltr" className="num font-mono font-semibold">
+            {fmtNum((gram / rate) * alt.rate, 2)}
+          </bdi>{" "}
+          <span className="text-base text-[var(--color-text-muted)]">
+            {currencyName(alt.currency, locale)} {perGram}
+          </span>
+        </p>
+      ) : null}
 
       {change !== null && changePct !== null ? (
         <p className="mt-2 text-sm">
