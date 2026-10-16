@@ -102,10 +102,11 @@ export async function generateMetadata({
     gram: spot ? gramUsd(spot, karat) * (useLocal ? (rawRate as number) : 1) : null,
     date: spotDate(spot),
     alt: altGram(spot, fx, karat, useLocal ? country.alsoQuoted : undefined),
+    slug,
   };
 
   return {
-    title: priceTitle(seo),
+    title: { absolute: priceTitle(seo) },
     description: priceDescription(seo),
     alternates: buildAlternates(locale, `/${slug}/gold-price/${karat}`),
     openGraph: buildOpenGraph(locale, `/${slug}/gold-price/${karat}`),

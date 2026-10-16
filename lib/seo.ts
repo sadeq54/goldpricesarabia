@@ -97,6 +97,20 @@ export function dateLabel(locale: string, d: Date, withWeekday = false): string 
   return dateFormatter(locale, withWeekday).format(d);
 }
 
+const SHORT_EN = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric" });
+
+/** "16 Oct 2026" for English titles, where width is scarce; other locales keep `dateLabel`. */
+export function titleDateLabel(locale: string, d: Date): string {
+  return locale === "en" ? SHORT_EN.format(d) : dateLabel(locale, d);
+}
+
+/**
+ * What searchers in a market call the gold this site prices. In the Philippines
+ * 18K/21K jewellery from the Gulf is sold as "Saudi gold", and that phrase
+ * carries ~6,500 Search Console impressions a month (2026-10).
+ */
+const MARKET_ALIAS: Record<string, string> = { philippines: "Saudi gold" };
+
 /** "14:05 UTC" — explicit zone so the stamp is honest for every market. */
 export function timeLabelUtc(d: Date): string {
   return `${TIME_UTC.format(d)} UTC`;
@@ -144,16 +158,26 @@ type TitleInput = {
   date: Date | null;
   /** Same gram price in the country's second quoted currency (Country.alsoQuoted). */
   alt?: { currency: string; gram: number };
+  /** Country slug, for market-specific search phrasing (MARKET_ALIAS). */
+  slug?: string;
 };
 
 /**
  * Query-leading title: "سعر الذهب اليوم في الأردن عيار 21: 83.92 دينار أردني للجرام | 21 أغسطس 2026".
  * Falls back gracefully when the live snapshot is unavailable.
+ *
+ * Pages pass the result as `{ absolute }`: the layout's " · Gold Prices Arabia"
+ * suffix pushed every price past Google's ~60-character cut, and Google prints
+ * the site name above the title anyway. English leads with the karat and "per
+ * gram" because that is how the queries read ("18k gold price per gram
+ * philippines"); the old "Gold Price Today in X (18K)" buried both. Search
+ * Console, 28 days to 2026-10-15: English price pages 0.21% CTR on 174k
+ * impressions, Arabic 0.44%, Turkish 1.5%.
  */
 export function priceTitle(i: TitleInput): string {
   const k = i.karat.replace(/k$/i, "");
   const cur = currencyName(i.currency, i.locale);
-  const date = i.date ? dateLabel(i.locale, i.date) : null;
+  const date = i.date ? titleDateLabel(i.locale, i.date) : null;
   const native = localizedPriceTitle(i.locale, {
     k,
     country: i.country,
@@ -171,13 +195,19 @@ export function priceTitle(i: TitleInput): string {
     return `${head}${price}${tail}`;
   }
   const head = i.country
-    ? `Gold Price Today in ${i.country} (${i.karat})`
-    : `${i.karat} Gold Price Today`;
-  const price = i.gram ? `: ${i.currency} ${fmtNum(i.gram)}/g` : "";
+    ? `${i.karat} Gold Price per Gram in ${i.country} Today`
+    : `${i.karat} Gold Price per Gram Today`;
+  const price = i.gram ? `: ${i.currency} ${fmtNum(i.gram)}` : "";
   const tail = date ? ` | ${date}` : " | Live";
   return `${head}${price}${tail}`;
 }
 
+/**
+ * The answer first, then what else the page holds, under ~160 characters so
+ * Google does not cut it. No exchange names: "Binance, Coinbase and Kraken"
+ * reads as a crypto site to someone pricing a ring, and the server price is
+ * Swissquote's anyway.
+ */
 export function priceDescription(i: TitleInput): string {
   const k = i.karat.replace(/k$/i, "");
   const cur = currencyName(i.currency, i.locale);
@@ -193,21 +223,20 @@ export function priceDescription(i: TitleInput): string {
   if (i.locale === "ar") {
     const where = i.country ? ` في ${i.country}` : "";
     const altAr = i.alt ? ` (${fmtNum(i.alt.gram)} ${currencyName(i.alt.currency, i.locale)})` : "";
-    const price = i.gram ? `الجرام الآن ${fmtNum(i.gram)} ${cur}${altAr}. ` : "";
+    const price = i.gram ? `الجرام ${fmtNum(i.gram)} ${cur}${altAr}. ` : "";
+    const day = i.date ? ` (${dateLabel(i.locale, i.date)})` : "";
     return (
-      `سعر الذهب اليوم${where} عيار ${k}: ${price}` +
-      `أسعار عيار 24 و22 و21 و18 و14 للجرام والأونصة والكيلو، شراء وبيع، ` +
-      `تحديث لحظي من Binance وCoinbase وKraken` +
-      (date ? ` (${date}).` : ".")
+      `سعر الذهب اليوم${where} عيار ${k}${day}: ${price}` +
+      `أسعار عيار 24 و22 و21 و18 و14 للجرام والأونصة والكيلو، شراء وبيع، بتحديث لحظي.`
     );
   }
   const where = i.country ? ` in ${i.country}` : "";
+  const alias = i.slug ? MARKET_ALIAS[i.slug] : undefined;
   const altEn = i.alt ? ` (${i.alt.currency} ${fmtNum(i.alt.gram)})` : "";
-  const price = i.gram ? `${i.currency} ${fmtNum(i.gram)}${altEn} per gram right now. ` : "";
+  const price = i.gram ? `: ${i.currency} ${fmtNum(i.gram)}${altEn}` : "";
+  const day = i.date ? `, ${titleDateLabel(i.locale, i.date)}` : "";
   return (
-    `${i.karat} gold price today${where} in ${cur}: ${price}` +
-    `24K, 22K, 21K, 18K and 14K per gram, ounce and kilo with bid/ask, ` +
-    `streamed live from Binance, Coinbase and Kraken` +
-    (date ? ` (${date}).` : ".")
+    `${i.karat}${alias ? ` ${alias}` : " gold"} price per gram${where} today${day}${price}. ` +
+    `Live 24K, 22K, 21K, 18K and 14K prices per gram, ounce and kilo, with buy and sell rates.`
   );
 }

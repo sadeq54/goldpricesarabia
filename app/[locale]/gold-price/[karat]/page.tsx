@@ -69,7 +69,7 @@ export async function generateMetadata({
     date: spotDate(spot),
   };
   return {
-    title: priceTitle(seo),
+    title: { absolute: priceTitle(seo) },
     description: priceDescription(seo),
     alternates: buildAlternates(locale, `/gold-price/${karat}`),
     openGraph: buildOpenGraph(locale, `/gold-price/${karat}`),
