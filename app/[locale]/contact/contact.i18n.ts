@@ -1,7 +1,7 @@
 import { ADS_EMAIL, CORRECTION_WINDOW_HOURS, DATA_REQUEST_DAYS, REPLY_WINDOW_HOURS, SUPPORT_EMAIL } from "@/lib/contact";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 
-export const CONTACT_UPDATED = "2026-08-27";
+export const CONTACT_UPDATED = "2026-10-16";
 
 export const TITLE: LocaleText = {
   en: "Contact",
@@ -156,10 +156,53 @@ export const EMAIL_CTA: LocaleText = {
   hi: "ईमेल करें",
 };
 
+/** Contact form copy. Live locales only (ar/en/tr/hi); fr/ur 308 away. */
+export const FORM = {
+  heading: { en: "Send us a message", ar: "أرسل لنا رسالة", tr: "Bize mesaj gönderin", hi: "हमें संदेश भेजें" },
+  intro: {
+    en: "Write here, or email any address below. Your message goes to the same inbox.",
+    ar: "اكتب هنا، أو راسل أي عنوان أدناه. تصل رسالتك إلى البريد نفسه.",
+    tr: "Buraya yazın ya da aşağıdaki adreslerden birine e-posta gönderin. Mesajınız aynı kutuya ulaşır.",
+    hi: "यहाँ लिखें, या नीचे दिए किसी भी पते पर ईमेल करें। आपका संदेश उसी इनबॉक्स में पहुँचता है।",
+  },
+  name: { en: "Your name", ar: "اسمك", tr: "Adınız", hi: "आपका नाम" },
+  email: { en: "Your email", ar: "بريدك الإلكتروني", tr: "E-posta adresiniz", hi: "आपका ईमेल" },
+  topic: { en: "Topic", ar: "الموضوع", tr: "Konu", hi: "विषय" },
+  message: { en: "Message", ar: "الرسالة", tr: "Mesaj", hi: "संदेश" },
+  send: { en: "Send message", ar: "إرسال الرسالة", tr: "Mesajı gönder", hi: "संदेश भेजें" },
+  sending: { en: "Sending…", ar: "جارٍ الإرسال…", tr: "Gönderiliyor…", hi: "भेजा जा रहा है…" },
+  sent: {
+    en: `Thank you. Your message was sent; we reply within ${REPLY_WINDOW_HOURS} hours on working days.`,
+    ar: `شكراً لك. أُرسلت رسالتك، ونرد خلال ${REPLY_WINDOW_HOURS} ساعة في أيام العمل.`,
+    tr: `Teşekkürler. Mesajınız gönderildi; iş günlerinde ${REPLY_WINDOW_HOURS} saat içinde yanıtlıyoruz.`,
+    hi: `धन्यवाद। आपका संदेश भेज दिया गया; हम कार्य-दिवसों में ${REPLY_WINDOW_HOURS} घंटे में उत्तर देते हैं।`,
+  },
+  failed: {
+    en: "The message could not be sent. Please email us directly:",
+    ar: "تعذّر إرسال الرسالة. يرجى مراسلتنا مباشرة:",
+    tr: "Mesaj gönderilemedi. Lütfen bize doğrudan e-posta gönderin:",
+    hi: "संदेश नहीं भेजा जा सका। कृपया हमें सीधे ईमेल करें:",
+  },
+  other: { en: "Something else", ar: "موضوع آخر", tr: "Başka bir konu", hi: "कोई और विषय" },
+} satisfies Record<string, LocaleText>;
+
 export const contactText = (locale: string) => ({
   title: pick(locale, TITLE),
   description: pick(locale, DESCRIPTION),
   intro: pick(locale, INTRO),
+  form: {
+    heading: pick(locale, FORM.heading),
+    intro: pick(locale, FORM.intro),
+    name: pick(locale, FORM.name),
+    email: pick(locale, FORM.email),
+    topic: pick(locale, FORM.topic),
+    message: pick(locale, FORM.message),
+    send: pick(locale, FORM.send),
+    sending: pick(locale, FORM.sending),
+    sent: pick(locale, FORM.sent),
+    failed: pick(locale, FORM.failed),
+    topics: [...CHANNELS.map((c) => pick(locale, c.h)), pick(locale, FORM.other)],
+  },
   channels: CHANNELS.map((c) => ({ h: pick(locale, c.h), body: pick(locale, c.body), email: c.email })),
   whoH: pick(locale, WHO_H),
   whoBody: pick(locale, WHO_BODY),

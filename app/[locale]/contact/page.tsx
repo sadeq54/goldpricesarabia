@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { ContactForm } from "@/components/ContactForm";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { Link } from "@/i18n/navigation";
@@ -50,6 +51,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               {tInfo("lastUpdated")}: <time dateTime={CONTACT_UPDATED}>{CONTACT_UPDATED}</time>
             </p>
           </header>
+
+          <ContactForm text={t.form} />
 
           {/* One card per reason to write, each with the address that reads it —
               a reader should never have to guess which inbox their message lands in. */}

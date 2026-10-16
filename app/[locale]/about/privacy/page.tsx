@@ -7,7 +7,40 @@ import { Link } from "@/i18n/navigation";
 import { pick } from "@/lib/i18n-text";
 import { buildPageMetadata, canonicalPath, SITE_URL } from "@/lib/metadata";
 
-import { PRIVACY_UPDATED, privacyText } from "./privacy.i18n";
+import { PRIVACY_UPDATED, privacyText, SUPPORT_EMAIL } from "./privacy.i18n";
+
+/**
+ * Addresses the policy names, made clickable. Google asks for a prominent link
+ * to how it uses partner-site data, so these must be links, not plain text.
+ */
+const LINKS: Record<string, string> = {
+  "policies.google.com/technologies/partner-sites": "https://policies.google.com/technologies/partner-sites",
+  "adssettings.google.com": "https://adssettings.google.com",
+  "www.aboutads.info/choices": "https://www.aboutads.info/choices",
+  "privacy.microsoft.com/privacystatement": "https://privacy.microsoft.com/privacystatement",
+  "formsubmit.co": "https://formsubmit.co",
+  [SUPPORT_EMAIL]: `mailto:${SUPPORT_EMAIL}`,
+};
+const LINK_RE = new RegExp(`(${Object.keys(LINKS).map((k) => k.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&")).join("|")})`);
+
+function linkify(text: string) {
+  return text.split(LINK_RE).map((part, i) =>
+    LINKS[part] ? (
+      <a
+        key={i}
+        href={LINKS[part]}
+        dir="ltr"
+        rel={part === SUPPORT_EMAIL ? undefined : "noopener"}
+        target={part === SUPPORT_EMAIL ? undefined : "_blank"}
+        className="text-[var(--color-gold)] underline hover:no-underline"
+      >
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -55,7 +88,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
           {t.sections.map((s) => (
             <section key={s.h} className="mt-8">
               <h2 className="text-xl font-semibold text-[var(--color-text)]">{s.h}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-muted)]">{s.body}</p>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-muted)]">{linkify(s.body)}</p>
             </section>
           ))}
 
