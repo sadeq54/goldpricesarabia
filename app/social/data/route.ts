@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { routing } from "@/i18n/routing";
-import { getCachedAllHistory, getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
+import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { COUNTRY_BY_SLUG } from "@/lib/countries";
 import { SITE_URL } from "@/lib/metadata";
-import { gramUsd } from "@/lib/seo";
+import { gramUsd, dayChangePct } from "@/lib/seo";
 import { buildAltText, buildCaption, type MarketPrice } from "@/lib/social-caption";
 import { resolveMarkets } from "@/lib/social-markets";
 
@@ -25,17 +25,14 @@ export async function GET(req: NextRequest) {
   const locale = (routing.locales as readonly string[]).includes(langParam) ? langParam : "ar";
   const slugs = resolveMarkets(req.nextUrl.searchParams.get("countries"));
 
-  const [spot, fx, hist] = await Promise.all([
+  const [spot, fx] = await Promise.all([
     getCachedSpot("XAU"),
     getCachedFxRates(),
-    getCachedAllHistory("1mo"),
   ]);
   if (!spot) return NextResponse.json({ error: "no spot data" }, { status: 503 });
 
-  const series = (hist.XAU ?? []).map((p) => p.close).filter((n) => Number.isFinite(n) && n > 0);
-  const prevClose = series.length > 1 ? series[series.length - 2] : null;
   const ounceUsd = spot.price;
-  const changePct = prevClose ? ((ounceUsd - prevClose) / prevClose) * 100 : null;
+  const changePct = dayChangePct(spot);
   const when = new Date();
 
   const markets = slugs.map((slug) => {

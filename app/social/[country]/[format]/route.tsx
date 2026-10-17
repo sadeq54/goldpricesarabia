@@ -11,7 +11,7 @@ import {
   loadLogo, pickAccent, Words,
 } from "@/lib/og-social";
 import { SOCIAL_PROFILES } from "@/lib/social";
-import { KARAT_DEFS, currencyName, dateLabel, fmtNum, gramUsd, spotDate } from "@/lib/seo";
+import { KARAT_DEFS, currencyName, dateLabel, fmtNum, gramUsd, spotDate, dayChangePct } from "@/lib/seo";
 
 /**
  * Daily social price card:
@@ -112,9 +112,8 @@ export async function GET(
   const cur = rate === 1 && country.currency !== "USD" ? "USD" : country.currency;
 
   const series = (hist.XAU ?? []).map((p) => p.close).filter((n) => Number.isFinite(n) && n > 0);
-  const prevClose = series.length > 1 ? series[series.length - 2] : null;
   const ozUsd = spot.price;
-  const changePct = prevClose ? ((ozUsd - prevClose) / prevClose) * 100 : null;
+  const changePct = dayChangePct(spot);
   const up = (changePct ?? 0) >= 0;
 
   const when = spotDate(spot) ?? new Date();

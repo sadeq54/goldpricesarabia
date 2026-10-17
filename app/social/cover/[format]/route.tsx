@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
 import { isRtl, routing } from "@/i18n/routing";
-import { getCachedAllHistory, getCachedSpot } from "@/lib/cached-fetchers";
+import { getCachedSpot } from "@/lib/cached-fetchers";
 import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 import { loadFontsFor, OG_FONT_FAMILY } from "@/lib/og-font";
@@ -12,7 +12,7 @@ import {
 } from "@/lib/og-social";
 import { resolveMarkets } from "@/lib/social-markets";
 import { SOCIAL_PROFILES } from "@/lib/social";
-import { dateLabel, fmtNum, spotDate } from "@/lib/seo";
+import { dateLabel, fmtNum, spotDate, dayChangePct } from "@/lib/seo";
 
 /**
  * Carousel cover: /social/cover/post|story?lang=ar&countries=a,b,c
@@ -130,16 +130,13 @@ export async function GET(
   const lang = (routing.locales as readonly string[]).includes(langParam) ? langParam : "ar";
   const rtl = isRtl(lang);
 
-  const [spot, hist, logo] = await Promise.all([
+  const [spot, logo] = await Promise.all([
     getCachedSpot("XAU"),
-    getCachedAllHistory("1mo"),
     loadLogo(),
   ]);
   if (!spot) return new Response("No data", { status: 503 });
 
-  const series = (hist.XAU ?? []).map((p) => p.close).filter((n) => Number.isFinite(n) && n > 0);
-  const prevClose = series.length > 1 ? series[series.length - 2] : null;
-  const changePct = prevClose ? ((spot.price - prevClose) / prevClose) * 100 : null;
+  const changePct = dayChangePct(spot);
   const up = (changePct ?? 0) >= 0;
 
   const when = spotDate(spot) ?? new Date();

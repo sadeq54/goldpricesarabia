@@ -50,6 +50,16 @@ export function gramUsd(spot: GoldApiResponse, karat: string): number {
   return (spot.price / OZ_G) * def.purity;
 }
 
+/**
+ * Day change of spot against spot's own previous close (Swissquote). Never
+ * compare spot with the daily history series: that is the COMEX future, which
+ * trades above spot, so "spot vs yesterday's close" read about 0.4% low and the
+ * 2026-10-17 reel said gold fell when it had risen 0.26%.
+ */
+export function dayChangePct(spot: GoldApiResponse): number | null {
+  return Number.isFinite(spot.chp) ? spot.chp : null;
+}
+
 /** Markets where the tola (11.66 g) is a customary retail unit. */
 export const TOLA_MARKETS = new Set([
   "uae",
