@@ -11,7 +11,7 @@ import {
   pickAccent, Words,
 } from "@/lib/og-social";
 import { resolveMarkets } from "@/lib/social-markets";
-import { currencyName, dateLabel, fmtNum, gramUsd, spotDate, dayChangePct } from "@/lib/seo";
+import { currencyName, dateLabel, fmtNum, gramUsd, dayChangePct } from "@/lib/seo";
 
 /**
  * Reel hook frame: /social/hook/story?lang=ar&countries=a,b,c
@@ -95,7 +95,9 @@ export async function GET(
   const up = (changePct ?? 0) >= 0;
   const moved = changePct !== null && Math.abs(changePct) >= 0.05;
 
-  const when = spotDate(spot) ?? new Date();
+  // The day the post goes out, not the quote's timestamp: on a weekend the
+  // quote is Friday's close, and a Saturday post dated Friday reads as stale.
+  const when = new Date();
 
   const markets = resolveMarkets(req.nextUrl.searchParams.get("countries"));
 

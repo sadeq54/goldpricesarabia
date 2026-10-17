@@ -11,7 +11,7 @@ import {
   loadLogo, pickAccent, Words,
 } from "@/lib/og-social";
 import { SOCIAL_PROFILES } from "@/lib/social";
-import { KARAT_DEFS, currencyName, dateLabel, fmtNum, gramUsd, spotDate, dayChangePct } from "@/lib/seo";
+import { KARAT_DEFS, currencyName, dateLabel, fmtNum, gramUsd, dayChangePct } from "@/lib/seo";
 
 /**
  * Daily social price card:
@@ -116,7 +116,9 @@ export async function GET(
   const changePct = dayChangePct(spot);
   const up = (changePct ?? 0) >= 0;
 
-  const when = spotDate(spot) ?? new Date();
+  // The day the post goes out, not the quote's timestamp: on a weekend the
+  // quote is Friday's close, and a Saturday post dated Friday reads as stale.
+  const when = new Date();
   const name = countryName(country, lang);
   const { w, h } = SIZES[format];
   const accent = pickAccent(when, Number(req.nextUrl.searchParams.get("theme")));
