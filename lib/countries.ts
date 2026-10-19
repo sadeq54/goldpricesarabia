@@ -143,8 +143,8 @@ export const COUNTRY_NOTES: Record<string, CountryNote> = {
     ar: "يقوم سوق الذهب في سوريا على مجوهرات عيار 21 التي تُباع في أسواق دمشق وحلب وحمص، والذهب هنا مدخرات للأسرة بقدر ما هو حلي. فقدت الليرة السورية معظم قيمتها بعد 2011، وفي 1 يناير 2026 حلّت ليرة جديدة محل القديمة بواقع 100 ليرة قديمة لكل ليرة جديدة، والأسعار في هذه الصفحة بالليرة الجديدة. وتنشر جمعية الصاغة في دمشق نشرة يومية بأسعار عيارَي 21 و18.",
   },
   iraq: {
-    en: "Iraqi jewellery is sold mostly at 21K, as in the Gulf, and gold is a standard part of the mahr. The Central Bank of Iraq sets an official rate of 1,310 dinars per dollar, but exchange shops have traded the dollar well above it, so a gram priced in dinars depends on the rate a shop uses; this page converts at the rate published by international data feeds, which is close to the market rate. Baghdad's wholesale gold trade is concentrated on Nahr Street, and there is no VAT on jewellery.",
-    ar: "تُباع المجوهرات في العراق غالبًا بعيار 21 كما في الخليج، والذهب جزء أساسي من المهر. يحدد البنك المركزي العراقي سعرًا رسميًا قدره 1,310 دنانير للدولار، لكن الدولار تداول في مكاتب الصرافة فوقه بكثير، لذا يتوقف سعر الجرام بالدينار على السعر الذي يعتمده المحل؛ وتحوّل هذه الصفحة بالسعر الذي تنشره مصادر البيانات الدولية، وهو قريب من سعر السوق. وتتركز تجارة الذهب بالجملة في بغداد في شارع النهر، ولا توجد ضريبة قيمة مضافة على المجوهرات.",
+    en: "Iraqi jewellery is sold mostly at 21K, as in the Gulf, and gold is a standard part of the mahr. In October 2026 Iraq devalued the dinar to an official 1,500 per dollar (1,520 for end users at banks), but exchange shops have traded the dollar above that, so a gram priced in dinars depends on the rate a shop uses; this page converts at the official end-user rate. Baghdad's wholesale gold trade is concentrated on Nahr Street, and there is no VAT on jewellery.",
+    ar: "تُباع المجوهرات في العراق غالبًا بعيار 21 كما في الخليج، والذهب جزء أساسي من المهر. في أكتوبر 2026 خفّض العراق قيمة الدينار إلى سعر رسمي قدره 1,500 دينار للدولار (1,520 للمستخدم النهائي في المصارف)، لكن الدولار تداول في مكاتب الصرافة فوق ذلك، لذا يتوقف سعر الجرام بالدينار على السعر الذي يعتمده المحل؛ وتحوّل هذه الصفحة بالسعر الرسمي للمستخدم النهائي. وتتركز تجارة الذهب بالجملة في بغداد في شارع النهر، ولا توجد ضريبة قيمة مضافة على المجوهرات.",
   },
   yemen: {
     en: "Yemen's retail gold is mostly 21K, sold in the old souks of Sana'a, Aden and Taiz, and it keeps its traditional place in the mahr and as portable savings. The central bank split between Sana'a and Aden in 2016, and since Sana'a banned the newer banknotes in December 2019 the rial has traded at two very different rates: around 530 per dollar in Sana'a and several times that in Aden. No single rial price is right for the whole country, so this page shows the price in US dollars; multiply it by the dollar rate in your city to get the local price.",
@@ -236,17 +236,17 @@ const KARAT_PURITY: Record<string, string> = {
  * live in the hand-verified COUNTRY_NOTES / COUNTRY_VAT). `karat`, the
  * currency-peg regime and the distinctive `note` are textbook-stable facts.
  *
- * NOTE: dominant-karat and market facts here are well-documented but should
- * be spot-checked by the site owner before any are promoted into a full
- * COUNTRY_NOTES entry or relied on as authoritative.
+ * Checked against sources on 2026-10-19: karats without a source were removed,
+ * wrong facts rewritten, pegs corrected (Libya SDR, North Macedonia EUR).
  */
 export type CountryFacts = {
-  /** Most-traded retail gold purity in this market. */
-  karat: keyof typeof KARAT_PURITY;
-  /** Currency-peg regime — drives the peg sentence. Omit for free-floating. */
-  peg?: "usd" | "eur" | "hkd";
-  /** One distinctive, verifiable market fact — locale-pair translated. */
-  note: { en: string; ar: string };
+  /** Most-traded retail gold purity — only where a source confirms it
+   *  (2026-10-19 check, scratchpad notes); omitted otherwise. */
+  karat?: keyof typeof KARAT_PURITY;
+  /** Currency-peg regime — drives the peg sentence. Omit when not pegged. */
+  peg?: "usd" | "eur" | "hkd" | "sdr";
+  /** One distinctive, sourced market fact — locale-pair translated. */
+  note?: { en: string; ar: string };
 };
 
 export const COUNTRY_FACTS: Record<string, CountryFacts> = {
@@ -260,54 +260,52 @@ export const COUNTRY_FACTS: Record<string, CountryFacts> = {
   iraq: {
     karat: "21K",
     note: {
-      en: "Baghdad's Shorja and Nahr markets set the reference the rest of the country follows, with 22K preferred in Kurdistan.",
-      ar: "تحدد أسواق الشورجة والنهر في بغداد السعر المرجعي الذي تتبعه بقية البلاد، مع تفضيل عيار 22 في كردستان.",
+      en: "Baghdad's Nahr Street is the centre of the country's wholesale gold trade.",
+      ar: "يُعدّ شارع النهر في بغداد مركز تجارة الذهب بالجملة في البلاد.",
     },
   },
   yemen: {
     karat: "21K",
     note: {
-      en: "Aden and Sana'a have run separate exchange regimes since 2016, so one gram can carry two national prices on the same day.",
-      ar: "تعمل عدن وصنعاء بنظامَي صرف منفصلين منذ 2016، لذا قد يحمل الجرام الواحد سعرين وطنيين في اليوم ذاته.",
+      en: "Since Sana'a banned the newer banknotes in December 2019, the rial has traded at two very different rates.",
+      ar: "منذ أن حظرت صنعاء الأوراق النقدية الأحدث في ديسمبر 2019، يُتداول الريال بسعرين مختلفين جدًا.",
     },
   },
   palestine: {
     karat: "21K",
     note: {
-      en: "Jewellers quote in shekels but stock arrives through Jordanian wholesalers, so prices track Amman within a narrow band.",
-      ar: "يسعّر الصاغة بالشيكل لكن البضاعة تصل عبر تجار الجملة الأردنيين، لذا تتبع الأسعار عمّان ضمن نطاق ضيق.",
+      en: "Jewellers quote mainly in shekels, and most of the gold sold is made locally.",
+      ar: "يسعّر الصاغة أساسًا بالشيكل، ومعظم الذهب المبيع مصنوع محليًا.",
     },
   },
   algeria: {
     karat: "18K",
     note: {
-      en: "Currency controls sustain a parallel dinar rate at Algiers' Square Port Saïd, and import limits keep supply largely recycled.",
-      ar: "تُبقي الرقابة على الصرف سعرًا موازيًا للدينار في ساحة بورسعيد بالجزائر، وتجعل قيود الاستيراد المعروض معادَ التدوير غالبًا.",
+      en: "Currency controls sustain a parallel dinar rate at Algiers' Square Port Saïd, well below the official one.",
+      ar: "تُبقي الرقابة على الصرف سعرًا موازيًا للدينار في ساحة بورسعيد بالعاصمة، أضعف بكثير من السعر الرسمي.",
     },
   },
   tunisia: {
     karat: "18K",
     note: {
-      en: "Every piece is struck at a state hallmark office — the ram's head marks 18K — and that stamp carries the local resale value.",
-      ar: "تُدمغ كل قطعة في مكتب دمغ حكومي — ورأس الكبش علامة عيار 18 — وعلى تلك الدمغة تقوم قيمة إعادة البيع محليًا.",
+      en: "18K is the main jewellery standard, and the dinar may not legally be taken out of the country.",
+      ar: "عيار 18 هو المعيار الرئيسي للمجوهرات، ولا يجوز قانونًا إخراج الدينار من البلاد.",
     },
   },
   europe: {
-    karat: "18K",
     note: {
-      en: "Across the eurozone, 24K bars dominate investment while 18K is the jewellery norm, and pricing references the twice-daily LBMA auction in London.",
-      ar: "في منطقة اليورو، تهيمن سبائك عيار 24 على الاستثمار بينما يُعد عيار 18 معيار المجوهرات، ويعتمد التسعير على مزاد LBMA في لندن مرتين يوميًا.",
+      en: "Gold standards vary across the eurozone: 14K (585) is usual in Germany and Austria and 18K (750) in Italy. Wholesale prices reference the LBMA Gold Price, set twice a day in London.",
+      ar: "تختلف معايير الذهب داخل منطقة اليورو: فعيار 14 (585) هو المعتاد في ألمانيا والنمسا، وعيار 18 (750) في إيطاليا. وتستند أسعار الجملة إلى سعر LBMA للذهب الذي يُحدَّد مرتين يوميًا في لندن.",
     },
   },
   argentina: {
     karat: "18K",
     note: {
-      en: "Chronic inflation makes gold a key store of value for Argentines, and local premiums over the world spot price can be unusually wide.",
-      ar: "يجعل التضخم المزمن الذهب مخزنًا رئيسيًا للقيمة لدى الأرجنتينيين، وقد تكون العلاوات المحلية فوق السعر العالمي واسعة بشكل غير معتاد.",
+      en: "Argentines have long saved in US dollars rather than gold, though gold buying has grown, and local buy-sell spreads on gold can be wide.",
+      ar: "اعتاد الأرجنتينيون طويلًا الادخار بالدولار الأمريكي لا بالذهب، وإن ازداد شراء الذهب، وقد يكون الفرق بين سعرَي البيع والشراء محليًا واسعًا.",
     },
   },
   australia: {
-    karat: "18K",
     note: {
       en: "The government-owned Perth Mint is one of the world's largest gold refiners and the source of the Australian Kangaroo bullion coin.",
       ar: "دار سك بيرث المملوكة للحكومة من أكبر مصافي الذهب في العالم وهي مصدر عملة الكنغر الأسترالية السبائكية.",
@@ -316,12 +314,11 @@ export const COUNTRY_FACTS: Record<string, CountryFacts> = {
   brazil: {
     karat: "18K",
     note: {
-      en: "Brazilian law sets 18K (750) as the minimum gold-jewellery standard, while investment gold trades on the B3 exchange in Sao Paulo.",
-      ar: "يحدد القانون البرازيلي عيار 18 (750) كحد أدنى لمعيار مجوهرات الذهب، بينما يُتداول الذهب الاستثماري في بورصة B3 بساو باولو.",
+      en: "18K (750) is the usual jewellery standard in Brazil, and the B3 exchange in São Paulo stopped trading gold contracts in March 2024.",
+      ar: "عيار 18 (750) هو المعيار المعتاد للمجوهرات في البرازيل، وقد توقفت بورصة B3 في ساو باولو عن تداول عقود الذهب في مارس 2024.",
     },
   },
   canada: {
-    karat: "18K",
     note: {
       en: "The Royal Canadian Mint produces the Gold Maple Leaf, one of the purest bullion coins in the world at 99.99%.",
       ar: "تنتج دار سك العملة الملكية الكندية عملة ورقة القيقب الذهبية، إحدى أنقى عملات السبائك في العالم بنقاء 99.99%.",
@@ -335,33 +332,29 @@ export const COUNTRY_FACTS: Record<string, CountryFacts> = {
     },
   },
   colombia: {
-    karat: "18K",
     note: {
-      en: "Colombia is a major Latin American gold producer, and its domestic jewellery retail is built around 18K.",
-      ar: "كولومبيا من كبار منتجي الذهب في أمريكا اللاتينية، وتقوم تجارة المجوهرات المحلية على عيار 18.",
+      en: "Colombia is one of Latin America's larger gold producers and exported about 67 tonnes in 2024.",
+      ar: "كولومبيا من كبار منتجي الذهب في أمريكا اللاتينية، وقد صدّرت نحو 67 طنًا عام 2024.",
     },
   },
   croatia: {
-    karat: "18K",
     note: {
       en: "Croatia adopted the euro in 2023, so gold is now priced in EUR and tracks the wider eurozone market.",
       ar: "اعتمدت كرواتيا اليورو في 2023، لذا يُسعَّر الذهب الآن باليورو ويتتبع سوق منطقة اليورو الأوسع.",
     },
   },
   denmark: {
-    karat: "18K",
     peg: "eur",
     note: {
-      en: "Danish retail jewellery centres on 18K and 14K, and the krone's euro peg keeps gold prices aligned with the eurozone.",
-      ar: "تتركز مجوهرات التجزئة الدنماركية على عيارَي 18 و14، ويبقي ربط الكرونة باليورو أسعار الذهب متوافقة مع منطقة اليورو.",
+      en: "Danmarks Nationalbank keeps the krone within a narrow band around the euro under the EU's ERM II exchange-rate mechanism.",
+      ar: "يُبقي البنك المركزي الدنماركي الكرونة ضمن نطاق ضيق حول اليورو في إطار آلية سعر الصرف الأوروبية ERM II.",
     },
   },
   "hong-kong": {
-    karat: "24K",
     peg: "usd",
     note: {
-      en: "The Chinese Gold & Silver Exchange Society, founded in 1910, trades 'four-nines' 99.99 gold at the heart of one of Asia's oldest bullion markets.",
-      ar: "تتداول جمعية تبادل الذهب والفضة الصينية، التي تأسست عام 1910، ذهب التسع نقاط الأربع 99.99 في قلب أحد أقدم أسواق السبائك في آسيا.",
+      en: "The Chinese Gold & Silver Exchange Society, founded in 1910, trades its traditional 99 tael gold (990 fine) alongside 999.9 kilobars, at the heart of one of Asia's oldest bullion markets.",
+      ar: "تتداول جمعية الصين لتبادل الذهب والفضة، التي تأسست عام 1910، ذهب التايل التقليدي بنقاء 990 إلى جانب سبائك الكيلو بنقاء 999.9، في قلب أحد أقدم أسواق السبائك في آسيا.",
     },
   },
   hungary: {
@@ -379,144 +372,125 @@ export const COUNTRY_FACTS: Record<string, CountryFacts> = {
     },
   },
   indonesia: {
-    karat: "22K",
     note: {
-      en: "Indonesian jewellery spans 22K to 24K, and cast bars from state miner Antam are the benchmark investment product.",
-      ar: "تتراوح المجوهرات الإندونيسية بين عيار 22 و24، وتُعد سبائك أنتام المصبوبة المملوكة للدولة المنتج الاستثماري المرجعي.",
+      en: "Cast bars from the state miner Antam are the investment benchmark, while much jewellery is sold in lower-purity alloys known as 'emas muda'.",
+      ar: "تُعدّ سبائك شركة التعدين الحكومية أنتام المرجع الاستثماري، بينما يُباع كثير من المجوهرات بسبائك أقل نقاءً تُعرف باسم «إيماس مودا».",
     },
   },
   japan: {
-    karat: "24K",
     note: {
-      en: "Japan prizes pure 24K 'junkin'; Tanaka Kikinzoku, established in 1885, is the dominant bullion retailer and publishes a closely watched daily price.",
-      ar: "تُقدّر اليابان الذهب الخالص عيار 24 'جونكين'؛ وتُعد تاناكا كيكينزوكو، المؤسسة عام 1885، أكبر بائع تجزئة للسبائك وتنشر سعرًا يوميًا يُتابَع عن كثب.",
+      en: "Tanaka Kikinzoku, founded in 1885 and Japan's largest precious-metals refiner, publishes the country's most-watched daily gold price.",
+      ar: "تنشر شركة تاناكا كيكينزوكو، التي تأسست عام 1885 وهي أكبر مصفاة للمعادن الثمينة في اليابان، أكثر أسعار الذهب اليومية متابعةً في البلاد.",
     },
   },
   lebanon: {
-    karat: "21K",
     note: {
-      en: "Lebanon's gold trade, long centred on Beirut's souks, runs largely in cash and US dollars amid currency instability, with 21K the jewellery standard.",
-      ar: "تجارة الذهب في لبنان، المتمركزة منذ زمن في أسواق بيروت، تجري غالبًا بالنقد والدولار الأمريكي وسط عدم استقرار العملة، وعيار 21 هو معيار المجوهرات.",
+      en: "After the 2019 financial crisis many Lebanese turned to gold as savings, and the lira has held at about 89,500 per dollar since 2024.",
+      ar: "بعد الأزمة المالية عام 2019 لجأ كثير من اللبنانيين إلى الذهب للادخار، واستقرت الليرة عند نحو 89,500 للدولار منذ 2024.",
     },
   },
   libya: {
-    karat: "21K",
+    peg: "sdr",
     note: {
-      en: "Libyan gold demand centres on 21K jewellery, with the dinar's value shaped by oil revenues and parallel exchange rates.",
-      ar: "يتركز الطلب على الذهب في ليبيا على مجوهرات عيار 21، وتتشكل قيمة الدينار من عائدات النفط وأسعار الصرف الموازية.",
+      en: "The Central Bank of Libya devalued the dinar in January 2026, fixing it at 0.1150 SDR.",
+      ar: "خفّض مصرف ليبيا المركزي قيمة الدينار في يناير 2026 وثبّته عند 0.1150 من وحدة حقوق السحب الخاصة.",
     },
   },
   macau: {
-    karat: "24K",
     peg: "hkd",
     note: {
-      en: "Macau's gold retail mirrors neighbouring Hong Kong, favouring 999.9 pure gold, and the pataca is pegged to the Hong Kong dollar.",
-      ar: "تجارة الذهب بالتجزئة في ماكاو تعكس هونغ كونغ المجاورة، مع تفضيل الذهب النقي 999.9، والباتاكا مربوطة بدولار هونغ كونغ.",
+      en: "Macau's gold retail mirrors neighbouring Hong Kong, and the pataca is pegged to the Hong Kong dollar.",
+      ar: "تحاكي تجارة الذهب بالتجزئة في ماكاو جارتها هونغ كونغ، والباتاكا مربوطة بدولار هونغ كونغ.",
     },
   },
   malaysia: {
     karat: "22K",
     note: {
-      en: "Malaysian jewellery favours 22K and 24K, and Bank Negara's Kijang Emas bullion coin anchors the investment market.",
-      ar: "تفضل المجوهرات الماليزية عيارَي 22 و24، وترسي عملة كيجانغ إيماس السبائكية الصادرة عن بنك نيجارا سوق الاستثمار.",
+      en: "Malaysian jewellery favours 22K and 24K, and Bank Negara Malaysia issues the Kijang Emas, the country's official gold bullion coin.",
+      ar: "تفضّل المجوهرات في ماليزيا عيارَي 22 و24، ويُصدر البنك المركزي الماليزي عملة كيجانغ إيماس، وهي عملة السبائك الذهبية الرسمية في البلاد.",
     },
   },
   mexico: {
     karat: "14K",
     note: {
-      en: "Banco de Mexico issues the Centenario and Libertad gold coins, while retail jewellery centres on 14K and 18K.",
-      ar: "يصدر بنك المكسيك عملتي سنتيناريو وليبرتاد الذهبيتين، بينما تتركز مجوهرات التجزئة على عيارَي 14 و18.",
+      en: "Banco de México issues the Centenario and Libertad gold coins, and retail jewellery centres on 14K.",
+      ar: "يُصدر بنك المكسيك عملتَي سنتيناريو وليبرتاد الذهبيتين، وتتركز المجوهرات بالتجزئة على عيار 14.",
     },
   },
   morocco: {
     karat: "18K",
     note: {
-      en: "Moroccan gold markets in Casablanca and Fez trade mainly 18K and 21K, and the dirham is managed against a euro-and-dollar currency basket.",
-      ar: "تتداول أسواق الذهب المغربية في الدار البيضاء وفاس عياري 18 و21 بشكل رئيسي، والدرهم مُدار مقابل سلة عملات من اليورو والدولار.",
+      en: "Moroccan jewellers sell 18K, the only gold standard authorised for sale, and the dirham is managed against a euro-and-dollar currency basket.",
+      ar: "يبيع الصاغة في المغرب عيار 18، وهو المعيار الوحيد المسموح ببيعه، ويُدار الدرهم مقابل سلة من اليورو والدولار.",
     },
   },
   myanmar: {
     karat: "24K",
     note: {
-      en: "Myanmar trades gold at very high purity, traditionally by the kyattha weight (about 16.6 g), with Yangon's market setting daily reference rates.",
-      ar: "تتداول ميانمار الذهب بنقاء عالٍ جدًا، تقليديًا بوحدة الكياتثا (نحو 16.6 جم)، ويحدد سوق يانغون الأسعار المرجعية اليومية.",
+      en: "Gold is traditionally weighed by the kyattha (about 16.33 g). This page converts at the Central Bank of Myanmar's official rate; the market rate has been much weaker, so local prices run higher.",
+      ar: "يُوزن الذهب تقليديًا بوحدة الكياتا (نحو 16.33 جرامًا). وتحوّل هذه الصفحة بالسعر الرسمي للبنك المركزي في ميانمار، أما سعر السوق فكان أضعف بكثير، لذا تكون الأسعار المحلية أعلى.",
     },
   },
   "new-zealand": {
-    karat: "18K",
-    note: {
-      en: "New Zealand retail jewellery commonly uses 9K and 18K, while investment bullion follows the Australian and global markets.",
-      ar: "تستخدم مجوهرات التجزئة في نيوزيلندا عادةً عيارَي 9 و18، بينما تتبع سبائك الاستثمار الأسواق الأسترالية والعالمية.",
-    },
   },
   nigeria: {
-    karat: "18K",
     note: {
-      en: "Nigeria is a fast-growing gold producer, and the naira's volatility makes gold a popular hedge, with retail jewellery around 18K.",
-      ar: "نيجيريا منتج للذهب سريع النمو، ويجعل تقلب النايرا الذهب أداة تحوّط شائعة، مع مجوهرات تجزئة قرب عيار 18.",
+      en: "Nigeria's gold output is small and largely artisanal; Segilola is its only industrial-scale gold mine.",
+      ar: "إنتاج نيجيريا من الذهب صغير ويغلب عليه التعدين الحرفي، ومنجم سيغيلولا هو منجم الذهب الوحيد على نطاق صناعي فيها.",
     },
   },
   "north-macedonia": {
-    karat: "14K",
+    peg: "eur",
     note: {
-      en: "Retail gold in North Macedonia follows Balkan and Central European norms, with 14K jewellery the most common.",
-      ar: "تتبع تجارة الذهب بالتجزئة في مقدونيا الشمالية معايير البلقان وأوروبا الوسطى، وعيار 14 هو الأكثر شيوعًا في المجوهرات.",
+      en: "The National Bank of the Republic of North Macedonia has kept the denar stable against the euro for decades as its main monetary anchor.",
+      ar: "حافظ البنك الوطني لجمهورية مقدونيا الشمالية على استقرار الدينار مقابل اليورو منذ عقود بوصفه ركيزته النقدية الأساسية.",
     },
   },
   norway: {
-    karat: "18K",
     note: {
-      en: "Norway's central bank sold its entire gold reserves in 2004, and domestic demand now centres on 18K jewellery.",
-      ar: "باع البنك المركزي النرويجي كامل احتياطياته من الذهب عام 2004، ويتركز الطلب المحلي الآن على مجوهرات عيار 18.",
+      en: "Norges Bank sold its 33.5 tonnes of gold bars in 2004 and kept only about 3.5 tonnes of historic coins.",
+      ar: "باع البنك المركزي النرويجي سبائكه الذهبية البالغة 33.5 طنًا عام 2004، واحتفظ بنحو 3.5 أطنان فقط من العملات التاريخية.",
     },
   },
   pakistan: {
     karat: "22K",
     note: {
-      en: "Pakistan trades gold by the tola (about 11.66 g) with 22K dominant, and the All Pakistan Sarafa Association publishes daily rates.",
-      ar: "تتداول باكستان الذهب بالتولة (نحو 11.66 جم) مع هيمنة عيار 22، وتنشر جمعية صرافة عموم باكستان الأسعار اليومية.",
+      en: "Pakistan trades gold by the tola (about 11.66 g) with 22K dominant, and the All Pakistan Gems and Jewellers Sarafa Association publishes daily rates.",
+      ar: "تتداول باكستان الذهب بالتولة (نحو 11.66 جرامًا) ويهيمن عيار 22، وتنشر جمعية صرافة الأحجار الكريمة والمجوهرات لعموم باكستان الأسعار يوميًا.",
     },
   },
   philippines: {
     karat: "18K",
     note: {
-      en: "Philippine jewellery favours 18K and 21K, and the Bangko Sentral buys domestically mined gold to build its reserves.",
-      ar: "تفضل المجوهرات الفلبينية عيارَي 18 و21، ويشتري المصرف المركزي الفلبيني الذهب المُعدَّن محليًا لبناء احتياطياته.",
+      en: "Philippine jewellery favours 18K, with 22K also common, and the Bangko Sentral buys domestically mined gold to build its reserves.",
+      ar: "تفضّل المجوهرات في الفلبين عيار 18، مع شيوع عيار 22 أيضًا، ويشتري البنك المركزي الفلبيني الذهب المستخرج محليًا لبناء احتياطياته.",
     },
   },
   russia: {
     karat: "14K",
     note: {
-      en: "Russian hallmarking uses the metric 585 (14K) and 750 (18K) standards, and the central bank is among the world's largest official gold buyers.",
-      ar: "يستخدم الدمغ الروسي المعيارين المتريين 585 (عيار 14) و750 (عيار 18)، والبنك المركزي من أكبر مشتري الذهب الرسميين في العالم.",
+      en: "Russian hallmarking uses the metric 585 (14K) and 750 (18K) standards, and the Bank of Russia holds about 2,300 tonnes of gold, one of the largest official reserves.",
+      ar: "تعتمد الدمغة الروسية المعيارين المتريين 585 (عيار 14) و750 (عيار 18)، ويحتفظ البنك المركزي الروسي بنحو 2,300 طن من الذهب، وهو من أكبر الاحتياطيات الرسمية.",
     },
   },
   serbia: {
-    karat: "14K",
-    note: {
-      en: "Serbian retail gold follows Central European 14K norms, with investment bars priced against the dinar.",
-      ar: "تتبع تجارة الذهب بالتجزئة في صربيا معايير عيار 14 الأوروبية الوسطى، وتُسعَّر سبائك الاستثمار مقابل الدينار.",
-    },
   },
   singapore: {
-    karat: "24K",
     note: {
-      en: "Singapore exempts investment-grade precious metals from GST, making it a regional bullion hub where 999 fine gold dominates investment demand.",
-      ar: "تعفي سنغافورة المعادن الثمينة ذات الجودة الاستثمارية من ضريبة السلع والخدمات، مما يجعلها مركزًا إقليميًا للسبائك حيث يهيمن الذهب النقي 999 على الطلب الاستثماري.",
+      en: "Singapore has exempted investment-grade gold, silver and platinum from GST since 2012, which helped make it a regional bullion hub.",
+      ar: "أعفت سنغافورة الذهب والفضة والبلاتين الاستثمارية من ضريبة السلع والخدمات منذ 2012، ما ساعد على جعلها مركزًا إقليميًا للسبائك.",
     },
   },
   "south-africa": {
-    karat: "22K",
     note: {
-      en: "South Africa's Krugerrand, minted since 1967 at 22K, was the world's first modern bullion coin, reflecting the country's deep gold-mining heritage.",
-      ar: "كانت عملة الكروغراند الجنوب أفريقية، المسكوكة منذ 1967 بعيار 22، أول عملة سبائك حديثة في العالم، وتعكس إرث تعدين الذهب العريق في البلاد.",
+      en: "South Africa's 22-karat Krugerrand, minted since 1967, pioneered the modern bullion-coin market and reflects the country's long gold-mining history.",
+      ar: "عملة كروغيراند الجنوب أفريقية من عيار 22، المسكوكة منذ 1967، كانت رائدة سوق عملات السبائك الحديثة، وتعكس تاريخ البلاد الطويل في تعدين الذهب.",
     },
   },
   "south-korea": {
-    karat: "24K",
     note: {
-      en: "Korean gold is traditionally weighed by the 'don' (3.75 g), and pure 24K is favoured for both gifts and investment.",
-      ar: "يُوزن الذهب الكوري تقليديًا بوحدة 'الدون' (3.75 جم)، ويُفضَّل الذهب الخالص عيار 24 للهدايا والاستثمار معًا.",
+      en: "Korean gold is traditionally weighed by the 'don' (3.75 g).",
+      ar: "يُوزن الذهب في كوريا تقليديًا بوحدة «دون» (3.75 جرامات).",
     },
   },
   sweden: {
@@ -527,38 +501,36 @@ export const COUNTRY_FACTS: Record<string, CountryFacts> = {
     },
   },
   switzerland: {
-    karat: "24K",
     note: {
-      en: "Switzerland refines an estimated two-thirds of the world's gold, and bars from Valcambi, PAMP and Argor-Heraeus are a global investment standard.",
-      ar: "تكرر سويسرا ما يُقدَّر بثلثي ذهب العالم، وتُعد سبائك Valcambi وPAMP وArgor-Heraeus معيارًا استثماريًا عالميًا.",
+      en: "Switzerland is home to several of the world's largest gold refiners, including Valcambi, PAMP and Argor-Heraeus, whose bars are a global investment standard.",
+      ar: "تضم سويسرا عددًا من أكبر مصافي الذهب في العالم، منها فالكامبي وبامب وأرغور-هيرايوس، وتُعدّ سبائكها معيارًا استثماريًا عالميًا.",
     },
   },
   taiwan: {
-    karat: "24K",
     note: {
-      en: "Taiwan favours 99.99 pure gold, traditionally traded by the tael, and the Bank of Taiwan offers gold passbook accounts and bars.",
-      ar: "تفضل تايوان الذهب النقي 99.99، الذي يُتداول تقليديًا بوحدة التَيل، ويوفر بنك تايوان حسابات دفتر الذهب والسبائك.",
+      en: "Gold in Taiwan is traditionally traded by the tael, and the Bank of Taiwan offers gold passbook accounts and bars.",
+      ar: "يُتداول الذهب في تايوان تقليديًا بالتايل، ويقدّم بنك تايوان حسابات ادخار بالذهب وسبائك.",
     },
   },
   thailand: {
     karat: "23K",
     note: {
-      en: "Thai 'baht gold' is sold by the baht weight (15.244 g), and Bangkok's Yaowarat Chinatown is the trading centre where the Gold Traders Association sets daily prices.",
-      ar: "يُباع 'ذهب الباهت' التايلاندي بوحدة وزن الباهت (15.244 جم)، وحي ياوارات الصيني في بانكوك هو مركز التداول حيث تحدد جمعية تجار الذهب الأسعار اليومية.",
+      en: "Thai 'baht gold' (96.5%) is sold by the baht weight, 15.244 g for bars and 15.16 g for jewellery, and Bangkok's Yaowarat Chinatown is the trading centre where the Gold Traders Association sets daily prices.",
+      ar: "يُباع «ذهب البات» التايلندي (نقاء 96.5%) بوزن البات، أي 15.244 جرامًا للسبائك و15.16 جرامًا للمجوهرات، وحي يواوارات الصيني في بانكوك هو مركز التداول حيث تحدد جمعية تجار الذهب الأسعار اليومية.",
     },
   },
   turkey: {
     karat: "22K",
     note: {
-      en: "Turkey is among the world's top-five gold consumers; 22K is the cultural standard, and the Istanbul Grand Bazaar alongside the Borsa Istanbul gold market anchors pricing amid high lira inflation.",
-      ar: "تركيا من أكبر خمسة مستهلكين للذهب في العالم؛ عيار 22 هو المعيار الثقافي، ويرسي البازار الكبير في إسطنبول إلى جانب سوق الذهب في بورصة إسطنبول التسعير وسط تضخم مرتفع في الليرة.",
+      en: "The World Gold Council ranked Turkey the world's fifth-largest gold market in 2024; 22K is the cultural standard, and Borsa Istanbul runs a precious-metals market that sets reference prices.",
+      ar: "صنّف مجلس الذهب العالمي تركيا خامس أكبر سوق للذهب في العالم عام 2024؛ وعيار 22 هو المعيار الثقافي، وتدير بورصة إسطنبول سوقًا للمعادن الثمينة تحدد الأسعار المرجعية.",
     },
   },
   vietnam: {
     karat: "24K",
     note: {
-      en: "Vietnamese gold trades mainly as SJC-branded bars by the tael ('cay', about 37.5 g), and SJC gold often carries a notable premium over the world spot price.",
-      ar: "يُتداول الذهب الفيتنامي بشكل رئيسي كسبائك بعلامة SJC بوحدة التَيل ('كاي'، نحو 37.5 جم)، وغالبًا ما يحمل ذهب SJC علاوة ملحوظة فوق السعر العالمي الفوري.",
+      en: "Vietnamese gold trades as SJC-branded bars and 99.99 plain rings, priced per tael ('cây', about 37.5 g), and SJC bars often carry a notable premium over the world price.",
+      ar: "يُتداول الذهب في فيتنام على شكل سبائك تحمل علامة SJC وخواتم سادة بنقاء 99.99، ويُسعَّر بالتايل («كاي»، نحو 37.5 جرامًا)، وكثيرًا ما تحمل سبائك SJC علاوة ملحوظة فوق السعر العالمي.",
     },
   },
 };
@@ -572,17 +544,21 @@ export const COUNTRY_FACTS: Record<string, CountryFacts> = {
 export function composeCountryNote(slug: string, locale: string): string | null {
   const country = COUNTRY_BY_SLUG[slug];
   const facts = COUNTRY_FACTS[slug];
-  if (!country || !facts) return null;
+  // Nothing sourced to say beyond the exchange rate: omit the note.
+  if (!country || !facts || (!facts.karat && !facts.note)) return null;
 
   const ar = locale === "ar";
   const name = ar ? country.name_ar : country.name_en;
   const cur = country.currency;
-  const purity = KARAT_PURITY[facts.karat];
-  const k = facts.karat.replace("K", "");
 
-  const karatSentence = ar
-    ? `يتركز سوق الذهب بالتجزئة في ${name} على عيار ${k} (نقاء ${purity})، ويُسعَّر محليًا لكل جرام بعملة ${cur}.`
-    : `${name}'s retail gold market centres on ${facts.karat} gold (${purity} pure), quoted locally per gram in ${cur}.`;
+  let karatSentence: string | null = null;
+  if (facts.karat) {
+    const purity = KARAT_PURITY[facts.karat];
+    const k = facts.karat.replace("K", "");
+    karatSentence = ar
+      ? `يتركز سوق الذهب بالتجزئة في ${name} على عيار ${k} (نقاء ${purity})، ويُسعَّر محليًا لكل جرام بعملة ${cur}.`
+      : `${name}'s retail gold market centres on ${facts.karat} gold (${purity} pure), quoted locally per gram in ${cur}.`;
+  }
 
   let pegSentence: string;
   if (facts.peg === "usd") {
@@ -597,14 +573,19 @@ export function composeCountryNote(slug: string, locale: string): string | null 
     pegSentence = ar
       ? `${cur} مربوط بدولار هونغ كونغ، مما يبقي الأسعار قريبة من السعر العالمي الفوري.`
       : `The ${cur} is pegged to the Hong Kong dollar, which keeps prices close to global spot.`;
-  } else {
+  } else if (facts.peg === "sdr") {
     pegSentence = ar
-      ? `وبما أن ${cur} عملة حرة التعويم، تعكس الأسعار أيضًا تحركات صرف ${cur}/الدولار اليومية.`
-      : `As a free-floating currency, the ${cur} means prices also reflect daily ${cur}/USD exchange-rate moves.`;
+      ? `${cur} مربوط بوحدة حقوق السحب الخاصة لصندوق النقد الدولي، وهي سلة من العملات الرئيسية، لذا لا يتغير سعره مقابل الدولار إلا بتغير تلك السلة.`
+      : `The ${cur} is pegged to the IMF's special drawing right, a basket of major currencies, so its dollar rate moves only as that basket does.`;
+  } else {
+    // Not "free-floating": several of these currencies are managed (CNY, VND, MAD...).
+    pegSentence = ar
+      ? `وتُحوَّل الأسعار هنا من السعر بالدولار بسعر صرف ${cur}/الدولار لليوم، لذا تتحرك مع سعر الصرف كما تتحرك مع الذهب.`
+      : `Prices here are converted from the dollar price at the day's ${cur}/USD rate, so they move with that exchange rate as well as with gold.`;
   }
 
-  const note = ar ? facts.note.ar : facts.note.en;
-  return `${karatSentence} ${pegSentence} ${note}`;
+  const note = facts.note ? (ar ? facts.note.ar : facts.note.en) : null;
+  return [karatSentence, pegSentence, note].filter(Boolean).join(" ");
 }
 
 /* ----------------------------- Region grouping ---------------------------- *

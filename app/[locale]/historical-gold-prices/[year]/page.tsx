@@ -68,9 +68,12 @@ export default async function HistoricalPage({
   setRequestLocale(locale);
 
   const t = yearPageText(locale, year);
-  // Hand-written year context exists in ar/en only; tr/hi omit it rather than show English.
+  // Hand-written year context (ar/en, tr/hi translated); other locales omit it.
   const yearContext = YEAR_CONTEXT[yearNum];
-  const context = yearContext && (locale === "ar" || locale === "en") ? yearContext[locale] : null;
+  const context =
+    yearContext && (locale === "ar" || locale === "en" || locale === "tr" || locale === "hi")
+      ? yearContext[locale]
+      : null;
 
   // Recent years come from the 5y feed; older years from the full series (GC=F since 2000).
   const histPromise = getCachedAllHistory(yearNum >= CURRENT_YEAR - 4 ? "5y" : "max");
