@@ -1,4 +1,5 @@
 import { localeMeta, routing } from "@/i18n/routing";
+import { hasBuyGoldPage } from "@/lib/buy-gold-pages";
 import { hasCountryKaratPage } from "@/lib/karat-pages";
 
 /**
@@ -31,6 +32,10 @@ export function localesForPath(path: string): readonly string[] {
   // /{country}/gold-price/{karat}: most karats exist only as the 21K page (lib/karat-pages.ts).
   if (segments.length === 3 && segments[1] === "gold-price") {
     return LOCALES.filter((l) => hasCountryKaratPage(l, segments[0], segments[2]));
+  }
+  // /buy-gold/{country}[/{type}]: most were merged (lib/buy-gold-pages.ts).
+  if (section === "buy-gold" && segments.length >= 2) {
+    return LOCALES.filter((l) => hasBuyGoldPage(l, segments[1], segments[2]));
   }
   return LOCALES;
 }

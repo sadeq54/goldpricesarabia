@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Flag } from "@/components/Flag";
 import { InstallAppButton } from "@/components/InstallAppButton";
 import { Link } from "@/i18n/navigation";
+import { hasBuyGoldPage } from "@/lib/buy-gold-pages";
 import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 import { SOCIAL_PROFILES } from "@/lib/social";
@@ -98,6 +99,7 @@ export async function Footer() {
   const tPage = await getTranslations("Page");
   const locale = await getLocale();
   const year = COPYRIGHT_YEAR;
+  const buyGold = BUY_GOLD_COUNTRIES.filter((slug) => hasBuyGoldPage(locale, slug));
 
   return (
     <footer className="mt-16 border-t border-[var(--color-border)] bg-[var(--color-bg-card)] text-[var(--color-text)]">
@@ -188,15 +190,17 @@ export async function Footer() {
             />
           </div>
 
-          <div className="space-y-6">
-            <FooterColumn
-              title={pick(locale, BUY_GOLD)}
-              links={BUY_GOLD_COUNTRIES.map((slug) => ({
-                label: countryName(COUNTRY_BY_SLUG[slug], locale),
-                href: `/buy-gold/${slug}`,
-              }))}
-            />
-          </div>
+          {buyGold.length ? (
+            <div className="space-y-6">
+              <FooterColumn
+                title={pick(locale, BUY_GOLD)}
+                links={buyGold.map((slug) => ({
+                  label: countryName(COUNTRY_BY_SLUG[slug], locale),
+                  href: `/buy-gold/${slug}`,
+                }))}
+              />
+            </div>
+          ) : null}
         </div>
       </section>
 

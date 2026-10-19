@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Calculator } from "@/components/Calculator";
@@ -14,6 +14,7 @@ import {
 import { Link } from "@/i18n/navigation";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
+import { buyGoldTarget, hasBuyGoldPage } from "@/lib/buy-gold-pages";
 import { BUY_GOLD_EDITORIAL } from "@/lib/content/buy-gold-editorial";
 import { pick } from "@/lib/i18n-text";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
@@ -27,7 +28,7 @@ const SUPPORTED = [
 ] as const;
 
 export function generateStaticParams() {
-  return withLocales(SUPPORTED.map((country) => ({ country })));
+  return withLocales(SUPPORTED.map((country) => ({ country }))).filter((p) => hasBuyGoldPage(p.locale, p.country));
 }
 
 export async function generateMetadata({
@@ -55,6 +56,8 @@ export default async function BuyGoldCountryPage({
   const { locale, country: slug } = await params;
   const c = COUNTRY_BY_SLUG[slug];
   if (!c) notFound();
+  // proxy.ts already 308s merged pages; this covers any render that bypasses it.
+  if (!hasBuyGoldPage(locale, slug)) permanentRedirect(canonicalPath(locale, buyGoldTarget(locale, slug)));
   setRequestLocale(locale);
   const t = await getTranslations("SubPage");
   const name = countryName(c, locale);
@@ -63,6 +66,13 @@ export default async function BuyGoldCountryPage({
   const fxPromise = getCachedFxRates();
 
   const pageUrl = canonicalPath(locale, `/buy-gold/${slug}`);
+  const subPages = (
+    [
+      { type: "coins", key: "buyCoinsH1" },
+      { type: "small-coins", key: "buySmallH1" },
+      { type: "bars", key: "buyBarsH1" },
+    ] as const
+  ).filter((p) => hasBuyGoldPage(locale, slug, p.type));
   // Editorial is bilingual (ar/en) only. It used to reach fr/tr/ur/hi through
   // pick()'s English fallback, which made those pages ~30% English (measured
   // 2026-10-10). Omit it there rather than ship mixed-language body copy; the
@@ -97,11 +107,13 @@ export default async function BuyGoldCountryPage({
         })()}
       </Suspense>
 
-      <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
-        <SubLink href={`/buy-gold/${slug}/coins`} label={t("buyCoinsH1", { country: name })} />
-        <SubLink href={`/buy-gold/${slug}/small-coins`} label={t("buySmallH1", { country: name })} />
-        <SubLink href={`/buy-gold/${slug}/bars`} label={t("buyBarsH1", { country: name })} />
-      </ul>
+      {subPages.length ? (
+        <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          {subPages.map((p) => (
+            <SubLink key={p.type} href={`/buy-gold/${slug}/${p.type}`} label={t(p.key, { country: name })} />
+          ))}
+        </ul>
+      ) : null}
 
       {editorial ? (
         <section

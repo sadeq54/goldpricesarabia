@@ -2,6 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 
 import { routing } from "./i18n/routing";
+import { buyGoldTarget, hasBuyGoldPage } from "./lib/buy-gold-pages";
 import { COUNTRY_HUB_KARAT, hasCountryKaratPage } from "./lib/karat-pages";
 import { BILINGUAL_SECTIONS, SITE_URL } from "./lib/metadata";
 import { isKnownDynamicRoute } from "./lib/valid-routes";
@@ -99,6 +100,25 @@ function redirectRemovedSection(req: NextRequest): NextResponse | null {
   const locale = prefixed ? segments[0] : routing.defaultLocale;
   const url = req.nextUrl.clone();
   url.pathname = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  return withForwardedOrigin(req, NextResponse.redirect(url, 308));
+}
+
+/**
+ * Buy-gold pages without their own content were merged (lib/buy-gold-pages.ts);
+ * their URLs 308 to the country's buy-gold page or, failing that, its price page.
+ */
+function redirectMergedBuyGold(req: NextRequest): NextResponse | null {
+  const segments = req.nextUrl.pathname.split("/").filter(Boolean);
+  const prefixed = segments.length > 0 && LOCALES.has(segments[0]);
+  const rest = prefixed ? segments.slice(1) : segments;
+  if (rest[0] !== "buy-gold" || rest.length < 2 || rest.length > 3) return null;
+  if (!isKnownDynamicRoute(rest)) return null;
+  const locale = prefixed ? segments[0] : routing.defaultLocale;
+  const [, country, type] = rest;
+  if (hasBuyGoldPage(locale, country, type)) return null;
+  const path = buyGoldTarget(locale, country, type);
+  const url = req.nextUrl.clone();
+  url.pathname = locale === routing.defaultLocale ? path : `/${locale}${path}`;
   return withForwardedOrigin(req, NextResponse.redirect(url, 308));
 }
 
@@ -210,7 +230,7 @@ export default function middleware(req: NextRequest) {
   const removedSection = redirectRemovedSection(req);
   if (removedSection) return removedSection;
 
-  const merged = redirectMergedKarat(req);
+  const merged = redirectMergedKarat(req) ?? redirectMergedBuyGold(req);
   if (merged) return merged;
 
   const rejected = rejectUnknownRoute(req);

@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Flag } from "@/components/Flag";
@@ -13,7 +13,8 @@ import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
 import { pick, type LocaleText } from "@/lib/i18n-text";
-import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
+import { buyGoldTarget, hasBuyGoldPage } from "@/lib/buy-gold-pages";
+import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
 
 const SUPPORTED_COUNTRIES = [
   "usa", "uk", "canada", "australia",
@@ -64,7 +65,7 @@ export function generateStaticParams() {
       params.push({ country, type });
     }
   }
-  return withLocales(params);
+  return withLocales(params).filter((p) => hasBuyGoldPage(p.locale, p.country, p.type));
 }
 
 function titleFor(type: Type, t: (k: string, v: { country: string }) => string, country: string) {
@@ -105,6 +106,8 @@ export default async function BuyGoldTypePage({
   const { locale, country: slug, type } = await params;
   const c = COUNTRY_BY_SLUG[slug];
   if (!c || !SUPPORTED_TYPES.includes(type as Type)) notFound();
+  // proxy.ts already 308s merged pages; this covers any render that bypasses it.
+  if (!hasBuyGoldPage(locale, slug, type)) permanentRedirect(canonicalPath(locale, buyGoldTarget(locale, slug, type)));
   setRequestLocale(locale);
   const t = await getTranslations("SubPage");
   const name = countryName(c, locale);

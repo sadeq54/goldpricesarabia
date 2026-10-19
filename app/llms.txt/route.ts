@@ -42,7 +42,7 @@ const BODY = `# Gold Prices Arabia
 - [Shanghai Gold Exchange](${SITE_URL}/en/shanghai-gold-exchange)
 - [Gold calculator](${SITE_URL}/en/gold-calculator)
 - [Best gold price](${SITE_URL}/en/best-gold-price): Country-by-country price comparison
-- [Buy gold (USA, UK, Canada, Australia)](${SITE_URL}/en/buy-gold/usa): Coin + bar pricing
+- [Buying gold in Saudi Arabia, UAE, Egypt and Morocco](${SITE_URL}/en/buy-gold/saudi-arabia): VAT, hallmarks, coin and bar pricing
 - [Precious metals](${SITE_URL}/en/precious-metals): Gold, silver, platinum, palladium
 - [News](${SITE_URL}/en/news): Gold-market news feed
 - [Research](${SITE_URL}/en/research): Daily digest of the most-cited peer-reviewed studies on gold (inflation hedge, safe haven, price drivers, portfolio allocation) aggregated from arXiv, OpenAlex, Crossref and Semantic Scholar
