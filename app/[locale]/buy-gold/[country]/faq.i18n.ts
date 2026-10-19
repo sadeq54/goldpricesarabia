@@ -30,11 +30,11 @@ export function buyGoldFaqs(locale: string, { name, currency, vatAnswer }: BuyFa
     en: [
       {
         q: `How do I buy gold in ${name}?`,
-        a: `Gold is sold in ${name} via: (1) traditional gold shops and licensed goldsmiths, (2) banks (some sell investment bullion), (3) verified e-commerce platforms. Always verify: hallmark stamp, documented receipt, LBMA certification for investment bullion.`,
+        a: `Gold is sold in ${name} via: (1) traditional gold shops and licensed goldsmiths, (2) banks (some sell investment bullion), (3) verified e-commerce platforms. Always check the hallmark stamp, keep an itemised invoice, and for bars prefer refiners on the LBMA Good Delivery list.`,
       },
       {
         q: `What is the difference between buying coins and bars in ${name}?`,
-        a: `Coins: small denominations (1/10, 1/4, 1/2, 1 oz), high liquidity, higher premium (5-10% over spot), easy to sell later. Bars: from 1 gram to 1 kilo, lower premium (1-3% for kilo), target long-term investment.`,
+        a: `Coins come in small, recognisable sizes (1/10, 1/4, 1/2 and 1 oz) and are easy to sell later, but usually carry a higher premium over spot than a bar of the same weight. Bars run from 1 gram to 1 kilo; the larger the bar, the smaller the premium per gram.`,
       },
       {
         q: `Do I need to pay tax when buying gold in ${name}?`,
@@ -42,21 +42,21 @@ export function buyGoldFaqs(locale: string, { name, currency, vatAnswer }: BuyFa
       },
       {
         q: `How do I verify gold authenticity in ${name}?`,
-        a: `Check: (1) hallmark stamp (specifies karat), (2) assay certificate for bullion (PAMP, Valcambi, Argor), (3) receipt from a licensed dealer, (4) simple acid test in-shop, (5) for large bars: verify serial number with the refinery.`,
+        a: `Check: (1) hallmark stamp (specifies karat), (2) the refiner's assay card for bars, (3) receipt from a licensed dealer, (4) simple acid test in-shop, (5) for large bars: verify serial number with the refinery.`,
       },
       {
         q: `What is a fair gold price in ${name}?`,
-        a: `Fair price = global spot price + (1) local VAT + (2) dealer margin (3-10% for bullion, 15-40% for jewellery including making charge). The table above shows the live spot price in ${currency} — your reference for negotiation.`,
+        a: `A fair price is the gold value at today's price, plus the making charge or dealer premium, plus any local tax. The table above shows the live spot equivalent in ${currency}; compare several shops' quotes against it.`,
       },
     ],
     ar: [
       {
         q: `كيف أشتري الذهب في ${name}؟`,
-        a: `الذهب يُباع في ${name} عبر: (1) محلات الذهب التقليدية والصاغة المرخصين، (2) البنوك (بعضها تبيع سبائك استثمارية)، (3) المتاجر الإلكترونية الموثقة. تأكد دائماً من: الهولمارك (ختم العيار)، فاتورة موثقة، شهادة LBMA للسبائك الاستثمارية.`,
+        a: `الذهب يُباع في ${name} عبر: (1) محلات الذهب التقليدية والصاغة المرخصين، (2) البنوك (بعضها تبيع سبائك استثمارية)، (3) المتاجر الإلكترونية الموثقة. تأكد دائماً من ختم العيار، واحتفظ بفاتورة مفصّلة، وفضّل في السبائك المصافي المدرجة في قائمة LBMA للتسليم الجيد.`,
       },
       {
         q: `ما الفرق بين شراء العملات والسبائك في ${name}؟`,
-        a: `العملات: قطع صغيرة (1/10، 1/4، 1/2، 1 أونصة)، سيولة عالية، هامش premium أعلى (5-10% فوق السعر الفوري)، سهلة البيع لاحقاً. السبائك: من 1 جرام إلى 1 كيلو، هامش أقل (1-3% للكيلو)، تستهدف الاستثمار طويل المدى.`,
+        a: `العملات بأحجام صغيرة معروفة (1/10، 1/4، 1/2، 1 أونصة) وسهلة البيع لاحقاً، لكنها تحمل عادةً علاوة فوق السعر الفوري أعلى من سبيكة بالوزن نفسه. والسبائك من 1 جرام إلى 1 كيلو، وكلما كبرت السبيكة صغرت العلاوة لكل جرام.`,
       },
       {
         q: `هل أحتاج لدفع ضريبة عند شراء الذهب في ${name}؟`,
@@ -64,11 +64,11 @@ export function buyGoldFaqs(locale: string, { name, currency, vatAnswer }: BuyFa
       },
       {
         q: `كيف أتأكد من أصالة الذهب المُشترى في ${name}؟`,
-        a: `تحقق من: (1) ختم الهولمارك (يُحدد العيار)، (2) شهادة المختبر للسبائك (مثل PAMP، Valcambi، Argor)، (3) فاتورة من بائع مرخص، (4) اختبار حمضي بسيط في المحل، (5) للسبائك الكبيرة: تحقق من السيريال نومبر مع المُصنّع.`,
+        a: `تحقق من: (1) ختم الهولمارك (يُحدد العيار)، (2) بطاقة الفحص من المصفاة للسبائك، (3) فاتورة من بائع مرخص، (4) اختبار حمضي بسيط في المحل، (5) للسبائك الكبيرة: تحقق من السيريال نومبر مع المُصنّع.`,
       },
       {
         q: `ما السعر العادل للذهب في ${name}؟`,
-        a: `السعر العادل = السعر الفوري العالمي + (1) ضريبة محلية + (2) هامش بائع (3-10% للسبائك، 15-40% للمجوهرات شاملاً المصنعية). الجدول أعلاه يعرض السعر الفوري الحالي بـ${currency} — هذا مرجعك للتفاوض.`,
+        a: `السعر العادل هو قيمة الذهب بسعر اليوم، مضافاً إليها المصنعية أو علاوة التاجر، وأي ضريبة محلية. الجدول أعلاه يعرض السعر الفوري المكافئ بـ${currency}؛ قارن به عروض عدة محلات.`,
       },
     ],
     fr: [

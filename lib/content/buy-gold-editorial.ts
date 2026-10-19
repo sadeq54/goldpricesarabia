@@ -3,12 +3,17 @@
  * focus markets (Saudi Arabia, UAE, Egypt, Morocco). Bilingual HTML
  * snippets injected into /buy-gold/[country] hub pages.
  *
- * Content kept short (~250-400 words per locale) and structured around
- * the buyer-journey questions Google surfaces in PAA boxes:
+ * Structured around the buyer-journey questions Google surfaces in PAA boxes:
  *  - Where to buy?
  *  - What VAT/duties apply?
  *  - What karats dominate?
  *  - How to verify authenticity?
+ *
+ * Rewritten 2026-10-19 after a source check: only facts confirmed against tax
+ * authorities, the World Gold Council or reputable press stay (Saudi/UAE VAT
+ * on the full jewellery price, Egypt's VAT on the making charge, Morocco's
+ * 18K-only standard). No shop or bank names, no haggling percentages, no
+ * making-charge ranges: none of those could be sourced.
  *
  * vatAnswer is reused inside the FAQ schema on the same page to avoid
  * duplicating tax facts in two places.
@@ -32,25 +37,25 @@ export const BUY_GOLD_EDITORIAL: Record<string, BuyGoldEditorial> = {
     en: {
       heading: "How to Buy Gold in Saudi Arabia",
       vatAnswer:
-        "Saudi Arabia applies 15% VAT on gold jewellery (including making charges). Investment-grade bullion of ≥99.5% purity is VAT-exempt. Always request a tax invoice — VAT is collected by ZATCA (Zakat, Tax and Customs Authority) and the invoice is your legal proof.",
+        "Saudi Arabia charges 15% VAT on gold jewellery, on the full price: the gold value and the making charge alike. Investment gold of 99% purity or more, in a form traded on bullion markets, is zero-rated. Ask for a tax invoice; VAT is administered by ZATCA, the Zakat, Tax and Customs Authority.",
       body: `
-<p><strong>Market overview.</strong> Saudi Arabia is the largest retail gold market in the Gulf. The dominant karat is 21K (87.5% purity), favoured for everyday jewellery; 18K is common in fine jewellery and 24K in investment bullion. Prices are quoted per gram in Saudi Riyal (SAR).</p>
-<p><strong>Where to buy.</strong> Three main channels: (1) <strong>traditional gold souks</strong> (Souq Al-Qaisariah in Riyadh, Souq Al-Zal, gold districts in Jeddah's Al-Balad) — best for jewellery, lowest making charges, in-person verification; (2) <strong>retail jewellers in malls</strong> (L'azurde, Damas, Lazurde) — branded designs, higher premiums, return policies; (3) <strong>banks and authorized bullion dealers</strong> (Al Rajhi Bank, NCB Direct, Sbaik, Ounce.com.sa) — investment bars and coins, full documentation, LBMA-certified.</p>
-<p><strong>Hallmarks &amp; verification.</strong> All gold sold in Saudi Arabia must carry a hallmark stamp issued by SASO (Saudi Standards Authority). Look for: karat (e.g. "21K"), purity (e.g. "875"), manufacturer mark, and SASO logo. For bullion, demand the LBMA Good Delivery certificate plus the refinery serial number (PAMP, Valcambi, Argor-Heraeus).</p>
-<p><strong>VAT &amp; making charges.</strong> 15% VAT applies to jewellery and making charges (mostly added on the labour, not the gold itself). Investment bullion ≥99.5% is exempt. Making charges typically range from 5 SAR/gram (simple bands) to 30+ SAR/gram (intricate designs, Arabic calligraphy).</p>
-<p><strong>Negotiation tip.</strong> The spot gold price displayed above is your floor. Calculate fair retail price as: <em>(spot × purity ÷ 31.1035 × SAR rate) + VAT + making</em>. Anything significantly above this range is worth negotiating, especially in the traditional souks where margins are flexible.</p>
+<p><strong>Market overview.</strong> Saudi Arabia is the largest gold jewellery market in the Gulf: consumers bought 44 tonnes of gold jewellery in 2025, against 29.4 tonnes in the UAE, according to the World Gold Council. Most jewellery is sold in 21K (87.5% gold); 18K is common for gem-set and designer pieces and 24K for bars and coins. Prices are quoted per gram in Saudi riyals.</p>
+<p><strong>Where to buy.</strong> Jewellery is sold mainly in the gold souks of the big cities and by jewellery chains in shopping malls. Souk shops usually quote the day's per-gram price plus a making charge; chains tend to sell at fixed prices. Bars and coins are sold by licensed bullion dealers and some banks. Wherever you buy, ask for an invoice that shows the weight, the karat, the making charge and the VAT separately.</p>
+<p><strong>Hallmarks and checks.</strong> Look for the purity stamp (875 or 21K for 21K gold, 750 for 18K) and the maker's mark. For bars, keep the refiner's assay card and serial number; bars from refiners on the LBMA Good Delivery list are the easiest to resell.</p>
+<p><strong>VAT and making charges.</strong> The 15% VAT applies to the whole price of jewellery, not only to the making charge. Making charges are set by each shop and vary with the design, so compare the per-gram charge for similar pieces at two or three shops.</p>
+<p><strong>Working out a fair price.</strong> The spot equivalent shown above is the value of the gold itself. A shop's price adds the making charge and then VAT on the total: <em>(gold value + making charge) × 1.15</em>. A quote far above that for a simple piece is worth questioning.</p>
 `,
     },
     ar: {
       heading: "كيفية شراء الذهب في المملكة العربية السعودية",
       vatAnswer:
-        "تفرض المملكة العربية السعودية ضريبة قيمة مضافة 15% على المجوهرات الذهبية (بما في ذلك المصنعية). السبائك الاستثمارية بنقاء ≥99.5% معفاة من الضريبة. اطلب دائماً فاتورة ضريبية — الضريبة تُحصّل من هيئة الزكاة والضريبة والجمارك (ZATCA) والفاتورة هي إثباتك القانوني.",
+        "تفرض السعودية ضريبة القيمة المضافة 15% على مشغولات الذهب على سعرها كاملًا، أي على قيمة الذهب والمصنعية معًا. أما الذهب الاستثماري بنقاء 99% فأكثر، في صورة متداولة في أسواق السبائك، فيخضع لنسبة الصفر. اطلب فاتورة ضريبية؛ وتتولى الضريبة هيئة الزكاة والضريبة والجمارك.",
       body: `
-<p><strong>نظرة على السوق.</strong> المملكة العربية السعودية هي أكبر سوق ذهب للتجزئة في الخليج. العيار المهيمن هو 21 (نقاء 87.5%)، المفضل للمجوهرات اليومية. عيار 18 شائع في المجوهرات الراقية، وعيار 24 في السبائك الاستثمارية. الأسعار تُسعّر بالجرام بالريال السعودي.</p>
-<p><strong>أين تشتري.</strong> ثلاث قنوات رئيسية: (1) <strong>أسواق الذهب التقليدية</strong> (سوق القيصرية في الرياض، سوق الزل، الحي الذهبي في جدة البلد) — الأفضل للمجوهرات، أقل مصنعية، تحقق شخصي؛ (2) <strong>محلات المجوهرات في المولات</strong> (لازوردي، داماس) — تصاميم مُسمّاة، هوامش أعلى، سياسات إرجاع؛ (3) <strong>البنوك وموزعو السبائك المعتمدون</strong> (مصرف الراجحي، NCB Direct، سبيك، Ounce.com.sa) — سبائك وعملات استثمارية، توثيق كامل، اعتماد LBMA.</p>
-<p><strong>الهولمارك والتحقق.</strong> كل ذهب يُباع في السعودية يجب أن يحمل ختم هولمارك صادر من الهيئة السعودية للمواصفات (SASO). ابحث عن: العيار (مثل "21K")، نسبة النقاء (مثل "875")، علامة المُصنّع، وشعار SASO. للسبائك، اطلب شهادة LBMA Good Delivery مع الرقم التسلسلي للمُكرر (PAMP، Valcambi، Argor-Heraeus).</p>
-<p><strong>الضريبة والمصنعية.</strong> ضريبة 15% تُطبّق على المجوهرات والمصنعية (مُضافة بشكل رئيسي على العمل، لا الذهب نفسه). السبائك الاستثمارية ≥99.5% معفاة. المصنعية تتراوح عادة من 5 ريال/جرام (الخواتم البسيطة) إلى 30+ ريال/جرام (التصاميم المعقدة، الخط العربي).</p>
-<p><strong>نصيحة التفاوض.</strong> السعر الفوري للذهب أعلاه هو الحد الأدنى. احسب السعر العادل للتجزئة: <em>(السعر الفوري × النقاء ÷ 31.1035 × سعر صرف الريال) + ضريبة + مصنعية</em>. أي شيء أعلى بكثير من هذا النطاق يستحق التفاوض، خاصة في الأسواق التقليدية حيث الهوامش مرنة.</p>
+<p><strong>نظرة على السوق.</strong> السعودية أكبر سوق لمجوهرات الذهب في الخليج: اشترى المستهلكون 44 طنًا من مشغولات الذهب عام 2025 مقابل 29.4 طن في الإمارات، بحسب مجلس الذهب العالمي. ويُباع معظم المشغولات بعيار 21 (نقاء 87.5%)، ويشيع عيار 18 في القطع المرصعة ومجوهرات المصممين، وعيار 24 في السبائك والعملات. وتُعلن الأسعار للجرام بالريال السعودي.</p>
+<p><strong>أين تشتري.</strong> تُباع المشغولات أساسًا في أسواق الذهب بالمدن الكبرى ولدى سلاسل المجوهرات في المراكز التجارية. ومحلات الأسواق تعلن عادةً سعر الجرام لليوم مضافًا إليه المصنعية، بينما تبيع السلاسل غالبًا بأسعار ثابتة. أما السبائك والعملات فيبيعها تجار سبائك مرخصون وبعض البنوك. وأينما اشتريت، اطلب فاتورة تبيّن الوزن والعيار والمصنعية والضريبة كلًّا على حدة.</p>
+<p><strong>الدمغة والتحقق.</strong> ابحث عن ختم العيار (875 أو 21K لعيار 21، و750 لعيار 18) وعلامة الصانع. وللسبائك، احتفظ ببطاقة الفحص والرقم التسلسلي من المصفاة؛ فالسبائك الصادرة عن مصافٍ مدرجة في قائمة LBMA للتسليم الجيد هي الأسهل في إعادة البيع.</p>
+<p><strong>الضريبة والمصنعية.</strong> تُطبَّق ضريبة 15% على سعر المشغولات كاملًا لا على المصنعية وحدها. ويحدد كل محل مصنعيته وتختلف بحسب التصميم، فقارن مصنعية الجرام لقطع متشابهة في محلين أو ثلاثة.</p>
+<p><strong>كيف تقدّر السعر العادل.</strong> السعر الفوري المكافئ المعروض أعلاه هو قيمة الذهب نفسه. ويضيف المحل المصنعية ثم الضريبة على المجموع: <em>(قيمة الذهب + المصنعية) × 1.15</em>. والعرض الذي يزيد كثيرًا على ذلك لقطعة بسيطة يستحق السؤال.</p>
 `,
     },
   },
@@ -58,25 +63,25 @@ export const BUY_GOLD_EDITORIAL: Record<string, BuyGoldEditorial> = {
     en: {
       heading: "How to Buy Gold in the UAE",
       vatAnswer:
-        "The UAE applies 5% VAT on gold jewellery making charges. Raw investment-grade gold (≥99% purity) is zero-rated. Dubai is a major regional refining and re-export hub — duty-free for tourists carrying gold within personal allowance limits.",
+        "The UAE charges 5% VAT on gold jewellery, on the full price: the gold value and the making charge alike. Investment gold of 99% purity or more, in a form traded on bullion markets, is zero-rated. Visitors can reclaim VAT on eligible purchases through the tax-refund system when they leave the country; ask the shop what can be refunded on gold.",
       body: `
-<p><strong>Market overview.</strong> The UAE — particularly Dubai's Gold Souk — is one of the world's largest gold trading hubs. Karats sold: 24K (investment), 22K (popular for jewellery investment), 21K (Gulf-style jewellery), 18K (European/luxury designs). Prices quoted per gram in UAE Dirham (AED).</p>
-<p><strong>Where to buy.</strong> (1) <strong>Dubai Gold Souk (Deira)</strong> — the world's most famous gold market, hundreds of shops, intense competition keeps margins thin; (2) <strong>Gold &amp; Diamond Park</strong> — wholesale-friendly, larger pieces, ZeroTax certificates; (3) <strong>major mall jewellers</strong> (Joyalukkas, Damas, Malabar Gold) — branded designs, fixed pricing, online ordering with home delivery; (4) <strong>licensed bullion dealers</strong> (Emirates Gold, ARY Refinery) — investment bars with LBMA certification.</p>
-<p><strong>Hallmarks &amp; verification.</strong> All gold in the UAE must carry the Dubai Hallmark issued by Dubai Central Laboratory (DCL). Look for: karat stamp, fineness, manufacturer mark, and the distinctive Dubai Hallmark symbol. The DCL operates regular spot-check assays — counterfeits are rare in the regulated souk.</p>
-<p><strong>VAT &amp; tourist refunds.</strong> 5% VAT applies on making charges (not on raw gold ≥99% purity). Tourists can claim VAT refunds at the airport via the Federal Tax Authority's "Planet" system — keep all original invoices and a Planet-tagged receipt. Personal allowance for outgoing travellers: typically 2 kg of gold without commercial documentation, subject to destination country rules.</p>
-<p><strong>Negotiation tip.</strong> The souk is one of the few places where negotiation is expected — prices are typically quoted at 10-20% above spot for jewellery, and 30-40% reductions on the making charge component are common after polite negotiation. Always agree the price <em>before</em> the piece is weighed.</p>
+<p><strong>Market overview.</strong> The UAE, and Dubai in particular, is one of the world's largest gold trading hubs. Jewellery is sold mainly in 21K and 22K, with 18K for gem-set and designer pieces and 24K for bars and coins. The dirham is pegged to the US dollar at 3.6725, so dirham gold prices move with the dollar price. Prices are quoted per gram in dirhams.</p>
+<p><strong>Where to buy.</strong> The best-known market is the Gold Souk in Deira, Dubai, where many shops compete side by side; jewellery chains in malls sell at fixed prices, and licensed bullion dealers sell bars and coins. Agree the per-gram price and the making charge before the piece is weighed, and ask for an invoice that shows the weight, karat, making charge and VAT.</p>
+<p><strong>Hallmarks and checks.</strong> Look for the purity stamp (875 for 21K, 916 for 22K, 750 for 18K) and the maker's mark. For bars, keep the refiner's assay card and serial number.</p>
+<p><strong>VAT.</strong> The 5% VAT applies to the whole price of jewellery. If you are visiting, keep the original tax invoice: eligible purchases can be submitted for a VAT refund when you leave.</p>
+<p><strong>Working out a fair price.</strong> The spot equivalent shown above is the value of the gold itself. A shop's price is that value plus the making charge, with 5% VAT on the total. Comparing the making charge for similar pieces at a few shops is the simplest way to judge a quote.</p>
 `,
     },
     ar: {
       heading: "كيفية شراء الذهب في الإمارات",
       vatAnswer:
-        "تفرض الإمارات ضريبة قيمة مضافة 5% على رسوم تصنيع المجوهرات الذهبية. الذهب الاستثماري الخام (نقاء ≥99%) معفى من الضريبة. دبي مركز إقليمي رئيسي للتكرير وإعادة التصدير — معفاة من الرسوم للسياح الذين يحملون الذهب ضمن حدود البدل الشخصي.",
+        "تفرض الإمارات ضريبة القيمة المضافة 5% على مشغولات الذهب على سعرها كاملًا، أي على قيمة الذهب والمصنعية معًا. أما الذهب الاستثماري بنقاء 99% فأكثر، في صورة متداولة في أسواق السبائك، فيخضع لنسبة الصفر. ويستطيع الزوار استرداد الضريبة عن المشتريات المؤهلة عبر نظام الاسترداد عند مغادرة البلاد؛ فاسأل المحل عمّا يمكن استرداده على الذهب.",
       body: `
-<p><strong>نظرة على السوق.</strong> الإمارات — خاصة سوق الذهب في دبي — واحدة من أكبر مراكز تداول الذهب في العالم. العيارات: 24 (استثمار)، 22 (شائع للمجوهرات الاستثمارية)، 21 (مجوهرات خليجية)، 18 (تصاميم أوروبية فاخرة). الأسعار بالجرام بالدرهم الإماراتي.</p>
-<p><strong>أين تشتري.</strong> (1) <strong>سوق الذهب في دبي (ديرة)</strong> — أشهر سوق ذهب في العالم، مئات المحلات، المنافسة الشديدة تُبقي الهوامش ضيقة؛ (2) <strong>سوق الذهب والألماس</strong> — مناسب للجملة، قطع أكبر، شهادات معفاة من الضرائب؛ (3) <strong>محلات المولات الكبرى</strong> (جويلوكاس، داماس، مالابار) — تصاميم مُسمّاة، تسعير ثابت، طلب عبر الإنترنت مع توصيل منزلي؛ (4) <strong>موزعو السبائك المرخصون</strong> (Emirates Gold، ARY Refinery) — سبائك استثمارية معتمدة من LBMA.</p>
-<p><strong>الهولمارك والتحقق.</strong> كل ذهب في الإمارات يجب أن يحمل ختم دبي الصادر من مختبر دبي المركزي (DCL). ابحث عن: ختم العيار، النقاء، علامة المُصنّع، وشعار ختم دبي المميز. مختبر DCL يُجري فحوصات عشوائية منتظمة — التزييف نادر في السوق المُنظّم.</p>
-<p><strong>الضريبة والاسترداد للسياح.</strong> ضريبة 5% تُطبّق على المصنعية (لا على الذهب الخام ≥99% نقاء). السياح يمكنهم استرداد الضريبة في المطار عبر نظام "Planet" التابع للهيئة الاتحادية للضرائب — احتفظ بجميع الفواتير الأصلية والإيصال المُرفق بـPlanet. البدل الشخصي للمسافرين المغادرين: عادة 2 كيلوغرام من الذهب بدون توثيق تجاري، يخضع لقواعد بلد الوصول.</p>
-<p><strong>نصيحة التفاوض.</strong> السوق من الأماكن القليلة حيث التفاوض متوقع — الأسعار عادة 10-20% فوق السعر الفوري للمجوهرات، وتخفيضات 30-40% على مكون المصنعية شائعة بعد تفاوض مهذب. اتفق دائماً على السعر <em>قبل</em> وزن القطعة.</p>
+<p><strong>نظرة على السوق.</strong> تُعدّ الإمارات، ودبي خاصةً، من أكبر مراكز تجارة الذهب في العالم. وتُباع المشغولات أساسًا بعيارَي 21 و22، مع عيار 18 للقطع المرصعة ومجوهرات المصممين، وعيار 24 للسبائك والعملات. والدرهم مربوط بالدولار الأمريكي عند 3.6725، لذا تتحرك أسعار الذهب بالدرهم مع السعر بالدولار. وتُعلن الأسعار للجرام بالدرهم.</p>
+<p><strong>أين تشتري.</strong> أشهر الأسواق سوق الذهب في ديرة بدبي، حيث تتنافس محلات كثيرة متجاورة؛ وتبيع سلاسل المجوهرات في المراكز التجارية بأسعار ثابتة، ويبيع تجار السبائك المرخصون السبائك والعملات. اتفق على سعر الجرام والمصنعية قبل وزن القطعة، واطلب فاتورة تبيّن الوزن والعيار والمصنعية والضريبة.</p>
+<p><strong>الدمغة والتحقق.</strong> ابحث عن ختم العيار (875 لعيار 21، و916 لعيار 22، و750 لعيار 18) وعلامة الصانع. وللسبائك، احتفظ ببطاقة الفحص والرقم التسلسلي من المصفاة.</p>
+<p><strong>الضريبة.</strong> تُطبَّق ضريبة 5% على سعر المشغولات كاملًا. وإن كنت زائرًا فاحتفظ بالفاتورة الضريبية الأصلية: إذ يمكن تقديم المشتريات المؤهلة لاسترداد الضريبة عند المغادرة.</p>
+<p><strong>كيف تقدّر السعر العادل.</strong> السعر الفوري المكافئ المعروض أعلاه هو قيمة الذهب نفسه. وسعر المحل هو هذه القيمة مضافًا إليها المصنعية، ثم ضريبة 5% على المجموع. ومقارنة المصنعية لقطع متشابهة في عدة محلات هي أبسط طريقة للحكم على العرض.</p>
 `,
     },
   },
@@ -84,27 +89,27 @@ export const BUY_GOLD_EDITORIAL: Record<string, BuyGoldEditorial> = {
     en: {
       heading: "How to Buy Gold in Egypt",
       vatAnswer:
-        "Egypt does not apply VAT on gold purchases — a major advantage for investors. However, a stamp duty (دمغة) of 1% of value applies on jewellery and is collected by the Stamp Office. Investment bullion is stamp-duty exempt.",
+        "Egypt charges 14% VAT on gold jewellery, but only on an agreed average making charge per gram, not on the value of the gold. It is paid when the piece is hallmarked, so it is normally already in the price. Ask the shop for an invoice that shows the weight, the karat and the making charge.",
       body: `
-<p><strong>Market overview.</strong> Egypt has one of the oldest gold trading cultures in the world. Dominant karats: 21K and 18K for everyday jewellery, 24K for investment. Prices quoted per gram in Egyptian Pound (EGP). The Cairo gold market — particularly Khan El Khalili and Sagha Street — has been operational for centuries.</p>
-<p><strong>Where to buy.</strong> (1) <strong>Khan El Khalili and Sagha</strong> (Cairo Old City) — the historic gold district, hundreds of family-run jewellers, hand-crafted designs, negotiation expected; (2) <strong>retail jeweller chains</strong> (L'azurde Egypt, Damas Egypt, Lazurde) — branded designs, mall presence, fixed pricing; (3) <strong>licensed bullion dealers</strong> (Egyptian Gold Refinery, NBE Bullion) — investment bars with full hallmarks.</p>
-<p><strong>Hallmarks &amp; verification.</strong> All gold sold in Egypt must carry an official stamp from the Hallmarks &amp; Weights General Authority (مصلحة الدمغة). The stamp specifies the karat (e.g. 21K stamp), and the piece must also carry the manufacturer's mark. Khan El Khalili pieces often carry both the official stamp and the family-jeweller's mark.</p>
-<p><strong>Tax &amp; duty.</strong> No VAT applies to gold. A 1% stamp duty (دمغة) is added to jewellery — typically already included in the displayed price. Investment bullion (≥99.5%) is exempt from stamp duty. Egyptian Pound has experienced significant volatility recently, so the EGP price of gold has tracked the USD/EGP exchange rate closely.</p>
-<p><strong>Currency &amp; FX consideration.</strong> Because EGP volatility against USD is high, gold has become a popular hedge for Egyptian savers. The EGP gold price shown above is computed daily from the official Central Bank of Egypt mid-rate. Black-market FX rates may produce different EGP prices in informal markets — verify with your jeweller which rate they use.</p>
-<p><strong>Negotiation tip.</strong> In Khan El Khalili, the making charge is highly negotiable — often dropping 30-50% from the initial quote after polite back-and-forth. The raw gold weight × karat is non-negotiable (it's the global spot price). Negotiate only the labour and design premium.</p>
+<p><strong>Market overview.</strong> Egypt's jewellery trade centres on 21K, with 18K also common and 24K for bars and coins. Prices are quoted per gram in Egyptian pounds. The pound has been devalued several times since 2022, and demand for gold as a store of savings has tended to rise around those moves.</p>
+<p><strong>Where to buy.</strong> Cairo's best-known gold market is the El-Sagha quarter next to Khan el-Khalili; other cities have their own jewellers' streets, and jewellery chains sell in malls at fixed prices. Bars and coins are sold by licensed dealers. Agree the per-gram price and the making charge before buying, and keep the invoice.</p>
+<p><strong>Hallmarks and checks.</strong> Gold sold in Egypt is hallmarked by the state assay authority (مصلحة الدمغة والموازين). Look for the purity stamp (875 for 21K, 750 for 18K) as well as the maker's mark.</p>
+<p><strong>VAT.</strong> The 14% VAT is charged on an agreed average making charge per gram rather than on the gold value, and is paid at hallmarking.</p>
+<p><strong>Exchange rate.</strong> The pound prices on this page use a daily mid-market exchange rate from an open-source currency feed, which can differ slightly from the rate a jeweller uses; the dollar price per ounce is the same everywhere.</p>
+<p><strong>Working out a fair price.</strong> The spot equivalent shown above is the value of the gold itself; the shop adds its making charge. Compare the making charge for similar pieces at a few shops, and remember that it is not refunded when you sell.</p>
 `,
     },
     ar: {
       heading: "كيفية شراء الذهب في مصر",
       vatAnswer:
-        "مصر لا تطبق ضريبة قيمة مضافة على شراء الذهب — ميزة كبيرة للمستثمرين. لكن تُطبّق دمغة بقيمة 1% من القيمة على المجوهرات وتُحصّلها مصلحة الدمغة. السبائك الاستثمارية معفاة من الدمغة.",
+        "تفرض مصر ضريبة القيمة المضافة 14% على المشغولات الذهبية، لكن على متوسط متفق عليه للمصنعية لكل جرام فقط، لا على قيمة الذهب. وتُدفع عند دمغ القطعة، لذا تكون عادةً داخلة في السعر. اطلب من المحل فاتورة تبيّن الوزن والعيار والمصنعية.",
       body: `
-<p><strong>نظرة على السوق.</strong> مصر لديها واحدة من أقدم ثقافات تداول الذهب في العالم. العيارات السائدة: 21 و18 للمجوهرات اليومية، 24 للاستثمار. الأسعار بالجرام بالجنيه المصري. سوق الذهب في القاهرة — خاصة خان الخليلي وشارع الصاغة — يعمل منذ قرون.</p>
-<p><strong>أين تشتري.</strong> (1) <strong>خان الخليلي والصاغة</strong> (وسط القاهرة القديمة) — الحي التاريخي للذهب، مئات الصاغة العائليين، تصاميم يدوية، التفاوض متوقع؛ (2) <strong>سلاسل محلات المجوهرات</strong> (لازوردي مصر، داماس مصر) — تصاميم مُسمّاة، حضور في المولات، تسعير ثابت؛ (3) <strong>موزعو السبائك المرخصون</strong> (مصنع الذهب المصري، البنك الأهلي للسبائك) — سبائك استثمارية بهولمارك كامل.</p>
-<p><strong>الهولمارك والتحقق.</strong> كل ذهب يُباع في مصر يجب أن يحمل ختماً رسمياً من مصلحة الدمغة والموازين. الختم يُحدّد العيار (مثل ختم 21)، ويجب أن تحمل القطعة أيضاً علامة المُصنّع. قطع خان الخليلي عادة تحمل الختم الرسمي وعلامة الصائغ العائلي معاً.</p>
-<p><strong>الضريبة والدمغة.</strong> لا توجد ضريبة قيمة مضافة على الذهب. تُضاف دمغة 1% على المجوهرات — عادة مُدرجة بالفعل في السعر المعروض. السبائك الاستثمارية (≥99.5%) معفاة من الدمغة. الجنيه المصري شهد تقلباً كبيراً مؤخراً، لذا سعر الذهب بالجنيه يتبع سعر صرف الدولار/الجنيه عن كثب.</p>
-<p><strong>اعتبار العملة وسعر الصرف.</strong> بسبب التقلب العالي للجنيه مقابل الدولار، أصبح الذهب تحوطاً شائعاً للمدّخرين المصريين. سعر الذهب بالجنيه المعروض أعلاه يُحسب يومياً من السعر الرسمي للبنك المركزي المصري. الأسعار غير الرسمية للصرف قد تُنتج أسعار جنيه مختلفة في الأسواق غير الرسمية — تحقق مع الصائغ أي سعر يستخدم.</p>
-<p><strong>نصيحة التفاوض.</strong> في خان الخليلي، المصنعية قابلة للتفاوض بشدة — غالباً تنخفض 30-50% عن العرض الأولي بعد تفاوض مهذب. وزن الذهب الخام × العيار غير قابل للتفاوض (هذا السعر الفوري العالمي). تفاوض فقط على هامش العمل والتصميم.</p>
+<p><strong>نظرة على السوق.</strong> تتركز تجارة المشغولات في مصر على عيار 21، مع شيوع عيار 18 أيضًا، وعيار 24 للسبائك والعملات. وتُعلن الأسعار للجرام بالجنيه المصري. وقد خُفِّضت قيمة الجنيه عدة مرات منذ 2022، ومال الطلب على الذهب كمخزن للمدخرات إلى الارتفاع حول تلك القرارات.</p>
+<p><strong>أين تشتري.</strong> أشهر أسواق الذهب في القاهرة حي الصاغة المجاور لخان الخليلي، ولكل مدينة شوارع صاغتها، وتبيع سلاسل المجوهرات في المراكز التجارية بأسعار ثابتة. أما السبائك والعملات فيبيعها تجار مرخصون. اتفق على سعر الجرام والمصنعية قبل الشراء، واحتفظ بالفاتورة.</p>
+<p><strong>الدمغة والتحقق.</strong> تُدمغ المشغولات الذهبية في مصر لدى مصلحة الدمغة والموازين. ابحث عن ختم العيار (875 لعيار 21، و750 لعيار 18) إلى جانب علامة الصانع.</p>
+<p><strong>الضريبة.</strong> تُحتسب ضريبة 14% على متوسط متفق عليه للمصنعية لكل جرام لا على قيمة الذهب، وتُدفع عند الدمغ.</p>
+<p><strong>سعر الصرف.</strong> تعتمد الأسعار بالجنيه في هذه الصفحة على سعر صرف وسطي يومي من مصدر بيانات عملات مفتوح المصدر، وقد يختلف قليلًا عن السعر الذي يعتمده الصائغ؛ أما سعر الأونصة بالدولار فواحد في كل مكان.</p>
+<p><strong>كيف تقدّر السعر العادل.</strong> السعر الفوري المكافئ المعروض أعلاه هو قيمة الذهب نفسه، ويضيف المحل مصنعيته. قارن المصنعية لقطع متشابهة في عدة محلات، وتذكّر أنها لا تُستردّ عند البيع.</p>
 `,
     },
   },
@@ -112,27 +117,25 @@ export const BUY_GOLD_EDITORIAL: Record<string, BuyGoldEditorial> = {
     en: {
       heading: "How to Buy Gold in Morocco",
       vatAnswer:
-        "Morocco applies 20% VAT (TVA) on retail jewellery purchases. Investment-grade bullion (≥99.5% purity) sold by licensed dealers can be VAT-exempt under specific conditions — verify with the dealer. Customs duty applies on gold imports above the personal allowance.",
+        "Morocco's standard VAT rate is 20%. Ask the jeweller whether tax is included in the price you are quoted, and for an invoice that shows the weight, the karat, the making charge and any tax separately.",
       body: `
-<p><strong>Market overview.</strong> Morocco's gold market is moderately sized but culturally significant — traditional jewellery is integral to weddings and family heirlooms. Dominant karats: 18K and 22K for jewellery, 24K for investment. Prices quoted per gram in Moroccan Dirham (MAD).</p>
-<p><strong>Where to buy.</strong> (1) <strong>medina gold souks</strong> (Fes, Marrakech, Casablanca) — traditional designs, family jewellers, in-person inspection; (2) <strong>modern retail jewellers</strong> in major cities (Casablanca, Rabat) — branded designs, fixed pricing, modern showrooms; (3) <strong>banks and licensed bullion dealers</strong> (Attijariwafa Bank, Bank Al-Maghrib licensed dealers) — investment bars with documentation.</p>
-<p><strong>Hallmarks &amp; verification.</strong> Moroccan gold carries the "Poinçon de Garantie" issued by the Direction Générale des Impôts (DGI). Look for the distinctive Moroccan stamp specifying karat. For bullion, demand a Bank Al-Maghrib certificate or LBMA documentation. Counterfeits are most common in unregulated souks — stick to established jewellers with permanent shops.</p>
-<p><strong>VAT &amp; customs.</strong> 20% VAT (TVA) is the standard rate on retail jewellery purchases — among the highest in the region. This is one reason Moroccan gold buyers often acquire pieces in the UAE during travel. Personal allowance for incoming travellers is limited; declare gold over 1 kg on entry to avoid customs penalties.</p>
-<p><strong>Currency &amp; pricing.</strong> The Moroccan Dirham is managed against a EUR/USD basket, so it's relatively stable. MAD gold prices closely track international USD gold movements. The MAD price shown above is computed from the Bank Al-Maghrib daily reference rate.</p>
-<p><strong>Negotiation tip.</strong> Medina souks operate on negotiation — initial prices are typically 20-30% above the final agreed price. The making charge ("façon") is the negotiable component; the gold weight is fixed by global spot. Modern mall retailers operate on fixed pricing with no negotiation.</p>
+<p><strong>Market overview.</strong> Moroccan jewellers sell 18K, the only gold standard authorised for sale, and gold is central to weddings and family heirlooms. Prices are quoted per gram in dirhams. The dirham is managed against a basket of the euro and the US dollar, so dirham gold prices follow the world price with some influence from the euro.</p>
+<p><strong>Where to buy.</strong> Traditional jewellers trade in the medinas of Fes, Marrakech and Casablanca, and modern jewellers in the big cities sell at fixed prices. In the souks the making charge ("façon") is usually negotiable, while the gold value follows the world price. Ask for an invoice that shows the weight, karat and making charge.</p>
+<p><strong>Hallmarks and checks.</strong> Look for the official guarantee hallmark showing the purity (750 for 18K) and the maker's mark, and buy from shops with a permanent address.</p>
+<p><strong>Exchange rate.</strong> The dirham prices on this page use a daily mid-market exchange rate from an open-source currency feed.</p>
+<p><strong>Working out a fair price.</strong> The 18K spot equivalent is the value of the gold itself; the shop's price adds the making charge and any tax. Compare the making charge for similar pieces at a few shops.</p>
 `,
     },
     ar: {
       heading: "كيفية شراء الذهب في المغرب",
       vatAnswer:
-        "يطبق المغرب ضريبة قيمة مضافة 20% (TVA) على شراء المجوهرات بالتجزئة. السبائك الاستثمارية (نقاء ≥99.5%) المُباعة من موزعين مرخصين يمكن أن تكون معفاة من الضريبة تحت شروط محددة — تحقق مع البائع. تُطبّق رسوم جمركية على واردات الذهب فوق البدل الشخصي.",
+        "المعدل العادي للضريبة على القيمة المضافة في المغرب 20%. اسأل الصائغ هل الضريبة داخلة في السعر المعروض عليك، واطلب فاتورة تبيّن الوزن والعيار والمصنعية وأي ضريبة كلًّا على حدة.",
       body: `
-<p><strong>نظرة على السوق.</strong> سوق الذهب المغربي متوسط الحجم لكنه ذو أهمية ثقافية — المجوهرات التقليدية جزء لا يتجزأ من الأعراس والموروث العائلي. العيارات السائدة: 18 و22 للمجوهرات، 24 للاستثمار. الأسعار بالجرام بالدرهم المغربي.</p>
-<p><strong>أين تشتري.</strong> (1) <strong>أسواق الذهب في المدن العتيقة</strong> (فاس، مراكش، الدار البيضاء) — تصاميم تقليدية، صاغة عائليون، فحص شخصي؛ (2) <strong>محلات المجوهرات الحديثة</strong> في المدن الكبرى (الدار البيضاء، الرباط) — تصاميم مُسمّاة، تسعير ثابت، صالات عرض حديثة؛ (3) <strong>البنوك وموزعو السبائك المرخصون</strong> (التجاري وفا بنك، الموزعون المرخصون من بنك المغرب) — سبائك استثمارية مع توثيق.</p>
-<p><strong>الهولمارك والتحقق.</strong> الذهب المغربي يحمل "Poinçon de Garantie" الصادر من المديرية العامة للضرائب (DGI). ابحث عن الختم المغربي المميز الذي يُحدّد العيار. للسبائك، اطلب شهادة بنك المغرب أو توثيق LBMA. التزييف أكثر شيوعاً في الأسواق غير المُنظّمة — التزم بالصاغة المُعتمدين بمحلات دائمة.</p>
-<p><strong>الضريبة والجمارك.</strong> ضريبة قيمة مضافة 20% (TVA) هي المعدل القياسي على شراء المجوهرات بالتجزئة — من بين الأعلى في المنطقة. هذا أحد الأسباب التي تجعل المشترين المغاربة يقتنون قطعاً في الإمارات خلال السفر. البدل الشخصي للمسافرين القادمين محدود؛ صرّح عن الذهب الذي يزيد عن 1 كيلوغرام عند الدخول لتجنب الغرامات الجمركية.</p>
-<p><strong>العملة والتسعير.</strong> الدرهم المغربي مُدار مقابل سلة EUR/USD، لذا فهو مستقر نسبياً. أسعار الذهب بالدرهم تتبع تحركات الذهب العالمية بالدولار عن كثب. سعر الدرهم المعروض أعلاه يُحسب من سعر الصرف المرجعي اليومي لبنك المغرب.</p>
-<p><strong>نصيحة التفاوض.</strong> أسواق المدن العتيقة تعمل على التفاوض — الأسعار الأولية عادة 20-30% فوق السعر النهائي المتفق عليه. المصنعية ("façon") هي المكون القابل للتفاوض؛ وزن الذهب ثابت بالسعر الفوري العالمي. محلات المولات الحديثة تعمل بتسعير ثابت بدون تفاوض.</p>
+<p><strong>نظرة على السوق.</strong> يبيع الصاغة في المغرب عيار 18، وهو المعيار الوحيد المسموح ببيعه، والذهب محوري في الأعراس والموروث العائلي. وتُعلن الأسعار للجرام بالدرهم. ويُدار الدرهم مقابل سلة من اليورو والدولار الأمريكي، لذا تتبع أسعار الذهب بالدرهم السعر العالمي مع بعض التأثر باليورو.</p>
+<p><strong>أين تشتري.</strong> يعمل الصاغة التقليديون في المدن العتيقة بفاس ومراكش والدار البيضاء، ويبيع الصاغة الحديثون في المدن الكبرى بأسعار ثابتة. وفي الأسواق تكون المصنعية («الفاسون») قابلة للتفاوض عادةً، بينما تتبع قيمة الذهب السعر العالمي. اطلب فاتورة تبيّن الوزن والعيار والمصنعية.</p>
+<p><strong>الدمغة والتحقق.</strong> ابحث عن طابع الضمان الرسمي الذي يبيّن العيار (750 لعيار 18) وعلامة الصانع، واشترِ من محلات ذات عنوان ثابت.</p>
+<p><strong>سعر الصرف.</strong> تعتمد الأسعار بالدرهم في هذه الصفحة على سعر صرف وسطي يومي من مصدر بيانات عملات مفتوح المصدر.</p>
+<p><strong>كيف تقدّر السعر العادل.</strong> السعر الفوري المكافئ لعيار 18 هو قيمة الذهب نفسه، ويضيف سعر المحل المصنعية وأي ضريبة. قارن المصنعية لقطع متشابهة في عدة محلات.</p>
 `,
     },
   },
