@@ -44,6 +44,25 @@ export const RATIO_EXPLAINER: { en: Explainer; ar: Explainer } = {
   },
 };
 
+export const METALS_EXPLAINER: { en: Explainer; ar: Explainer } = {
+  en: {
+    heading: "Four precious metals, four different markets",
+    paragraphs: [
+      "All four are quoted in US dollars per troy ounce (31.1035 g), and the prices here are Swissquote spot quotes, re-read at least every five minutes. Gold is bought mainly as jewellery, bars and coins, and by central banks as a reserve asset.",
+      "Silver is cheaper and far more volatile, and more than half of its demand comes from industry: electronics, solar panels and brazing alloys. Palladium goes mostly into the catalytic converters that clean car exhaust, and those converters are also platinum's largest single use, so both prices follow car production and emission rules more than inflation or interest rates.",
+      "Supply of the last two is concentrated: South Africa mines most of the world's platinum, and Russia and South Africa together produce most of its palladium. A mine strike or a sanction can therefore move these prices sharply in a way it rarely moves gold.",
+    ],
+  },
+  ar: {
+    heading: "أربعة معادن ثمينة وأربعة أسواق مختلفة",
+    paragraphs: [
+      "تُسعَّر المعادن الأربعة بالدولار الأمريكي للأونصة الترويسية (31.1035 جرامًا)، والأسعار هنا أسعار Swissquote الفورية التي يُعاد قراءتها كل خمس دقائق على الأقل. ويُشترى الذهب أساسًا حليًّا وسبائك وعملات، وتحتفظ به البنوك المركزية أصلًا احتياطيًا.",
+      "الفضة أرخص وأكثر تقلبًا بكثير، وأكثر من نصف الطلب عليها صناعي: الإلكترونيات والألواح الشمسية وسبائك اللحام. أما البلاديوم فيذهب معظمه إلى المحوّلات الحفّازة التي تنقّي عوادم السيارات، وهي أيضًا أكبر استخدام منفرد للبلاتين، لذا تتبع أسعارهما إنتاج السيارات وقواعد الانبعاثات أكثر مما تتبع التضخم أو الفائدة.",
+      "ومعروض هذين المعدنين مركّز: فجنوب أفريقيا تستخرج معظم بلاتين العالم، وتنتج روسيا وجنوب أفريقيا معًا معظم البلاديوم. لذلك قد يحرّك إضراب في منجم أو عقوبةٌ أسعارَهما بحدة، على نحو نادرًا ما يحدث مع الذهب.",
+    ],
+  },
+};
+
 export const CHART_EXPLAINER: { en: Explainer; ar: Explainer } = {
   en: {
     heading: "About this chart",

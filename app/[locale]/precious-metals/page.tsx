@@ -1,7 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { ExplainerSection } from "@/components/ExplainerSection";
 import { MetalsStrip } from "@/components/MetalsStrip";
 import { PageShell } from "@/components/PageShell";
+import { METALS_EXPLAINER } from "@/content/explainers";
 import { Link } from "@/i18n/navigation";
 import { getCachedMetals } from "@/lib/cached-fetchers";
 import { pick, type LocaleText } from "@/lib/i18n-text";
@@ -64,6 +66,7 @@ export default async function PreciousMetalsPage({
           </li>
         ))}
       </ul>
+      <ExplainerSection id="metals-explainer" locale={locale} text={METALS_EXPLAINER} />
     </PageShell>
   );
 }
