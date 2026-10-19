@@ -60,7 +60,7 @@ export default function OG() {
             fontFamily: "system-ui, sans-serif",
           }}
         >
-          Live gold prices · USD · JOD · SAR · AED · EGP · 46 countries
+          Live gold prices · USD · JOD · SAR · AED · EGP · 53 countries
         </div>
         <div
           style={{

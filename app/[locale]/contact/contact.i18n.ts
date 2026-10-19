@@ -1,7 +1,7 @@
-import { ADS_EMAIL, CORRECTION_WINDOW_HOURS, DATA_REQUEST_DAYS, REPLY_WINDOW_HOURS, SUPPORT_EMAIL } from "@/lib/contact";
+import { CORRECTION_WINDOW_HOURS, DATA_REQUEST_DAYS, REPLY_WINDOW_HOURS, SUPPORT_EMAIL } from "@/lib/contact";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 
-export const CONTACT_UPDATED = "2026-10-16";
+export const CONTACT_UPDATED = "2026-10-19";
 
 export const TITLE: LocaleText = {
   en: "Contact",
@@ -13,12 +13,12 @@ export const TITLE: LocaleText = {
 };
 
 export const DESCRIPTION: LocaleText = {
-  en: "Reach Gold Prices Arabia: report a wrong price, ask about our data, request a data deletion, or enquire about advertising. Who runs the site and how fast we reply.",
-  ar: "تواصل مع أسعار الذهب العربية: بلّغ عن سعر خاطئ، أو اسأل عن بياناتنا، أو اطلب حذف بياناتك، أو استفسر عن الإعلان. من يدير الموقع وكم نستغرق للرد.",
+  en: "Reach Gold Prices Arabia: report a wrong price, ask about our data, or request a data deletion. Who runs the site and how fast we reply.",
+  ar: "تواصل مع أسعار الذهب العربية: بلّغ عن سعر خاطئ، أو اسأل عن بياناتنا، أو اطلب حذف بياناتك. من يدير الموقع وكم نستغرق للرد.",
   fr: "Contacter Gold Prices Arabia : signaler un prix erroné, poser une question sur nos données, demander une suppression de données ou une insertion publicitaire. Qui gère le site et sous quel délai nous répondons.",
-  tr: "Gold Prices Arabia'ya ulaşın: yanlış fiyat bildirin, verilerimizi sorun, veri silme talep edin veya reklam için yazın. Siteyi kim yönetiyor ve ne kadar sürede yanıt veriyoruz.",
+  tr: "Gold Prices Arabia'ya ulaşın: yanlış fiyat bildirin, verilerimizi sorun, veya veri silme talep edin. Siteyi kim yönetiyor ve ne kadar sürede yanıt veriyoruz.",
   ur: "گولڈ پرائسز عربیہ سے رابطہ: غلط قیمت کی اطلاع دیں، ہمارے ڈیٹا کے بارے میں پوچھیں، ڈیٹا حذف کرانے کی درخواست کریں، یا اشتہار کے بارے میں پوچھیں۔ سائٹ کون چلاتا ہے اور ہم کتنی جلدی جواب دیتے ہیں۔",
-  hi: "Gold Prices Arabia से संपर्क करें: ग़लत भाव की सूचना दें, हमारे डेटा के बारे में पूछें, डेटा हटाने का अनुरोध करें, या विज्ञापन के बारे में पूछें। साइट कौन चलाता है और हम कितनी जल्दी उत्तर देते हैं।",
+  hi: "Gold Prices Arabia से संपर्क करें: ग़लत भाव की सूचना दें, हमारे डेटा के बारे में पूछें, या डेटा हटाने का अनुरोध करें। साइट कौन चलाता है और हम कितनी जल्दी उत्तर देते हैं।",
 };
 
 export const INTRO: LocaleText = {
@@ -70,25 +70,6 @@ export const CHANNELS: Channel[] = [
       hi: `हम कोई खाता नहीं रखते और न कोई वित्तीय विवरण माँगते हैं। GDPR, सऊदी PDPL और समान क़ानूनों के तहत आप पूछ सकते हैं कि हमारे पास आपका क्या डेटा है और उसे हटाने की माँग कर सकते हैं; हम ${DATA_REQUEST_DAYS} दिनों में उत्तर देते हैं। विवरण गोपनीयता नीति में है।`,
     },
     email: SUPPORT_EMAIL,
-  },
-  {
-    h: {
-      en: "Advertising and partnerships",
-      ar: "الإعلانات والشراكات",
-      fr: "Publicité et partenariats",
-      tr: "Reklam ve iş birlikleri",
-      ur: "اشتہارات اور شراکت داری",
-      hi: "विज्ञापन और साझेदारी",
-    },
-    body: {
-      en: "Rates, placements and audience figures are on the advertise page. Sponsored placements are labelled and never change a published price; that rule is written into our editorial standards.",
-      ar: "الأسعار والمساحات وأرقام الجمهور موجودة في صفحة أعلن معنا. تُوسَم المساحات المدفوعة دائماً ولا تغيّر أبداً سعراً منشوراً؛ هذه القاعدة مكتوبة في معايير التحرير لدينا.",
-      fr: "Tarifs, emplacements et audience figurent sur la page publicité. Les emplacements sponsorisés sont signalés et ne modifient jamais un prix publié ; cette règle est inscrite dans notre charte éditoriale.",
-      tr: "Fiyatlar, alanlar ve kitle rakamları reklam sayfasındadır. Sponsorlu alanlar etiketlenir ve yayımlanmış bir fiyatı asla değiştirmez; bu kural editoryal standartlarımızda yazılıdır.",
-      ur: "قیمتیں، جگہیں اور سامعین کے اعداد و شمار اشتہار والے صفحے پر ہیں۔ اسپانسر شدہ جگہوں پر لیبل لگتا ہے اور وہ کبھی کسی شائع شدہ قیمت کو تبدیل نہیں کرتیں؛ یہ اصول ہمارے ادارتی معیارات میں درج ہے۔",
-      hi: "दरें, स्थान और ऑडियंस आँकड़े विज्ञापन पेज पर हैं। प्रायोजित स्थान लेबल किए जाते हैं और किसी प्रकाशित भाव को कभी नहीं बदलते; यह नियम हमारे संपादकीय मानकों में लिखा है।",
-    },
-    email: ADS_EMAIL,
   },
   {
     h: {

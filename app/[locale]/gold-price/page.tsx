@@ -17,7 +17,7 @@ import {
 } from "@/lib/metadata";
 
 /**
- * Country hub — the internal-linking entry point for all 46 country markets.
+ * Country hub — the internal-linking entry point for all 53 country markets.
  * Replaces the footer's flat, boilerplate-discounted country list with a
  * region-grouped, in-content link graph that Google treats as a real crawl
  * path. Country links use `prefetch={false}` so scrolling the (long) page does

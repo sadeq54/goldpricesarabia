@@ -59,7 +59,6 @@ const EDITORIAL: Array<{ href: string; label: LocaleText }> = [
   { href: "/about/privacy", label: { en: "Privacy", ar: "الخصوصية", fr: "Confidentialité", tr: "Gizlilik", ur: "رازداری", hi: "गोपनीयता" } },
   { href: "/terms", label: { en: "Terms of use", ar: "شروط الاستخدام", fr: "Conditions d'utilisation", tr: "Kullanım şartları", ur: "شرائطِ استعمال", hi: "उपयोग की शर्तें" } },
   { href: "/contact", label: { en: "Contact", ar: "تواصل معنا", fr: "Contact", tr: "İletişim", ur: "رابطہ", hi: "संपर्क" } },
-  { href: "/advertise", label: { en: "Advertise", ar: "أعلن معنا", fr: "Publicité", tr: "Reklam verin", ur: "اشتہار دیں", hi: "विज्ञापन दें" } },
 ];
 
 function FooterColumn({ title, links }: { title: string; links: LinkItem[] }) {

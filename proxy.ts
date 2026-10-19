@@ -96,6 +96,9 @@ const REMOVED_SECTIONS: Record<string, string> = {
   cryptocurrency: "/",
   // Same page as /spot-gold (live spot price), merged 2026-10-19.
   "live-gold-price": "/spot-gold",
+  // Offered ad placements while the editorial standards and disclaimer say
+  // AdSense is the only revenue and there are no sponsored placements.
+  advertise: "/contact",
 };
 
 function redirectRemovedSection(req: NextRequest): NextResponse | null {

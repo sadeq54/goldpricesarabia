@@ -186,7 +186,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // publisher is what both readers and ad-network reviewers look for first.
   out.push(...dual("contact", "monthly", 0.55));
   out.push(...dual("terms", "monthly", 0.4));
-  out.push(...dual("advertise", "monthly", 0.4));
 
   // Live-price routes change materially every day (tables, titles, prices),
   // so their lastmod is the current UTC day — accurate and verifiable, which
