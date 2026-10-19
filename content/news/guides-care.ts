@@ -156,9 +156,9 @@ Most families land on a split, and it is a sensible one: the pieces actually wor
     title_en: "Caring for Gold Jewellery Without Damaging It",
     title_ar: "العناية بالمشغولات الذهبية دون إتلافها",
     description_en:
-      "Gold does not tarnish, but the things around it can still ruin a piece — chlorine, ultrasonic cleaners on the wrong settings, and plating that wears through. What is safe, what is not, and when to leave it to a jeweller.",
+      "Pure gold does not tarnish, but the things around it can still ruin a piece — chlorine, ultrasonic cleaners on the wrong settings, and plating that wears through. What is safe, what is not, and when to leave it to a jeweller.",
     description_ar:
-      "الذهب لا يصدأ، لكن ما حوله قد يُتلف القطعة — الكلور، وأجهزة التنظيف بالموجات فوق الصوتية بإعدادات خاطئة، والطلاء الذي ينكشط. ما هو آمن، وما ليس كذلك، ومتى تترك الأمر للصائغ.",
+      "الذهب الخالص لا يصدأ، لكن ما حوله قد يُتلف القطعة — الكلور، وأجهزة التنظيف بالموجات فوق الصوتية بإعدادات خاطئة، والطلاء الذي ينكشط. ما هو آمن، وما ليس كذلك، ومتى تترك الأمر للصائغ.",
     tags: ["care", "jewellery", "buying-guide", "education"],
     author: AUTHOR,
     body_en: `Pure gold does not rust, tarnish or corrode. That is one of the reasons it became money. But the jewellery in your drawer is not pure gold — it is an alloy, often plated, sometimes set with stones, and every one of those additions is more fragile than the metal itself.
@@ -207,7 +207,7 @@ Take it in — do not fix it yourself — if you notice:
 
 - **A stone that moves** when you press it gently. Continuing to wear it is how stones are lost.
 - **A thin or grooved ring shank.** It can be re-shanked long before it fails; after it fails, the repair is bigger.
-- **A stretched or worn clasp**, especially on a heavy chain. Clasps are the most common point of loss.
+- **A stretched or worn clasp**, especially on a heavy chain. Clasps are a common point of loss.
 - **A visible crack or a piece that has become stiff or brittle** — often the signature of chlorine exposure.
 - **Anything antique or with unusual stones**, where the right answer is frequently to clean less, not more.
 
@@ -262,7 +262,7 @@ Put jewellery on last and take it off first. After hair products, perfume and lo
 
 - **حجرًا يتحرّك** عند ضغطه برفق. فمواصلة اللبس هي كيف تُفقد الأحجار.
 - **ساق خاتم رفيعة أو محزّزة.** فيمكن تبديلها قبل أن تنكسر بوقت طويل؛ وبعد الكسر يكبر الإصلاح.
-- **مشبكًا متمدّدًا أو مهترئًا**، خصوصًا في سلسلة ثقيلة. فالمشابك أشيع نقطة فقدان.
+- **مشبكًا متمدّدًا أو مهترئًا**، خصوصًا في سلسلة ثقيلة. فالمشابك من أكثر نقاط الفقدان شيوعًا.
 - **شقًّا ظاهرًا أو قطعة صارت متيبّسة أو قصفة** — وهي بصمة التعرّض للكلور غالبًا.
 - **أي قطعة أثرية أو ذات أحجار غير مألوفة**، حيث يكون الجواب الصحيح كثيرًا هو التنظيف أقلّ لا أكثر.
 
@@ -296,7 +296,7 @@ Two consequences follow, and both surprise people:
 - A family gold set can exceed the total valuables cap on its own, meaning the rest of your jewellery is effectively uninsured.
 - A single heavy necklace can exceed the single-article limit even when the total cap is comfortable.
 
-Find both numbers in your policy. If your holding is worth more, the answer is usually to **schedule** the items — list them specifically, with valuations, for an additional premium. Scheduled items are typically insured for their agreed value and often without the deductible that applies to general contents.
+Find both numbers in your policy. If your holding is worth more, the answer is usually to **schedule** the items — list them specifically, with valuations, for an additional premium. Scheduled items are typically insured up to the value listed for each one and often without the deductible that applies to general contents.
 
 ## Bullion is frequently treated separately
 
@@ -317,7 +317,7 @@ This is where documentation pays for itself. Insurers typically settle on one of
 - **Agreed value** — a figure fixed in advance, usually requiring a valuation. Predictable, and the better option for anything unusual or antique.
 - **Replacement value** — what it would cost to replace with an equivalent piece today. Note that this rises with the gold price, so a sum insured set five years ago may now be badly out of date.
 
-For gold specifically, the second point is the one that bites. Gold prices move a great deal over a few years. **Review your sum insured annually**, using the current price rather than what you paid. This site's country pages make that a one-minute job: weight × karat × today's per-gram price.
+For gold specifically, the second point is the one that bites. Gold prices move a great deal over a few years. **Review your sum insured annually**, using the current price rather than what you paid. This site's country pages make that a one-minute job: weight × today's per-gram price for that karat.
 
 ## What to document, before anything happens
 
@@ -357,7 +357,7 @@ Read three numbers in your policy — the valuables total, the single-article li
 - طقم ذهب عائلي قد يتجاوز سقف النفائس الكلي وحده، ممّا يعني أن بقيّة حليّك غير مؤمَّنة عمليًا.
 - وعقد ثقيل واحد قد يتجاوز حدّ القطعة الواحدة حتى لو كان السقف الكلي مريحًا.
 
-ابحث عن الرقمين في وثيقتك. فإن كانت حيازتك أعلى، فالحلّ عادةً **جدولة** القطع — أي إدراجها بأعيانها مع تقويمات، مقابل قسط إضافي. والقطع المجدولة تُؤمَّن عادةً بقيمة متّفق عليها، وكثيرًا ما دون التحمّل المطبَّق على المحتويات العامة.
+ابحث عن الرقمين في وثيقتك. فإن كانت حيازتك أعلى، فالحلّ عادةً **جدولة** القطع — أي إدراجها بأعيانها مع تقويمات، مقابل قسط إضافي. والقطع المجدولة تُؤمَّن عادةً حتى القيمة المدرجة لكل منها، وكثيرًا ما دون التحمّل المطبَّق على المحتويات العامة.
 
 ## السبائك تُعامَل معاملة منفصلة غالبًا
 
@@ -378,7 +378,7 @@ Read three numbers in your policy — the valuables total, the single-article li
 - **القيمة المتّفق عليها** — رقم يُثبَّت مسبقًا، ويتطلّب تقويمًا عادةً. وهو متوقّع، والخيار الأفضل لأي شيء غير مألوف أو أثري.
 - **قيمة الاستبدال** — ما يكلّفه استبدالها بقطعة مكافئة اليوم. ولاحظ أن هذه ترتفع مع سعر الذهب، فمبلغ تأمين حُدِّد قبل خمس سنوات قد يكون اليوم متأخّرًا كثيرًا.
 
-وفي الذهب تحديدًا، النقطة الثانية هي التي تعضّ. فأسعار الذهب تتحرّك كثيرًا خلال سنوات قليلة. **راجع مبلغ التأمين سنويًا**، بالسعر الحالي لا بما دفعته. وصفحات الدول في هذا الموقع تجعلها مهمّة دقيقة واحدة: الوزن × العيار × سعر الجرام اليوم.
+وفي الذهب تحديدًا، النقطة الثانية هي التي تعضّ. فأسعار الذهب تتحرّك كثيرًا خلال سنوات قليلة. **راجع مبلغ التأمين سنويًا**، بالسعر الحالي لا بما دفعته. وصفحات الدول في هذا الموقع تجعلها مهمّة دقيقة واحدة: الوزن × سعر الجرام اليوم للعيار نفسه.
 
 ## ماذا توثّق قبل وقوع أي شيء
 

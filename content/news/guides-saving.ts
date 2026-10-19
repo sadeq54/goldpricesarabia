@@ -34,7 +34,7 @@ export const SAVING_ARTICLES: Article[] = [
       "وديعة بعائد 18% تبدو سخية حتى تنخفض العملة 30%. كيف تقارن بين حساب التوفير والذهب بصدق — حساب العائد الحقيقي، وما يكلّفك الذهب ولا تكلّفك إياه الوديعة، ومتى تكون الوديعة هي الخيار الأفضل فعلًا.",
     tags: ["savings", "inflation", "investment", "education"],
     author: AUTHOR,
-    body_en: `Ask a bank in Cairo, Istanbul or Beirut what they will pay on a one-year deposit and the number will sound generous. Ask what the currency did over that same year and the picture changes. This is the calculation most savers in the region are actually making, and it is easy to get wrong in both directions.
+    body_en: `Ask a bank in Cairo or Istanbul what they will pay on a one-year deposit and the number will sound generous. Ask what the currency did over that same year and the picture changes. This is the calculation most savers in the region are actually making, and it is easy to get wrong in both directions.
 
 ## The only number that matters is the real one
 
@@ -70,14 +70,14 @@ That is the mechanism, and it is worth stating plainly because it is often mysti
 
 Two consequences follow, and they matter:
 
-- **Against a stable currency, gold is a poor savings vehicle.** A saver in a Gulf state whose currency is pegged to the dollar gets no devaluation protection at all — the peg already provides it. For them, gold is a bet on the world gold price, nothing more.
+- **Against a stable currency, gold's case rests on the world price alone.** A saver in a Gulf state whose currency is pegged to the dollar gets no devaluation protection at all — the peg already provides it. For them, gold is a bet on the world gold price, nothing more.
 - **Against a falling currency, gold's protection is real but partial.** It tracks the dollar, so it protects you from *your* currency falling. It does not protect you from the dollar gold price itself dropping, which it does, sometimes for years.
 
 ## What gold costs that a deposit does not
 
 A deposit's costs are visible. Gold's are not, and they are the reason many savers do worse than they expected.
 
-- **The spread.** You buy at retail and sell at a deduction. Between making charges on the way in and the shop's margin on the way out, a piece of jewellery can need a 15–25% rise just to break even. Coins and bars are far tighter, which is why they exist.
+- **The spread.** You buy at retail and sell at a deduction. Between making charges on the way in and the shop's margin on the way out, a piece of jewellery can need a substantial rise in the gold price just to break even. Coins and bars are far tighter, which is why they exist.
 - **Zero income.** A deposit compounds while you sleep. Gold does not.
 - **Storage and risk.** A safe deposit box has an annual fee. Gold at home has a different kind of cost.
 - **Lumpiness.** You cannot sell a fifth of a bangle. Deposits come out in any amount.
@@ -92,10 +92,10 @@ The question is not "which is better" — it is "what is this money for."
 
 **Money in a pegged-currency economy** — the Gulf riyals and dirhams — should not be in gold for devaluation reasons, because there is no devaluation to protect against. Own gold there because you want exposure to gold, or because you want to wear it.
 
-The saver who does best is usually the one who splits: enough in a deposit to cover the next two years of known expenses, the long-term remainder in a form of gold with a narrow spread. That is a boring answer, and it is the right one.
+A common approach is to split: enough in a deposit to cover the next two years of known expenses, and the long-term remainder in a form of gold with a narrow spread. It is a cautious approach rather than a forecast, and what suits you depends on your own circumstances.
 
-*Prices for every karat and currency on this site update every few seconds — use them to check any figure a shop quotes you before you commit.*`,
-    body_ar: `اسأل بنكًا في القاهرة أو إسطنبول أو بيروت عن العائد على وديعة لسنة واحدة، وسيبدو الرقم سخيًا. ثم اسأل عمّا فعلته العملة خلال السنة نفسها، فتتغيّر الصورة تمامًا. هذه هي الحسبة التي يجريها معظم المدّخرين في المنطقة فعليًا، ومن السهل أن تُخطئ فيها في الاتجاهين معًا.
+*Gold prices for every karat on this site follow live market quotes while the page is open, converted at daily exchange rates — use them to check any figure a shop quotes you before you commit.*`,
+    body_ar: `اسأل بنكًا في القاهرة أو إسطنبول عن العائد على وديعة لسنة واحدة، وسيبدو الرقم سخيًا. ثم اسأل عمّا فعلته العملة خلال السنة نفسها، فتتغيّر الصورة تمامًا. هذه هي الحسبة التي يجريها معظم المدّخرين في المنطقة فعليًا، ومن السهل أن تُخطئ فيها في الاتجاهين معًا.
 
 ## الرقم الوحيد المهم هو العائد الحقيقي
 
@@ -131,14 +131,14 @@ The saver who does best is usually the one who splits: enough in a deposit to co
 
 ويترتّب على ذلك أمران مهمّان:
 
-- **أمام عملة مستقرّة، الذهب أداة ادّخار ضعيفة.** فالمدّخر في دولة خليجية عملتها مربوطة بالدولار لا يحصل على أي حماية من التخفيض — الربط يوفّرها أصلًا. وبالنسبة له، الذهب رهان على سعر الذهب العالمي، لا أكثر.
+- **أمام عملة مستقرّة، تقوم حجّة الذهب على السعر العالمي وحده.** فالمدّخر في دولة خليجية عملتها مربوطة بالدولار لا يحصل على أي حماية من التخفيض — الربط يوفّرها أصلًا. وبالنسبة له، الذهب رهان على سعر الذهب العالمي، لا أكثر.
 - **أمام عملة هابطة، حماية الذهب حقيقية لكنها جزئية.** فهو يتبع الدولار، أي يحميك من هبوط **عملتك أنت**. لكنه لا يحميك من انخفاض سعر الذهب بالدولار نفسه، وهو ينخفض أحيانًا لسنوات.
 
 ## ما يكلّفك الذهب ولا تكلّفك إياه الوديعة
 
 تكاليف الوديعة ظاهرة، أمّا تكاليف الذهب فمستترة، وهي سبب حصول كثير من المدّخرين على نتيجة أسوأ ممّا توقّعوا.
 
-- **الفارق بين الشراء والبيع.** أنت تشتري بسعر التجزئة وتبيع بخصم. وبين المصنعية عند الشراء وهامش المحل عند البيع، قد تحتاج قطعة الذهب إلى ارتفاع بنسبة 15–25% لمجرّد أن تتعادل. أمّا العملات والسبائك فالفارق فيها أضيق بكثير، ولهذا وُجدت.
+- **الفارق بين الشراء والبيع.** أنت تشتري بسعر التجزئة وتبيع بخصم. وبين المصنعية عند الشراء وهامش المحل عند البيع، قد تحتاج قطعة الذهب إلى ارتفاع كبير في سعر الذهب لمجرّد أن تتعادل. أمّا العملات والسبائك فالفارق فيها أضيق بكثير، ولهذا وُجدت.
 - **دخل صفري.** الوديعة تتراكم وأنت نائم، والذهب لا.
 - **الحفظ والمخاطرة.** صندوق الأمانات له رسم سنوي، والذهب في البيت له كلفة من نوع آخر.
 - **صعوبة التجزئة.** لا يمكنك بيع خُمس أسورة، بينما تُسحب الوديعة بأي مبلغ.
@@ -153,9 +153,9 @@ The saver who does best is usually the one who splits: enough in a deposit to co
 
 **مال في اقتصاد بعملة مربوطة** — كالريالات والدراهم الخليجية — لا ينبغي أن يوضع في الذهب بدافع الحماية من التخفيض، لأنه لا يوجد تخفيض تحتمي منه. امتلك الذهب هناك لأنك تريد التعرّض لسعر الذهب، أو لأنك تريد ارتداءه.
 
-والمدّخر الذي يحقّق أفضل نتيجة عادةً هو من يوزّع: ما يكفي في وديعة لتغطية نفقات السنتين القادمتين المعلومة، والباقي طويل الأجل في صورة ذهب بفارق سعري ضيّق. جواب ممل، وهو الجواب الصحيح.
+ومن المقاربات الشائعة التوزيع: ما يكفي في وديعة لتغطية نفقات السنتين القادمتين المعلومة، والباقي طويل الأجل في صورة ذهب بفارق سعري ضيّق. وهي مقاربة حذِرة لا توقّع، وما يناسبك يتوقّف على ظروفك أنت.
 
-*أسعار كل العيارات وكل العملات على هذا الموقع تُحدَّث كل ثوانٍ — استخدمها للتحقّق من أي رقم يذكره لك المحل قبل أن تلتزم.*`,
+*أسعار الذهب لكل العيارات على هذا الموقع تتبع أسعار السوق المباشرة ما دامت الصفحة مفتوحة، وتُحوَّل بأسعار صرف يومية — استخدمها للتحقّق من أي رقم يذكره لك المحل قبل أن تلتزم.*`,
   },
   {
     slug: "gold-coins-bars-or-jewellery-for-saving",
@@ -174,16 +174,16 @@ The saver who does best is usually the one who splits: enough in a deposit to co
 
 Every form of gold sells for more than its metal value. The difference is the **premium**, and it pays for fabrication, distribution, and the seller's margin.
 
-Rough ranges, as a percentage over spot:
+Roughly, from the lowest premium over spot to the highest (actual figures vary by dealer, market and gold price):
 
-| Form | Typical premium | Why |
+| Form | Relative premium | Why |
 |---|---|---|
-| Large bar (1 kg) | 1–2% | One casting, one assay, enormous value per unit of work |
-| Small bar (10–100 g) | 3–6% | Same work, much less gold to spread it over |
-| Bullion coin (1 oz) | 4–8% | Minting is finer work; sovereign coins carry a name premium |
-| Small coin (¼ oz and under) | 8–15% | The work per gram climbs steeply |
-| Plain chain / bangle | 8–20% | Making charges, retail overhead |
-| Worked or stone-set jewellery | 25–100%+ | Craftsmanship, stones, showroom |
+| Large bar (1 kg) | Lowest | One casting, one assay, enormous value per unit of work |
+| Small bar (10–100 g) | Low | Same work, much less gold to spread it over |
+| Bullion coin (1 oz) | Low to moderate | Minting is finer work; sovereign coins carry a name premium |
+| Small coin (¼ oz and under) | Moderate to high | The work per gram climbs steeply |
+| Plain chain / bangle | Moderate to high | Making charges, retail overhead |
+| Worked or stone-set jewellery | Highest | Craftsmanship, stones, showroom |
 
 The pattern is consistent: **the smaller the unit and the more work in it, the more you pay per gram of actual gold.**
 
@@ -192,7 +192,7 @@ The pattern is consistent: **the smaller the unit and the more work in it, the m
 The premium is only half the story. What matters to a saver is the **round-trip spread** — buy price to sell price — because that is the hole you must climb out of before you have made anything.
 
 - **Large bars** — narrowest. A recognised 1 kg bar from a good refiner sells back close to spot. But the unit is huge, and you cannot sell part of it.
-- **Bullion coins** — narrow, and the best balance for most people. A widely recognised 1 oz coin is a liquid object anywhere in the world; dealers know it, price it quickly, and take it without argument.
+- **Bullion coins** — narrow, and a practical balance of cost and flexibility. A widely recognised 1 oz coin is a liquid object anywhere in the world; dealers know it, price it quickly, and take it without argument.
 - **Small bars and coins** — wider, and the premium you paid does not come back.
 - **Jewellery** — widest by a distance. You paid making charges going in; the shop deducts its margin coming out, and the craftsmanship is not part of the offer because the piece is going to be melted. This is the single biggest mistake savers make, and it is covered in detail in our guide on selling gold back.
 
@@ -207,13 +207,13 @@ An unmarked bar of genuine gold is worth less in practice than a marked one, bec
 - a **serial number** on bars where the refiner uses them,
 - and ideally its original **assay card or capsule**, undamaged.
 
-Breaking a coin out of its capsule to hold it costs you real money later. It is the cheapest mistake to avoid on this list.
+Breaking a coin out of its capsule to hold it can cost you money later. It is the cheapest mistake to avoid on this list.
 
 ## Matching form to purpose
 
 **Saving over years, largest amount, no need to sell in pieces** — large bars. Lowest cost per gram of gold, provided you can afford a whole unit and trust your storage.
 
-**Saving over years, want the option to sell part** — 1 oz bullion coins, or 50–100 g bars. Slightly higher premium buys you the ability to liquidate in slices as needs arise. For most savers this is the right answer.
+**Saving over years, want the option to sell part** — 1 oz bullion coins, or 50–100 g bars. Slightly higher premium buys you the ability to liquidate in slices as needs arise. Many savers find this a practical middle ground.
 
 **Saving small amounts regularly** — small coins, accepting the higher premium as the price of entry, or accumulating cash until a larger unit is affordable. The second is cheaper if you have the discipline.
 
@@ -232,16 +232,16 @@ Whatever the form, do the arithmetic in front of the seller. Take the day's spot
 
 كل صورة من صور الذهب تُباع بأكثر من قيمتها المعدنية. والفرق يُسمّى **العلاوة**، وهي تغطّي التصنيع والتوزيع وهامش البائع.
 
-نطاقات تقريبية، كنسبة فوق السعر الفوري:
+ترتيب تقريبي من أدنى علاوة فوق السعر الفوري إلى أعلاها (والأرقام الفعلية تختلف بحسب التاجر والسوق وسعر الذهب):
 
-| الصورة | العلاوة المعتادة | السبب |
+| الصورة | العلاوة النسبية | السبب |
 |---|---|---|
-| سبيكة كبيرة (1 كجم) | 1–2% | صبّة واحدة وفحص واحد، وقيمة ضخمة مقابل وحدة العمل |
-| سبيكة صغيرة (10–100 جم) | 3–6% | العمل نفسه، وذهب أقل بكثير يوزَّع عليه |
-| عملة سبائكية (أونصة) | 4–8% | السكّ عمل أدقّ، والعملات السيادية تحمل علاوة اسم |
-| عملة صغيرة (رُبع أونصة فأقل) | 8–15% | العمل لكل جرام يرتفع بحدّة |
-| سلسلة أو أسورة سادة | 8–20% | المصنعية ومصاريف التجزئة |
-| مشغولات مزخرفة أو مرصّعة | 25–100%+ | الحرفية والأحجار والمعرض |
+| سبيكة كبيرة (1 كجم) | الأدنى | صبّة واحدة وفحص واحد، وقيمة ضخمة مقابل وحدة العمل |
+| سبيكة صغيرة (10–100 جم) | منخفضة | العمل نفسه، وذهب أقل بكثير يوزَّع عليه |
+| عملة سبائكية (أونصة) | منخفضة إلى متوسطة | السكّ عمل أدقّ، والعملات السيادية تحمل علاوة اسم |
+| عملة صغيرة (رُبع أونصة فأقل) | متوسطة إلى مرتفعة | العمل لكل جرام يرتفع بحدّة |
+| سلسلة أو أسورة سادة | متوسطة إلى مرتفعة | المصنعية ومصاريف التجزئة |
+| مشغولات مزخرفة أو مرصّعة | الأعلى | الحرفية والأحجار والمعرض |
 
 النمط ثابت: **كلّما صغرت الوحدة وزاد العمل فيها، دفعت أكثر مقابل كل جرام ذهب فعلي.**
 
@@ -250,7 +250,7 @@ Whatever the form, do the arithmetic in front of the seller. Take the day's spot
 العلاوة نصف القصة فقط. وما يهمّ المدّخر هو **فارق الذهاب والعودة** — من سعر الشراء إلى سعر البيع — لأنه الحفرة التي عليك الخروج منها قبل أن تربح شيئًا.
 
 - **السبائك الكبيرة** — الأضيق فارقًا. فالسبيكة المعروفة زنة كيلوغرام من مصفاة جيدة تُباع قريبًا من السعر الفوري. لكن الوحدة ضخمة، ولا يمكنك بيع جزء منها.
-- **العملات السبائكية** — فارق ضيّق، وأفضل توازن لمعظم الناس. فالعملة المعروفة زنة أونصة أصل سائل في أي مكان في العالم؛ التجّار يعرفونها ويسعّرونها فورًا ويأخذونها بلا جدال.
+- **العملات السبائكية** — فارق ضيّق، وتوازن عملي بين الكلفة والمرونة. فالعملة المعروفة زنة أونصة أصل سائل في أي مكان في العالم؛ التجّار يعرفونها ويسعّرونها فورًا ويأخذونها بلا جدال.
 - **السبائك والعملات الصغيرة** — فارق أوسع، والعلاوة التي دفعتها لا تعود إليك.
 - **المشغولات** — الأوسع بفارق كبير. دفعت المصنعية عند الدخول، ويخصم المحل هامشه عند الخروج، والحرفية ليست جزءًا من العرض لأن القطعة ستُصهر. وهذا أكبر خطأ يقع فيه المدّخرون، وقد فصّلناه في دليل بيع الذهب.
 
@@ -265,13 +265,13 @@ Whatever the form, do the arithmetic in front of the seller. Take the day's spot
 - **رقمًا تسلسليًا** على السبائك حيث تستخدمه المصفاة،
 - ويُفضَّل **بطاقة الفحص أو الكبسولة** الأصلية سليمة.
 
-وإخراج العملة من كبسولتها لتمسكها بيدك يكلّفك مالًا حقيقيًا لاحقًا. وهو أرخص خطأ في هذه القائمة يمكن تفاديه.
+وإخراج العملة من كبسولتها لتمسكها بيدك قد يكلّفك مالًا لاحقًا. وهو أرخص خطأ في هذه القائمة يمكن تفاديه.
 
 ## مطابقة الصورة للغرض
 
 **ادّخار لسنوات، بمبلغ كبير، دون حاجة للبيع بالتجزئة** — السبائك الكبيرة. أقل كلفة لكل جرام ذهب، بشرط أن تقدر على وحدة كاملة وتثق بمكان حفظك.
 
-**ادّخار لسنوات مع رغبة في بيع جزء** — عملات سبائكية زنة أونصة، أو سبائك 50–100 جرام. علاوة أعلى قليلًا تشتري لك القدرة على التسييل على دفعات حسب الحاجة. ولمعظم المدّخرين هذا هو الجواب الصحيح.
+**ادّخار لسنوات مع رغبة في بيع جزء** — عملات سبائكية زنة أونصة، أو سبائك 50–100 جرام. علاوة أعلى قليلًا تشتري لك القدرة على التسييل على دفعات حسب الحاجة. ويجد فيه كثير من المدّخرين حلًّا وسطًا عمليًا.
 
 **ادّخار مبالغ صغيرة بانتظام** — عملات صغيرة مع قبول العلاوة الأعلى ثمنًا للدخول، أو تجميع النقد حتى تصير الوحدة الأكبر في المتناول. والثاني أرخص إن توفّر الانضباط.
 
@@ -291,9 +291,9 @@ Whatever the form, do the arithmetic in front of the seller. Take the day's spot
     title_en: "Zakat on Gold: How to Work Out What You Owe",
     title_ar: "زكاة الذهب: كيف تحسب ما عليك",
     description_en:
-      "The nisab, the lunar year, the 2.5%, and the question scholars differ on — whether jewellery you wear is included. A practical walkthrough with worked examples at today's prices.",
+      "The nisab, the lunar year, the 2.5%, and the question scholars differ on — whether jewellery you wear is included. A practical walkthrough with a worked example, and how to apply today's price.",
     description_ar:
-      "النصاب، والحول القمري، ونسبة 2.5%، والمسألة التي اختلف فيها العلماء — هل تُزكّى الحلي المُلبَسة؟ شرح عملي بأمثلة محسوبة بأسعار اليوم.",
+      "النصاب، والحول القمري، ونسبة 2.5%، والمسألة التي اختلف فيها العلماء — هل تُزكّى الحلي المُلبَسة؟ شرح عملي بمثال محسوب، وطريقة تطبيقه على سعر اليوم.",
     tags: ["zakat", "education", "savings", "islamic-finance"],
     author: AUTHOR,
     body_en: `Zakat on gold is one of the most common questions this site receives, and one of the worst served by the internet — usually because the answer skips the arithmetic and stops at "2.5%." The calculation itself is genuinely simple. What makes people hesitate is knowing which gold counts and what the threshold is on the day they are calculating.
@@ -304,15 +304,15 @@ Whatever the form, do the arithmetic in front of the seller. Take the day's spot
 
 **1. The nisab — the threshold below which no zakat is due.**
 
-For gold the nisab is classically **85 grams of pure gold** (20 mithqal / 20 dinars). If everything you hold is below that, you owe nothing.
+For gold the nisab is classically **85 grams of pure gold** (20 mithqal / 20 dinars). Some zakat bodies, particularly those following South Asian Hanafi practice, use 87.48 grams (7.5 tola) instead. If everything you hold is below the nisab, you owe nothing.
 
 The nisab is a weight, not a currency amount — which is exactly why it holds up across centuries and across currencies. To express it in money on any given day, multiply 85 by the current price of a gram of 24K gold in your currency.
 
 **2. The hawl — a full lunar year of possession.**
 
-Zakat is due on wealth you have held for one complete **lunar** year (about 354 days, roughly 11 days shorter than the solar year). Pick a date, note it, and use the same date each year. Many people use a fixed day in Ramadan simply because it is easy to remember.
+Zakat is due on wealth you have held for one complete **lunar** year (about 354 days, roughly 11 days shorter than the solar year). Your zakat year starts on the date your wealth first reached the nisab (if you do not know it, a careful estimate is accepted); note it and use the same date each year. Many people prefer to pay in Ramadan — most scholars allow paying before the due date, but not delaying past it.
 
-The nisab must be met at the start and end of the year. Ordinary fluctuation in between does not break it.
+In the Hanafi school, the nisab need only be met at the start and end of the year, and dipping below it in between does not break the year. Most other scholars require it to be held throughout the year, so a dip below it restarts the count.
 
 **3. The rate — 2.5%.**
 
@@ -322,7 +322,7 @@ Or, put as the fraction that is easier to check: one fortieth. Divide by 40.
 
 The calculation is: **total weight of qualifying gold → convert to a value at today's price → multiply by 0.025.**
 
-Purity matters, and this is where most home calculations go wrong. Zakat is on the **gold content**, not the gross weight of the object. A 21K piece is 87.5% gold; a 18K piece is 75%.
+Purity matters, and this is where most home calculations go wrong. Zakat is on the **gold content**, not the gross weight of the object. A 21K piece is 87.5% gold; an 18K piece is 75%.
 
 Two ways to handle it, both correct:
 
@@ -342,7 +342,7 @@ A worked example. Suppose someone holds:
 
 If 24K gold is trading at, say, 250 units of local currency per gram, the zakatable value is 89.1 × 250 = **22,275**, and the zakat owed is 22,275 ÷ 40 = **557 units**.
 
-Note that the ring alone, or the chain alone, would have been below nisab. **You add everything together** — and in the majority view, gold and silver and cash and trade goods are combined for the purpose of reaching the threshold.
+Note that the ring alone, or the chain alone, would have been below nisab. **You add everything together** — and in the majority view, gold and silver and cash and trade goods are combined for the purpose of reaching the threshold — though scholars differ on whether the gold nisab or the much lower silver nisab then applies.
 
 ## The question scholars differ on
 
@@ -353,7 +353,7 @@ This is a genuine, long-standing difference of opinion among the four schools, n
 - **One position** holds that jewellery in normal, permitted personal use is exempt, being a personal effect rather than stored wealth. This is the view associated with the Maliki, Shafi'i and Hanbali schools.
 - **The other** holds that gold is zakatable whatever form it takes, worn or stored. This is the Hanafi position, and it is also the view of a number of contemporary scholars.
 
-Both positions are held by serious scholarship. What you should not do is pick whichever is convenient each year — follow one consistently, and ask someone qualified in your own context.
+Both positions are held by serious scholarship. Many scholars caution against switching between the two each year for convenience; whichever view you follow, ask someone qualified in your own context.
 
 Gold held explicitly as **savings or investment** — coins, bars, pieces bought to store value — is zakatable on every view. There is no disagreement there.
 
@@ -378,15 +378,15 @@ Weigh your pieces, group them by karat, and open the page on this site for your 
 
 **1. النصاب — الحدّ الذي لا زكاة تحته.**
 
-نصاب الذهب كلاسيكيًا **85 جرامًا من الذهب الخالص** (20 مثقالًا / 20 دينارًا). فإن كان كل ما تملكه دون ذلك فلا شيء عليك.
+نصاب الذهب كلاسيكيًا **85 جرامًا من الذهب الخالص** (20 مثقالًا / 20 دينارًا). وتعتمد بعض هيئات الزكاة، ولا سيما المتّبعة للعمل الحنفي في جنوب آسيا، 87.48 جرامًا (7.5 تولة) بدلًا من ذلك. فإن كان كل ما تملكه دون النصاب فلا شيء عليك.
 
 والنصاب وزن لا مبلغ نقدي — ولهذا بالذات صمد عبر القرون وعبر العملات. ولتعبّر عنه بالمال في يوم بعينه، اضرب 85 في سعر جرام الذهب عيار 24 بعملتك.
 
 **2. الحول — سنة قمرية كاملة من الملك.**
 
-تجب الزكاة في المال الذي حال عليه حول **قمري** كامل (نحو 354 يومًا، أي أقصر من السنة الشمسية بنحو 11 يومًا). اختر تاريخًا وسجّله واستخدم التاريخ نفسه كل سنة. وكثيرون يختارون يومًا ثابتًا في رمضان لسهولة تذكّره.
+تجب الزكاة في المال الذي حال عليه حول **قمري** كامل (نحو 354 يومًا، أي أقصر من السنة الشمسية بنحو 11 يومًا). ويبدأ حولك من تاريخ بلوغ مالك النصاب أول مرة (فإن لم تعرفه فالتقدير المتحرّي مقبول)؛ فسجّله واستخدم التاريخ نفسه كل سنة. وكثيرون يفضّلون الإخراج في رمضان — ويجيز أكثر العلماء تعجيل الزكاة قبل موعدها، لا تأخيرها عنه.
 
-ويجب بلوغ النصاب في أول الحول وآخره، ولا يقطعه التذبذب المعتاد بينهما.
+وعند الحنفية يكفي بلوغ النصاب في أول الحول وآخره، ولا يقطعه نقصه فيما بينهما. أمّا أكثر العلماء غيرهم فيشترطون بقاءه طوال الحول، فإن نقص في أثنائه استُؤنف الحول.
 
 **3. المقدار — 2.5%.**
 
@@ -416,7 +416,7 @@ Weigh your pieces, group them by karat, and open the page on this site for your 
 
 فإذا كان سعر عيار 24 مثلًا 250 وحدة من العملة المحلية للجرام، فالقيمة الخاضعة = 89.1 × 250 = **22,275**، والزكاة = 22,275 ÷ 40 = **557 وحدة**.
 
-ولاحظ أن الخاتم وحده، أو السلسلة وحدها، كان دون النصاب. **فالجمع واجب** — وعند الجمهور يُضمّ الذهب والفضة والنقد وعروض التجارة لبلوغ النصاب.
+ولاحظ أن الخاتم وحده، أو السلسلة وحدها، كان دون النصاب. **فالجمع واجب** — وعند الجمهور يُضمّ الذهب والفضة والنقد وعروض التجارة لبلوغ النصاب، مع اختلاف العلماء حينئذٍ في اعتماد نصاب الذهب أو نصاب الفضة الأدنى بكثير.
 
 ## المسألة التي اختلف فيها العلماء
 
@@ -427,7 +427,7 @@ Weigh your pieces, group them by karat, and open the page on this site for your 
 - **قول** بأن الحلي المستعملة استعمالًا مباحًا معتادًا معفاة، لأنها متاع شخصي لا مال مكنوز. وهو المنسوب إلى المالكية والشافعية والحنابلة.
 - **وقول** بأن الذهب يُزكّى على أي صورة كان، ملبوسًا أو مخزونًا. وهو مذهب الحنفية، وبه أفتى عدد من المعاصرين.
 
-وكلا القولين يحمله تحقيق علمي جادّ. والذي لا ينبغي فعله هو انتقاء الأيسر كل سنة — بل التزم قولًا واحدًا باطّراد، واسأل مؤهَّلًا في سياقك أنت.
+وكلا القولين يحمله تحقيق علمي جادّ. ويحذّر كثير من العلماء من التنقّل بين القولين كل سنة طلبًا للأيسر؛ وأيًّا كان القول الذي تتّبعه، فاسأل مؤهَّلًا في سياقك أنت.
 
 أمّا الذهب المُقتنى صراحةً **للادّخار أو الاستثمار** — عملات وسبائك وقطع اشتُريت لحفظ القيمة — فيُزكّى بالاتفاق. لا خلاف في ذلك.
 

@@ -167,12 +167,12 @@ export function countryKaratFaqs(locale: string, { karat, country, currency, slu
         hi: `${country} में सोने का भाव कितनी बार अपडेट होता है?`,
       }),
       a: pick(locale, {
-        en: `The spot price is refreshed from Swissquote at least every five minutes and moves with live PAXG/USD quotes while the page is open. The ${currency}/USD exchange rate is the day's mid-market rate from open central-bank data. The price you see is the global spot price converted to the local currency.`,
-        ar: `يُحدَّث السعر الفوري من Swissquote كل خمس دقائق على الأقل، ويتحرك مع أسعار PAXG/USD اللحظية ما دامت الصفحة مفتوحة. سعر صرف ${currency}/USD هو السعر المتوسط لليوم من بيانات البنوك المركزية المفتوحة. السعر الذي تراه هو السعر الفوري العالمي مُحوّلاً للعملة المحلية.`,
+        en: `The spot price is refreshed from Swissquote at least every five minutes and moves with live PAXG/USD quotes while the page is open. The ${currency}/USD exchange rate is the day's mid-market rate from the open-source currency-api feed. The price you see is the global spot price converted to the local currency.`,
+        ar: `يُحدَّث السعر الفوري من Swissquote كل خمس دقائق على الأقل، ويتحرك مع أسعار PAXG/USD اللحظية ما دامت الصفحة مفتوحة. سعر صرف ${currency}/USD هو السعر المتوسط لليوم من مصدر currency-api المفتوح المصدر. السعر الذي تراه هو السعر الفوري العالمي مُحوّلاً للعملة المحلية.`,
         fr: `Le prix spot est actualisé chaque seconde via WebSocket. Le taux ${currency}/USD est actualisé toutes les heures à partir des données ouvertes des banques centrales. Le prix affiché est le prix mondial en direct converti en devise locale.`,
-        tr: `Spot fiyat Swissquote'tan en az beş dakikada bir yenilenir ve sayfa açıkken canlı PAXG/USD kotasyonlarıyla hareket eder. ${currency}/USD kuru, merkez bankalarının açık verilerinden günün orta piyasa kurudur. Gördüğünüz fiyat, yerel para birimine çevrilmiş küresel spot fiyattır.`,
+        tr: `Spot fiyat Swissquote'tan en az beş dakikada bir yenilenir ve sayfa açıkken canlı PAXG/USD kotasyonlarıyla hareket eder. ${currency}/USD kuru, açık kaynaklı currency-api akışından günün orta piyasa kurudur. Gördüğünüz fiyat, yerel para birimine çevrilmiş küresel spot fiyattır.`,
         ur: `اسپاٹ قیمت WebSocket کے ذریعے ہر سیکنڈ اپ ڈیٹ ہوتی ہے۔ ${currency}/USD شرحِ مبادلہ مرکزی بینکوں کے اوپن ڈیٹا سے ہر گھنٹے اپ ڈیٹ ہوتی ہے۔ جو قیمت آپ دیکھتے ہیں وہ مقامی کرنسی میں تبدیل شدہ لائیو عالمی قیمت ہے۔`,
-        hi: `स्पॉट भाव Swissquote से कम से कम हर पाँच मिनट में ताज़ा होता है और पेज खुला रहने तक लाइव PAXG/USD भावों के साथ बदलता है। ${currency}/USD विनिमय दर केंद्रीय बैंकों के ओपन डेटा से दिन की मध्य-बाज़ार दर है। जो भाव आप देखते हैं वह स्थानीय मुद्रा में बदला हुआ वैश्विक स्पॉट भाव है।`,
+        hi: `स्पॉट भाव Swissquote से कम से कम हर पाँच मिनट में ताज़ा होता है और पेज खुला रहने तक लाइव PAXG/USD भावों के साथ बदलता है। ${currency}/USD विनिमय दर ओपन-सोर्स currency-api फ़ीड से दिन की मध्य-बाज़ार दर है। जो भाव आप देखते हैं वह स्थानीय मुद्रा में बदला हुआ वैश्विक स्पॉट भाव है।`,
       }),
     },
   ];

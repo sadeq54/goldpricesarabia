@@ -22,16 +22,16 @@ export const MARKET_ARTICLES: Article[] = [
     title_en: "From the London Benchmark to Your Jeweller's Window",
     title_ar: "من مؤشّر لندن إلى واجهة الصائغ في حيّك",
     description_en:
-      "The price in a shop in Amman started as a number set in London and traded in Chicago. The full chain — benchmark, futures, local premium, exchange rate, making charge — and where each link adds or subtracts.",
+      "The price in a shop in Amman started as a number set in London and traded in New York. The full chain — benchmark, futures, local premium, exchange rate, making charge — and where each link adds or subtracts.",
     description_ar:
-      "السعر في محل بعمّان بدأ رقمًا يُحدَّد في لندن ويُتداول في شيكاغو. السلسلة كاملة — المؤشّر، والعقود الآجلة، والعلاوة المحلية، وسعر الصرف، والمصنعية — وأين تضيف كل حلقة أو تطرح.",
+      "السعر في محل بعمّان بدأ رقمًا يُحدَّد في لندن ويُتداول في نيويورك. السلسلة كاملة — المؤشّر، والعقود الآجلة، والعلاوة المحلية، وسعر الصرف، والمصنعية — وأين تضيف كل حلقة أو تطرح.",
     tags: ["market-structure", "education", "spot-price", "lbma"],
     author: AUTHOR,
     body_en: `When a jeweller in Amman, Casablanca or Karachi writes today's gram price on the board, he is at the end of a chain that began thousands of kilometres away. Understanding that chain tells you which parts of the price are fixed by the world and which are negotiable in the room — and that distinction is worth money.
 
 ## Link 1: the benchmark
 
-Gold's reference price is set in **London**, the centre of the physical bullion trade for more than a century. Twice each business day, at 10:30 and 15:00 London time, an electronic auction run under the LBMA establishes a settlement price in dollars per **troy ounce** — the "London fix," now formally the LBMA Gold Price.
+Gold's reference price is set in **London**, the centre of the physical bullion trade for more than a century. Twice each business day, at 10:30 and 15:00 London time, an electronic auction administered by ICE Benchmark Administration sets a benchmark price in US dollars per **troy ounce** of unallocated gold delivered in London — the "London fix," now formally the LBMA Gold Price.
 
 Two things about that unit matter downstream:
 
@@ -46,7 +46,7 @@ Between the fixes, gold trades continuously — over-the-counter in London, and 
 
 Spot and futures differ slightly and predictably. A futures contract for delivery in three months costs a little more than metal today, because someone must finance and store the metal in the meantime. That gap is normal market structure, not a discrepancy.
 
-*This site's live spot figure is a median of PAXG/USD across Binance, Coinbase and Kraken — PAXG being a token backed one-to-one by allocated London bullion. Taking the median of three venues rather than one price keeps a single exchange's glitch from moving the number. The daily close figures come from COMEX futures.*
+*Prices on this site start from the Swissquote XAU/USD spot quote, re-read at least every five minutes. While a page is open, the figure follows the median of live PAXG/USD quotes on Binance, Coinbase and Kraken — PAXG is a token backed by allocated gold held in London Good Delivery bars, and it usually trades within a few dollars of spot. Taking the median of three venues rather than one price keeps a single exchange's glitch from moving the number. The day's change and range come from the COMEX gold future.*
 
 ## Link 3: the local physical premium
 
@@ -57,7 +57,7 @@ The local premium reflects:
 - **Import and logistics** — freight, insurance, security.
 - **Duties and taxes** — India's import duty is the well-known case; VAT treatment differs sharply across the region.
 - **Local supply and demand** — a wedding season or a festival can push the local premium up for weeks.
-- **Refining to local standards** — the karat a market actually buys. A country that wants 21K needs metal alloyed to 21K.
+- **Alloying to local standards** — the karat a market actually buys. A country that wants 21K needs metal alloyed to 21K.
 
 In a calm market this premium is small. During a currency crisis or a buying panic it can widen dramatically, which is why the local price sometimes moves when the world price has not.
 
@@ -65,7 +65,7 @@ In a calm market this premium is small. During a currency crisis or a buying pan
 
 Now the dollar price becomes a local price, and this link is the one that dominates in much of our coverage area. If your currency falls 10% against the dollar and gold does not move at all in dollars, gold rises 10% in your currency.
 
-For countries with a **dollar peg** — Saudi Arabia, the UAE, Jordan, Qatar, Bahrain — this link is nearly invisible, because the rate barely moves. For **Egypt, Turkey, Pakistan and Lebanon** it frequently matters more than the world gold price itself. And where a country has more than one exchange rate in practice, which rate the shop uses changes the answer; we cover that in a separate guide.
+For countries with a **dollar peg** — Saudi Arabia, the UAE, Jordan, Qatar, Bahrain — this link is nearly invisible, because the rate barely moves. For **Turkey**, and at times **Egypt, Pakistan and Lebanon**, it has often mattered more than the world gold price itself. And where a country has more than one exchange rate in practice, which rate the shop uses changes the answer; we cover that in a separate guide.
 
 ## Link 5: the shop
 
@@ -89,14 +89,14 @@ That is the practical payoff. When a price feels wrong, work up the chain and as
 | The board changed twice today | Spot, moving continuously |
 | Quoted gram price ≠ ounce ÷ 31.1035 × purity | Premium and margin, by definition |
 
-The last row is the most useful check you can run. Take the day's ounce price, divide by 31.1035, multiply by the purity of the karat in question — 0.999, 0.916, 0.875, 0.750 — and you have the pure metal value of a gram. Everything above that number is the local chain, and you now know what each part of it is for.
+The last row is the most useful check you can run. Take the day's ounce price, divide by 31.1035, multiply by the purity of the karat in question — karat ÷ 24, which is what this site uses: 1.000, 0.917, 0.875, 0.750 — and you have the pure metal value of a gram. Everything above that number is the local chain, and you now know what each part of it is for.
 
 *Every country page on this site shows exactly that calculation, live, in the local currency.*`,
     body_ar: `حين يكتب صائغ في عمّان أو الدار البيضاء أو كراتشي سعر الجرام اليوم على اللوحة، فهو يقف في نهاية سلسلة بدأت على بُعد آلاف الكيلومترات. وفهم هذه السلسلة يخبرك أي أجزاء السعر تحدّدها السوق العالمية وأيها قابل للتفاوض داخل المحل — وهذا التمييز يساوي مالًا.
 
 ## الحلقة الأولى: المؤشّر المرجعي
 
-يُحدَّد السعر المرجعي للذهب في **لندن**، مركز تجارة السبائك المادية منذ أكثر من قرن. ومرّتين في كل يوم عمل، الساعة 10:30 و15:00 بتوقيت لندن، يُجري مزاد إلكتروني تحت مظلة LBMA تسويةً بالدولار لكل **أونصة تروي** — وهو ما يُعرف بـ"تثبيت لندن"، ورسميًا اليوم سعر الذهب من LBMA.
+يُحدَّد السعر المرجعي للذهب في **لندن**، مركز تجارة السبائك المادية منذ أكثر من قرن. ومرّتين في كل يوم عمل، الساعة 10:30 و15:00 بتوقيت لندن، يحدّد مزاد إلكتروني تديره ICE Benchmark Administration سعرًا مرجعيًا بالدولار الأمريكي لكل **أونصة تروي** من الذهب غير المخصّص المسلَّم في لندن — وهو ما يُعرف بـ"تثبيت لندن"، ورسميًا اليوم سعر الذهب من LBMA.
 
 وأمران في هذه الوحدة يهمّان بقيّة السلسلة:
 
@@ -111,7 +111,7 @@ The last row is the most useful check you can run. Take the day's ounce price, d
 
 ويختلف الفوري عن الآجل اختلافًا طفيفًا ومتوقّعًا. فالعقد الآجل للتسليم بعد ثلاثة أشهر يكلّف أكثر قليلًا من المعدن اليوم، لأن على أحدهم تمويل المعدن وتخزينه في الأثناء. وهذه الفجوة بنية سوق طبيعية لا تناقض.
 
-*الرقم الفوري المباشر على هذا الموقع هو الوسيط بين أسعار PAXG/USD في Binance وCoinbase وKraken — وPAXG رمز مدعوم واحدًا لواحد بسبائك لندن المخصّصة. وأخذ الوسيط بين ثلاث منصّات بدل سعر واحد يمنع خللًا في منصّة بعينها من تحريك الرقم. أمّا أسعار الإغلاق اليومية فمن عقود كومكس الآجلة.*
+*تنطلق الأسعار على هذا الموقع من سعر XAU/USD الفوري لدى Swissquote، ويُعاد قراءته كل خمس دقائق على الأقل. وما دامت الصفحة مفتوحة، يتبع الرقم الوسيط بين أسعار PAXG/USD اللحظية في Binance وCoinbase وKraken — وPAXG رمز مدعوم بذهب مخصّص محفوظ في سبائك London Good Delivery، ويُتداول عادةً على بُعد دولارات قليلة من السعر الفوري. وأخذ الوسيط بين ثلاث منصّات بدل سعر واحد يمنع خللًا في منصّة بعينها من تحريك الرقم. أمّا تغيّر اليوم ونطاقه فمن عقد كومكس الآجل للذهب.*
 
 ## الحلقة الثالثة: العلاوة المحلية على المعدن
 
@@ -122,7 +122,7 @@ The last row is the most useful check you can run. Take the day's ounce price, d
 - **الاستيراد واللوجستيات** — الشحن والتأمين والحراسة.
 - **الرسوم والضرائب** — رسم الاستيراد في الهند المثال المشهور، ومعاملة ضريبة القيمة المضافة تختلف بحدّة عبر المنطقة.
 - **العرض والطلب المحليان** — فموسم أعراس أو عيد قد يرفع العلاوة المحلية أسابيع.
-- **التكرير إلى المعايير المحلية** — أي العيار الذي تشتريه السوق فعلًا. فالبلد الذي يريد عيار 21 يحتاج معدنًا مسبوكًا على عيار 21.
+- **السبك على العيارات المحلية** — أي العيار الذي تشتريه السوق فعلًا. فالبلد الذي يريد عيار 21 يحتاج معدنًا مسبوكًا على عيار 21.
 
 وفي سوق هادئة تكون هذه العلاوة صغيرة. أمّا في أزمة عملة أو موجة شراء ذعرية فقد تتّسع اتّساعًا كبيرًا، ولهذا يتحرّك السعر المحلي أحيانًا والسعر العالمي ساكن.
 
@@ -130,7 +130,7 @@ The last row is the most useful check you can run. Take the day's ounce price, d
 
 الآن يصير السعر الدولاري سعرًا محليًا، وهذه الحلقة هي المهيمنة في كثير من نطاق تغطيتنا. فإذا هبطت عملتك 10% أمام الدولار ولم يتحرّك الذهب بالدولار إطلاقًا، ارتفع الذهب 10% بعملتك.
 
-وفي الدول ذات **الربط بالدولار** — السعودية والإمارات والأردن وقطر والبحرين — تكاد هذه الحلقة تكون غير مرئية، لأن السعر لا يكاد يتحرّك. أمّا في **مصر وتركيا وباكستان ولبنان** فهي كثيرًا ما تكون أهمّ من سعر الذهب العالمي نفسه. وحيث يوجد في البلد أكثر من سعر صرف عمليًا، يتغيّر الجواب بحسب السعر الذي يستخدمه المحل، وقد أفردنا لذلك دليلًا مستقلًا.
+وفي الدول ذات **الربط بالدولار** — السعودية والإمارات والأردن وقطر والبحرين — تكاد هذه الحلقة تكون غير مرئية، لأن السعر لا يكاد يتحرّك. أمّا في **تركيا**، وفي فترات في **مصر وباكستان ولبنان**، فكثيرًا ما كانت أهمّ من سعر الذهب العالمي نفسه. وحيث يوجد في البلد أكثر من سعر صرف عمليًا، يتغيّر الجواب بحسب السعر الذي يستخدمه المحل، وقد أفردنا لذلك دليلًا مستقلًا.
 
 ## الحلقة الخامسة: المحل
 
@@ -154,7 +154,7 @@ The last row is the most useful check you can run. Take the day's ounce price, d
 | اللوحة تغيّرت مرّتين اليوم | السعر الفوري، وهو يتحرّك باستمرار |
 | سعر الجرام المعلن ≠ الأونصة ÷ 31.1035 × النقاء | العلاوة والهامش، بحكم التعريف |
 
-والسطر الأخير أنفع فحص تستطيع إجراءه. خذ سعر الأونصة في اليوم، واقسمه على 31.1035، واضربه في نقاء العيار المعني — 0.999 أو 0.916 أو 0.875 أو 0.750 — فتحصل على قيمة المعدن الخالص في الجرام. وكل ما فوق هذا الرقم هو السلسلة المحلية، وقد صرت تعرف وظيفة كل جزء منها.
+والسطر الأخير أنفع فحص تستطيع إجراءه. خذ سعر الأونصة في اليوم، واقسمه على 31.1035، واضربه في نقاء العيار المعني — العيار ÷ 24، وهو ما يستعمله هذا الموقع: 1.000 أو 0.917 أو 0.875 أو 0.750 — فتحصل على قيمة المعدن الخالص في الجرام. وكل ما فوق هذا الرقم هو السلسلة المحلية، وقد صرت تعرف وظيفة كل جزء منها.
 
 *كل صفحة دولة على هذا الموقع تعرض هذه الحسبة نفسها، مباشرةً، بالعملة المحلية.*`,
   },
@@ -173,14 +173,14 @@ The last row is the most useful check you can run. Take the day's ounce price, d
 
 ## The two columns
 
-The single most important feature of the board is that most karats carry **two** numbers, not one.
+The single most important feature of many boards is that each karat carries **two** numbers, not one.
 
 - **The sell price** (البيع) — what the shop sells to you at. Higher.
 - **The buy price** (الشراء) — what the shop pays if you bring gold in. Lower.
 
 The shop is on both sides of the market, and the gap between the columns is its margin on the metal. Read that gap first, before anything else. It tells you what a round trip through this particular shop costs you.
 
-A narrow gap signals a high-turnover dealer competing on price. A wide gap signals the opposite. In most Arab markets a normal spread on plain 21K runs a few percent; when it is very wide, that is information.
+A narrow gap signals a high-turnover dealer competing on price. A wide gap signals the opposite. Spreads vary from shop to shop and market to market, and there is no published norm; compare the gap at a few shops, and treat an unusually wide one as information.
 
 Note that the buy column is for **metal only**. Bring in a worked piece and you are paid on the gold content — the craftsmanship does not appear in that column, ever.
 
@@ -194,7 +194,7 @@ Rows are karats, usually descending: **24, 22, 21, 18**, sometimes 14. Each is a
 | 22K | 91.7% | 916 |
 | 21K | 87.5% | 875 |
 | 18K | 75.0% | 750 |
-| 14K | 58.3% | 585 |
+| 14K | 58.5% | 585 |
 
 The prices should be proportional to purity. That is the check almost nobody performs, and it takes five seconds: **21K should be about 87.5 ÷ 99.9 = 87.6% of the 24K price.** If the 24K gram is 300, the 21K gram should be near 263. If a row is meaningfully out of line with its purity, ask why — sometimes there is a good reason, such as the shop pricing a karat it rarely stocks, and sometimes there is not.
 
@@ -236,14 +236,14 @@ You are not trying to catch the shop out — a retail price is legitimately abov
 
 ## العمودان
 
-أهمّ ما في اللوحة أن معظم العيارات تحمل **رقمين** لا رقمًا واحدًا.
+أهمّ ما في كثير من اللوحات أن كل عيار يحمل **رقمين** لا رقمًا واحدًا.
 
 - **سعر البيع** — وهو ما يبيعك المحل به. وهو الأعلى.
 - **سعر الشراء** — وهو ما يدفعه لك المحل إن جئته بذهب. وهو الأدنى.
 
 فالمحل قائم على طرفَي السوق، والفجوة بين العمودين هي هامشه على المعدن. اقرأ هذه الفجوة أولًا قبل أي شيء، فهي تخبرك كم تكلّفك رحلة ذهاب وعودة عبر هذا المحل بعينه.
 
-الفجوة الضيّقة تدلّ على تاجر كثيف الحركة يتنافس على السعر. والواسعة تدلّ على العكس. وفي معظم الأسواق العربية يكون الفارق المعتاد على عيار 21 السادة بضع نقاط مئوية؛ فإذا اتّسع كثيرًا فتلك معلومة.
+الفجوة الضيّقة تدلّ على تاجر كثيف الحركة يتنافس على السعر. والواسعة تدلّ على العكس. ويختلف الفارق من محل إلى آخر ومن سوق إلى أخرى، ولا يوجد له معيار منشور؛ فقارن الفجوة في عدّة محال، واعتبر الفجوة الواسعة على نحو غير معتاد معلومةً في ذاتها.
 
 ولاحظ أن عمود الشراء **للمعدن فقط**. فإن جئت بقطعة مشغولة دُفع لك على محتوى الذهب — والحرفية لا تظهر في ذلك العمود أبدًا.
 
@@ -257,7 +257,7 @@ You are not trying to catch the shop out — a retail price is legitimately abov
 | 22 | 91.7% | 916 |
 | 21 | 87.5% | 875 |
 | 18 | 75.0% | 750 |
-| 14 | 58.3% | 585 |
+| 14 | 58.5% | 585 |
 
 ويُفترض أن تتناسب الأسعار مع النقاء. وهذا هو الفحص الذي لا يكاد أحد يجريه، ولا يستغرق خمس ثوانٍ: **عيار 21 ينبغي أن يكون نحو 87.5 ÷ 99.9 = 87.6% من سعر عيار 24.** فإن كان جرام عيار 24 بـ300، فجرام عيار 21 قريب من 263. فإذا خرج صفّ عن تناسبه مع نقائه خروجًا ملحوظًا فاسأل عن السبب — فقد يكون هناك سبب وجيه، كأن يسعّر المحل عيارًا نادرًا لديه، وقد لا يكون.
 
@@ -307,7 +307,7 @@ You are not trying to catch the shop out — a retail price is legitimately abov
       "تركيا تشتري الذهب بالجرام، وتسعّره بعملة عائمة، وتتعامل معه كادّخار يومي لا كشراء عرَضي. لماذا تحوّل الليرة يومًا هادئًا في سوق الذهب العالمية إلى يوم صاخب في إسطنبول.",
     tags: ["turkey", "currency", "market-structure", "education"],
     author: AUTHOR,
-    body_en: `Of all the markets this site covers, Turkey is the one that most often confuses readers who follow the world gold price. A reader watches the dollar gold price sit still for a week, then sees the Istanbul gram price make a series of new highs. Nothing is wrong with either number. They are measuring different things.
+    body_en: `Of all the markets this site covers, Turkey is one that often confuses readers who follow the world gold price. A reader watches the dollar gold price sit still for a week, then sees the Istanbul gram price make a series of new highs. Nothing is wrong with either number. They are measuring different things.
 
 ## The lira does most of the work
 
@@ -354,8 +354,8 @@ Turkish gold does not protect a saver from a falling world gold price. It protec
 
 For anyone tracking the market, the discipline is simply to look at both numbers. Watch the dollar ounce price to know what gold did, and the lira gram price to know what your money did. They answer different questions, and confusing them is where most of the frustration comes from.
 
-*Turkey's live gram prices for every karat, in lira, are on this site's Turkey page, alongside the dollar ounce price they derive from — so you can see both halves of the move at once.*`,
-    body_ar: `من بين كل الأسواق التي يغطّيها هذا الموقع، تركيا هي الأكثر إرباكًا للقرّاء الذين يتابعون سعر الذهب العالمي. فيرى القارئ سعر الذهب بالدولار ساكنًا أسبوعًا كاملًا، ثم يرى سعر الجرام في إسطنبول يسجّل قممًا متتالية. ولا خطأ في أي من الرقمين، فهما يقيسان شيئين مختلفين.
+*Turkey's live gram prices for every karat, in lira, are on this site's Turkey page; on larger screens the live dollar ounce price they derive from sits in the site header above them, so you can see both halves of the move at once.*`,
+    body_ar: `من بين الأسواق التي يغطّيها هذا الموقع، تركيا من أكثرها إرباكًا للقرّاء الذين يتابعون سعر الذهب العالمي. فيرى القارئ سعر الذهب بالدولار ساكنًا أسبوعًا كاملًا، ثم يرى سعر الجرام في إسطنبول يسجّل قممًا متتالية. ولا خطأ في أي من الرقمين، فهما يقيسان شيئين مختلفين.
 
 ## الليرة تقوم بمعظم العمل
 
@@ -402,6 +402,6 @@ For anyone tracking the market, the discipline is simply to look at both numbers
 
 ولمن يتابع السوق، فالانضباط ببساطة أن ينظر إلى الرقمين معًا: سعر الأونصة بالدولار ليعرف ما فعله الذهب، وسعر الجرام بالليرة ليعرف ما فعله ماله. فهما يجيبان عن سؤالين مختلفين، ومن الخلط بينهما يأتي أكثر الإحباط.
 
-*أسعار الجرام المباشرة في تركيا لكل عيار، بالليرة، على صفحة تركيا في هذا الموقع، إلى جانب سعر الأونصة بالدولار المشتقّة منه — لترى شطرَي الحركة معًا.*`,
+*أسعار الجرام المباشرة في تركيا لكل عيار، بالليرة، على صفحة تركيا في هذا الموقع؛ وعلى الشاشات الكبيرة يظهر سعر الأونصة بالدولار المشتقّة منه مباشرةً في رأس الموقع فوقها — لترى شطرَي الحركة معًا.*`,
   },
 ];

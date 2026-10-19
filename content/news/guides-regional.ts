@@ -68,7 +68,7 @@ A few minutes of preparation removes almost all of the risk:
 
 ## Practical points on carriage
 
-- **Hand luggage, not hold.** Valuables in checked bags are generally excluded from airline liability, and you cannot present what you cannot reach.
+- **Hand luggage, not hold.** Airline compensation for checked bags is capped far below the value of most gold, and many airlines' terms exclude valuables altogether, and you cannot present what you cannot reach.
 - **Airport security is not customs.** Passing a scanner says nothing about your declaration obligations.
 - **Expect to be asked about worn items too.** Wearing a heavy set does not automatically place it outside the rules; it just makes the personal-use argument more credible.
 - **Insurance rarely follows you automatically.** Home contents cover may not extend abroad or in transit. Check before assuming.
@@ -121,7 +121,7 @@ If you are buying abroad specifically because it is cheaper there, do the arithm
 
 ## أمور عملية في الحمل
 
-- **حقيبة اليد لا المشحونة.** فالنفائس في الحقائب المشحونة مستثناة عمومًا من مسؤولية شركة الطيران، ولا تستطيع إبراز ما لا تصل إليه.
+- **حقيبة اليد لا المشحونة.** فتعويض شركات الطيران عن الحقائب المشحونة له سقف أدنى بكثير من قيمة معظم الذهب، وكثير من الشركات تستثني النفائس في شروطها أصلًا، ولا تستطيع إبراز ما لا تصل إليه.
 - **تفتيش المطار ليس الجمارك.** فمرورك من جهاز المسح لا يقول شيئًا عن واجبات التصريح.
 - **توقّع السؤال عن المرتديات أيضًا.** فارتداء طقم ثقيل لا يضعه تلقائيًا خارج القواعد، وإنما يجعل حجّة الاستعمال الشخصي أقرب للتصديق.
 - **التأمين نادرًا ما يتبعك تلقائيًا.** فتغطية محتويات المنزل قد لا تمتدّ للخارج ولا للترانزيت. تحقّق قبل أن تفترض.
@@ -155,7 +155,7 @@ None of what follows is an argument against tradition. It is an argument for wal
 
 ## What the shabka is, and is not
 
-The shabka is gold given by the groom's family to the bride, presented before the wedding. Its cultural role is layered: a gift, a public statement of commitment, and — importantly — **property that belongs to the bride**. In much of the region it functions as her own financial security, legally hers regardless of what follows.
+The shabka is gold given by the groom's family to the bride, presented before the wedding. Its cultural role is layered: a gift, a public statement of commitment, and — importantly — **property that belongs to the bride**. In much of the region it functions as her own financial security — though what happens to it if an engagement is broken off depends on local law and custom.
 
 That last point is the reason the resale characteristics of the set genuinely matter. This is not only jewellery. For many women it is the only substantial asset in their own name, and how it was bought determines what it is worth if she ever needs it.
 
@@ -166,7 +166,7 @@ There is no single regional standard, and the differences are large:
 - **Gulf markets** — typically 21K or 22K, often a substantial multi-piece set: necklace, bracelet, ring, earrings. Weight expectations are high, and 24K pieces appear more often than elsewhere.
 - **Egypt** — historically 21K, with 18K taking meaningful share as prices rose; the shift is significant enough that we wrote a separate piece on it. Sets are often lighter than Gulf equivalents but more worked.
 - **Levant (Jordan, Syria, Lebanon)** — 21K dominant, with strong preference for pieces that read as substantial.
-- **North Africa (Morocco, Tunisia, Libya)** — 18K is far more common than in the Mashriq, and local craft traditions carry real premiums.
+- **North Africa (Morocco, Algeria, Tunisia)** — 18K is far more common than in the Mashriq, and local craft traditions carry real premiums.
 - **Turkey** — bracelets and coins by the gram alongside jewellery; gifting *çeyrek* and *tam* coins at the ceremony is standard.
 
 If you are marrying across markets — increasingly common — agree explicitly on which convention applies. A family expecting a Gulf-weight 21K set and a family planning a Moroccan 18K set are not disagreeing about generosity; they are using different units.
@@ -179,10 +179,10 @@ Do it in this order:
 
 1. **Fix the total budget** in your currency, honestly, before entering any shop.
 2. **Look up today's gram price** for the karat you intend to buy.
-3. **Divide** to get the gold weight your budget buys, then reduce it by the expected making charge — 10–25% is a realistic range for worked wedding pieces.
+3. **Divide** to get the gold weight your budget buys, then reduce it by the making charge — ask the shop for its rate before you start, since it varies widely by piece, shop and market.
 4. **That weight is your target.** Now shop for a set that hits it, rather than being shown pieces and working backwards.
 
-A worked illustration, using a 21K gram price of 400 units:
+A worked illustration, using a 21K gram price of 400 units and an assumed 20% making charge:
 
 | Budget | Gold value after ~20% making | Weight you can expect |
 |---|---|---|
@@ -206,14 +206,14 @@ Given that the set is partly financial security, some choices matter more than t
 
 The most useful thing a family can do is separate two questions that usually get merged: *what should the set look like*, and *what should it be worth*. The first is culture and taste, and the shop is the right place for it. The second is arithmetic, and it should be settled at home, with a live gram price in front of you.
 
-*Every country page on this site shows the current per-gram price for 24, 22, 21 and 18 karat in the local currency — the number to budget against before anyone visits a showroom.*`,
+*Every country page on this site shows the current per-gram price for 24, 22, 21, 18 and 14 karat in the local currency — the number to budget against before anyone visits a showroom.*`,
     body_ar: `بالنسبة لمعظم العائلات في هذه المنطقة، طقم العرس — **الشبكة** — هو أكبر عملية شراء ذهب تقوم بها في حياتها. وهو أيضًا الشراء الذي يجري تحت أشدّ ضغط زمني، وأكثر مراقبة اجتماعية، وأقلّ بحث في الأسعار. وهذا المزيج مكلف.
 
 ولا شيء ممّا يلي حجّة ضد العادة، بل حجّة لأن تدخل المحل وأنت تعرف الأرقام.
 
 ## ما هي الشبكة وما ليست هي
 
-الشبكة ذهب تقدّمه أسرة العريس للعروس قبل الزفاف. ودورها الثقافي متعدّد الطبقات: هدية، وإعلان علني للالتزام، و— وهذا مهم — **ملك خاص بالعروس**. وفي كثير من المنطقة تعمل بوصفها أمانها المالي الخاص، ملكًا لها شرعًا مهما جرى بعد ذلك.
+الشبكة ذهب تقدّمه أسرة العريس للعروس قبل الزفاف. ودورها الثقافي متعدّد الطبقات: هدية، وإعلان علني للالتزام، و— وهذا مهم — **ملك خاص بالعروس**. وفي كثير من المنطقة تعمل بوصفها أمانها المالي الخاص — أمّا مصيرها إن فُسخت الخطبة فيتوقّف على القانون والعرف المحليين.
 
 وهذه النقطة الأخيرة هي سبب أهمية خصائص إعادة بيع الطقم أهميةً حقيقية. فالأمر ليس حليًّا فحسب. فلكثير من النساء هو الأصل الوحيد المعتبر باسمهنّ، وطريقة شرائه تحدّد ما يساويه إن احتجن إليه يومًا.
 
@@ -224,7 +224,7 @@ The most useful thing a family can do is separate two questions that usually get
 - **الأسواق الخليجية** — عيار 21 أو 22 عادةً، وغالبًا طقم متعدّد القطع كبير: عقد وإسورة وخاتم وأقراط. وتوقّعات الوزن عالية، وتظهر قطع عيار 24 أكثر من غيرها.
 - **مصر** — عيار 21 تاريخيًا، مع حصّة معتبرة لعيار 18 مع ارتفاع الأسعار؛ والتحوّل كبير إلى حدّ أفردنا له مقالًا مستقلًا. والأطقم أخفّ من نظيرتها الخليجية غالبًا لكنها أكثر شغلًا.
 - **بلاد الشام (الأردن وسوريا ولبنان)** — عيار 21 هو الغالب، مع تفضيل قوي للقطع التي تبدو ذات حضور.
-- **شمال أفريقيا (المغرب وتونس وليبيا)** — عيار 18 أشيع بكثير منه في المشرق، وللتقاليد الحرفية المحلية علاوات حقيقية.
+- **شمال أفريقيا (المغرب والجزائر وتونس)** — عيار 18 أشيع بكثير منه في المشرق، وللتقاليد الحرفية المحلية علاوات حقيقية.
 - **تركيا** — أساور وعملات بالجرام إلى جانب المشغولات؛ وإهداء عملات *چيريك* و*تام* في الحفل أمر معتاد.
 
 وإن كان الزواج عابرًا للأسواق — وهو يزداد — فاتّفقوا صراحةً على العرف المعتمد. فالأسرة التي تتوقّع طقم عيار 21 بوزن خليجي والأسرة التي تخطّط لطقم عيار 18 مغربي لا تختلفان على الكرم، بل تستخدمان وحدتين مختلفتين.
@@ -237,10 +237,10 @@ The most useful thing a family can do is separate two questions that usually get
 
 1. **حدّد الميزانية الإجمالية** بعملتك، بصدق، قبل دخول أي محل.
 2. **ابحث عن سعر الجرام اليوم** للعيار الذي تنوي شراءه.
-3. **اقسم** لتحصل على وزن الذهب الذي تشتريه ميزانيتك، ثم اخصم المصنعية المتوقّعة — و10–25% نطاق واقعي لقطع الأعراس المشغولة.
+3. **اقسم** لتحصل على وزن الذهب الذي تشتريه ميزانيتك، ثم اخصم المصنعية — واسأل المحل عن نسبتها قبل أن تبدأ، فهي تتفاوت كثيرًا بحسب القطعة والمحل والسوق.
 4. **هذا الوزن هو هدفك.** والآن ابحث عن طقم يبلغه، بدل أن تُعرض عليك القطع فتحسب بالعكس.
 
-مثال توضيحي، بسعر جرام عيار 21 قدره 400 وحدة:
+مثال توضيحي، بسعر جرام عيار 21 قدره 400 وحدة ومصنعية مفترضة قدرها 20%:
 
 | الميزانية | قيمة الذهب بعد مصنعية ~20% | الوزن المتوقّع |
 |---|---|---|
@@ -264,7 +264,7 @@ The most useful thing a family can do is separate two questions that usually get
 
 أنفع ما تفعله أسرة هو الفصل بين سؤالين يُدمجان عادةً: *كيف ينبغي أن يبدو الطقم*، و*كم ينبغي أن يساوي*. الأول ثقافة وذوق، والمحل مكانه الصحيح. والثاني حساب، ومكانه البيت، وأمامك سعر جرام مباشر.
 
-*كل صفحة دولة على هذا الموقع تعرض سعر الجرام الحالي لعيار 24 و22 و21 و18 بالعملة المحلية — وهو الرقم الذي تُبنى عليه الميزانية قبل أن يزور أحد أي معرض.*`,
+*كل صفحة دولة على هذا الموقع تعرض سعر الجرام الحالي لعيار 24 و22 و21 و18 و14 بالعملة المحلية — وهو الرقم الذي تُبنى عليه الميزانية قبل أن يزور أحد أي معرض.*`,
   },
   {
     slug: "why-subcontinent-gold-differs-from-the-gulf",
@@ -285,7 +285,7 @@ The Gulf states are, broadly, low-duty gold markets. Dubai's position as a bulli
 
 India is the opposite case by policy. Gold is a major import and a significant drain on the country's external accounts, so import duty has long been used as a lever to manage demand. That duty is passed straight through to the retail price, and it is the main reason a gram in Mumbai costs more than a gram in Dubai on the same day.
 
-The rate has changed repeatedly over the years — sometimes sharply, in both directions — which is why we do not quote a figure here that will be stale within months. What is stable is the **mechanism**: India's gold price includes a policy component that the Gulf's does not.
+The rate has changed repeatedly over the years — sometimes sharply, in both directions — which is why we do not quote a figure here that will be stale within months. What is stable is the **mechanism**: India's gold price includes an import-duty component that Gulf prices largely do not — though Gulf buyers pay VAT on jewellery (5% in the UAE, 15% in Saudi Arabia), so compare the taxes too.
 
 Pakistan sits between the two in structure but shares a second factor with India that the Gulf largely escapes: a **floating currency**. When the rupee moves against the dollar, the local gold price moves with it regardless of what gold did.
 
@@ -343,7 +343,7 @@ Because a genuine gap survives, buying in the Gulf and carrying to the subcontin
 
 أمّا الهند فالحالة المقابلة بحكم السياسة. فالذهب واردات كبرى واستنزاف معتبر لحسابات البلاد الخارجية، ولذا استُخدم رسم الاستيراد طويلًا أداةً لإدارة الطلب. وهذا الرسم يُمرَّر مباشرةً إلى سعر التجزئة، وهو السبب الرئيس في أن الجرام في مومباي أغلى من الجرام في دبي في اليوم نفسه.
 
-وقد تغيّر المعدّل مرارًا عبر السنين — وبحدّة أحيانًا، وفي الاتجاهين — ولهذا لا نذكر هنا رقمًا سيصير قديمًا خلال أشهر. والثابت هو **الآلية**: سعر الذهب في الهند يتضمّن مكوّنًا سياسيًا لا يتضمّنه سعر الخليج.
+وقد تغيّر المعدّل مرارًا عبر السنين — وبحدّة أحيانًا، وفي الاتجاهين — ولهذا لا نذكر هنا رقمًا سيصير قديمًا خلال أشهر. والثابت هو **الآلية**: سعر الذهب في الهند يتضمّن مكوّن رسوم استيراد لا تتضمّنه أسعار الخليج في الغالب — وإن كان المشتري في الخليج يدفع ضريبة القيمة المضافة على المشغولات (5% في الإمارات و15% في السعودية)، فقارن الضرائب أيضًا.
 
 وتقع باكستان بين الاثنين بنيويًا، لكنها تشارك الهند عاملًا ثانيًا ينجو منه الخليج غالبًا: **عملة عائمة**. فحين تتحرّك الروبية أمام الدولار، يتحرّك سعر الذهب المحلي معها بصرف النظر عمّا فعله الذهب.
 

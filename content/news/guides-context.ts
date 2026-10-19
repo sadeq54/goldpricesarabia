@@ -24,16 +24,16 @@ export const CONTEXT_ARTICLES: Article[] = [
     title_en: "What Actually Moves the Gold Price",
     title_ar: "ما الذي يحرّك سعر الذهب فعلًا",
     description_en:
-      "Real interest rates, the dollar, central bank buying and ETF flows explain most of gold's large moves. What each one does, why 'inflation' is a worse predictor than people assume, and how to read a move you didn't expect.",
+      "Real interest rates, the dollar, central bank buying and ETF flows are among the main forces behind gold's large moves. What each one does, why 'inflation' is a worse predictor than people assume, and how to read a move you didn't expect.",
     description_ar:
-      "أسعار الفائدة الحقيقية، والدولار، وشراء البنوك المركزية، وتدفّقات الصناديق تفسّر معظم تحرّكات الذهب الكبيرة. ماذا يفعل كل عامل، ولماذا التضخّم مؤشّر أضعف ممّا يُظنّ، وكيف تقرأ حركة لم تتوقّعها.",
+      "أسعار الفائدة الحقيقية، والدولار، وشراء البنوك المركزية، وتدفّقات الصناديق من أبرز القوى وراء تحرّكات الذهب الكبيرة. ماذا يفعل كل عامل، ولماذا التضخّم مؤشّر أضعف ممّا يُظنّ، وكيف تقرأ حركة لم تتوقّعها.",
     tags: ["market-drivers", "macro", "education", "spot-price"],
     author: AUTHOR,
     body_en: `Gold has no earnings, no dividend and no management. That makes it unusually hard to value and unusually easy to explain badly. Most of what is said about gold on a given day is narrative fitted after the fact. A small number of drivers, however, genuinely do most of the work.
 
-## Real interest rates: the big one
+## Real interest rates
 
-The most reliable single relationship in gold is with **real interest rates** — the interest rate after inflation, not the headline rate.
+For decades one of the most closely watched relationships in gold was with **real interest rates** — the interest rate after inflation, not the headline rate. It has been much weaker since 2022: US real yields rose from below zero to above 2%, yet gold went on to set records while central banks bought on a record scale.
 
 The logic is direct. Gold pays nothing. If you can earn 3% *above* inflation in a safe government bond, holding a non-yielding metal has a real cost, and gold tends to struggle. If that same bond yields 1% *below* inflation, the cost of holding gold disappears — you are giving up nothing — and gold tends to do well.
 
@@ -81,7 +81,7 @@ Work down this list:
 
 | Ask | If yes |
 |---|---|
-| Did real yields move? | Usually the explanation |
+| Did real yields move? | Often part of the explanation |
 | Did the dollar move? | Partly the same story |
 | Was there a central bank or reserves headline? | Slow driver, real |
 | Did ETF holdings shift notably? | Flow-driven |
@@ -93,12 +93,12 @@ That last row is the one worth internalising in this region. A great many "gold 
 
 We do not forecast. Anyone who states confidently where gold will be in six months is describing a guess, and an article built on one ages into a liability. What is useful is understanding the mechanisms — because those keep working long after any particular prediction has expired.
 
-*This site shows the live dollar ounce price beside every local gram price, which is exactly the comparison the last row of that table requires.*`,
+*On larger screens this site's header shows the live dollar ounce price above every local gram price — exactly the comparison the last row of that table requires.*`,
     body_ar: `الذهب بلا أرباح ولا توزيعات ولا إدارة. وهذا يجعل تقويمه صعبًا على نحو غير معتاد، وشرحه شرحًا رديئًا سهلًا على نحو غير معتاد. ومعظم ما يُقال عن الذهب في يوم بعينه سردية رُكِّبت بعد وقوع الحدث. غير أن عددًا قليلًا من المحرّكات يقوم فعلًا بمعظم العمل.
 
-## أسعار الفائدة الحقيقية: المحرّك الأكبر
+## أسعار الفائدة الحقيقية
 
-أوثق علاقة مفردة في الذهب هي مع **أسعار الفائدة الحقيقية** — أي الفائدة بعد التضخّم، لا الفائدة المعلنة.
+ظلّت علاقة الذهب بـ**أسعار الفائدة الحقيقية** — أي الفائدة بعد التضخّم، لا الفائدة المعلنة — من أكثر العلاقات متابعةً لعقود. لكنها ضعفت كثيرًا منذ 2022: فقد ارتفعت العوائد الحقيقية الأمريكية من دون الصفر إلى أكثر من 2%، ومع ذلك واصل الذهب تسجيل أرقام قياسية بينما اشترت البنوك المركزية بأحجام قياسية.
 
 والمنطق مباشر. فالذهب لا يدفع شيئًا. فإن استطعت كسب 3% *فوق* التضخّم في سند حكومي آمن، صار للاحتفاظ بمعدن لا يدرّ عائدًا كلفة حقيقية، ومال الذهب إلى التعثّر. وإن كان ذلك السند نفسه يعطي 1% *تحت* التضخّم، اختفت كلفة الاحتفاظ بالذهب — فأنت لا تتنازل عن شيء — ومال الذهب إلى الأداء الجيّد.
 
@@ -146,7 +146,7 @@ We do not forecast. Anyone who states confidently where gold will be in six mont
 
 | اسأل | إن كان الجواب نعم |
 |---|---|
-| هل تحرّكت العوائد الحقيقية؟ | هذا هو التفسير عادةً |
+| هل تحرّكت العوائد الحقيقية؟ | جزء من التفسير غالبًا |
 | هل تحرّك الدولار؟ | القصّة نفسها جزئيًا |
 | هل ورد خبر عن بنك مركزي أو احتياطيات؟ | محرّك بطيء وحقيقي |
 | هل تغيّرت حيازات الصناديق تغيّرًا ملحوظًا؟ | مدفوع بالتدفّقات |
@@ -158,7 +158,7 @@ We do not forecast. Anyone who states confidently where gold will be in six mont
 
 نحن لا نتوقّع. فمن يقرّر بثقة أين سيكون الذهب بعد ستة أشهر إنما يصف تخمينًا، والمقال المبني على تخمين يشيخ ليصير عبئًا. والمفيد هو فهم الآليات — لأنها تظلّ تعمل بعد انتهاء صلاحية أي تنبّؤ بعينه بزمن طويل.
 
-*وهذا الموقع يعرض سعر الأونصة بالدولار مباشرةً بجانب كل سعر جرام محلي، وهي بالضبط المقارنة التي يتطلّبها السطر الأخير من ذلك الجدول.*`,
+*وعلى الشاشات الكبيرة يعرض رأس هذا الموقع سعر الأونصة بالدولار مباشرةً فوق كل سعر جرام محلي، وهي بالضبط المقارنة التي يتطلّبها السطر الأخير من ذلك الجدول.*`,
   },
   {
     slug: "why-central-banks-buy-gold",
@@ -207,7 +207,7 @@ Three practical implications, and one caution.
 
 **2. The reasoning scales down.** The logic a reserve manager applies — hold something that is not anyone's liability, in case the system you depend on becomes unavailable — is exactly the logic behind a household holding physical gold rather than an unallocated claim. It is the same argument at a different size, and it is why the allocated/unallocated distinction in our paper-versus-physical guide matters.
 
-**3. It is a slow signal, not a trading signal.** Central bank purchases are reported with a lag and accumulate over quarters. Nobody should buy or sell on a monthly reserves headline.
+**3. It is a slow signal, not a trading signal.** Central bank purchases are reported with a lag and accumulate over quarters. A single monthly reserves headline says little about where the price goes next.
 
 **The caution:** central banks buying gold does not mean gold only goes up. They bought through periods when the price fell, because their horizon is measured in decades and their objective is not return. Borrowing their conclusion without borrowing their time horizon is a mistake.
 
@@ -215,7 +215,7 @@ Three practical implications, and one caution.
 
 Central bank buying is real, structural, and driven by institutional risk management rather than a price view. For a household, the useful takeaway is not "prices will rise." It is that the most conservative financial institutions in the world, when asked what to hold in case things go wrong, have increasingly answered: some gold, held where we can reach it.
 
-That is a reason to own some. It is not a reason to own only that.
+It is one argument households weigh when deciding whether to hold any gold; on its own, it is not a reason to concentrate savings in it.
 
 *Our country pages show the live gold price in your own currency — the number to use when sizing any holding, however you were persuaded to start one.*`,
     body_ar: `في معظم أواخر القرن العشرين كانت البنوك المركزية **بائعة** صافية للذهب. والمؤسسات الغربية خاصةً كانت تصفّي احتياطيات بدت أثرًا من نظام نقدي لم يعد قائمًا. ثم انعكس النمط، وصارت البنوك المركزية منذئذٍ مصدر طلب ثابتًا ومعتبرًا.
@@ -254,7 +254,7 @@ That is a reason to own some. It is not a reason to own only that.
 
 **2. المنطق ينزل إلى المقياس الأصغر.** فالمنطق الذي يطبّقه مدير الاحتياطيات — احفظ شيئًا ليس التزامًا على أحد، تحسّبًا لأن يصير النظام الذي تعتمد عليه غير متاح — هو بعينه المنطق وراء حيازة أسرة ذهبًا ماديًا بدل مطالبة غير مخصّصة. إنها الحجّة نفسها بحجم مختلف، ولهذا يهمّ التمييز بين المخصّص وغير المخصّص في دليلنا عن الورقي مقابل المادي.
 
-**3. إنها إشارة بطيئة لا إشارة تداول.** فمشتريات البنوك المركزية تُنشر متأخّرة وتتراكم عبر أرباع سنوية. ولا ينبغي لأحد أن يشتري أو يبيع على عنوان احتياطيات شهري.
+**3. إنها إشارة بطيئة لا إشارة تداول.** فمشتريات البنوك المركزية تُنشر متأخّرة وتتراكم عبر أرباع سنوية. وعنوان احتياطيات شهري واحد لا يقول الكثير عن وجهة السعر التالية.
 
 **والتحذير:** شراء البنوك المركزية للذهب لا يعني أن الذهب يصعد فقط. فقد اشترت خلال فترات هبط فيها السعر، لأن أفقها يُقاس بالعقود وهدفها ليس العائد. واستعارة استنتاجها دون استعارة أفقها الزمني خطأ.
 
@@ -262,7 +262,7 @@ That is a reason to own some. It is not a reason to own only that.
 
 شراء البنوك المركزية حقيقي وبنيوي ومدفوع بإدارة مخاطر مؤسسية لا برأي في السعر. وبالنسبة لأسرة، الخلاصة المفيدة ليست "الأسعار سترتفع"، بل أن أكثر المؤسسات المالية تحفّظًا في العالم، حين سُئلت ماذا تحفظ تحسّبًا لأن تسوء الأمور، أجابت على نحو متزايد: بعض الذهب، محفوظًا حيث نستطيع الوصول إليه.
 
-وهذا سبب لامتلاك بعضه. وليس سببًا لامتلاكه وحده.
+وهي حجّة تزنها الأسر حين تقرّر هل تحتفظ بشيء من الذهب، لكنها وحدها ليست سببًا لتركيز المدّخرات فيه.
 
 *وصفحات الدول لدينا تعرض سعر الذهب المباشر بعملتك — وهو الرقم الذي تستخدمه عند تحديد حجم أي حيازة، مهما كان ما أقنعك بالبدء.*`,
   },
@@ -272,12 +272,12 @@ That is a reason to own some. It is not a reason to own only that.
     title_en: "How Much Gold Belongs in a Family Budget",
     title_ar: "كم من الذهب ينبغي أن يكون في ميزانية الأسرة",
     description_en:
-      "The answer is a share, not an amount — and it depends far more on your currency and your emergency fund than on any view about the gold price. A framework for sizing a holding you can actually live with.",
+      "The answer is a share, not an amount — and it depends far more on your currency and your emergency fund than on any view about the gold price. The questions that shape that share, and why no single figure fits every household.",
     description_ar:
-      "الجواب حصّة لا مبلغ — ويتوقّف على عملتك وصندوق طوارئك أكثر بكثير من أي رأي في سعر الذهب. إطار لتحديد حجم حيازة تستطيع التعايش معها فعلًا.",
+      "الجواب حصّة لا مبلغ — ويتوقّف على عملتك وصندوق طوارئك أكثر بكثير من أي رأي في سعر الذهب. الأسئلة التي تحدّد تلك الحصّة، ولماذا لا يناسب رقم واحد كل الأسر.",
     tags: ["allocation", "savings", "budgeting", "education"],
     author: AUTHOR,
-    body_en: `"How much gold should I own?" is the question this site is asked most often, and it does not have a numerical answer that applies to everybody. What it does have is a decent framework, and following it produces a figure you can defend to yourself in a bad month — which is the only test that matters.
+    body_en: `"How much gold should I own?" is one of the most common questions about gold, and it does not have a numerical answer that applies to everybody. What it does have is a decent framework, and following it produces a figure you can defend to yourself in a bad month — which is the only test that matters.
 
 ## First: gold is not the first thing you buy
 
@@ -291,23 +291,23 @@ If gold is being bought instead of either of these, the allocation question is p
 
 ## The framework: a share of long-term savings
 
-For money that is genuinely long-term — not next year's fees, not the emergency fund — a widely used range for gold is **5–15% of investable savings**. That range exists because:
+For money that is genuinely long-term — not next year's fees, not the emergency fund — gold is usually discussed as one part of a mix rather than the whole of it. There is no official or universal percentage, but two points hold generally:
 
-- Below about 5%, a holding is too small to change anything in the scenarios you bought it for.
-- Above about 15–20%, you are no longer diversifying; you are taking a concentrated position on one non-yielding asset.
+- A very small holding changes little in the scenarios people buy gold for.
+- A very large one stops being diversification and becomes a concentrated position in one asset that pays no income.
 
-Where you sit inside the range depends on a small number of honest questions.
+Where a household lands depends on a small number of honest questions.
 
-## What moves you higher in the range
+## Factors that usually argue for a larger share
 
 - **Your income and savings are in a currency with a history of devaluation.** This is the strongest single factor for readers in Egypt, Turkey, Lebanon, Pakistan and similar markets. Gold's protection here is genuine and mechanical, as covered in our guide on gold versus bank deposits.
 - **Your local banking system has been unreliable**, or capital controls are a live memory. The case for an asset that is nobody's liability strengthens considerably.
 - **You have no other hard-currency assets.** If everything you own is in the local currency, gold is doing more work.
 - **Your horizon is long** and you will not need to sell into a weak market.
 
-## What moves you lower
+## Factors that usually argue for a smaller share
 
-- **You live in a pegged-currency economy** — Saudi Arabia, UAE, Qatar, Bahrain, Jordan. The devaluation protection that justifies a large allocation elsewhere is largely absent, because the peg already provides it. Gold here is a bet on the world gold price, which is a fine thing to own a little of and a poor thing to concentrate in.
+- **You live in a pegged-currency economy** — Saudi Arabia, UAE, Qatar, Bahrain, Jordan. The devaluation protection that justifies a large allocation elsewhere is largely absent, because the peg already provides it. Gold here mainly tracks the world gold price, so it adds exposure to that price rather than protection against the local currency.
 - **You already hold foreign-currency savings or overseas assets.**
 - **You may need the money within a few years.**
 - **You would be tempted to sell in a drawdown.** An allocation you abandon at the bottom is worse than a smaller one you keep.
@@ -328,7 +328,7 @@ A family with 100,000 units of long-term savings, income in a currency that has 
 |---|---|---|
 | Emergency fund | Held separately | Not part of the allocation |
 | Long-term savings | 100,000 | The base for the calculation |
-| Gold at 12% | 12,000 | Upper-middle of the range, justified by the currency |
+| Gold share (illustration only) | 12,000 | An example figure, not a recommendation |
 | Form | Coins / small bars | Narrow spread, divisible |
 | Wedding jewellery | Counted separately | Not liquid in practice |
 
@@ -336,18 +336,18 @@ At a 24K gram price of 250, that 12,000 is about 48 grams. That is a target to a
 
 ## Rebalancing, and the discipline it enforces
 
-If gold rises sharply, it becomes a larger share of your savings than you chose. Selling a little to return to your target is not a lack of conviction; it is the mechanism that makes you sell high. If it falls, buying back to target makes you buy low.
+If gold rises sharply, it becomes a larger share of your savings than you chose. Rebalancing — selling a little after a rise or adding after a fall to return to the share you chose — keeps a holding at the size you intended. It does not guarantee selling at the top or buying at the bottom.
 
-Check once or twice a year. More often than that turns an allocation into a trade.
+Many people review once or twice a year; checking much more often tends to turn a holding into a trade.
 
 ## The short answer
 
-Somewhere between 5% and 15% of long-term savings, higher if your currency is unreliable and you hold nothing else in hard assets, lower if you live under a dollar peg and already hold foreign currency. Held in a form with a narrow spread. Counted at sell-side value. Reviewed twice a year.
+There is no single right share. What matters most is how reliable your currency is, whether you already hold other hard-currency assets, how soon you may need the money, and whether you would hold through a fall. Whatever the share, count it at sell-side value, prefer forms with a narrow spread, and review it periodically. For a decision of this size, a licensed financial adviser in your country can look at your whole situation.
 
 And built after — not instead of — an emergency fund.
 
 *Sizing it takes a minute: our country pages carry the live per-gram price for every karat in your own currency, so you can convert a target percentage into an actual weight.*`,
-    body_ar: `"كم من الذهب ينبغي أن أملك؟" هو أكثر سؤال يصل هذا الموقع، وليس له جواب رقمي ينطبق على الجميع. لكن له إطارًا محترمًا، واتّباعه يُنتج رقمًا تستطيع الدفاع عنه أمام نفسك في شهر سيئ — وهذا هو الاختبار الوحيد المهمّ.
+    body_ar: `"كم من الذهب ينبغي أن أملك؟" من أكثر الأسئلة شيوعًا عن الذهب، وليس له جواب رقمي ينطبق على الجميع. لكن له إطارًا محترمًا، واتّباعه يُنتج رقمًا تستطيع الدفاع عنه أمام نفسك في شهر سيئ — وهذا هو الاختبار الوحيد المهمّ.
 
 ## أولًا: الذهب ليس أول ما تشتريه
 
@@ -361,23 +361,23 @@ And built after — not instead of — an emergency fund.
 
 ## الإطار: حصّة من الادّخار طويل الأجل
 
-للمال الطويل الأجل حقًا — لا أقساط السنة القادمة ولا صندوق الطوارئ — النطاق الشائع للذهب هو **5–15% من المدّخرات القابلة للاستثمار**. وهذا النطاق موجود لأن:
+للمال الطويل الأجل حقًا — لا أقساط السنة القادمة ولا صندوق الطوارئ — يُناقَش الذهب عادةً بوصفه جزءًا من مزيج لا المزيج كله. ولا توجد نسبة رسمية أو عامة، لكن نقطتين تصحّان عمومًا:
 
-- دون 5% تقريبًا، تكون الحيازة أصغر من أن تغيّر شيئًا في السيناريوهات التي اشتريتها لأجلها.
-- وفوق 15–20% تقريبًا، لم تعد تنوّع، بل تأخذ مركزًا مركّزًا في أصل واحد لا يدرّ عائدًا.
+- الحيازة الصغيرة جدًا لا تغيّر كثيرًا في السيناريوهات التي يشتري الناس الذهب لأجلها.
+- والكبيرة جدًا لا تعود تنويعًا، بل تصير مركزًا مركّزًا في أصل واحد لا يدرّ دخلًا.
 
-وموقعك داخل النطاق يتوقّف على عدد قليل من الأسئلة الصادقة.
+وأين تستقرّ الأسرة يتوقّف على عدد قليل من الأسئلة الصادقة.
 
-## ما يرفعك في النطاق
+## عوامل ترجّح عادةً حصّة أكبر
 
 - **دخلك ومدّخراتك بعملة لها تاريخ من التخفيض.** وهذا أقوى عامل مفرد لقرّاء مصر وتركيا ولبنان وباكستان والأسواق المشابهة. وحماية الذهب هنا حقيقية وميكانيكية، كما في دليلنا عن الذهب مقابل الودائع البنكية.
 - **نظامك المصرفي المحلي كان غير موثوق**، أو ضوابط رأس المال ذكرى حيّة. فحجّة أصل ليس التزامًا على أحد تقوى كثيرًا.
 - **ليس لديك أصول أخرى بعملة صعبة.** فإن كان كل ما تملكه بالعملة المحلية، فالذهب يقوم بعمل أكبر.
 - **أفقك طويل** ولن تُضطر للبيع في سوق ضعيفة.
 
-## ما يخفضك في النطاق
+## عوامل ترجّح عادةً حصّة أصغر
 
-- **تعيش في اقتصاد بعملة مربوطة** — السعودية والإمارات وقطر والبحرين والأردن. فالحماية من التخفيض التي تبرّر حصّة كبيرة في غيرها غائبة إلى حدّ بعيد، لأن الربط يوفّرها أصلًا. والذهب هنا رهان على سعر الذهب العالمي، وهو شيء حسن أن تملك قليلًا منه ورديء أن تتركّز فيه.
+- **تعيش في اقتصاد بعملة مربوطة** — السعودية والإمارات وقطر والبحرين والأردن. فالحماية من التخفيض التي تبرّر حصّة كبيرة في غيرها غائبة إلى حدّ بعيد، لأن الربط يوفّرها أصلًا. والذهب هنا يتبع سعر الذهب العالمي أساسًا، فهو يضيف تعرّضًا لذلك السعر لا حمايةً من العملة المحلية.
 - **لديك بالفعل مدّخرات بعملة أجنبية أو أصول خارجية.**
 - **قد تحتاج المال خلال سنوات قليلة.**
 - **قد تُغريك نفسك بالبيع عند الهبوط.** فالحصّة التي تتخلّى عنها في القاع أسوأ من حصّة أصغر تحتفظ بها.
@@ -398,7 +398,7 @@ And built after — not instead of — an emergency fund.
 |---|---|---|
 | صندوق الطوارئ | محفوظ منفصلًا | ليس جزءًا من الحصّة |
 | المدّخرات طويلة الأجل | 100,000 | أساس الحساب |
-| الذهب بنسبة 12% | 12,000 | أعلى وسط النطاق، تبرّره العملة |
+| حصّة الذهب (للتوضيح فقط) | 12,000 | رقم توضيحي لا توصية |
 | الصورة | عملات / سبائك صغيرة | فارق ضيّق وقابلية تجزئة |
 | ذهب العرس | يُحتسب منفصلًا | غير سائل عمليًا |
 
@@ -406,13 +406,13 @@ And built after — not instead of — an emergency fund.
 
 ## إعادة التوازن، والانضباط الذي تفرضه
 
-إن ارتفع الذهب ارتفاعًا حادًّا، صار حصّة من مدّخراتك أكبر ممّا اخترت. وبيع قليل منه للعودة إلى هدفك ليس ضعف قناعة، بل هو الآلية التي تجعلك تبيع عاليًا. وإن هبط، فالشراء عودةً إلى الهدف يجعلك تشتري منخفضًا.
+إن ارتفع الذهب ارتفاعًا حادًّا، صار حصّة من مدّخراتك أكبر ممّا اخترت. وإعادة التوازن — بيع قليل بعد الارتفاع أو إضافة قليل بعد الهبوط للعودة إلى الحصّة التي اخترتها — تُبقي الحيازة عند الحجم الذي قصدته. لكنها لا تضمن البيع في القمّة ولا الشراء في القاع.
 
-راجع مرّة أو مرّتين في السنة. وأكثر من ذلك يحوّل الحصّة إلى مضاربة.
+يراجع كثيرون مرّة أو مرّتين في السنة؛ والمراجعة الأكثر تواترًا بكثير تميل إلى تحويل الحيازة إلى مضاربة.
 
 ## الجواب القصير
 
-بين 5% و15% من الادّخار طويل الأجل، أعلى إن كانت عملتك غير موثوقة ولا تملك غيرها من الأصول الصلبة، وأدنى إن كنت تحت ربط بالدولار وتملك عملة أجنبية أصلًا. محفوظًا في صورة ذات فارق ضيّق. محتسَبًا بقيمة البيع. مراجَعًا مرّتين في السنة.
+لا توجد حصّة واحدة صحيحة للجميع. والأهمّ هو مدى موثوقية عملتك، وهل تملك أصلًا أصولًا أخرى بعملة صعبة، ومتى قد تحتاج المال، وهل ستصمد في الاحتفاظ عند الهبوط. وأيًّا كانت الحصّة، فاحتسبها بقيمة البيع، وفضّل الصور ذات الفارق الضيّق، وراجعها دوريًا. وفي قرار بهذا الحجم، يستطيع مستشار مالي مرخَّص في بلدك أن ينظر في وضعك كاملًا.
 
 ومبنيًّا بعد صندوق الطوارئ لا بدلًا منه.
 

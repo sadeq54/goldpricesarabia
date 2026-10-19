@@ -63,7 +63,7 @@ That last point matters. **14K in a 21K market is the classic example** — the 
 
 The temptation is to say "sell when the price is high." Truthfully, nobody reliably calls the top, and gold is held by most families in this region for reasons that are not really about market timing — it is savings, it is a wedding, it is the reserve you draw on when something urgent happens.
 
-The more useful advice is narrower: **do not sell in a hurry if you can avoid it.** The worst prices are accepted by people who need cash today and will take the first offer. If you have even a few days, you can compare offers, and the difference between the first offer and the best of three is often larger than any week's move in the gold price itself.
+The more useful advice is narrower: **do not sell in a hurry if you can avoid it.** The worst prices are accepted by people who need cash today and will take the first offer. If you have even a few days, you can compare offers, and the difference between the first offer and the best of three can be significant.
 
 ## The structural takeaway
 
@@ -109,7 +109,7 @@ If your reason is that you want to own something beautiful, none of this should 
 
 الإغراء أن يقال «بِع حين يرتفع السعر». والحقيقة أن أحدًا لا يصيب القمة بانتظام، وأن معظم الأسر في هذه المنطقة تحتفظ بالذهب لأسباب لا علاقة لها فعلًا بتوقيت السوق — فهو ادخار، وهو عرس، وهو الاحتياطي الذي يُسحب منه حين يقع أمر عاجل.
 
-والنصيحة الأنفع أضيق: **لا تبع على عجل إن استطعت.** فأسوأ الأسعار يقبلها من يحتاج النقد اليوم فيأخذ أول عرض. وإن كان لديك بضعة أيام أمكنك مقارنة العروض، والفارق بين أول عرض وأفضل ثلاثة كثيرًا ما يفوق حركة سعر الذهب في أسبوع كامل.
+والنصيحة الأنفع أضيق: **لا تبع على عجل إن استطعت.** فأسوأ الأسعار يقبلها من يحتاج النقد اليوم فيأخذ أول عرض. وإن كان لديك بضعة أيام أمكنك مقارنة العروض، والفارق بين أول عرض وأفضل ثلاثة قد يكون كبيرًا.
 
 ## الخلاصة البنيوية
 
@@ -150,7 +150,7 @@ Countries that position themselves as regional trading hubs tend to keep those f
 
 This one is invisible on the shelf but often the biggest factor of all.
 
-If a currency is **pegged to the dollar**, the local gold price tracks the world spot price almost exactly, because the conversion factor barely moves. Several Gulf currencies work this way, which is why their gold prices look so stable in local terms even when the dollar price is moving.
+If a currency is **pegged to the dollar**, the local gold price tracks the world spot price almost exactly, because the conversion factor barely moves. Several Gulf currencies work this way, which is why their local gold prices move almost exactly in step with the dollar price.
 
 If a currency **floats**, the local price reflects two things moving at once — the metal and the exchange rate. A local price can rise on a day gold fell, purely because the currency weakened.
 
@@ -169,7 +169,7 @@ The dominant local karat matters too. Buying 22K in a market built around 21K, o
 - **Check whether tax is in or out** before concluding one country is cheaper.
 - **Watch the currency**, especially over time. A local price series in a floating currency is partly a chart of that currency.
 
-The country pages on this site show the same global spot price converted into each local currency at the same moment, which is the honest basis for comparison: it isolates the currency effect and tells you what the metal itself is worth where you are. What the shop adds on top is local, and that is exactly what these four factors explain.`,
+The country pages on this site show the same global spot price converted into each local currency at the day's mid-market exchange rate, which is the honest basis for comparison: it isolates the currency effect and tells you what the metal itself is worth where you are. What the shop adds on top is local, and that is exactly what these four factors explain.`,
     body_ar: `الذهب سلعة عالمية إلى حد قريب من الكمال. فالكيلوغرام في زيورخ مطابق كيميائيًا للكيلوغرام في دبي، ونقله سهل قياسًا بقيمته، ويُتداول باستمرار حول العالم. ونظريًا ينبغي أن يكون السعر واحدًا في كل مكان.
 
 وعمليًا، تعبر حدودًا فيتغير الرقم على اللوحة. وأربعة عوامل تفسر ذلك كله تقريبًا.
@@ -192,7 +192,7 @@ The country pages on this site show the same global spot price converted into ea
 
 هذا العامل غير مرئي على الرف لكنه غالبًا الأكبر أثرًا.
 
-فإن كانت العملة **مربوطة بالدولار**، تبع سعر الذهب المحلي السعر العالمي الفوري بدقة كبيرة، لأن معامل التحويل بالكاد يتحرك. وهكذا تعمل عدة عملات خليجية، ولهذا تبدو أسعار ذهبها مستقرة جدًا بالعملة المحلية حتى حين يتحرك السعر بالدولار.
+فإن كانت العملة **مربوطة بالدولار**، تبع سعر الذهب المحلي السعر العالمي الفوري بدقة كبيرة، لأن معامل التحويل بالكاد يتحرك. وهكذا تعمل عدة عملات خليجية، ولهذا تتحرك أسعار ذهبها بالعملة المحلية بما يكاد يطابق حركة السعر بالدولار.
 
 وإن كانت العملة **معوَّمة**، عكس السعر المحلي شيئين يتحركان معًا — المعدن وسعر الصرف. وقد يرتفع سعر محلي في يوم انخفض فيه الذهب، لمجرد ضعف العملة.
 
@@ -211,7 +211,7 @@ The country pages on this site show the same global spot price converted into ea
 - **تحقق هل الضريبة داخلة أم خارجة** قبل أن تستنتج أن بلدًا أرخص.
 - **راقب العملة**، خصوصًا عبر الزمن. فسلسلة أسعار محلية بعملة معوَّمة هي جزئيًا رسم بياني لتلك العملة.
 
-تعرض صفحات الدول في هذا الموقع السعر العالمي الفوري نفسه محوَّلًا إلى كل عملة محلية في اللحظة ذاتها، وهو الأساس النزيه للمقارنة: إذ يعزل أثر العملة ويخبرك كم يساوي المعدن نفسه حيث أنت. أما ما يضيفه المحل فوق ذلك فمحلي، وهو بالضبط ما تفسّره هذه العوامل الأربعة.`,
+تعرض صفحات الدول في هذا الموقع السعر العالمي الفوري نفسه محوَّلًا إلى كل عملة محلية بسعر الصرف المتوسط لذلك اليوم، وهو الأساس النزيه للمقارنة: إذ يعزل أثر العملة ويخبرك كم يساوي المعدن نفسه حيث أنت. أما ما يضيفه المحل فوق ذلك فمحلي، وهو بالضبط ما تفسّره هذه العوامل الأربعة.`,
   },
   {
     slug: "18k-or-21k-for-daily-wear",
@@ -248,7 +248,7 @@ Pure gold is soft. Every point of alloy added makes the finished piece harder an
 
 If a piece holds gemstones, the case for 18K is close to decisive. The prongs and settings that grip a stone have to be bent into place and then **stay** bent. Softer gold lets settings gradually open, and stones work loose and are lost.
 
-This is why fine jewellery worldwide is overwhelmingly 18K, and why a jeweller who steers you toward 18K for a stone-set ring is giving you good advice rather than selling you less gold.
+This is why stone-set fine jewellery is usually made in 18K or lower karats, and why a jeweller who steers you toward 18K for a stone-set ring is giving you good advice rather than selling you less gold.
 
 ## Colour, if it matters to you
 
@@ -297,7 +297,7 @@ You can compare today's per-gram price for both karats in your own currency on t
 
 إن كانت القطعة تحمل أحجارًا كريمة، فحجة عيار 18 تكاد تكون قاطعة. فالمخالب والتركيبات التي تمسك الحجر يجب أن تُثنى في موضعها ثم **تبقى** مثنية. والذهب الأليَن يترك التركيبات تنفتح تدريجيًا، فتتراخى الأحجار وتُفقد.
 
-ولهذا فإن المجوهرات الراقية عالميًا من عيار 18 في الغالب الأعم، ولهذا فإن الصائغ الذي يوجّهك إلى عيار 18 لخاتم مرصّع يسدي إليك نصحًا جيدًا لا يبيعك ذهبًا أقل.
+ولهذا تُصنع المجوهرات الراقية المرصّعة عادةً من عيار 18 أو أقل، ولهذا فإن الصائغ الذي يوجّهك إلى عيار 18 لخاتم مرصّع يسدي إليك نصحًا جيدًا لا يبيعك ذهبًا أقل.
 
 ## اللون، إن كان يهمك
 

@@ -35,11 +35,11 @@ Here are the structures that recur, and how to check before rather than after.
 
 ## Structure 1: the guaranteed monthly return
 
-The offer: invest in gold through us and receive a fixed return — often 3–8% *per month* — while the gold "works" through trading, mining, or a wholesale operation.
+The offer: invest in gold through us and receive a fixed return — often several percent *per month* — while the gold "works" through trading, mining, or a wholesale operation.
 
-Why it cannot be what it claims: **gold generates no income.** A bar in a vault produces nothing. Any fixed, guaranteed return must therefore come from trading profits, which are never guaranteed, or from other investors' deposits, which is a Ponzi scheme.
+Why it cannot be what it claims: **gold generates no income.** A bar in a vault produces nothing. A high fixed, guaranteed return must therefore come from somewhere other than the metal — in these schemes, from trading profits, which are never guaranteed, or from other investors' deposits, which is a Ponzi scheme.
 
-The tell is the word **guaranteed** attached to a return on a non-yielding asset. There is no legitimate version of that sentence.
+The tell is the word **guaranteed** attached to a return on a non-yielding asset. Some state-backed gold products have paid a small fixed interest rate — India's Sovereign Gold Bonds paid 2.5% a year — but no legitimate product promises several percent a month.
 
 These schemes usually pay reliably at first — that is the mechanism, because early payouts fund the testimonials that recruit the next wave. Collapse arrives when inflows slow, which is also why they intensify recruitment pressure over time.
 
@@ -96,11 +96,11 @@ Gold is a way to hold value, not a way to generate income. Any product promising
 
 ## الهيكل الأول: العائد الشهري المضمون
 
-العرض: استثمر في الذهب عبرنا واحصل على عائد ثابت — 3–8% *شهريًا* غالبًا — بينما "يعمل" الذهب في التداول أو التعدين أو عملية جملة.
+العرض: استثمر في الذهب عبرنا واحصل على عائد ثابت — بضعة في المئة *شهريًا* غالبًا — بينما "يعمل" الذهب في التداول أو التعدين أو عملية جملة.
 
-ولماذا لا يمكن أن يكون كما يدّعي: **الذهب لا يولّد دخلًا.** فالسبيكة في الخزنة لا تُنتج شيئًا. وأي عائد ثابت مضمون لا بدّ أن يأتي إذًا من أرباح تداول، وهي غير مضمونة أبدًا، أو من ودائع مستثمرين آخرين، وهذا مخطّط بونزي.
+ولماذا لا يمكن أن يكون كما يدّعي: **الذهب لا يولّد دخلًا.** فالسبيكة في الخزنة لا تُنتج شيئًا. فأي عائد ثابت مضمون ومرتفع لا بدّ أن يأتي إذًا من خارج المعدن — وفي هذه المخطّطات يأتي من أرباح تداول، وهي غير مضمونة أبدًا، أو من ودائع مستثمرين آخرين، وهذا مخطّط بونزي.
 
-والعلامة هي كلمة **مضمون** ملحقة بعائد على أصل لا يدرّ عائدًا. ولا توجد نسخة مشروعة من هذه الجملة.
+والعلامة هي كلمة **مضمون** ملحقة بعائد على أصل لا يدرّ عائدًا. وقد دفعت بعض منتجات الذهب المدعومة من الدولة فائدة ثابتة صغيرة — كسندات الذهب السيادية الهندية بنسبة 2.5% سنويًا — لكن لا يوجد منتج مشروع يعد ببضعة في المئة شهريًا.
 
 وهذه المخطّطات تدفع بانتظام في البداية عادةً — وتلك هي الآلية، لأن الدفعات المبكّرة تموّل الشهادات التي تجنّد الموجة التالية. ويأتي الانهيار حين تتباطأ التدفّقات الداخلة، وهو أيضًا سبب تصاعد ضغط التجنيد مع الوقت.
 
@@ -175,17 +175,17 @@ Some of these are genuinely good. Others are a marketing device that costs the c
 
 These behave in opposite ways when the price moves.
 
-Under **Design A**, you carry the price risk. If gold rises 20% over the term, your accumulated cash buys 20% less metal than it would have at the start. You have effectively saved in currency, not in gold.
+Under **Design A**, you carry the price risk. If gold rises 20% over the term, your accumulated cash buys about 17% less metal than it would have at the start. You have effectively saved in currency, not in gold.
 
 Under **Design B**, you have been buying gradually at an average price. A rising market does not erode what you have already accumulated — this is cost averaging, and it is the version that actually functions as gold saving.
 
 **Ask which design you are signing, in those terms.** Many customers assume B and are enrolled in A. If the scheme's paperwork records amounts in currency rather than grams, it is A.
 
-## The bonus is smaller than it looks
+## What the bonus is actually worth
 
-"Pay 11, get 12" sounds like a 9% return. It is not, because you did not have all the money in for the full year.
+"Pay 11, get 12" sounds like a 9% return. As an annual rate it is actually higher, because you did not have all the money in for the full year.
 
-The average instalment sits in the scheme for roughly half the term. So a one-month bonus on an eleven-month plan is closer to an effective annual rate in the mid-teens on the money actually committed — still decent, but not what the headline suggests. And if the bonus is credited as a discount on making charges rather than as metal or cash, its value depends entirely on the making charge being fair in the first place.
+The average instalment sits in the scheme for roughly half the term. So a one-month bonus on an eleven-month plan works out at an effective annual rate of roughly 16–19% on the money actually committed, depending on when the bonus is paid — but only if you complete every instalment and the bonus is paid in metal or cash. And if the bonus is credited as a discount on making charges rather than as metal or cash, its value depends entirely on the making charge being fair in the first place.
 
 ## The five clauses to read
 
@@ -228,17 +228,17 @@ If the scheme's bonus genuinely exceeds the extra premium you would pay on jewel
 
 وهما يتصرّفان تصرّفين متعاكسين حين يتحرّك السعر.
 
-ففي **التصميم أ** تتحمّل أنت مخاطرة السعر. فإن ارتفع الذهب 20% خلال المدّة، اشترى مالك المتراكم معدنًا أقلّ بـ20% ممّا كان سيشتريه في البداية. وتكون قد ادّخرت بالعملة لا بالذهب.
+ففي **التصميم أ** تتحمّل أنت مخاطرة السعر. فإن ارتفع الذهب 20% خلال المدّة، اشترى مالك المتراكم معدنًا أقلّ بنحو 17% ممّا كان سيشتريه في البداية. وتكون قد ادّخرت بالعملة لا بالذهب.
 
 وفي **التصميم ب** تكون قد اشتريت تدريجيًا بسعر متوسّط. والسوق الصاعدة لا تُآكل ما راكمته سلفًا — وهذا هو متوسّط التكلفة، وهو النسخة التي تعمل فعلًا بوصفها ادّخارًا بالذهب.
 
 **اسأل أي تصميم توقّع عليه، بهذه العبارة.** فكثير من الزبائن يفترضون "ب" ويُسجَّلون في "أ". وإذا كانت أوراق الخطة تسجّل مبالغ بالعملة لا جرامات، فهي "أ".
 
-## المكافأة أصغر ممّا تبدو
+## ما تساويه المكافأة فعلًا
 
-"ادفع 11 واحصل على 12" تبدو عائدًا 9%. وليست كذلك، لأن المال لم يكن كله لديك طوال السنة.
+"ادفع 11 واحصل على 12" تبدو عائدًا 9%. وهي بحساب سنوي أعلى من ذلك فعلًا، لأن المال لم يكن كله في الخطة طوال السنة.
 
-فالقسط المتوسّط يبقى في الخطة نحو نصف المدّة. فمكافأة شهر واحد على خطة أحد عشر شهرًا أقرب إلى معدّل سنوي فعّال في منتصف العشرات على المال الملتزَم به فعلًا — وهو لا يزال محترمًا، لكنه ليس ما يوحي به العنوان. وإن قُيّدت المكافأة خصمًا على المصنعية بدل أن تكون معدنًا أو نقدًا، فقيمتها تتوقّف كليًا على كون المصنعية عادلة أصلًا.
+فالقسط المتوسّط يبقى في الخطة نحو نصف المدّة. فمكافأة شهر واحد على خطة أحد عشر شهرًا تعادل معدّلًا سنويًا فعّالًا بين 16% و19% تقريبًا على المال الملتزَم به فعلًا، بحسب موعد صرف المكافأة — لكن بشرط أن تُتمّ كل الأقساط وأن تُصرف المكافأة معدنًا أو نقدًا. وإن قُيّدت المكافأة خصمًا على المصنعية بدل أن تكون معدنًا أو نقدًا، فقيمتها تتوقّف كليًا على كون المصنعية عادلة أصلًا.
 
 ## البنود الخمسة الواجب قراءتها
 
@@ -306,7 +306,7 @@ That is the whole distinction, and it is worth being blunt about: unallocated go
 | | Physical held | Allocated vault | Unallocated | ETF | Digital app |
 |---|---|---|---|---|---|
 | Counterparty risk | None | Low | **High** | Low–moderate | Varies widely |
-| Ongoing cost | Storage/insurance | ~0.1–1%/yr | Often none | ~0.1–0.4%/yr | Varies |
+| Ongoing cost | Storage/insurance | Annual storage fee | Often none | Low annual fee (varies by fund) | Varies |
 | Liquidity | Local dealer | Good | Good | Excellent | Platform only |
 | Buy/sell spread | Widest | Narrow | Narrow | Narrowest | Varies |
 | Deliverable | Already yours | Yes | Sometimes | Rarely | Sometimes |
@@ -314,7 +314,7 @@ That is the whole distinction, and it is worth being blunt about: unallocated go
 
 ## What each is genuinely good for
 
-**Trading or medium-term exposure** — an ETF, almost always. Cheapest, most liquid, tightest spread. If your goal is exposure to the gold price rather than possession of metal, paying jewellery premiums to get it is an expensive mistake.
+**Trading or medium-term exposure** — an ETF is usually the cheapest, most liquid route, with the tightest spread. If your goal is exposure to the gold price rather than possession of metal, paying jewellery premiums to get it is an expensive mistake.
 
 **Long-term insurance against systemic problems** — physical held, or allocated vault storage. This is the use case where counterparty risk is the entire point, and where an unallocated account undermines the purpose.
 
@@ -336,7 +336,7 @@ A product that answers all seven clearly is a product you can assess. Evasion on
 
 ## The practical conclusion
 
-Most people are best served by a mix: an ETF or allocated account for the bulk of price exposure, and some physical metal held directly for the scenario the rest is not designed to survive. What matters is knowing which one you have — because "I own gold" is not a specific enough statement to plan around.
+Some holders use a mix: an ETF or allocated account for price exposure, and some physical metal held directly for the scenario the rest is not designed to survive. Which mix, if any, suits you depends on your own circumstances. What matters is knowing which one you have — because "I own gold" is not a specific enough statement to plan around.
 
 *Whatever form you hold, our country pages give the live per-gram and per-ounce price to value it against, in your own currency.*`,
     body_ar: `عبارة "أنا أملك ذهبًا" قد تعني خمسة أشياء مختلفة تمامًا. وهي تتصرّف تصرّفًا متشابهًا حين تكون الأسواق هادئة، ولهذا تُتجاهل الفروق، وتتصرّف تصرّفًا شديد الاختلاف في الظروف نفسها التي يشتري الناس الذهب من أجلها.
@@ -364,7 +364,7 @@ Most people are best served by a mix: an ETF or allocated account for the bulk o
 | | مادي بحوزتك | خزنة مخصّصة | غير مخصّص | صندوق مؤشّر | تطبيق رقمي |
 |---|---|---|---|---|---|
 | مخاطرة الطرف المقابل | لا شيء | منخفضة | **مرتفعة** | منخفضة–متوسّطة | متفاوتة جدًا |
-| الكلفة الجارية | تخزين/تأمين | ~0.1–1% سنويًا | غالبًا لا شيء | ~0.1–0.4% سنويًا | متفاوتة |
+| الكلفة الجارية | تخزين/تأمين | رسم تخزين سنوي | غالبًا لا شيء | رسم سنوي منخفض (يختلف بحسب الصندوق) | متفاوتة |
 | السيولة | تاجر محلي | جيدة | جيدة | ممتازة | داخل المنصّة |
 | فارق الشراء/البيع | الأوسع | ضيّق | ضيّق | الأضيق | متفاوت |
 | قابلية التسلّم | لك أصلًا | نعم | أحيانًا | نادرًا | أحيانًا |
@@ -372,7 +372,7 @@ Most people are best served by a mix: an ETF or allocated account for the bulk o
 
 ## ما يصلح له كل منها فعلًا
 
-**التداول أو التعرّض متوسّط الأجل** — صندوق مؤشّر، في الغالب الأعمّ. فهو الأرخص والأكثر سيولة والأضيق فارقًا. وإن كان هدفك التعرّض لسعر الذهب لا حيازة المعدن، فدفع علاوات المشغولات لبلوغه خطأ مكلف.
+**التداول أو التعرّض متوسّط الأجل** — صندوق المؤشّر هو عادةً الطريق الأرخص والأكثر سيولة والأضيق فارقًا. وإن كان هدفك التعرّض لسعر الذهب لا حيازة المعدن، فدفع علاوات المشغولات لبلوغه خطأ مكلف.
 
 **تأمين طويل الأجل ضد المشكلات النظامية** — مادي بحوزتك، أو تخزين مخصّص في خزنة. فهذه هي الحالة التي تكون فيها مخاطرة الطرف المقابل هي الغرض كله، والتي يقوّض فيها الحساب غير المخصّص المقصد.
 
@@ -394,7 +394,7 @@ Most people are best served by a mix: an ETF or allocated account for the bulk o
 
 ## الخلاصة العملية
 
-معظم الناس يخدمهم المزج: صندوق مؤشّر أو حساب مخصّص لمعظم التعرّض للسعر، وبعض المعدن المادي بحوزتهم مباشرةً للسيناريو الذي لم يُصمَّم الباقي للنجاة منه. والمهمّ أن تعرف أيّها لديك — لأن "أنا أملك ذهبًا" ليست عبارة محدّدة بما يكفي للتخطيط عليها.
+ويلجأ بعض الحائزين إلى المزج: صندوق مؤشّر أو حساب مخصّص للتعرّض للسعر، وبعض المعدن المادي بحوزتهم مباشرةً للسيناريو الذي لم يُصمَّم الباقي للنجاة منه. وأيّ مزيج يناسبك، إن ناسبك أصلًا، يتوقّف على ظروفك أنت. والمهمّ أن تعرف أيّها لديك — لأن "أنا أملك ذهبًا" ليست عبارة محدّدة بما يكفي للتخطيط عليها.
 
 *ومهما كانت الصورة التي تحوزها، فصفحات الدول لدينا تعطيك السعر المباشر للجرام وللأونصة لتقوّمها به، بعملتك أنت.*`,
   },

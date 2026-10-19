@@ -28,12 +28,12 @@ export const GUIDE_ARTICLES: Article[] = [
     title_en: "Making Charges: The Part of the Gold Price Nobody Quotes You",
     title_ar: "المصنعية: الجزء من سعر الذهب الذي لا يذكره أحد",
     description_en:
-      "The gram price on the board is not what you pay. Making charges add 5-30% depending on how a piece was made — machine-cast versus handmade, hollow versus solid. How they are calculated, and how to tell a fair one from a padded one.",
+      "The gram price on the board is not what you pay. Making charges add to it, by an amount that depends on how a piece was made — machine-cast versus handmade, hollow versus solid. How they are calculated, and how to tell a fair one from a padded one.",
     description_ar:
-      "سعر الجرام المعلن على اللوحة ليس ما تدفعه. تضيف المصنعية من 5% إلى 30% حسب طريقة تصنيع القطعة — مصبوبة آليًا أم مشغولة يدويًا، مجوّفة أم مصمتة. كيف تُحسب، وكيف تميّز العادلة من المبالَغ فيها.",
+      "سعر الجرام المعلن على اللوحة ليس ما تدفعه. وتضيف المصنعية فوقه مبلغًا يتوقّف على طريقة تصنيع القطعة — مصبوبة آليًا أم مشغولة يدويًا، مجوّفة أم مصمتة. كيف تُحسب، وكيف تميّز العادلة من المبالَغ فيها.",
     tags: ["making-charges", "buying-guide", "retail", "education"],
     author: AUTHOR,
-    body_en: `Every jeweller's window shows a gram price. Almost nobody pays it. The number on the board is the **gold value** — what the metal in the piece is worth at today's spot rate. What you actually hand over includes a second number that is rarely displayed and almost always negotiable: the making charge.
+    body_en: `Every jeweller's window shows a gram price. Almost nobody pays it. The number on the board is the **gold value** — what the metal in the piece is worth at today's market rate. What you actually hand over includes a second number that is rarely displayed and almost always negotiable: the making charge.
 
 ## What the making charge pays for
 
@@ -69,7 +69,7 @@ This is the single most useful thing to understand about making charges: **you d
 
 When you sell a piece back, the shop weighs it and pays for the gold content at that day's rate, minus a deduction. The craftsmanship is not part of the offer — the buyer is going to melt the piece. Every unit you paid in making charges is spent the moment you walk out.
 
-That has a practical consequence. If you are buying gold mainly as **savings**, minimise making charges: plain heavy chains, simple bangles, or bullion. If you are buying because you want to **wear something beautiful**, pay the charge happily — but do it knowing it is the price of the object, not an investment in metal.
+That has a practical consequence. If you are buying gold mainly as **savings**, minimise making charges: plain heavy chains, simple bangles, or bullion. If you are buying because you want to **wear something beautiful**, the charge is simply the price of the object, not an investment in metal.
 
 ## How to tell a fair charge from a padded one
 
@@ -82,7 +82,7 @@ That has a practical consequence. If you are buying gold mainly as **savings**, 
 
 The per-gram prices on Gold Prices Arabia are the **spot value of the metal** — the global spot price converted into your currency and divided down to a gram at your karat. They are deliberately before making charges, shop margin and any local tax, because those vary by shop and by piece and no site can know them.
 
-Use the number here as your floor. Whatever the shop quotes above it is the making charge, and now you know what you are being charged for.`,
+Use the number here as your floor. Whatever the shop quotes above it is the making charge, the shop's margin and any tax — and now you know what you are being charged for.`,
     body_ar: `تعرض كل واجهة صائغ سعرًا للجرام. ولا يكاد أحد يدفعه. الرقم المعلن هو **قيمة الذهب** — ما يساويه المعدن في القطعة بسعر السوق اليوم. أما ما تدفعه فعليًا فيتضمن رقمًا ثانيًا نادرًا ما يُعرض وغالبًا ما يقبل التفاوض: المصنعية.
 
 ## ما الذي تدفع المصنعية ثمنه
@@ -119,7 +119,7 @@ Use the number here as your floor. Whatever the shop quotes above it is the maki
 
 حين تبيع قطعة، يزنها المحل ويدفع ثمن محتواها من الذهب بسعر ذلك اليوم، ناقصًا خصمًا. أما الحرفية فليست جزءًا من العرض — فالمشتري سيصهر القطعة. كل وحدة دفعتها مصنعية تُنفق لحظة خروجك من الباب.
 
-ولهذا نتيجة عملية. إن كنت تشتري الذهب ادخارًا بالدرجة الأولى، فقلّل المصنعية: سلاسل ثقيلة سادة، أو أساور بسيطة، أو سبائك. وإن كنت تشتري لأنك تريد شيئًا جميلًا تلبسه، فادفع الأجرة راضيًا — لكن وأنت تعلم أنها ثمن القطعة لا استثمار في المعدن.
+ولهذا نتيجة عملية. إن كنت تشتري الذهب ادخارًا بالدرجة الأولى، فقلّل المصنعية: سلاسل ثقيلة سادة، أو أساور بسيطة، أو سبائك. وإن كنت تشتري لأنك تريد شيئًا جميلًا تلبسه، فالأجرة هي ببساطة ثمن القطعة لا استثمار في المعدن.
 
 ## كيف تميّز الأجرة العادلة من المبالَغ فيها
 
@@ -132,7 +132,7 @@ Use the number here as your floor. Whatever the shop quotes above it is the maki
 
 أسعار الجرام في «أسعار الذهب العربية» هي **قيمة المعدن الفورية** — السعر العالمي الفوري محوَّلًا إلى عملتك ومقسومًا إلى جرام بعيارك. وهي عمدًا قبل المصنعية وهامش المحل وأي ضريبة محلية، لأن هذه تختلف من محل إلى محل ومن قطعة إلى قطعة ولا يستطيع أي موقع أن يعرفها.
 
-استعمل الرقم هنا حدًا أدنى. وكل ما يذكره المحل فوقه هو المصنعية، وقد صرت تعرف الآن ما الذي تدفع ثمنه.`,
+استعمل الرقم هنا حدًا أدنى. وكل ما يذكره المحل فوقه هو المصنعية وهامش المحل وأي ضريبة، وقد صرت تعرف الآن ما الذي تدفع ثمنه.`,
   },
   {
     slug: "two-exchange-rates-gold-price",
@@ -140,9 +140,9 @@ Use the number here as your floor. Whatever the shop quotes above it is the maki
     title_en: "When a Currency Has Two Rates, Which Gold Price Is Real?",
     title_ar: "حين يكون للعملة سعران، أي سعر ذهب هو الحقيقي؟",
     description_en:
-      "In Syria, Iraq, Lebanon and at times Egypt, the official exchange rate and the rate the market actually uses are different numbers. That gap is the price. How to read a gold quote when the currency itself is contested.",
+      "In Iraq, and at various times in recent years in Syria, Lebanon and Egypt, the official exchange rate and the rate the market actually uses have been different numbers. That gap is the price. How to read a gold quote when the currency itself is contested.",
     description_ar:
-      "في سوريا والعراق ولبنان وأحيانًا مصر، السعر الرسمي للصرف والسعر الذي تستعمله السوق فعليًا رقمان مختلفان. تلك الفجوة هي السعر. كيف تقرأ تسعيرة الذهب حين تكون العملة نفسها محل خلاف.",
+      "في العراق، وفي فترات من السنوات الأخيرة في سوريا ولبنان ومصر، كان السعر الرسمي للصرف والسعر الذي تستعمله السوق فعليًا رقمين مختلفين. تلك الفجوة هي السعر. كيف تقرأ تسعيرة الذهب حين تكون العملة نفسها محل خلاف.",
     tags: ["exchange-rates", "syria", "iraq", "lebanon", "buying-guide"],
     author: AUTHOR,
     body_en: `Most gold pricing is arithmetic. Take the world spot price in dollars, divide by 31.1035 to get a gram, multiply by the purity of the karat, multiply by the exchange rate. Four operations, one answer.
@@ -151,11 +151,11 @@ That last step is where it breaks. **The exchange rate assumes there is one.**
 
 ## Where the assumption fails
 
-In several of the markets this site covers, a currency has more than one rate at the same moment:
+In several of the markets this site covers, a currency has had, or still has, more than one rate at the same moment:
 
-- **Syria.** The pound has an official central-bank rate and a parallel rate used in the souk. They have diverged for years, sometimes by multiples.
+- **Syria.** For years the pound had an official central-bank rate and a parallel rate used in the souk, at times apart by multiples. A new pound replaced the old one on 1 January 2026 at 100 to 1, so check which rate — and which pound — a quote uses.
 - **Iraq.** The dinar is managed against the dollar by the central bank, but exchange shops in Baghdad have traded above the official rate for extended periods.
-- **Lebanon.** The pound went through a period where the official peg and the market rate were separated by more than an order of magnitude.
+- **Lebanon.** The pound went through a period where the official peg and the market rate were separated by more than an order of magnitude. Since 2024 the official rate has been 89,500 per dollar, in line with the market.
 - **Egypt.** Since the pound was floated, official and parallel rates have converged and diverged repeatedly depending on dollar availability.
 
 In each case the question "what is the gold price today" has more than one defensible answer, and the difference is not small.
@@ -178,22 +178,22 @@ Gold sits directly in that gap, and this is the important part: **gold is one of
 
 ## What this site does, and does not, claim
 
-Gold Prices Arabia converts the global spot price using **open-data market exchange rates, updated hourly**. For a currency with a single functioning rate, that produces a number you can take to a shop.
+Gold Prices Arabia converts the global spot price using **daily mid-market exchange rates from an open-source currency feed**. For a currency with a single functioning rate, that produces a number you can take to a shop.
 
-For a currency with two rates, you should read our figure as *a* conversion rather than *the* price, and check it against what exchange offices near you are actually quoting today. We say so on the country pages themselves rather than implying a precision the underlying data does not support.
+For a currency with two rates, you should read our figure as *a* conversion rather than *the* price, and check it against what exchange offices near you are actually quoting today. Where this applies most — Iraq, Yemen and Algeria, for example — the country page says so rather than implying a precision the underlying data does not support.
 
-That is also why the Syria, Iraq and Lebanon pages carry commentary about the rate regime instead of only a table. In those markets the exchange rate is not a footnote to the gold price. It very often *is* the gold price.`,
+That is also why the Syria, Iraq and Lebanon pages carry a note on the local currency instead of only a table. In those markets the exchange rate is not a footnote to the gold price. It very often *is* the gold price.`,
     body_ar: `معظم تسعير الذهب حساب بسيط. خذ السعر العالمي الفوري بالدولار، اقسمه على 31.1035 لتحصل على الجرام، اضربه في نقاء العيار، ثم اضربه في سعر الصرف. أربع عمليات ونتيجة واحدة.
 
 وعند تلك الخطوة الأخيرة ينكسر الحساب. **إذ يفترض سعر الصرف أن هناك سعرًا واحدًا.**
 
 ## أين يسقط هذا الافتراض
 
-في عدد من الأسواق التي يغطيها هذا الموقع، يكون للعملة أكثر من سعر في اللحظة نفسها:
+في عدد من الأسواق التي يغطيها هذا الموقع، كان للعملة، أو لا يزال، أكثر من سعر في اللحظة نفسها:
 
-- **سوريا.** لليرة سعر رسمي لدى المصرف المركزي وسعر موازٍ يُستعمل في السوق. وقد تباعدا سنوات، وأحيانًا بأضعاف.
+- **سوريا.** ظلّ لليرة سنوات سعر رسمي لدى المصرف المركزي وسعر موازٍ يُستعمل في السوق، وتباعدا أحيانًا بأضعاف. وفي 1 يناير 2026 حلّت ليرة جديدة محل القديمة بواقع 100 إلى 1، فتحقّق أي سعر — وأي ليرة — تستعملها التسعيرة.
 - **العراق.** يدير المصرف المركزي الدينار مقابل الدولار، لكن مكاتب الصرافة في بغداد تداولت فوق السعر الرسمي لفترات ممتدة.
-- **لبنان.** مرّت الليرة بمرحلة انفصل فيها السعر الرسمي المربوط عن سعر السوق بأكثر من مرتبة عشرية.
+- **لبنان.** مرّت الليرة بمرحلة انفصل فيها السعر الرسمي المربوط عن سعر السوق بأكثر من مرتبة عشرية. ومنذ 2024 صار السعر الرسمي 89,500 ليرة للدولار، متّسقًا مع سعر السوق.
 - **مصر.** منذ تعويم الجنيه، تقارب السعران الرسمي والموازي وتباعدا مرارًا بحسب توافر الدولار.
 
 وفي كل حالة يصبح لسؤال «كم سعر الذهب اليوم» أكثر من إجابة وجيهة، والفارق ليس صغيرًا.
@@ -216,11 +216,11 @@ That is also why the Syria, Iraq and Lebanon pages carry commentary about the ra
 
 ## ما الذي يدّعيه هذا الموقع وما لا يدّعيه
 
-يحوّل «أسعار الذهب العربية» السعر العالمي الفوري باستعمال **أسعار صرف سوقية من بيانات مفتوحة، تُحدَّث كل ساعة**. وبالنسبة لعملة ذات سعر واحد فاعل، ينتج ذلك رقمًا يمكنك أخذه إلى المحل.
+يحوّل «أسعار الذهب العربية» السعر العالمي الفوري باستعمال **أسعار صرف متوسطة يومية من مصدر بيانات مفتوح المصدر**. وبالنسبة لعملة ذات سعر واحد فاعل، ينتج ذلك رقمًا يمكنك أخذه إلى المحل.
 
-أما العملة ذات السعرين فينبغي أن تقرأ رقمنا فيها بوصفه *تحويلًا* لا *السعر*، وأن تقابله بما تذكره مكاتب الصرافة قربك اليوم فعلًا. ونحن نقول ذلك على صفحات الدول نفسها بدل الإيحاء بدقة لا تسندها البيانات.
+أما العملة ذات السعرين فينبغي أن تقرأ رقمنا فيها بوصفه *تحويلًا* لا *السعر*، وأن تقابله بما تذكره مكاتب الصرافة قربك اليوم فعلًا. وحيث ينطبق ذلك أكثر — كالعراق واليمن والجزائر — تقول صفحة الدولة ذلك صراحةً بدل الإيحاء بدقة لا تسندها البيانات.
 
-ولهذا أيضًا تحمل صفحات سوريا والعراق ولبنان شرحًا عن نظام سعر الصرف لا جدولًا فحسب. ففي تلك الأسواق ليس سعر الصرف حاشية على سعر الذهب. بل هو في كثير من الأحيان **سعر الذهب نفسه**.`,
+ولهذا أيضًا تحمل صفحات سوريا والعراق ولبنان ملاحظة عن العملة المحلية لا جدولًا فحسب. ففي تلك الأسواق ليس سعر الصرف حاشية على سعر الذهب. بل هو في كثير من الأحيان **سعر الذهب نفسه**.`,
   },
   {
     slug: "reading-a-gold-hallmark",
@@ -228,9 +228,9 @@ That is also why the Syria, Iraq and Lebanon pages carry commentary about the ra
     title_en: "How to Read the Tiny Numbers Stamped Inside Your Gold",
     title_ar: "كيف تقرأ الأرقام الصغيرة المطبوعة داخل ذهبك",
     description_en:
-      "999, 916, 875, 750, 585 — the millesimal fineness stamp tells you exactly how much gold is in a piece. What each number means, where to find it, and what a missing or wrong stamp should tell you.",
+      "999, 916, 875, 750, 585 — the millesimal fineness stamp tells you how much gold a piece is declared to contain. What each number means, where to find it, and what a missing or wrong stamp should tell you.",
     description_ar:
-      "999 و916 و875 و750 و585 — ختم النقاء بالألف يخبرك بدقة كم فيها من ذهب. ما معنى كل رقم، وأين تجده، وماذا ينبغي أن يقول لك غياب الختم أو خطؤه.",
+      "999 و916 و875 و750 و585 — ختم النقاء بالألف يخبرك بنسبة الذهب المعلنة في القطعة. ما معنى كل رقم، وأين تجده، وماذا ينبغي أن يقول لك غياب الختم أو خطؤه.",
     tags: ["hallmark", "authentication", "buying-guide", "education"],
     author: AUTHOR,
     body_en: `Turn a gold ring over and look inside the band. Somewhere on that surface, usually in characters small enough to need good light, is a number. It is the most reliable single piece of information about what you are holding.
@@ -241,13 +241,13 @@ Modern hallmarks state purity in **parts per thousand**. Not carats, not percent
 
 | Stamp | Purity | Karat | Where it dominates |
 |---|---|---|---|
-| **999** or **9999** | 99.9% | 24K | Bars, coins, investment gold |
+| **999** or **9999** | 99.9% or 99.99% | 24K | Bars, coins, investment gold |
 | **916** | 91.7% | 22K | India, parts of the Gulf |
 | **875** | 87.5% | 21K | Egypt, Saudi Arabia, the Levant |
 | **750** | 75% | 18K | Europe, designer and gem-set jewellery |
-| **585** | 58.3% | 14K | United States, Eastern Europe |
+| **585** | 58.5% | 14K | United States, Eastern Europe |
 
-The arithmetic is simply the karat over 24. 21 ÷ 24 = 0.875 = **875**. 18 ÷ 24 = 0.75 = **750**. Once you see it, you cannot unsee it, and you no longer need to memorise the table.
+The arithmetic is simply the karat over 24. 21 ÷ 24 = 0.875 = **875**. 18 ÷ 24 = 0.75 = **750**. Two stamps are rounded by convention: 14K is stamped 585, slightly above 14 ÷ 24 = 0.583, and the purest gold is stamped 999 or 9999, never 1000.
 
 ## Where to look
 
@@ -257,7 +257,7 @@ The stamp goes somewhere that will not be worn away by handling and will not spo
 - **Chains and necklaces** — on the clasp, or on a small flat tag next to it
 - **Bangles** — on the inner surface, often near the hinge or opening
 - **Earrings** — on the post or the back of the fitting
-- **Bars and coins** — struck into the face along with the refiner's name and often a serial number
+- **Bars and coins** — on the face, with the refiner's or mint's name; bars often carry a serial number too
 
 Bring a loupe or use your phone camera zoomed in. These marks are frequently under a millimetre.
 
@@ -266,9 +266,9 @@ Bring a loupe or use your phone camera zoomed in. These marks are frequently und
 The fineness number is often not alone:
 
 - **A maker's mark** — the workshop or brand that produced the piece.
-- **An assay or country mark** — a national office's guarantee. Tunisia's ram's head is a well-known example in North Africa; several European countries have their own.
+- **An assay or country mark** — a national office's guarantee. Many countries, in North Africa and Europe among others, use their own symbols.
 - **A date letter** — used in some hallmarking systems to record the year of assay.
-- **"KDM" or "HM"** on older Indian pieces — KDM refers to a now-discouraged cadmium solder; **HM** with a BIS logo indicates modern hallmarked gold.
+- **"KDM"** on older Indian pieces refers to a cadmium-based solder that is now discouraged. Modern Indian hallmarks carry the BIS logo, a purity mark such as 22K916, and a six-character HUID code.
 
 ## What a missing stamp means — and does not mean
 
@@ -293,13 +293,13 @@ You can check the day's per-gram price for each karat in your own currency on th
 
 | الختم | النقاء | العيار | أين يسود |
 |---|---|---|---|
-| **999** أو **9999** | 99.9% | 24 | السبائك والعملات والذهب الاستثماري |
+| **999** أو **9999** | 99.9% أو 99.99% | 24 | السبائك والعملات والذهب الاستثماري |
 | **916** | 91.7% | 22 | الهند وأجزاء من الخليج |
 | **875** | 87.5% | 21 | مصر والسعودية وبلاد الشام |
 | **750** | 75% | 18 | أوروبا والمجوهرات المصممة والمرصّعة |
-| **585** | 58.3% | 14 | الولايات المتحدة وأوروبا الشرقية |
+| **585** | 58.5% | 14 | الولايات المتحدة وأوروبا الشرقية |
 
-والحساب ببساطة هو العيار مقسومًا على 24. فـ21 ÷ 24 = 0.875 = **875**. و18 ÷ 24 = 0.75 = **750**. ومتى رأيتها لم تعد بحاجة إلى حفظ الجدول.
+والحساب ببساطة هو العيار مقسومًا على 24. فـ21 ÷ 24 = 0.875 = **875**. و18 ÷ 24 = 0.75 = **750**. وثمّة ختمان مقرَّبان بالعُرف: عيار 14 يُختم 585، أعلى قليلًا من 14 ÷ 24 = 0.583، وأنقى الذهب يُختم 999 أو 9999 لا 1000.
 
 ## أين تنظر
 
@@ -309,7 +309,7 @@ You can check the day's per-gram price for each karat in your own currency on th
 - **السلاسل والقلائد** — على المشبك، أو على لسان مسطح صغير بجانبه
 - **الأساور** — على السطح الداخلي، غالبًا قرب المفصل أو الفتحة
 - **الأقراط** — على العمود أو ظهر التركيبة
-- **السبائك والعملات** — مضروب على الوجه مع اسم المصفاة ورقم تسلسلي غالبًا
+- **السبائك والعملات** — على الوجه مع اسم المصفاة أو دار السك، وكثيرًا ما تحمل السبائك رقمًا تسلسليًا أيضًا
 
 استعن بعدسة مكبرة أو بكاميرا هاتفك مقرَّبة. فهذه العلامات كثيرًا ما تقل عن مليمتر.
 
@@ -318,9 +318,9 @@ You can check the day's per-gram price for each karat in your own currency on th
 نادرًا ما يكون رقم النقاء وحده:
 
 - **علامة الصانع** — الورشة أو العلامة التجارية التي أنتجت القطعة.
-- **علامة دمغة أو بلد** — ضمان من مكتب وطني. ورأس الكبش التونسي مثال معروف في شمال أفريقيا، ولعدة دول أوروبية علاماتها.
+- **علامة دمغة أو بلد** — ضمان من مكتب وطني. ولكثير من الدول، في شمال أفريقيا وأوروبا وغيرهما، رموزها الخاصة.
 - **حرف تاريخ** — يُستعمل في بعض أنظمة الدمغ لتسجيل سنة الفحص.
-- **«KDM» أو «HM»** على القطع الهندية الأقدم — فـKDM يشير إلى لحام كادميوم صار غير مستحسن، أما **HM** مع شعار BIS فتدل على ذهب مدموغ حديثًا.
+- **«KDM»** على القطع الهندية الأقدم يشير إلى لحام يحتوي على الكادميوم صار غير مستحسن. أما الدمغة الهندية الحديثة فتحمل شعار BIS، وعلامة نقاء مثل 22K916، ورمز HUID من ستة أحرف وأرقام.
 
 ## ماذا يعني غياب الختم — وماذا لا يعني
 
