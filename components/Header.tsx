@@ -5,7 +5,6 @@ import { BrandMark } from "@/components/BrandMark";
 import { HeaderTicker } from "@/components/HeaderTicker";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileMenu } from "@/components/MobileMenu";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { COUNTRY_BY_SLUG } from "@/lib/countries";
@@ -117,7 +116,6 @@ export async function Header() {
           <span className="hidden md:inline-flex">
             <LanguageSwitcher locale={locale} label={languageLabel} />
           </span>
-          <ThemeToggle />
           <span className="md:hidden">
             <MobileMenu
               navItems={navItems}

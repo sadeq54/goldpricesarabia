@@ -8,14 +8,11 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { AdSenseScript, ConsentDefaultsScript } from "@/components/AdSenseScript";
-import { AutoTheme } from "@/components/AutoTheme";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { LivePriceProvider } from "@/components/LivePriceProvider";
 import { MotionRoot } from "@/components/motion/MotionRoot";
 import { PwaRegister } from "@/components/PwaRegister";
-import { ReduxProvider } from "@/components/ReduxProvider";
-import { ThemeApplier } from "@/components/ThemeApplier";
 import { localeMeta, routing } from "@/i18n/routing";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import { fontVariables } from "@/lib/fonts";
@@ -481,11 +478,9 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   viewportFit: "cover",
-  colorScheme: "dark light",
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0b0a08" },
-    { media: "(prefers-color-scheme: light)", color: "#f7f5ef" },
-  ],
+  // One theme since 2026-10-19 (owner's choice): light, matching html.light tokens.
+  colorScheme: "light",
+  themeColor: "#f7f5ef",
 };
 
 /**
@@ -668,14 +663,11 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${fontVariables} dark`}
-      data-theme="dark"
+      className={`${fontVariables} light`}
+      data-theme="light"
       suppressHydrationWarning
     >
       <head>
-        <Script id="auto-theme" strategy="beforeInteractive">
-          {"(function(){try{var h=new Date().getHours();var t=h>=6&&h<18?'light':'dark';var r=document.documentElement;r.classList.remove('light','dark');r.classList.add(t);r.setAttribute('data-theme',t);}catch(e){}})();"}
-        </Script>
         {process.env.NODE_ENV === "development" && (
           <Script
             src="//unpkg.com/react-grab/dist/index.global.js"
@@ -718,9 +710,6 @@ export default async function LocaleLayout({
         <Suspense fallback={null}>
           <SiteJsonLd locale={locale} />
         </Suspense>
-        <ReduxProvider>
-          <AutoTheme />
-          <ThemeApplier />
           <PwaRegister />
           <MotionRoot>
             <LivePriceProvider>
@@ -734,7 +723,6 @@ export default async function LocaleLayout({
               </Suspense>
             </LivePriceProvider>
           </MotionRoot>
-        </ReduxProvider>
       </body>
     </html>
   );

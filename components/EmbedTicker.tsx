@@ -16,7 +16,7 @@ import { pick } from "@/lib/i18n-text";
  *
  * Styling is fully inline from a fixed palette so the widget is self-contained
  * — it never depends on the host page's CSS, and the theme is locked to the
- * webmaster's choice (not the site's time-of-day AutoTheme).
+ * webmaster's choice (not the site's own theme).
  */
 
 type Snapshot = {
