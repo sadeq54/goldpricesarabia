@@ -12,7 +12,7 @@ import { MENA_COUNTRIES, QUICK_LINKS, seoHeaderText } from "./HomepageSeoHeader.
  * Homepage hero + content-rich static SEO block.
  *
  * Rendered with `"use cache"` so the full block — H1, intro, quick-link nav,
- * 4 H2 sections, ~300 words of body copy, MENA country grid, static FAQ —
+ * 2 H2 sections, body copy and the MENA country grid —
  * lands in the PPR prerender. This is what Seobility, Bing's JS-fallback,
  * AI bots and Lighthouse SEO actually parse.
  *
@@ -126,29 +126,6 @@ export function HomepageSeoHeader({
         </ul>
       </section>
 
-      <section
-        aria-labelledby="static-faq-heading"
-        className="mt-6 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-6"
-      >
-        <h2
-          id="static-faq-heading"
-          className="text-xl font-bold tracking-tight text-[var(--color-gold)]"
-        >
-          {s.faqH2}
-        </h2>
-        <dl className="mt-4 space-y-4">
-          {s.faqs.map((f) => (
-            <div key={f.q}>
-              <dt className="text-sm font-semibold text-[var(--color-text)]">
-                {f.q}
-              </dt>
-              <dd className="mt-1 text-sm leading-relaxed text-[var(--color-text-muted)]">
-                {f.a}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
         </>
       ) : null}
     </>

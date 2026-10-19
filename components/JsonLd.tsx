@@ -142,7 +142,7 @@ export function JsonLd({
     name: "Gold Prices Arabia",
     alternateName: "أسعار الذهب العربية",
     description:
-      "Live gold prices across 46 countries and 40+ currencies. Real-time WebSocket aggregation from Binance, Coinbase, Kraken.",
+      "Live gold prices across 53 countries and 52 currencies, from Swissquote spot with live PAXG/USD updates from Binance, Coinbase and Kraken.",
     inLanguage: SITE_LANGS,
     publisher: { "@id": `${siteUrl}/#org` },
     potentialAction: {
@@ -169,7 +169,7 @@ export function JsonLd({
       { "@type": "Place", name: "Worldwide" },
     ],
     description:
-      "Real-time gold price aggregation via WebSocket from Binance, Coinbase and Kraken with median computation across exchanges.",
+      "Gold price tracking: Swissquote XAU/USD spot, followed live by the median of PAXG/USD on Binance, Coinbase and Kraken, converted at daily mid-market FX rates.",
     audience: { "@type": "Audience", audienceType: "Investors, Jewellers, Traders" },
   };
 
@@ -194,7 +194,7 @@ export function JsonLd({
         "@type": "FinancialProduct",
         "@id": `${siteUrl}/#product-${karat}`,
         name: `${KARAT_TO_NAME[karat] ?? `${karat} Gold`} — Live Spot Price`,
-        description: `Live spot price of ${KARAT_TO_NAME[karat]} (${KARAT_PURITY[karat]} purity) per gram and per troy ounce, streamed in real time from Binance, Coinbase and Kraken.`,
+        description: `Live spot price of ${KARAT_TO_NAME[karat]} (${KARAT_PURITY[karat]} purity) per gram and per troy ounce, derived from the Swissquote XAU/USD spot price.`,
         category: "Commodity",
         provider: { "@id": `${siteUrl}/#org` },
         additionalProperty: [
@@ -223,7 +223,7 @@ export function JsonLd({
         "@type": "FinancialProduct",
         "@id": `${siteUrl}/#xau`,
         name: "Spot Gold (XAU/USD)",
-        description: "Live spot gold price tracked via PAXG/USD WebSocket aggregation.",
+        description: "Spot gold price (XAU/USD) from Swissquote, refreshed at least every five minutes.",
         provider: { "@id": `${siteUrl}/#org` },
         category: "Commodity",
         feesAndCommissionsSpecification: "Free of charge",

@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/metadata";
 
 const BODY = `# Gold Prices Arabia
 
-> Live gold prices in real time across 53 countries and 52 currencies. Tracks 24K, 22K, 21K, 18K and 14K gold per gram, ounce and kilogram. Free, accurate, updated every second from Binance, Coinbase and Kraken WebSockets.
+> Live gold prices in real time across 53 countries and 52 currencies. Tracks 24K, 22K, 21K, 18K and 14K gold per gram, ounce and kilogram. Free. Server prices from Swissquote spot; gold also updates live from Binance, Coinbase and Kraken (PAXG/USD) while a page is open.
 
 ## About
 
@@ -17,8 +17,8 @@ const BODY = `# Gold Prices Arabia
 - Domain: ${SITE_URL}
 - Languages: Arabic (default, unprefixed URLs), English (/en/), Turkish (/tr/), Hindi (/hi/) — price pages exist at the same path under each prefix, e.g. ${SITE_URL}/jordan/gold-price/21k, ${SITE_URL}/en/jordan/gold-price/21k, ${SITE_URL}/tr/jordan/gold-price/21k. Articles and research are in Arabic and English only
 - Focus: Live spot gold (XAU/USD), silver (XAG), platinum (XPT), palladium (XPD); FX-converted retail karat prices; gold history; gold-silver ratio; precious-metal calculator
-- Data sources: PAXG/USD WebSocket aggregation (Binance, Coinbase, Kraken) for gold; Swissquote spot quotes for server-rendered prices of all four metals (daily change and range from COMEX futures via Yahoo Finance); fawazahmed0/currency-api for FX
-- Update cadence: Sub-second for gold spot; every few minutes for other metals; daily for historical data
+- Data sources: Swissquote spot quotes for server-rendered prices of all four metals; live PAXG/USD median (Binance, Coinbase, Kraken) for gold while a page is open (daily change and range from COMEX futures via Yahoo Finance); fawazahmed0/currency-api for FX
+- Update cadence: server spot at least every five minutes; gold live in the browser; FX daily; historical data daily
 - Pricing: Free, ad-supported, no signup
 - Audience: Investors, jewellers, traders across MENA + global markets
 

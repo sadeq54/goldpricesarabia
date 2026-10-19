@@ -26,7 +26,7 @@ import "../globals.css";
 const SITE_NAME = "Gold Prices Arabia";
 const TITLE_DEFAULT = "Gold Prices Arabia — Live Gold Prices Today (USD, JOD, SAR, AED, EGP)";
 const DESCRIPTION =
-  "Live gold prices for 46 countries + 40 currencies. Track 24K, 22K, 21K, 18K, 14K per gram, ounce, kilo. Free, real-time, updated every second.";
+  "Live gold prices for 53 countries in 52 currencies: 24K, 22K, 21K, 18K and 14K per gram, ounce and kilo. Free, from Swissquote spot with live updates while the page is open.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

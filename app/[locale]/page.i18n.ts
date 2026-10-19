@@ -2,8 +2,7 @@ import { pick, type LocaleText } from "@/lib/i18n-text";
 
 /**
  * Inline homepage copy (methodology summary, trust bullets, sources intro)
- * in all six locales. `ar` / `en` strings are the SEO-tuned originals and
- * must stay byte-identical; the other four are native translations.
+ * (ar/en/tr/hi). Source and cadence wording must match the methodology page.
  */
 
 const HOW_H2: LocaleText = {
@@ -16,30 +15,24 @@ const HOW_H2: LocaleText = {
 };
 
 const HOW_P1: LocaleText = {
-  en: "Spot gold (XAU/USD) is the global price per troy ounce in US Dollars. We compute it as the per-tick median of three major exchanges — Binance, Coinbase, and Kraken — via the PAXG/USD pair. PAXG is a token backed 1:1 by physical London Good Delivery gold bars in Brink's vaults, tracking the LBMA fix within a few cents.",
-  ar: "السعر الفوري للذهب (XAU/USD) هو السعر العالمي للأونصة الترويسية بالدولار الأمريكي. نحسبه كمتوسط لحظي من ثلاث بورصات رئيسية — Binance و Coinbase و Kraken — عبر زوج PAXG/USD. PAXG هو رمز مدعوم 1:1 بسبائك ذهب فيزيائية من فئة London Good Delivery موجودة في خزائن Brink's، ويتتبّع تثبيت LBMA بفارق سنتات قليلة.",
-  fr: "L'or spot (XAU/USD) est le cours mondial de l'once troy en dollars américains. Nous le calculons comme la médiane, à chaque tick, de trois grandes places d'échange — Binance, Coinbase et Kraken — via la paire PAXG/USD. Le PAXG est un jeton adossé 1:1 à des lingots d'or physiques London Good Delivery conservés dans les coffres de Brink's, et il suit le fixing du LBMA à quelques cents près.",
-  tr: "Spot altın (XAU/USD), troy ons başına ABD doları cinsinden küresel fiyattır. Bunu üç büyük borsanın — Binance, Coinbase ve Kraken — PAXG/USD paritesi üzerinden her tikteki medyanı olarak hesaplıyoruz. PAXG, Brink's kasalarındaki fiziksel London Good Delivery külçelerle 1:1 teminatlandırılmış bir tokendır ve LBMA fiyat sabitlemesini birkaç sent farkla izler.",
-  ur: "اسپاٹ گولڈ (XAU/USD) امریکی ڈالر میں فی ٹرائے اونس عالمی قیمت ہے۔ ہم اسے تین بڑے ایکسچینجز — Binance، Coinbase اور Kraken — کے PAXG/USD جوڑے کی ہر ٹِک پر میڈین کے طور پر نکالتے ہیں۔ PAXG ایک ٹوکن ہے جس کی پشت پر Brink's کے والٹس میں رکھی London Good Delivery سونے کی اصل اینٹیں 1:1 موجود ہیں، اور یہ LBMA فکس کو چند سینٹ کے فرق سے ٹریک کرتا ہے۔",
-  hi: "स्पॉट गोल्ड (XAU/USD) अमेरिकी डॉलर में प्रति ट्रॉय औंस का वैश्विक भाव है। हम इसे तीन बड़े एक्सचेंजों — Binance, Coinbase और Kraken — के PAXG/USD पेयर के हर टिक की माध्यिका के रूप में निकालते हैं। PAXG एक टोकन है जो Brink's की तिजोरियों में रखी London Good Delivery सोने की असली छड़ों से 1:1 समर्थित है और LBMA फिक्स को कुछ सेंट के अंतर से ट्रैक करता है।",
+  en: "Spot gold (XAU/USD) is the global price of one troy ounce in US dollars. Each page opens with Swissquote's XAU/USD spot quote, which our server re-reads at least every five minutes. While the page stays open, the price follows the median of live PAXG/USD quotes on Binance, Coinbase and Kraken; PAXG is a token backed one-to-one by allocated London Good Delivery gold and trades close to spot, usually within a few dollars an ounce.",
+  ar: "السعر الفوري للذهب (XAU/USD) هو السعر العالمي للأونصة الترويسية بالدولار الأمريكي. تفتح كل صفحة على سعر Swissquote الفوري لزوج XAU/USD، الذي يعيد خادمنا قراءته كل خمس دقائق على الأقل. وما دامت الصفحة مفتوحة يتبع السعر الوسيط بين أسعار PAXG/USD اللحظية في Binance وCoinbase وKraken؛ وPAXG رمز مدعوم واحدًا لواحد بذهب مخصص من فئة London Good Delivery، ويتداول قريبًا من السعر الفوري، عادةً بفارق بضعة دولارات للأونصة.",
+  tr: "Spot altın (XAU/USD), bir troy onsun ABD doları cinsinden küresel fiyatıdır. Her sayfa, sunucumuzun en az beş dakikada bir yeniden okuduğu Swissquote XAU/USD spot fiyatıyla açılır. Sayfa açık kaldığı sürece fiyat, Binance, Coinbase ve Kraken'deki canlı PAXG/USD fiyatlarının medyanını izler; PAXG, tahsisli London Good Delivery altınıyla bire bir desteklenen bir tokendır ve spota yakın, genellikle ons başına birkaç dolar farkla işlem görür.",
+  hi: "स्पॉट गोल्ड (XAU/USD) अमेरिकी डॉलर में एक ट्रॉय औंस का वैश्विक भाव है। हर पेज Swissquote के XAU/USD स्पॉट भाव से खुलता है, जिसे हमारा सर्वर कम से कम हर पाँच मिनट में दोबारा पढ़ता है। पेज खुला रहने तक भाव Binance, Coinbase और Kraken पर लाइव PAXG/USD भावों की माध्यिका के साथ चलता है; PAXG आवंटित London Good Delivery सोने से एक-एक के अनुपात में समर्थित टोकन है और स्पॉट के क़रीब, आमतौर पर प्रति औंस कुछ डॉलर के अंतर से ट्रेड होता है।",
 };
 
 const HOW_P2: LocaleText = {
-  en: "To convert spot to per-gram per karat, we divide by 31.1035 (grams per ounce) and multiply by purity ratio: 99.9% for 24K, 87.5% for 21K, 75% for 18K, 58.3% for 14K. We then multiply by daily mid-market FX from open central-bank data, giving per-gram prices in 40+ retail currencies including SAR, JOD, AED, and EGP.",
-  ar: "لتحويل السعر الفوري إلى سعر الجرام لكل عيار، نقسم على 31.1035 (جرامات الأونصة) ثم نضرب بنسبة النقاء: 99.9% للعيار 24، 87.5% للعيار 21، 75% للعيار 18، و 58.3% للعيار 14. ثم نضرب بسعر صرف العملة اليومي من بيانات البنوك المركزية المفتوحة للحصول على سعر الجرام بأكثر من 40 عملة محلية تشمل الريال السعودي، الدينار الأردني، الدرهم الإماراتي، والجنيه المصري.",
-  fr: "Pour passer du spot au prix du gramme par carat, nous divisons par 31,1035 (grammes par once) puis multiplions par le titre : 99,9 % pour le 24 carats, 87,5 % pour le 21 carats, 75 % pour le 18 carats et 58,3 % pour le 14 carats. Nous multiplions ensuite par le taux de change interbancaire quotidien issu des données ouvertes des banques centrales, ce qui donne le prix du gramme dans plus de 40 devises, dont le SAR, le JOD, l'AED et l'EGP.",
-  tr: "Spot fiyatı ayar bazında gram fiyatına çevirmek için 31,1035'e (ons başına gram) bölüp saflık oranıyla çarpıyoruz: 24 ayar için %99,9, 21 ayar için %87,5, 18 ayar için %75, 14 ayar için %58,3. Ardından açık merkez bankası verilerinden alınan günlük orta piyasa kuruyla çarparak SAR, JOD, AED ve EGP dahil 40'tan fazla para biriminde gram fiyatı elde ediyoruz.",
-  ur: "اسپاٹ قیمت کو فی گرام فی قیراط میں بدلنے کے لیے ہم 31.1035 (گرام فی اونس) پر تقسیم کرتے ہیں اور خالص پن کی شرح سے ضرب دیتے ہیں: 24 قیراط کے لیے 99.9%، 21 قیراط کے لیے 87.5%، 18 قیراط کے لیے 75% اور 14 قیراط کے لیے 58.3%۔ پھر مرکزی بینکوں کے کھلے ڈیٹا سے روزانہ کے مڈ مارکیٹ ایکسچینج ریٹ سے ضرب دے کر SAR، JOD، AED اور EGP سمیت 40 سے زائد کرنسیوں میں فی گرام قیمت نکالتے ہیں۔",
-  hi: "स्पॉट भाव को प्रति ग्राम प्रति कैरेट में बदलने के लिए हम 31.1035 (ग्राम प्रति औंस) से भाग देते हैं और शुद्धता अनुपात से गुणा करते हैं: 24 कैरेट के लिए 99.9%, 21 कैरेट के लिए 87.5%, 18 कैरेट के लिए 75%, 14 कैरेट के लिए 58.3%। फिर केंद्रीय बैंकों के खुले डेटा से मिली दैनिक मिड-मार्केट विनिमय दर से गुणा करके SAR, JOD, AED और EGP सहित 40+ मुद्राओं में प्रति ग्राम भाव निकालते हैं।",
+  en: "To turn spot into a price per gram for each karat, we divide by 31.1035 (grams per troy ounce) and multiply by the karat's gold content: 24K is counted as pure gold (100%), 22K as 91.7%, 21K as 87.5%, 18K as 75% and 14K as 58.3%. We then multiply by the day's mid-market exchange rate from the open-source currency-api feed, giving per-gram prices in 52 currencies including SAR, JOD, AED and EGP.",
+  ar: "لتحويل السعر الفوري إلى سعر الجرام لكل عيار نقسم على 31.1035 (عدد جرامات الأونصة الترويسية) ثم نضرب في نسبة الذهب في العيار: يُحسب عيار 24 ذهبًا خالصًا (100%)، وعيار 22 بنسبة 91.7%، وعيار 21 بنسبة 87.5%، وعيار 18 بنسبة 75%، وعيار 14 بنسبة 58.3%. ثم نضرب في سعر الصرف الوسطي لليوم من تغذية currency-api المفتوحة المصدر، فنحصل على سعر الجرام بـ52 عملة منها الريال السعودي والدينار الأردني والدرهم الإماراتي والجنيه المصري.",
+  tr: "Spot fiyatı her ayar için gram fiyatına çevirmek üzere 31,1035'e (troy ons başına gram) bölüp ayarın altın oranıyla çarpıyoruz: 24 ayar saf altın (%100), 22 ayar %91,7, 21 ayar %87,5, 18 ayar %75 ve 14 ayar %58,3 olarak hesaplanır. Ardından açık kaynaklı currency-api akışındaki günün orta piyasa kuruyla çarparak SAR, JOD, AED ve EGP dahil 52 para biriminde gram fiyatı elde ediyoruz.",
+  hi: "स्पॉट भाव को हर कैरेट के प्रति ग्राम भाव में बदलने के लिए हम 31.1035 (ग्राम प्रति ट्रॉय औंस) से भाग देते हैं और कैरेट में सोने के अनुपात से गुणा करते हैं: 24 कैरेट को शुद्ध सोना (100%), 22 कैरेट को 91.7%, 21 कैरेट को 87.5%, 18 कैरेट को 75% और 14 कैरेट को 58.3% गिना जाता है। फिर ओपन-सोर्स currency-api फ़ीड की उस दिन की मिड-मार्केट विनिमय दर से गुणा करके SAR, JOD, AED और EGP सहित 52 मुद्राओं में प्रति ग्राम भाव मिलता है।",
 };
 
 const HOW_P3: LocaleText = {
-  en: "The displayed value is the spot-equivalent — the floor price before any retail premium. Jewelry shops and local goldsmiths add workmanship (5%-30%), retailer margin (3%-10%), and local VAT (Saudi: 15%, UAE: 5%, Egypt: none). See our methodology page for full details and data limitations.",
-  ar: "النتيجة المعروضة هي السعر الفوري المكافئ — السعر الأرضي قبل أي هامش تجزئة. ستضيف محلات المجوهرات والصاغة المحليون مصنعية (5%-30%) وهامش بائع التجزئة (3%-10%) وضرائب القيمة المضافة المحلية (السعودية: 15%، الإمارات: 5%، مصر: لا ضريبة). راجع صفحة المنهجية للحصول على التفاصيل الكاملة وحدود البيانات.",
-  fr: "La valeur affichée est l'équivalent spot — le prix plancher avant toute prime de détail. Les bijouteries et les orfèvres locaux ajoutent la façon (5 % à 30 %), la marge du détaillant (3 % à 10 %) et la TVA locale (Arabie saoudite : 15 %, Émirats : 5 %, Égypte : aucune). Consultez notre page méthodologie pour le détail complet et les limites des données.",
-  tr: "Gösterilen değer spot eşdeğeridir — herhangi bir perakende primi öncesindeki taban fiyat. Kuyumcular ve yerel sarraflar işçilik (%5-30), satıcı marjı (%3-10) ve yerel KDV (Suudi Arabistan: %15, BAE: %5, Mısır: yok) ekler. Tüm ayrıntılar ve veri sınırlamaları için metodoloji sayfamıza bakın.",
-  ur: "دکھائی گئی قیمت اسپاٹ کے مساوی ہے — کسی بھی ریٹیل پریمیم سے پہلے کی بنیادی قیمت۔ جیولرز اور مقامی سنار اس میں بنوائی (5%-30%)، دکاندار کا منافع (3%-10%) اور مقامی VAT (سعودی عرب: 15%، امارات: 5%، مصر: کوئی نہیں) شامل کرتے ہیں۔ مکمل تفصیل اور ڈیٹا کی حدود کے لیے ہمارا طریقۂ کار صفحہ دیکھیں۔",
-  hi: "दिखाया गया मूल्य स्पॉट-समतुल्य है — किसी भी खुदरा प्रीमियम से पहले का न्यूनतम भाव। ज्वैलर्स और स्थानीय सुनार इसमें मेकिंग चार्ज (5%-30%), विक्रेता मार्जिन (3%-10%) और स्थानीय VAT (सऊदी: 15%, UAE: 5%, मिस्र: कोई नहीं) जोड़ते हैं। पूरी जानकारी और डेटा की सीमाओं के लिए हमारा कार्यप्रणाली पृष्ठ देखें।",
+  en: "The figure shown is the value of the gold itself, before anything a shop adds. A jeweller's price also includes a making charge (per gram or per piece), the shop's margin and any local tax, and these differ by country and by piece. See our methodology page for the full method and its limits.",
+  ar: "الرقم المعروض هو قيمة الذهب نفسه قبل أي إضافة من المحل. ويشمل سعر الصائغ أيضًا المصنعية (للجرام أو للقطعة) وهامش ربح المحل وأي ضريبة محلية، وتختلف هذه من بلد إلى آخر ومن قطعة إلى أخرى. راجع صفحة المنهجية للطريقة كاملة وحدودها.",
+  tr: "Gösterilen rakam, bir dükkânın eklediği her şeyden önce altının kendi değeridir. Kuyumcu fiyatı ayrıca işçilik ücretini (gram ya da parça başına), dükkânın kârını ve varsa yerel vergiyi içerir; bunlar ülkeye ve parçaya göre değişir. Yöntemin tamamı ve sınırları için metodoloji sayfamıza bakın.",
+  hi: "दिखाया गया आंकड़ा सोने का अपना मूल्य है, दुकान की किसी भी जोड़ से पहले। ज्वैलर के भाव में मेकिंग चार्ज (प्रति ग्राम या प्रति पीस), दुकान का मार्जिन और कोई भी स्थानीय कर भी शामिल होता है, और ये देश और गहने के हिसाब से अलग होते हैं। पूरी पद्धति और इसकी सीमाओं के लिए हमारा कार्यप्रणाली पेज देखें।",
 };
 
 const TRUST_H2: LocaleText = {
@@ -118,12 +111,10 @@ const TRUST_BULLETS: Bullet[] = [
       hi: "लगातार अपडेट: ",
     },
     text: {
-      en: "WebSocket aggregation for gold — updated every second. Silver, platinum, palladium updated every minute.",
-      ar: "تجميع WebSocket لحظي للذهب — تحديث كل ثانية. الفضة والبلاتين والبلاديوم تحديث كل دقيقة.",
-      fr: "Agrégation WebSocket pour l'or — actualisée chaque seconde. Argent, platine et palladium actualisés chaque minute.",
-      tr: "Altın için WebSocket toplaması — her saniye güncellenir. Gümüş, platin ve paladyum her dakika güncellenir.",
-      ur: "سونے کے لیے WebSocket ایگریگیشن — ہر سیکنڈ اپ ڈیٹ۔ چاندی، پلاٹینم اور پیلیڈیم ہر منٹ اپ ڈیٹ۔",
-      hi: "सोने के लिए WebSocket एग्रीगेशन — हर सेकंड अपडेट। चांदी, प्लैटिनम और पैलेडियम हर मिनट अपडेट।",
+      en: "Gold opens at Swissquote's spot price, re-read at least every five minutes, then follows a live median of three exchanges while the page is open. Silver, platinum and palladium are re-read every five minutes.",
+      ar: "يبدأ الذهب بسعر Swissquote الفوري الذي يُعاد قراءته كل خمس دقائق على الأقل، ثم يتبع وسيطًا لحظيًا من ثلاث منصات ما دامت الصفحة مفتوحة. وتُعاد قراءة الفضة والبلاتين والبلاديوم كل خمس دقائق.",
+      tr: "Altın, en az beş dakikada bir yeniden okunan Swissquote spot fiyatıyla açılır, sayfa açık kaldığı sürece üç platformun canlı medyanını izler. Gümüş, platin ve paladyum beş dakikada bir yeniden okunur.",
+      hi: "सोना Swissquote के स्पॉट भाव से शुरू होता है, जिसे कम से कम हर पाँच मिनट में दोबारा पढ़ा जाता है, फिर पेज खुला रहने तक तीन प्लेटफ़ॉर्म की लाइव माध्यिका के साथ चलता है। चांदी, प्लैटिनम और पैलेडियम हर पाँच मिनट में दोबारा पढ़े जाते हैं।",
     },
   },
   {
@@ -156,12 +147,10 @@ const SOURCES_H2: LocaleText = {
 };
 
 const SOURCES_P: LocaleText = {
-  en: "Our prices are aggregated in real time from major regulated exchanges. Verify data authenticity at the following authoritative sources:",
-  ar: "تأتي أسعارنا من تجميع لحظي عبر WebSocket من بورصات تنظيمية كبرى. تحقّق من مصداقية البيانات من المصادر التالية:",
-  fr: "Nos prix sont agrégés en temps réel à partir de grandes places d'échange réglementées. Vérifiez l'authenticité des données auprès des sources de référence suivantes :",
-  tr: "Fiyatlarımız büyük, düzenlemeye tabi borsalardan gerçek zamanlı olarak toplanır. Verilerin doğruluğunu aşağıdaki yetkili kaynaklardan teyit edin:",
-  ur: "ہماری قیمتیں بڑے ریگولیٹڈ ایکسچینجز سے حقیقی وقت میں جمع کی جاتی ہیں۔ ڈیٹا کی صداقت درج ذیل مستند ذرائع سے جانچیں:",
-  hi: "हमारे भाव बड़े विनियमित एक्सचेंजों से रियल-टाइम में एकत्र किए जाते हैं। डेटा की प्रामाणिकता निम्न आधिकारिक स्रोतों पर जांचें:",
+  en: "Our gold price comes from Swissquote's spot feed and live PAXG/USD quotes on Binance, Coinbase and Kraken; exchange rates are daily mid-market rates. Check the figures against these independent references:",
+  ar: "يأتي سعر الذهب لدينا من تغذية Swissquote الفورية وأسعار PAXG/USD اللحظية في Binance وCoinbase وKraken، وأسعار الصرف أسعار وسطية يومية. قارن الأرقام بهذه المراجع المستقلة:",
+  tr: "Altın fiyatımız Swissquote spot akışından ve Binance, Coinbase ve Kraken'deki canlı PAXG/USD fiyatlarından gelir; döviz kurları günlük orta piyasa kurlarıdır. Rakamları şu bağımsız kaynaklarla karşılaştırın:",
+  hi: "हमारा सोने का भाव Swissquote की स्पॉट फ़ीड और Binance, Coinbase व Kraken पर लाइव PAXG/USD भावों से आता है; विनिमय दरें दैनिक मिड-मार्केट दरें हैं। आंकड़ों को इन स्वतंत्र संदर्भों से मिलाएँ:",
 };
 
 /** Resolve every inline homepage string for one locale. */

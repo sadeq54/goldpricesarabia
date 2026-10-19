@@ -34,143 +34,40 @@ export const MENA_COUNTRIES: Array<{ slug: string; cc: string; name: LocaleText 
   { slug: "libya", cc: "LY", name: { en: "Libya", ar: "ليبيا", fr: "Libye", tr: "Libya", ur: "لیبیا", hi: "लीबिया" } },
 ];
 
-export type Faq = { q: string; a: string };
-
-const FAQS: { en: Faq[]; ar: Faq[]; fr: Faq[]; tr: Faq[]; ur: Faq[]; hi: Faq[] } = {
-  en: [
-    {
-      q: "What is the spot gold price?",
-      a: "Spot gold (XAU/USD) is the live raw gold price per troy ounce (31.1035 g) on the global market. Gold Prices Arabia aggregates the median across Binance, Coinbase and Kraken via PAXG/USD, refreshed every second.",
-    },
-    {
-      q: "How is gold priced per gram in local currency?",
-      a: "Per-gram price = (XAU/USD ÷ 31.1035) × karat purity × USD-to-local FX. We compute this live for 46 countries across SAR, AED, EGP, JOD, KWD, QAR, BHD and 40+ currencies.",
-    },
-    {
-      q: "Which karats does Gold Prices Arabia cover?",
-      a: "24K (99.9% pure), 21K (87.5%), 18K (75%) and 14K (58.3%) — the four most-traded retail karats across MENA jewellery markets.",
-    },
-  ],
-  ar: [
-    {
-      q: "ما هو السعر الفوري للذهب؟",
-      a: "السعر الفوري للذهب (XAU/USD) هو سعر الذهب الخام للأونصة الترويسية (31.1035 جرام) في السوق العالمية. تجمع Gold Prices Arabia المتوسط من Binance و Coinbase و Kraken عبر زوج PAXG/USD، محدّث كل ثانية.",
-    },
-    {
-      q: "كيف يُحسب سعر الجرام بالعملة المحلية؟",
-      a: "سعر الجرام = (XAU/USD ÷ 31.1035) × نسبة نقاء العيار × سعر صرف الدولار للعملة المحلية. نحسبه لحظيًا لـ46 دولة بـSAR وAED وEGP وJOD وKWD وQAR وBHD وأكثر من 40 عملة.",
-    },
-    {
-      q: "ما العيارات التي تغطيها Gold Prices Arabia؟",
-      a: "عيار 24 (نقاء 99.9%) و21 (87.5%) و18 (75%) و14 (58.3%) — أكثر أربعة عيارات تداولًا في أسواق المجوهرات بالشرق الأوسط وشمال أفريقيا.",
-    },
-  ],
-  fr: [
-    {
-      q: "Qu'est-ce que le cours spot de l'or ?",
-      a: "L'or spot (XAU/USD) est le cours brut en direct de l'or par once troy (31,1035 g) sur le marché mondial. Gold Prices Arabia agrège la médiane de Binance, Coinbase et Kraken via PAXG/USD, actualisée chaque seconde.",
-    },
-    {
-      q: "Comment l'or est-il coté au gramme en devise locale ?",
-      a: "Prix du gramme = (XAU/USD ÷ 31,1035) × titre du carat × taux USD vers devise locale. Nous le calculons en direct pour 46 pays en SAR, AED, EGP, JOD, KWD, QAR, BHD et plus de 40 devises.",
-    },
-    {
-      q: "Quels carats Gold Prices Arabia couvre-t-il ?",
-      a: "24 carats (99,9 % pur), 21 carats (87,5 %), 18 carats (75 %) et 14 carats (58,3 %) — les quatre carats de détail les plus échangés sur les marchés de la bijouterie au MENA.",
-    },
-  ],
-  tr: [
-    {
-      q: "Spot altın fiyatı nedir?",
-      a: "Spot altın (XAU/USD), küresel piyasada troy ons (31,1035 g) başına canlı ham altın fiyatıdır. Gold Prices Arabia, Binance, Coinbase ve Kraken'in PAXG/USD üzerinden medyanını her saniye yenileyerek toplar.",
-    },
-    {
-      q: "Gram altın yerel para biriminde nasıl fiyatlanır?",
-      a: "Gram fiyatı = (XAU/USD ÷ 31,1035) × ayar saflığı × USD'den yerel kura. Bunu 46 ülke için SAR, AED, EGP, JOD, KWD, QAR, BHD ve 40'tan fazla para biriminde canlı hesaplıyoruz.",
-    },
-    {
-      q: "Gold Prices Arabia hangi ayarları kapsıyor?",
-      a: "24 ayar (%99,9 saf), 21 ayar (%87,5), 18 ayar (%75) ve 14 ayar (%58,3) — MENA kuyumculuk piyasalarında en çok işlem gören dört perakende ayar.",
-    },
-  ],
-  ur: [
-    {
-      q: "اسپاٹ گولڈ کی قیمت کیا ہے؟",
-      a: "اسپاٹ گولڈ (XAU/USD) عالمی منڈی میں فی ٹرائے اونس (31.1035 گرام) خام سونے کی لائیو قیمت ہے۔ Gold Prices Arabia PAXG/USD کے ذریعے Binance، Coinbase اور Kraken کی میڈین جمع کرتا ہے، جو ہر سیکنڈ تازہ ہوتی ہے۔",
-    },
-    {
-      q: "مقامی کرنسی میں فی گرام سونے کی قیمت کیسے نکلتی ہے؟",
-      a: "فی گرام قیمت = (XAU/USD ÷ 31.1035) × قیراط کی خالصیت × ڈالر سے مقامی کرنسی کا ریٹ۔ ہم یہ 46 ممالک کے لیے SAR، AED، EGP، JOD، KWD، QAR، BHD اور 40 سے زائد کرنسیوں میں لائیو نکالتے ہیں۔",
-    },
-    {
-      q: "Gold Prices Arabia کون سے قیراط کور کرتا ہے؟",
-      a: "24 قیراط (99.9% خالص)، 21 قیراط (87.5%)، 18 قیراط (75%) اور 14 قیراط (58.3%) — مشرقِ وسطیٰ و شمالی افریقہ کی زیورات کی منڈیوں میں سب سے زیادہ رائج چار قیراط۔",
-    },
-  ],
-  hi: [
-    {
-      q: "स्पॉट गोल्ड भाव क्या है?",
-      a: "स्पॉट गोल्ड (XAU/USD) वैश्विक बाज़ार में प्रति ट्रॉय औंस (31.1035 ग्राम) कच्चे सोने का लाइव भाव है। Gold Prices Arabia PAXG/USD के ज़रिए Binance, Coinbase और Kraken की माध्यिका लेता है, जो हर सेकंड ताज़ा होती है।",
-    },
-    {
-      q: "स्थानीय मुद्रा में प्रति ग्राम सोने का भाव कैसे तय होता है?",
-      a: "प्रति ग्राम भाव = (XAU/USD ÷ 31.1035) × कैरेट शुद्धता × USD से स्थानीय मुद्रा दर। हम इसे 46 देशों के लिए SAR, AED, EGP, JOD, KWD, QAR, BHD और 40+ मुद्राओं में लाइव निकालते हैं।",
-    },
-    {
-      q: "Gold Prices Arabia किन कैरेट को कवर करता है?",
-      a: "24 कैरेट (99.9% शुद्ध), 21 कैरेट (87.5%), 18 कैरेट (75%) और 14 कैरेट (58.3%) — MENA आभूषण बाज़ारों में सबसे अधिक प्रचलित चार खुदरा कैरेट।",
-    },
-  ],
-};
-
 /**
  * "What Gold Prices Arabia delivers" paragraph as text segments; `{ b }`
- * segments render in <strong>. Text is byte-identical to the former ar/en JSX.
+ * segments render in <strong>. fr/ur were removed with those locales.
  */
 export type Segment = string | { b: string };
 
-const DELIVERS: Record<"en" | "ar" | "fr" | "tr" | "ur" | "hi", Segment[]> = {
+const DELIVERS: Record<"en" | "ar" | "tr" | "hi", Segment[]> = {
   en: [
-    "We aggregate ", { b: "live gold prices" }, " for 46 countries and 40+ currencies, streamed in real time from ",
+    "We publish ", { b: "live gold prices" }, " for 53 countries in 52 currencies. Each page opens with ",
+    { b: "Swissquote's spot price" },
+    ", which our server re-reads at least every five minutes; while the page stays open, the gold price follows the median of live PAXG/USD quotes on ",
     { b: "Binance" }, ", ", { b: "Coinbase" }, " and ", { b: "Kraken" },
-    " via the PAXG/USD pair — a token backed 1:1 by physical bullion in Brink's vaults. Prices refresh ",
-    { b: "every second" },
-    " and convert automatically into each country's currency. We cover the four most-traded karats — 24K, 21K, 18K, 14K — plus silver, platinum and palladium.",
+    " (PAXG is a token backed one-to-one by London Good Delivery gold). Prices are converted at daily mid-market exchange rates. We cover five karats — 24K, 22K, 21K, 18K and 14K — plus silver, platinum and palladium.",
   ],
   ar: [
-    "نحن نوفر ", { b: "أسعار الذهب الحية" }, " لـ46 دولة و40+ عملة، مأخوذة لحظيًا من ",
-    { b: "Binance" }, " و", { b: " Coinbase" }, " و", { b: " Kraken" },
-    " عبر زوج PAXG/USD المدعوم 1:1 بسبائك ذهب فيزيائية في خزائن Brink's. يُحدّث السعر ",
-    { b: "كل ثانية تقريبًا" },
-    "، ويُحوَّل تلقائيًا للعملة المحلية لكل دولة. نُغطي العيارات الأربعة الرئيسية: 24 و21 و18 و14، وكذلك أسعار الفضة والبلاتين والبلاديوم.",
-  ],
-  fr: [
-    "Nous agrégeons les ", { b: "cours de l'or en direct" }, " pour 46 pays et plus de 40 devises, diffusés en temps réel depuis ",
-    { b: "Binance" }, ", ", { b: "Coinbase" }, " et ", { b: "Kraken" },
-    " via la paire PAXG/USD — un jeton adossé 1:1 à de l'or physique conservé dans les coffres de Brink's. Les prix se rafraîchissent ",
-    { b: "chaque seconde" },
-    " et sont convertis automatiquement dans la devise de chaque pays. Nous couvrons les quatre carats les plus échangés — 24, 21, 18 et 14 carats — ainsi que l'argent, le platine et le palladium.",
+    "ننشر ", { b: "أسعار الذهب الحية" }, " في 53 دولة بـ52 عملة. تفتح كل صفحة على ",
+    { b: "سعر Swissquote الفوري" },
+    "، الذي يعيد خادمنا قراءته كل خمس دقائق على الأقل؛ وما دامت الصفحة مفتوحة يتبع سعر الذهب الوسيط بين أسعار PAXG/USD اللحظية في ",
+    { b: "Binance" }, " و", { b: "Coinbase" }, " و", { b: "Kraken" },
+    " (وPAXG رمز مدعوم واحدًا لواحد بذهب London Good Delivery). وتُحوَّل الأسعار بأسعار الصرف الوسطية اليومية. نغطي خمسة عيارات — 24 و22 و21 و18 و14 — إلى جانب الفضة والبلاتين والبلاديوم.",
   ],
   tr: [
-    { b: "Canlı altın fiyatlarını" }, " 46 ülke ve 40'tan fazla para birimi için, PAXG/USD paritesi üzerinden ",
+    "53 ülke için 52 para biriminde ", { b: "canlı altın fiyatları" }, " yayımlıyoruz. Her sayfa, sunucumuzun en az beş dakikada bir yeniden okuduğu ",
+    { b: "Swissquote spot fiyatıyla" },
+    " açılır; sayfa açık kaldığı sürece altın fiyatı ",
     { b: "Binance" }, ", ", { b: "Coinbase" }, " ve ", { b: "Kraken" },
-    " borsalarından gerçek zamanlı olarak topluyoruz — PAXG, Brink's kasalarındaki fiziksel külçelerle 1:1 teminatlandırılmış bir tokendır. Fiyatlar ",
-    { b: "her saniye" },
-    " yenilenir ve her ülkenin para birimine otomatik çevrilir. En çok işlem gören dört ayarı — 24, 21, 18 ve 14 ayar — ayrıca gümüş, platin ve paladyumu kapsıyoruz.",
-  ],
-  ur: [
-    "ہم 46 ممالک اور 40 سے زائد کرنسیوں کے لیے ", { b: "سونے کی لائیو قیمتیں" }, " فراہم کرتے ہیں، جو PAXG/USD جوڑے کے ذریعے ",
-    { b: "Binance" }, "، ", { b: "Coinbase" }, " اور ", { b: "Kraken" },
-    " سے حقیقی وقت میں لی جاتی ہیں — یہ ٹوکن Brink's کے والٹس میں موجود اصل سونے سے 1:1 محفوظ ہے۔ قیمتیں ",
-    { b: "ہر سیکنڈ" },
-    " تازہ ہوتی ہیں اور ہر ملک کی کرنسی میں خودکار طور پر بدل جاتی ہیں۔ ہم چار سب سے زیادہ رائج قیراط — 24، 21، 18 اور 14 — کے ساتھ چاندی، پلاٹینم اور پیلیڈیم کی قیمتیں بھی دکھاتے ہیں۔",
+    " üzerindeki canlı PAXG/USD fiyatlarının medyanını izler (PAXG, London Good Delivery altınıyla bire bir desteklenen bir tokendır). Fiyatlar günlük orta piyasa kurlarıyla çevrilir. Beş ayarı — 24, 22, 21, 18 ve 14 ayar — ayrıca gümüş, platin ve paladyumu kapsıyoruz.",
   ],
   hi: [
-    "हम 46 देशों और 40+ मुद्राओं के लिए ", { b: "सोने का लाइव भाव" }, " उपलब्ध कराते हैं, जो PAXG/USD पेयर के ज़रिए ",
+    "हम 53 देशों के लिए 52 मुद्राओं में ", { b: "सोने के लाइव भाव" }, " प्रकाशित करते हैं। हर पेज ",
+    { b: "Swissquote के स्पॉट भाव" },
+    " से खुलता है, जिसे हमारा सर्वर कम से कम हर पाँच मिनट में दोबारा पढ़ता है; पेज खुला रहने तक सोने का भाव ",
     { b: "Binance" }, ", ", { b: "Coinbase" }, " और ", { b: "Kraken" },
-    " से रियल-टाइम में लिया जाता है — यह टोकन Brink's की तिजोरियों में रखे असली सोने से 1:1 समर्थित है। भाव ",
-    { b: "हर सेकंड" },
-    " ताज़ा होते हैं और हर देश की मुद्रा में अपने-आप बदल जाते हैं। हम चार सबसे प्रचलित कैरेट — 24, 21, 18 और 14 — के साथ चांदी, प्लैटिनम और पैलेडियम के भाव भी देते हैं।",
+    " पर लाइव PAXG/USD भावों की माध्यिका के साथ चलता है (PAXG एक टोकन है जिसके पीछे एक-एक के अनुपात में London Good Delivery सोना है)। भाव दैनिक मिड-मार्केट विनिमय दरों से बदले जाते हैं। हम पाँच कैरेट — 24, 22, 21, 18 और 14 — के साथ चांदी, प्लैटिनम और पैलेडियम भी कवर करते हैं।",
   ],
 };
 
@@ -200,14 +97,6 @@ const TEXT = {
     ur: "خطے کی سب سے بڑی منڈیوں — سعودی عرب، امارات، مصر، اردن، کویت، قطر، بحرین، لبنان، مراکش اور لیبیا — کے لیے سونے کی لائیو قیمتیں دیکھیں، مقامی کرنسی میں خودکار تبدیلی کے ساتھ اور ہر قیراط فی گرام اور فی ٹرائے اونس دکھایا جاتا ہے۔",
     hi: "क्षेत्र के सबसे बड़े बाज़ारों — सऊदी अरब, यूएई, मिस्र, जॉर्डन, कुवैत, क़तर, बहरीन, लेबनान, मोरक्को और लीबिया — के लिए सोने का लाइव भाव देखें, स्थानीय मुद्रा में स्वचालित रूपांतरण के साथ और हर कैरेट प्रति ग्राम व प्रति ट्रॉय औंस में।",
   },
-  faqH2: {
-    en: "Frequently asked questions",
-    ar: "أسئلة شائعة",
-    fr: "Questions fréquentes",
-    tr: "Sık sorulan sorular",
-    ur: "عام سوالات",
-    hi: "अक्सर पूछे जाने वाले प्रश्न",
-  },
 } satisfies Record<string, LocaleText>;
 
 export function seoHeaderText(locale: string) {
@@ -217,7 +106,5 @@ export function seoHeaderText(locale: string) {
     delivers: pickList(locale, DELIVERS),
     coverageH2: pick(locale, TEXT.coverageH2),
     coverageP: pick(locale, TEXT.coverageP),
-    faqH2: pick(locale, TEXT.faqH2),
-    faqs: pickList(locale, FAQS),
   };
 }

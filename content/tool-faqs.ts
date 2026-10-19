@@ -15,9 +15,9 @@ import type { FaqQA } from "@/lib/schemas";
 type Pair = { en: FaqQA[]; ar: FaqQA[] };
 
 const SOURCE_EN =
-  "This page opens with Swissquote's XAU/USD spot quote, which the server re-reads at least every five minutes. While the page stays open, the price follows live PAXG/USD quotes from Binance, Coinbase and Kraken, taking the median of the three; PAXG is a token backed 1:1 by allocated gold bars and trades within a few cents of spot.";
+  "This page opens with Swissquote's XAU/USD spot quote, which the server re-reads at least every five minutes. While the page stays open, the price follows live PAXG/USD quotes from Binance, Coinbase and Kraken, taking the median of the three; PAXG is a token backed 1:1 by allocated gold bars and trades close to spot, usually within a few dollars an ounce.";
 const SOURCE_AR =
-  "تفتح هذه الصفحة على سعر Swissquote الفوري لزوج XAU/USD، الذي يعيد الخادم قراءته كل خمس دقائق على الأقل. وما دامت الصفحة مفتوحة يتبع السعر أسعار PAXG/USD اللحظية من Binance وCoinbase وKraken، مع أخذ الوسيط بين الثلاث؛ وPAXG رمز مدعوم 1:1 بسبائك ذهب مخصصة ويتداول على بُعد سنتات من السعر الفوري.";
+  "تفتح هذه الصفحة على سعر Swissquote الفوري لزوج XAU/USD، الذي يعيد الخادم قراءته كل خمس دقائق على الأقل. وما دامت الصفحة مفتوحة يتبع السعر أسعار PAXG/USD اللحظية من Binance وCoinbase وKraken، مع أخذ الوسيط بين الثلاث؛ وPAXG رمز مدعوم 1:1 بسبائك ذهب مخصصة ويتداول قريبًا من السعر الفوري، عادةً بفارق بضعة دولارات للأونصة.";
 
 const VAT_EN =
   "In Saudi Arabia jewellery carries 15% VAT and in the UAE 5%, while investment-grade bars and coins of 99% purity or more are zero-rated in both.";
@@ -60,14 +60,14 @@ export const OUNCE_FAQ: Pair = {
 
 export const GRAM_FAQ: Pair = {
   en: [
-    { q: "How is the gold price per gram calculated?", a: "Spot ounce price ÷ 31.1035 × purity, converted at the exchange rate. The purities are 99.9% for 24K, 91.7% for 22K, 87.5% for 21K, 75% for 18K and 58.3% for 14K." },
+    { q: "How is the gold price per gram calculated?", a: "Spot ounce price ÷ 31.1035 × purity, converted at the exchange rate. 24K is counted as pure gold (100%), 22K as 91.7%, 21K as 87.5%, 18K as 75% and 14K as 58.3%." },
     { q: "Which karat should I compare with a shop's price?", a: "The one stamped on the piece: 21K (stamp 875) is the most common in Gulf jewellery, 22K (916) in India and South Asia, and 18K (750) for gem-set pieces." },
     { q: "Why does a jeweller charge more per gram?", a: `Shops add a making charge (per gram or per piece), a margin and tax to the gold value shown here. ${VAT_EN}` },
     { q: "What will a shop pay me per gram when I sell?", a: "Usually close to the gold value of the karat, minus a deduction for refining and the shop's margin. The making charge you paid is not refunded, which is why newly bought jewellery sells back for less than it cost." },
     { q: "Where does the price on this page come from?", a: SOURCE_EN },
   ],
   ar: [
-    { q: "كيف يُحسب سعر جرام الذهب؟", a: "سعر الأونصة الفوري ÷ 31.1035 × نسبة النقاء، ثم يُحوَّل بسعر الصرف. ونسب النقاء هي 99.9% لعيار 24، و91.7% لعيار 22، و87.5% لعيار 21، و75% لعيار 18، و58.3% لعيار 14." },
+    { q: "كيف يُحسب سعر جرام الذهب؟", a: "سعر الأونصة الفوري ÷ 31.1035 × نسبة النقاء، ثم يُحوَّل بسعر الصرف. ويُحسب عيار 24 ذهبًا خالصًا (100%)، وعيار 22 بنسبة 91.7%، وعيار 21 بنسبة 87.5%، وعيار 18 بنسبة 75%، وعيار 14 بنسبة 58.3%." },
     { q: "أي عيار أقارن بسعر المحل؟", a: "العيار المختوم على القطعة: عيار 21 (دمغة 875) هو الأكثر شيوعًا في مشغولات الخليج، وعيار 22 (916) في الهند وجنوب آسيا، وعيار 18 (750) للقطع المرصعة بالأحجار." },
     { q: "لماذا يطلب الصائغ سعرًا أعلى للجرام؟", a: `يضيف المحل إلى قيمة الذهب المعروضة هنا مصنعية (للجرام أو للقطعة) وهامش ربح وضريبة. ${VAT_AR}` },
     { q: "كم يدفع المحل للجرام عند البيع؟", a: "عادةً قريبًا من قيمة الذهب للعيار ناقص خصم للتكرير وهامش المحل. ولا تُسترد المصنعية التي دفعتها، لذلك تُباع المشغولات المشتراة حديثًا بأقل من ثمنها." },
