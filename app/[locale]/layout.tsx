@@ -500,6 +500,18 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+/** Message namespaces read by "use client" components (useTranslations). */
+const CLIENT_NAMESPACES = [
+  "Error",
+  "BidAskGauge",
+  "Calculator",
+  "HeroSpot",
+  "KaratGrid",
+  "LiveStream",
+  "MetalsStrip",
+  "PriceChart",
+] as const;
+
 async function I18nProvider({
   locale,
   children,
@@ -508,8 +520,15 @@ async function I18nProvider({
   children: React.ReactNode;
 }) {
   const messages = await getMessages();
+  // Only what client components read: the full catalogue was serialised into
+  // every page's HTML (~30 KB a locale) though server components never need it.
+  // A client component using another namespace shows up as MISSING_MESSAGE
+  // in the build log (SSR renders it with these messages).
+  const clientMessages = Object.fromEntries(
+    CLIENT_NAMESPACES.filter((ns) => ns in messages).map((ns) => [ns, messages[ns]]),
+  );
   return (
-    <NextIntlClientProvider messages={messages} locale={locale}>
+    <NextIntlClientProvider messages={clientMessages} locale={locale}>
       {children}
     </NextIntlClientProvider>
   );
