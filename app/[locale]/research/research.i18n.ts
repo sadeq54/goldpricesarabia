@@ -53,20 +53,73 @@ export function topicBlurb(locale: string, t: Topic): string {
   return pick(locale, { en: t.blurbEn, ar: t.blurbAr, ...TOPIC_TEXT[t.key]?.blurb });
 }
 
+/**
+ * Hand-written summary of what the literature finds, per topic (ar/en; the
+ * section is ar/en only). Named studies only; no allocation percentages.
+ */
+const TOPIC_SYNTHESIS: Record<string, { en: string[]; ar: string[] }> = {
+  hedge: {
+    en: [
+      "The long-run record is mixed. Over a century or more, gold has roughly kept its purchasing power, but over the horizons most savers care about, from a few years to a couple of decades, its real price has swung widely: an ounce bought at the January 1980 peak took decades to regain that price after inflation.",
+      "Claude Erb and Campbell Harvey's widely cited 2013 study, “The Golden Dilemma”, concluded that gold is an unreliable inflation hedge over practical investment horizons, even if it holds value over very long ones.",
+    ],
+    ar: [
+      "السجل طويل الأمد متباين. فعلى مدى قرن أو أكثر حافظ الذهب تقريبًا على قوته الشرائية، لكن على المدد التي تهم معظم المدخرين، من بضع سنوات إلى عقدين، تقلّب سعره الحقيقي كثيرًا: فالأونصة التي اشتُريت عند ذروة يناير 1980 احتاجت عقودًا لتستعيد ذلك السعر بعد احتساب التضخم.",
+      "وخلصت دراسة كلود إيرب وكامبل هارفي الشهيرة عام 2013 بعنوان «معضلة الذهب» إلى أن الذهب أداة غير موثوقة للتحوط من التضخم على آفاق الاستثمار العملية، وإن حافظ على قيمته على المدى الطويل جدًا.",
+    ],
+  },
+  "safe-haven": {
+    en: [
+      "Researchers separate a hedge, an asset that moves independently of stocks on average, from a safe haven, one that holds its value on the worst market days. Dirk Baur and Brian Lucey (2010) found gold acted as a safe haven for US, UK and German stocks, but only briefly: the effect faded within about 15 trading days of a shock.",
+      "Baur and Thomas McDermott (2010) found the same for the major European markets and the US, but not for large emerging markets such as the BRIC countries. Gold can still fall in an acute sell-off: in March 2020 investors sold it to raise cash before it recovered.",
+    ],
+    ar: [
+      "يميّز الباحثون بين أداة التحوط، وهي أصل يتحرك مستقلًا عن الأسهم في المتوسط، والملاذ الآمن، وهو أصل يحافظ على قيمته في أسوأ أيام السوق. ووجد ديرك باور وبراين لوسي (2010) أن الذهب كان ملاذًا آمنًا للأسهم الأمريكية والبريطانية والألمانية، لكن لفترة قصيرة: إذ تلاشى الأثر خلال نحو 15 يوم تداول من الصدمة.",
+      "ووجد باور وتوماس مكديرموت (2010) النتيجة نفسها للأسواق الأوروبية الكبرى والولايات المتحدة، لكن ليس للأسواق الناشئة الكبيرة مثل دول بريكس. ومع ذلك قد يهبط الذهب في موجات البيع الحادة: ففي مارس 2020 باعه المستثمرون لتوفير السيولة قبل أن يتعافى.",
+    ],
+  },
+  drivers: {
+    en: [
+      "Studies most often link gold to US real interest rates, the yield on inflation-protected Treasury bonds: when real yields fall, so does the cost of holding a metal that pays no interest, and gold has tended to rise.",
+      "That relationship held for much of the period after the mid-2000s but weakened from 2022, when gold rose alongside higher real yields as central banks bought more than 1,000 tonnes a year. A weaker US dollar, ETF flows and demand from China and India also feature in the research.",
+    ],
+    ar: [
+      "تربط الدراسات الذهب في أغلب الأحيان بأسعار الفائدة الحقيقية في الولايات المتحدة، أي عائد سندات الخزانة المحمية من التضخم: فحين تنخفض العوائد الحقيقية تنخفض معها كلفة الاحتفاظ بمعدن لا يدرّ فائدة، ويميل الذهب إلى الارتفاع.",
+      "وصمدت هذه العلاقة معظم الفترة التي تلت منتصف العقد الأول من الألفية، لكنها ضعفت منذ 2022 حين ارتفع الذهب رغم ارتفاع العوائد الحقيقية، مع شراء البنوك المركزية أكثر من 1,000 طن سنويًا. ويتناول البحث أيضًا ضعف الدولار الأمريكي وتدفقات صناديق المؤشرات والطلب من الصين والهند.",
+    ],
+  },
+  portfolio: {
+    en: [
+      "Most portfolio studies find that a small gold allocation has historically reduced a mixed portfolio's volatility and its losses in bad years, because gold's returns have had a low correlation with stocks and bonds.",
+      "Many of the best-known allocation studies are published or funded by the World Gold Council, the industry's trade body, so their recommended percentages deserve scrutiny. Past correlations can change, and none of this is a recommendation for any individual.",
+    ],
+    ar: [
+      "تجد معظم دراسات المحافظ أن نسبة صغيرة من الذهب خفّضت تاريخيًا تقلب المحفظة المتنوعة وخسائرها في السنوات السيئة، لأن عوائد الذهب كانت ضعيفة الارتباط بالأسهم والسندات.",
+      "لكن كثيرًا من أشهر دراسات التوزيع ينشرها أو يموّلها مجلس الذهب العالمي، وهو الهيئة الممثلة لصناعة الذهب، لذا تستحق النسب التي توصي بها التدقيق. وقد يتغير الارتباط مستقبلًا، ولا يُعدّ شيء من هذا توصية لأي فرد.",
+    ],
+  },
+};
+
+export function topicSynthesis(locale: string, key: string): string[] {
+  const s = TOPIC_SYNTHESIS[key];
+  if (!s || (locale !== "ar" && locale !== "en")) return [];
+  return s[locale];
+}
+
 /** Every fixed string on /research, resolved once per request. */
 export function researchText(locale: string) {
   return {
     title: pick(locale, {
-      en: "Gold Market Research: Peer-Reviewed Studies on Hedging & Safe Havens",
-      ar: "أبحاث سوق الذهب: دراسات علمية محكّمة عن التحوط والملاذ الآمن",
+      en: "Gold Market Research: Academic Studies on Hedging & Safe Havens",
+      ar: "أبحاث سوق الذهب: دراسات أكاديمية عن التحوط والملاذ الآمن",
       fr: "Recherche sur le marché de l'or : études évaluées par les pairs sur la couverture et les valeurs refuges",
       tr: "Altın piyasası araştırmaları: riskten korunma ve güvenli liman üzerine hakemli çalışmalar",
       ur: "سونے کی مارکیٹ پر تحقیق: ہیجنگ اور محفوظ پناہ گاہ پر ہم مرتبہ جائزہ شدہ مطالعات",
       hi: "सोना बाज़ार अनुसंधान: हेजिंग और सुरक्षित ठिकाने पर समकक्ष-समीक्षित अध्ययन",
     }),
     description: pick(locale, {
-      en: "Daily-refreshed digest of the most-cited academic research on gold: inflation hedging, safe-haven behaviour, price drivers and portfolio allocation. Sourced from arXiv, OpenAlex, Crossref and Semantic Scholar.",
-      ar: "ملخصات محدثة يوميًا لأكثر الأبحاث الأكاديمية استشهادًا عن الذهب: التحوط من التضخم، الملاذ الآمن، محددات السعر، وتنويع المحافظ. المصادر: arXiv وOpenAlex وCrossref وSemantic Scholar.",
+      en: "What the most-cited academic research on gold finds about inflation hedging, safe-haven behaviour, price drivers and portfolio allocation, with a daily-refreshed reading list from arXiv, OpenAlex, Crossref and Semantic Scholar.",
+      ar: "ما تقوله أكثر الأبحاث الأكاديمية استشهادًا عن الذهب في التحوط من التضخم والملاذ الآمن ومحددات السعر وتنويع المحافظ، مع قائمة قراءة تُحدَّث يوميًا من arXiv وOpenAlex وCrossref وSemantic Scholar.",
       fr: "Synthèse quotidienne des recherches universitaires les plus citées sur l'or : couverture contre l'inflation, comportement de valeur refuge, déterminants du prix et allocation de portefeuille. Sources : arXiv, OpenAlex, Crossref et Semantic Scholar.",
       tr: "Altın üzerine en çok atıf alan akademik araştırmaların günlük güncellenen özeti: enflasyona karşı korunma, güvenli liman davranışı, fiyat belirleyicileri ve portföy dağılımı. Kaynaklar: arXiv, OpenAlex, Crossref ve Semantic Scholar.",
       ur: "سونے پر سب سے زیادہ حوالہ شدہ تعلیمی تحقیق کا روزانہ تازہ خلاصہ: افراطِ زر سے بچاؤ، محفوظ پناہ گاہ کا رویہ، قیمت کے محرکات اور پورٹ فولیو تقسیم۔ ماخذ: arXiv، OpenAlex، Crossref اور Semantic Scholar۔",
@@ -75,8 +128,8 @@ export function researchText(locale: string) {
     cited: pick(locale, { en: "cited", ar: "استشهاد", fr: "citations", tr: "atıf", ur: "حوالے", hi: "उद्धरण" }),
     ldName: pick(locale, { en: "Gold Market Research", ar: "أبحاث سوق الذهب", fr: "Recherche sur le marché de l'or", tr: "Altın piyasası araştırmaları", ur: "سونے کی مارکیٹ پر تحقیق", hi: "सोना बाज़ार अनुसंधान" }),
     ldDescription: pick(locale, {
-      en: "Daily-refreshed digest of the most-cited peer-reviewed studies on gold markets.",
-      ar: "ملخص محدث يوميًا لأبرز الدراسات الأكاديمية المحكّمة عن أسواق الذهب.",
+      en: "What the most-cited studies on gold find, with a daily-refreshed reading list.",
+      ar: "ما تقوله أبرز الدراسات عن الذهب، مع قائمة قراءة تُحدَّث يوميًا.",
       fr: "Synthèse quotidienne des études évaluées par les pairs les plus citées sur les marchés de l'or.",
       tr: "Altın piyasaları üzerine en çok atıf alan hakemli çalışmaların günlük güncellenen özeti.",
       ur: "سونے کی منڈیوں پر سب سے زیادہ حوالہ شدہ ہم مرتبہ جائزہ شدہ مطالعات کا روزانہ تازہ خلاصہ۔",
@@ -113,8 +166,8 @@ export function researchText(locale: string) {
       hi: "सोने के बारे में अकादमिक शोध क्या कहता है",
     }),
     intro: pick(locale, {
-      en: "Before you buy or sell, read what the peer-reviewed evidence actually says. Every day we aggregate the most-cited academic papers on gold from four open scholarly databases, rank them by citation count, and link each study to its original text plus a Google Scholar cross-check.",
-      ar: "قبل أي قرار شراء أو بيع، اقرأ ما توصلت إليه الدراسات المحكّمة. نجمع يوميًا أكثر الأوراق الأكاديمية استشهادًا عن الذهب من أربع قواعد بيانات علمية مفتوحة، ونرتبها حسب عدد الاستشهادات، مع رابط مباشر للنص الأصلي ورابط تحقق عبر Google Scholar لكل دراسة.",
+      en: "Before you buy or sell, read what the academic evidence actually says. Every day we aggregate the most-cited academic papers on gold from four open scholarly databases, rank them by citation count, and link each study to its original text plus a Google Scholar cross-check.",
+      ar: "قبل أي قرار شراء أو بيع، اقرأ ما توصلت إليه الدراسات الأكاديمية. نجمع يوميًا أكثر الأوراق الأكاديمية استشهادًا عن الذهب من أربع قواعد بيانات علمية مفتوحة، ونرتبها حسب عدد الاستشهادات، مع رابط مباشر للنص الأصلي ورابط تحقق عبر Google Scholar لكل دراسة.",
       fr: "Avant d'acheter ou de vendre, lisez ce que disent réellement les études évaluées par les pairs. Chaque jour, nous agrégeons les articles académiques les plus cités sur l'or à partir de quatre bases de données scientifiques ouvertes, les classons par nombre de citations et relions chaque étude à son texte original ainsi qu'à une vérification croisée sur Google Scholar.",
       tr: "Almadan ya da satmadan önce hakemli kanıtların gerçekte ne söylediğini okuyun. Her gün dört açık bilimsel veri tabanından altın üzerine en çok atıf alan akademik makaleleri topluyor, atıf sayısına göre sıralıyor ve her çalışmayı özgün metnine ve bir Google Scholar çapraz kontrolüne bağlıyoruz.",
       ur: "خریدنے یا بیچنے سے پہلے پڑھیں کہ ہم مرتبہ جائزہ شدہ شواہد دراصل کیا کہتے ہیں۔ ہم روزانہ چار اوپن سائنسی ڈیٹا بیسز سے سونے پر سب سے زیادہ حوالہ شدہ تعلیمی مقالے جمع کرتے ہیں، انہیں حوالوں کی تعداد کے لحاظ سے ترتیب دیتے ہیں، اور ہر مطالعے کو اس کے اصل متن اور Google Scholar پر تصدیقی لنک سے جوڑتے ہیں۔",
@@ -163,8 +216,8 @@ export function researchText(locale: string) {
         hi: "हर अध्ययन के साथ उसका मूल लिंक (DOI या arXiv) और Google Scholar क्रॉस-चेक होता है, इसलिए बिना सत्यापन योग्य स्रोत के कुछ नहीं दिखता।",
       }),
       pick(locale, {
-        en: "These are informational digests, not investment advice.",
-        ar: "هذه ملخصات معلوماتية وليست نصيحة استثمارية.",
+        en: "This page is for information, not investment advice.",
+        ar: "هذه الصفحة للمعلومات وليست نصيحة استثمارية.",
         fr: "Il s'agit de synthèses informatives, pas de conseils en investissement.",
         tr: "Bunlar bilgilendirme amaçlı özetlerdir, yatırım tavsiyesi değildir.",
         ur: "یہ معلوماتی خلاصے ہیں، سرمایہ کاری کا مشورہ نہیں۔",

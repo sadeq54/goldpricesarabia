@@ -7,7 +7,7 @@ import { getCachedResearch } from "@/lib/cached-fetchers";
 import { buildPageMetadata, canonicalPath, SITE_URL } from "@/lib/metadata";
 import { scholarUrl, type ResearchDigest, type ResearchPaper } from "@/lib/research";
 
-import { researchText, topicBlurb, topicTitle } from "./research.i18n";
+import { researchText, topicBlurb, topicSynthesis, topicTitle } from "./research.i18n";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -55,11 +55,7 @@ function PaperRow({ p, cited }: { p: ResearchPaper; cited: string }) {
         ) : null}
       </div>
       {meta ? <div className="mt-1 text-xs text-[var(--color-text-dim)]">{meta}</div> : null}
-      {p.abstract ? (
-        <p className="mt-2 line-clamp-2 max-w-[70ch] text-sm leading-relaxed text-[var(--color-text-muted)]">
-          {p.abstract}
-        </p>
-      ) : null}
+      {/* No abstract: it is the publisher's text, not ours (see method note). */}
       <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
         <a
           href={p.url}
@@ -190,6 +186,11 @@ async function ResearchBody({
               <p className="mt-1 max-w-[70ch] text-sm text-[var(--color-text-muted)]">
                 {topicBlurb(locale, topic)}
               </p>
+              {topicSynthesis(locale, topic.key).map((para) => (
+                <p key={para.slice(0, 32)} className="mt-3 max-w-[70ch] text-sm leading-relaxed text-[var(--color-text)]">
+                  {para}
+                </p>
+              ))}
               <ul
                 dir="ltr"
                 className="mt-4 divide-y divide-[var(--color-border)] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5 text-left sm:p-6"

@@ -43,7 +43,7 @@ const BODY = `# Gold Prices Arabia
 - [Buying gold in Saudi Arabia, UAE, Egypt and Morocco](${SITE_URL}/en/buy-gold/saudi-arabia): VAT, hallmarks, coin and bar pricing
 - [Precious metals](${SITE_URL}/en/precious-metals): Gold, silver, platinum, palladium
 - [News](${SITE_URL}/en/news): Gold-market news feed
-- [Research](${SITE_URL}/en/research): Daily digest of the most-cited peer-reviewed studies on gold (inflation hedge, safe haven, price drivers, portfolio allocation) aggregated from arXiv, OpenAlex, Crossref and Semantic Scholar
+- [Research](${SITE_URL}/en/research): What the most-cited academic studies on gold find, plus a daily reading list (inflation hedge, safe haven, price drivers, portfolio allocation) aggregated from arXiv, OpenAlex, Crossref and Semantic Scholar
 - [Widgets](${SITE_URL}/en/widgets): Embeddable price widgets, chart-image embeds and the free JSON endpoint- [Methodology](${SITE_URL}/en/methodology): Exactly how every price is computed (sources, formulas, update cadence, limitations)
 - [Founder / author](${SITE_URL}/en/about/sadeq): Sadeq Sayed Ahmad, who builds and reviews the site
 - [Editorial standards](${SITE_URL}/en/editorial-standards): Corrections, sourcing and independence policy
