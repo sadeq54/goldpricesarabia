@@ -37,7 +37,9 @@ export function KaratSwitcher({
   /** Karats that have their own page here (a country's 21K page prices the rest). */
   karats?: readonly string[];
 }) {
-  if (karats.length < 2 && !historicalHref) return null;
+  // One karat page (most countries since the 2026-10 merge): a big card holding
+  // only "this page" + a history tile is noise — history is in the header/footer.
+  if (karats.length < 2) return null;
   const heading = pick(locale, {
     en: "Browse by Karat",
     ar: "تصفّح حسب العيار",
