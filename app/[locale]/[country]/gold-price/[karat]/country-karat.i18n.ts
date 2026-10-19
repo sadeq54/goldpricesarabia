@@ -1,4 +1,5 @@
 import { pick, type LocaleText } from "@/lib/i18n-text";
+import { hasCountryKaratPage } from "@/lib/karat-pages";
 import { karatLabel, karatPurity } from "@/lib/karat-label";
 
 /**
@@ -211,11 +212,15 @@ export function relatedPageLinks(locale: string, { country, currency, slug }: Om
       hi: `${country} से जुड़े पेज`,
     }),
     items: [
-      {
-        href: `/${slug}/gold-price/24k`,
-        label: `${country} 24K`,
-        note: pick(locale, { en: "Highest purity", ar: "أعلى نقاء", fr: "Pureté maximale", tr: "En yüksek saflık", ur: "سب سے زیادہ خلوص", hi: "सर्वोच्च शुद्धता" }),
-      },
+      ...(hasCountryKaratPage(locale, slug, "24k")
+        ? [
+            {
+              href: `/${slug}/gold-price/24k`,
+              label: `${country} 24K`,
+              note: pick(locale, { en: "Highest purity", ar: "أعلى نقاء", fr: "Pureté maximale", tr: "En yüksek saflık", ur: "سب سے زیادہ خلوص", hi: "सर्वोच्च शुद्धता" }),
+            },
+          ]
+        : []),
       {
         href: `/${slug}/gold-price/21k`,
         label: `${country} 21K`,

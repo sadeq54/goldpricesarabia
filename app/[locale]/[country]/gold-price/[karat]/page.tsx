@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
 import { AdSensePlacement } from "@/components/AdSensePlacement";
@@ -31,6 +31,7 @@ import {
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
 import { buildAlternates, buildOpenGraph, canonicalPath, SITE_URL } from "@/lib/metadata";
+import { countryKaratHref, countryKarats, hasCountryKaratPage } from "@/lib/karat-pages";
 import { faqPageSchema } from "@/lib/schemas";
 import { getCachedAllHistory, getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { gramUsd, priceDescription, priceTitle, spotDate } from "@/lib/seo";
@@ -61,7 +62,7 @@ export async function generateStaticParams() {
       params.push({ country: c.slug, karat: k });
     }
   }
-  return withLocales(params);
+  return withLocales(params).filter((p) => hasCountryKaratPage(p.locale, p.country, p.karat));
 }
 
 /** Per-gram price in the country's second quoted currency, for the meta description. */
@@ -166,6 +167,10 @@ export default async function CountryKaratPage({
   const { locale, country: slug, karat } = await params;
   const country = COUNTRY_BY_SLUG[slug];
   if (!country || !VALID_KARATS.includes(karat as Karat)) notFound();
+  // proxy.ts already 308s merged karats; this covers any render that bypasses it.
+  if (!hasCountryKaratPage(locale, slug, karat)) {
+    permanentRedirect(canonicalPath(locale, countryKaratHref(locale, slug, karat)));
+  }
   setRequestLocale(locale);
 
   const name = countryName(country, locale);
@@ -278,6 +283,7 @@ export default async function CountryKaratPage({
               basePath={`/${slug}/gold-price`}
               locale={locale}
               historicalHref="/historical-gold-prices"
+              karats={countryKarats(locale, slug, VALID_KARATS)}
             />
 
             <Suspense fallback={<CalculatorSkeleton />}>
@@ -318,7 +324,7 @@ export default async function CountryKaratPage({
               heading={nearby.heading}
               items={[
                 ...relatedCountries(slug, 4).map((nb) => ({
-                  href: `/${nb.slug}/gold-price/${karat}`,
+                  href: countryKaratHref(locale, nb.slug, karat),
                   label: countryName(nb, locale),
                   note: inCurrency(locale, nb.currency),
                   flag: nb.cc,

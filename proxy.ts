@@ -2,6 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 
 import { routing } from "./i18n/routing";
+import { COUNTRY_HUB_KARAT, hasCountryKaratPage } from "./lib/karat-pages";
 import { BILINGUAL_SECTIONS, SITE_URL } from "./lib/metadata";
 import { isKnownDynamicRoute } from "./lib/valid-routes";
 
@@ -82,6 +83,24 @@ function redirectUntranslated(req: NextRequest): NextResponse | null {
   if (!BILINGUAL_SECTIONS.has(section)) return null;
   const url = req.nextUrl.clone();
   url.pathname = `/en/${segments.slice(1).join("/")}`;
+  return withForwardedOrigin(req, NextResponse.redirect(url, 308));
+}
+
+/**
+ * A country's other karats were merged into its 21K page, which prices all five
+ * (lib/karat-pages.ts). Their URLs 308 there so links and indexed URLs keep working.
+ */
+function redirectMergedKarat(req: NextRequest): NextResponse | null {
+  const segments = req.nextUrl.pathname.split("/").filter(Boolean);
+  const prefixed = segments.length === 4 && LOCALES.has(segments[0]);
+  if (!prefixed && segments.length !== 3) return null;
+  const locale = prefixed ? segments[0] : routing.defaultLocale;
+  const [country, section, karat] = prefixed ? segments.slice(1) : segments;
+  if (section !== "gold-price" || !isKnownDynamicRoute([country, section, karat])) return null;
+  if (hasCountryKaratPage(locale, country, karat)) return null;
+  const url = req.nextUrl.clone();
+  const path = `/${country}/gold-price/${COUNTRY_HUB_KARAT}`;
+  url.pathname = locale === routing.defaultLocale ? path : `/${locale}${path}`;
   return withForwardedOrigin(req, NextResponse.redirect(url, 308));
 }
 
@@ -171,6 +190,9 @@ export default function middleware(req: NextRequest) {
 
   const untranslated = redirectUntranslated(req);
   if (untranslated) return untranslated;
+
+  const merged = redirectMergedKarat(req);
+  if (merged) return merged;
 
   const rejected = rejectUnknownRoute(req);
   if (rejected) return rejected;

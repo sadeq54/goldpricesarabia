@@ -28,12 +28,16 @@ export function KaratSwitcher({
   basePath,
   locale,
   historicalHref,
+  karats = KARATS,
 }: {
   current: string;
   basePath: string;
   locale: string;
   historicalHref?: string;
+  /** Karats that have their own page here (a country's 21K page prices the rest). */
+  karats?: readonly string[];
 }) {
+  if (karats.length < 2 && !historicalHref) return null;
   const heading = pick(locale, {
     en: "Browse by Karat",
     ar: "تصفّح حسب العيار",
@@ -90,7 +94,7 @@ export function KaratSwitcher({
         />
       </div>
       <div className={`grid grid-cols-2 gap-3 ${columns}`}>
-        {KARATS.map((k) => {
+        {karats.map((k) => {
           const isActive = k === current.toLowerCase();
           return (
             <Link

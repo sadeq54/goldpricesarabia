@@ -10,6 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { COUNTRY_BY_SLUG } from "@/lib/countries";
 import { pick } from "@/lib/i18n-text";
+import { hasCountryKaratPage } from "@/lib/karat-pages";
 
 function extractCountrySlug(path: string): string | null {
   const parts = path.split("/").filter(Boolean);
@@ -35,15 +36,11 @@ export async function Header() {
   const h = await headers();
   const path = h.get("x-pathname") ?? "";
   const country = extractCountrySlug(path);
-  const base = country ? `/${country}/gold-price` : "/gold-price";
-
-  const navItems = [
-    { href: `${base}/24k`, label: "24K" },
-    { href: `${base}/22k`, label: "22K" },
-    { href: `${base}/21k`, label: "21K" },
-    { href: `${base}/18k`, label: "18K" },
-    { href: `${base}/14k`, label: "14K" },
-  ];
+  // A country's own page where one exists (lib/karat-pages.ts), else the global karat page.
+  const navItems = ["24k", "22k", "21k", "18k", "14k"].map((k) => ({
+    href: country && hasCountryKaratPage(locale, country, k) ? `/${country}/gold-price/${k}` : `/gold-price/${k}`,
+    label: k.toUpperCase(),
+  }));
 
   const siteLinks = [
     {

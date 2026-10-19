@@ -9,12 +9,15 @@ code() { curl -s -m 60 -A "$UA" -o /dev/null -w '%{http_code} %{content_type}' "
 title() { curl -s -m 60 -A "$UA" "$B$1" | grep -o '<title>[^<]*</title>' | sed 's/<[^>]*>//g' | head -1; }
 
 echo "== status ($B)"
-for u in / /en /fr /tr /ur /hi /jordan/gold-price/21k /saudi-arabia/gold-price/21k /tr/turkey/gold-price/22k /ur/pakistan/gold-price/24k /hi/india/gold-price/22k /gold-price/22k /research /historical-gold-prices /widgets /offline /sw.js /manifest.webmanifest /sitemap.xml /llms.txt /rss.xml /robots.txt "/charts/gold/sar/1y?lang=ar" /jordan/gold-price/21k/opengraph-image; do
+for u in / /en /fr /tr /ur /hi /jordan/gold-price/21k /saudi-arabia/gold-price/21k /tr/turkey/gold-price/21k /ur/pakistan/gold-price/24k /hi/india/gold-price/18k /gold-price/22k /research /historical-gold-prices /widgets /offline /sw.js /manifest.webmanifest /sitemap.xml /llms.txt /rss.xml /robots.txt "/charts/gold/sar/1y?lang=ar" /jordan/gold-price/21k/opengraph-image; do
   printf "%-44s %s\n" "$u" "$(code "$u")"
 done
 
+echo "== merged karat page (want 308 -> /en/uae/gold-price/21k)"
+curl -s -m 60 -A "$UA" -o /dev/null -w '%{http_code} %{redirect_url}\n' "$B/en/uae/gold-price/22k"
+
 echo "== titles"
-for u in /jordan/gold-price/21k /saudi-arabia/gold-price/21k /en/uae/gold-price/22k /tr/turkey/gold-price/22k /hi/india/gold-price/22k; do echo "$u => $(title "$u")"; done
+for u in /jordan/gold-price/21k /saudi-arabia/gold-price/21k /en/philippines/gold-price/18k /tr/turkey/gold-price/21k /hi/india/gold-price/18k; do echo "$u => $(title "$u")"; done
 
 echo "== jordan page signals (want: hreflang-links=7 price-table=1 recent=1 currency=1 FinancialProduct=6 InStock=0)"
 J=$(curl -s -m 60 -A "$UA" "$B/jordan/gold-price/21k")

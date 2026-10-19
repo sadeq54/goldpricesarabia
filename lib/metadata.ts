@@ -1,4 +1,5 @@
 import { localeMeta, routing } from "@/i18n/routing";
+import { hasCountryKaratPage } from "@/lib/karat-pages";
 
 /**
  * Canonical site URL — hardcoded to production domain so staging deploys
@@ -24,8 +25,14 @@ const BILINGUAL_LOCALES = ["ar", "en"] as const;
 
 /** Locales a locale-agnostic path genuinely exists in. */
 export function localesForPath(path: string): readonly string[] {
-  const section = path.split("/").filter(Boolean)[0];
-  return section && BILINGUAL_SECTIONS.has(section) ? BILINGUAL_LOCALES : LOCALES;
+  const segments = path.split("/").filter(Boolean);
+  const section = segments[0];
+  if (section && BILINGUAL_SECTIONS.has(section)) return BILINGUAL_LOCALES;
+  // /{country}/gold-price/{karat}: most karats exist only as the 21K page (lib/karat-pages.ts).
+  if (segments.length === 3 && segments[1] === "gold-price") {
+    return LOCALES.filter((l) => hasCountryKaratPage(l, segments[0], segments[2]));
+  }
+  return LOCALES;
 }
 export type SiteLocale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: SiteLocale = routing.defaultLocale;
@@ -61,8 +68,11 @@ export function canonicalPath(locale: string, path: string): string {
  */
 export function buildAlternates(locale: string, path: string) {
   const languages: Record<string, string> = {};
-  for (const l of localesForPath(path)) languages[localeMeta(l).hreflang] = canonicalPath(l, path);
-  languages["x-default"] = canonicalPath(DEFAULT_LOCALE, path);
+  const locales = localesForPath(path);
+  for (const l of locales) languages[localeMeta(l).hreflang] = canonicalPath(l, path);
+  // x-default must name a URL that exists; some karat pages have no Arabic version.
+  const fallback = locales.includes(DEFAULT_LOCALE) ? DEFAULT_LOCALE : (locales[0] ?? DEFAULT_LOCALE);
+  languages["x-default"] = canonicalPath(fallback, path);
   return { canonical: canonicalPath(locale, path), languages };
 }
 
