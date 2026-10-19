@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
 import { Header } from "@/components/Header";
-import { PriceChartSkeleton } from "@/components/skeletons";
 import { Sidebar } from "@/components/Sidebar";
 import { TradingViewChart } from "@/components/TradingViewChart";
 import { Link } from "@/i18n/navigation";
@@ -130,19 +129,16 @@ export default async function HistoricalPage({
               </h1>
             </header>
 
-            <Suspense fallback={null}>
-              <YearAnswer yearNum={yearNum} promise={histPromise} locale={locale} />
-            </Suspense>
+            {/* Primary data rendered inline, not in a Suspense boundary: the layout
+                already defers the body, and an inner boundary streamed this after the
+                footer, outside <main>. The data is "use cache". */}
+            <YearAnswer yearNum={yearNum} promise={histPromise} locale={locale} />
 
-            <Suspense fallback={<StatsSkeleton />}>
-              <YearStats yearNum={yearNum} promise={histPromise} locale={locale} />
-            </Suspense>
+            <YearStats yearNum={yearNum} promise={histPromise} locale={locale} />
 
             <TradingViewChart />
 
-            <Suspense fallback={<PriceChartSkeleton />}>
-              <MonthlyTable yearNum={yearNum} promise={histPromise} locale={locale} />
-            </Suspense>
+            <MonthlyTable yearNum={yearNum} promise={histPromise} locale={locale} />
 
             <div className="grid gap-3 sm:grid-cols-3">
               {VALID_YEARS.filter((y) => y !== yearNum).map((y) => (
@@ -411,12 +407,6 @@ function Stat({
         {value}
       </dd>
     </div>
-  );
-}
-
-function StatsSkeleton() {
-  return (
-    <div className="skeleton h-32 w-full rounded-xl" aria-hidden />
   );
 }
 

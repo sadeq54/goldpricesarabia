@@ -83,6 +83,9 @@ const FALLBACK_USD_OZ: Record<Metal, number> = {
   XPT: 1620,
   XPD: 1120,
 };
+/** When FALLBACK_USD_OZ was set. Pages print the quote's time and date, so the
+ *  constant must carry its own date, never "now", or it reads as a live price. */
+const FALLBACK_SET_AT = Math.floor(Date.UTC(2026, 9, 15, 12) / 1000);
 
 type SpotQuote = { bid: number; ask: number; ts: number };
 /** One trading session of the COMEX future: current price and its day. */
@@ -149,7 +152,7 @@ async function fetchFuturesSession(metal: Metal): Promise<FuturesSession | null>
 
 function buildFallback(metal: Metal): GoldApiResponse {
   const price = FALLBACK_USD_OZ[metal];
-  return buildResponse(metal, price, Math.floor(Date.now() / 1000), null, null, "REFERENCE");
+  return buildResponse(metal, price, FALLBACK_SET_AT, null, null, "REFERENCE");
 }
 
 /**

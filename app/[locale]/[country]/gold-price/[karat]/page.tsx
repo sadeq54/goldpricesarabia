@@ -19,7 +19,6 @@ import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
   CalculatorSkeleton,
-  KaratPriceHeroSkeleton,
 } from "@/components/skeletons";
 import {
   COUNTRIES,
@@ -231,39 +230,37 @@ export default async function CountryKaratPage({
             <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="intro" />
 
             {/* The number the reader searched for, first: this karat, per gram,
-                in the local currency. */}
-            <Suspense fallback={<KaratPriceHeroSkeleton />}>
-              <KaratHeroSection
-                promise={spotPromise}
-                fxPromise={fxPromise}
-                currency={country.currency}
-                altCurrency={country.alsoQuoted}
-                karat={karat}
-                locale={locale}
-              />
-            </Suspense>
-            <Suspense fallback={null}>
-              <PriceTableSection
-                promise={spotPromise}
-                fxPromise={fxPromise}
-                currency={country.currency}
-                altCurrency={country.alsoQuoted}
-                locale={locale}
-                countryName={name}
-                slug={slug}
-                karat={karat}
-              />
-            </Suspense>
-            <Suspense fallback={null}>
-              <RecentPricesSection
-                hPromise={historyPromise}
-                fxPromise={fxPromise}
-                currency={country.currency}
-                locale={locale}
-                karat={karat}
-                countryName={name}
-              />
-            </Suspense>
+                in the local currency. No Suspense around these three: the
+                layout already defers the whole body to request time, and an
+                inner boundary streamed them after the footer, outside <main>,
+                where a crawler that does not run JS never sees them in place.
+                Their data is "use cache", so waiting for it costs ~nothing. */}
+            <KaratHeroSection
+              promise={spotPromise}
+              fxPromise={fxPromise}
+              currency={country.currency}
+              altCurrency={country.alsoQuoted}
+              karat={karat}
+              locale={locale}
+            />
+            <PriceTableSection
+              promise={spotPromise}
+              fxPromise={fxPromise}
+              currency={country.currency}
+              altCurrency={country.alsoQuoted}
+              locale={locale}
+              countryName={name}
+              slug={slug}
+              karat={karat}
+            />
+            <RecentPricesSection
+              hPromise={historyPromise}
+              fxPromise={fxPromise}
+              currency={country.currency}
+              locale={locale}
+              karat={karat}
+              countryName={name}
+            />
             <AdSensePlacement name="inContent" />
             <ChartImage
               currency={country.currency}

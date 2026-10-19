@@ -21,7 +21,6 @@ import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
   CalculatorSkeleton,
-  KaratPriceHeroSkeleton,
 } from "@/components/skeletons";
 import { JsonLd } from "@/components/JsonLd";
 import { SeoStaticHeader } from "@/components/SeoStaticHeader";
@@ -225,17 +224,16 @@ export default async function KaratPage({
             />
 
             {/* This karat, per gram, first (was the 24K ounce price). */}
-            <Suspense fallback={<KaratPriceHeroSkeleton />}>
-              <KaratHeroSection promise={spotPromise} karat={karat} locale={locale} />
-            </Suspense>
-            <Suspense fallback={null}>
-              <PriceTableSection
-                promise={spotPromise}
-                fxPromise={fxPromise}
-                locale={locale}
-                karat={karat}
-              />
-            </Suspense>
+            {/* Primary data rendered inline, not in a Suspense boundary: the layout
+                already defers the body, and an inner boundary streamed this after the
+                footer, outside <main>. The data is "use cache". */}
+            <KaratHeroSection promise={spotPromise} karat={karat} locale={locale} />
+            <PriceTableSection
+              promise={spotPromise}
+              fxPromise={fxPromise}
+              locale={locale}
+              karat={karat}
+            />
             {/* Below the price and the karat table (it used to sit above the H1,
                 pushing the price to the bottom of the first phone screen). */}
             <KaratSwitcher
@@ -244,14 +242,12 @@ export default async function KaratPage({
               locale={locale}
               historicalHref="/historical-gold-prices"
             />
-            <Suspense fallback={null}>
-              <RecentPricesSection
-                hPromise={historyPromise}
-                fxPromise={fxPromise}
-                locale={locale}
-                karat={karat}
-              />
-            </Suspense>
+            <RecentPricesSection
+              hPromise={historyPromise}
+              fxPromise={fxPromise}
+              locale={locale}
+              karat={karat}
+            />
             <AdSensePlacement name="inContent" />
             <ChartImage currency="USD" locale={locale} pagePath={`/gold-price/${karat}`} range="1y" />
             <Suspense fallback={null}>
