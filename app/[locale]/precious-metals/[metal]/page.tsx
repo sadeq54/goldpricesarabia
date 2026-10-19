@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -7,10 +6,6 @@ import { HeroSpot } from "@/components/HeroSpot";
 import { PageFaq } from "@/components/PageFaq";
 import { PageShell } from "@/components/PageShell";
 import { PriceChart } from "@/components/PriceChart";
-import {
-  HeroSpotSkeleton,
-  PriceChartSkeleton,
-} from "@/components/skeletons";
 import {
   getCachedAllHistory,
   getCachedFxRates,
@@ -86,15 +81,13 @@ export default async function MetalPage({
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(metalFaqSchema).replace(/</g, "\\u003c") }}
       />
-      <Suspense fallback={<HeroSpotSkeleton />}>
-        {(async () => <HeroSpot spot={await spotPromise} />)()}
-      </Suspense>
-      <Suspense fallback={<PriceChartSkeleton />}>
-        {(async () => {
-          const [h, fx] = await Promise.all([historyPromise, fxPromise]);
-          return <PriceChart histories={chartHistory(h)} fx={fx} initialMetal={id} />;
-        })()}
-      </Suspense>
+      {/* Inline, not in Suspense: an inner boundary streamed this after the footer,
+          outside <main>. Data is "use cache". */}
+      {(async () => <HeroSpot spot={await spotPromise} />)()}
+      {(async () => {
+        const [h, fx] = await Promise.all([historyPromise, fxPromise]);
+        return <PriceChart histories={chartHistory(h)} fx={fx} initialMetal={id} />;
+      })()}
       <PageFaq
         id="metal-faq"
         heading={pick(locale, { en: "Frequently asked questions", ar: "أسئلة شائعة", tr: "Sık sorulan sorular", hi: "अक्सर पूछे जाने वाले प्रश्न" })}

@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { setRequestLocale } from "next-intl/server";
 
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -33,25 +32,6 @@ function fmtCitations(n: number): string {
   return String(n);
 }
 
-function ResearchSkeleton() {
-  return (
-    <div className="mt-10 space-y-10">
-      {[0, 1].map((s) => (
-        <div key={s}>
-          <div className="skeleton h-6 w-64" />
-          <div className="mt-4 space-y-4">
-            {[0, 1, 2].map((r) => (
-              <div key={r} className="space-y-2">
-                <div className="skeleton h-4 w-full max-w-xl" />
-                <div className="skeleton h-3 w-72" />
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 function PaperRow({ p, cited }: { p: ResearchPaper; cited: string }) {
   const authors =
@@ -268,9 +248,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           </p>
         </header>
 
-        <Suspense fallback={<ResearchSkeleton />}>
-          <ResearchBody promise={digestPromise} locale={locale} />
-        </Suspense>
+        {/* Inline, not in Suspense: an inner boundary streamed this after the footer,
+            outside <main>. Data is "use cache". */}
+        <ResearchBody promise={digestPromise} locale={locale} />
 
         <section
           aria-labelledby="method-note"

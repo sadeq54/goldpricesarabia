@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { setRequestLocale } from "next-intl/server";
 
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -276,11 +275,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           <ChartImage currency="USD" locale={locale} pagePath="/historical-gold-prices" range="max" />
         </div>
 
-        <Suspense
-          fallback={<div className="skeleton mt-8 h-96 w-full" role="status" aria-busy="true" aria-label={t.loading} />}
-        >
-          <YearTable locale={locale} />
-        </Suspense>
+        {/* Inline, not in Suspense: an inner boundary streamed this after the footer,
+            outside <main>. Data is "use cache". */}
+        <YearTable locale={locale} />
       </main>
     </>
   );

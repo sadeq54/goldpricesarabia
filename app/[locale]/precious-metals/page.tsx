@@ -1,9 +1,7 @@
-import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { MetalsStrip } from "@/components/MetalsStrip";
 import { PageShell } from "@/components/PageShell";
-import { MetalsStripSkeleton } from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
 import { getCachedMetals } from "@/lib/cached-fetchers";
 import { pick, type LocaleText } from "@/lib/i18n-text";
@@ -46,9 +44,9 @@ export default async function PreciousMetalsPage({
       titleKey="metalsHeading"
       showFaq={false}
     >
-      <Suspense fallback={<MetalsStripSkeleton />}>
-        {(async () => <MetalsStrip metals={await metalsPromise} />)()}
-      </Suspense>
+      {/* Inline, not in Suspense: an inner boundary streamed this after the footer,
+          outside <main>. Data is "use cache". */}
+      {(async () => <MetalsStrip metals={await metalsPromise} />)()}
       <ul className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {METALS.map((m) => (
           <li key={m.slug}>
