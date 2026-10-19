@@ -15,7 +15,6 @@ import {
   type MetalsBundle,
 } from "./goldapi";
 import { fetchAllHistory, type HistoryRange, type MetalHistory } from "./history";
-import { fetchNews, type NewsItem } from "./news";
 import { fetchResearch, type ResearchDigest } from "./research";
 
 // Spot/metals — revalidate >= 300s qualifies for static prerender shell on
@@ -51,14 +50,6 @@ export async function getCachedAllHistory(
   return fetchAllHistory(range);
 }
 
-// RSS news aggregation — headlines from Kitco / Mining.com / BullionVault.
-// Cache 30-min revalidate, 6h expire matches the upstream feed refresh
-// cadence; longer than spot but shorter than FX/history.
-export async function getCachedNews(limit = 30): Promise<NewsItem[]> {
-  "use cache";
-  cacheLife({ stale: 300, revalidate: 1800, expire: 21600 });
-  return fetchNews(limit);
-}
 
 // Scholarly digest — four open academic APIs, deduped + citation-ranked.
 // Academic literature moves slowly: daily revalidate, week-long expiry.

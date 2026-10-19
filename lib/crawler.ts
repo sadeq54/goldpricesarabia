@@ -10,8 +10,7 @@
 //     it just contributes zero results (and logs a warning).
 //  6. https-only, no credentials in URLs.
 //
-// Consumers: lib/research.ts (scholarly digest). lib/news.ts predates this
-// module and keeps its own equivalent RSS pipeline.
+// Consumers: lib/research.ts (scholarly digest).
 
 export const CRAWLER_UA =
   "Mozilla/5.0 GoldPricesArabia-crawler/1.0 (+https://goldpricesarabia.com; mailto:contact@goldpricesarabia.com)";

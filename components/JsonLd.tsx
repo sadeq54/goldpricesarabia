@@ -85,7 +85,7 @@ export function JsonLd({
     },
     image: `${siteUrl}/opengraph-image`,
     description:
-      "Live gold prices in real time across 46 countries and 40+ currencies. Track 24K, 22K, 21K, 18K and 14K gold per gram, ounce and kilogram.",
+      "Live gold prices across 53 countries and 40+ currencies. Track 24K, 22K, 21K, 18K and 14K gold per gram, ounce and kilogram.",
     knowsAbout: [
       "Gold price",
       "Silver price",
