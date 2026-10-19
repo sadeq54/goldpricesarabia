@@ -45,11 +45,11 @@ html.light {
   --color-text: #211d13;
   --color-text-muted: #4c4636;
   --color-text-dim: #6e6650;
-  --color-gold: #8a6716;
+  --color-gold: #7d5d14; /* was #8a6716: 4.2-4.5:1 on gold tints */
   --color-gold-soft: #b8912e;
-  --color-up: #15803d;
+  --color-up: #13733a; /* was #15803d: 4.0:1 on the live badge */
   --color-down: #b91c1c;
-  --color-live: #15803d;
+  --color-live: #13733a;
   --color-accent: #f7efd8;
   --color-grid: #e7e1d2;
   --color-tooltip-bg: #fffdf8;

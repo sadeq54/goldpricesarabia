@@ -332,7 +332,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                     href="https://www.lbma.org.uk/prices-and-data/precious-metal-prices"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--color-gold)] hover:underline"
+                    className="inline-flex min-h-6 items-center text-[var(--color-gold)] hover:underline"
                   >
                     LBMA — London Bullion Market Association ↗
                   </a>
@@ -342,7 +342,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                     href="https://www.gold.org/goldhub/data/gold-prices"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--color-gold)] hover:underline"
+                    className="inline-flex min-h-6 items-center text-[var(--color-gold)] hover:underline"
                   >
                     World Gold Council ↗
                   </a>
@@ -352,7 +352,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                     href="https://paxos.com/paxg/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--color-gold)] hover:underline"
+                    className="inline-flex min-h-6 items-center text-[var(--color-gold)] hover:underline"
                   >
                     Paxos — PAXG Trust ↗
                   </a>
@@ -362,7 +362,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                     href="https://www.cmegroup.com/markets/metals/precious/gold.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--color-gold)] hover:underline"
+                    className="inline-flex min-h-6 items-center text-[var(--color-gold)] hover:underline"
                   >
                     COMEX Gold Futures (CME) ↗
                   </a>
@@ -370,7 +370,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
                 <li>
                   <Link
                     href="/shanghai-gold-exchange"
-                    className="text-[var(--color-gold)] hover:underline"
+                    className="inline-flex min-h-6 items-center text-[var(--color-gold)] hover:underline"
                   >
                     Shanghai Gold Exchange
                   </Link>

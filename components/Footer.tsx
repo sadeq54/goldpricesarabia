@@ -197,7 +197,7 @@ export async function Footer() {
             <Link
               key={l.href}
               href={l.href as never}
-              className="transition-colors hover:text-[var(--color-gold)]"
+              className="inline-flex min-h-6 items-center transition-colors hover:text-[var(--color-gold)]"
             >
               {pick(locale, l.label)}
             </Link>
@@ -211,7 +211,7 @@ export async function Footer() {
               href={s.url}
               target="_blank"
               rel="me noopener noreferrer"
-              className="transition-colors hover:text-[var(--color-gold)]"
+              className="inline-flex min-h-6 items-center transition-colors hover:text-[var(--color-gold)]"
             >
               {s.name}
             </a>

@@ -70,7 +70,7 @@ export function InstallAppButton({ locale }: { locale: string }) {
     hi: "ऐप इंस्टॉल करें",
   });
   const cls =
-    "inline-flex items-center gap-1 rounded-full border border-[var(--color-gold)]/40 px-2.5 py-0.5 font-semibold text-[var(--color-gold)] transition-colors hover:bg-[var(--color-gold)]/10";
+    "inline-flex items-center gap-1 rounded-full border border-[var(--color-gold)]/40 min-h-6 px-2.5 py-0.5 font-semibold text-[var(--color-gold)] transition-colors hover:bg-[var(--color-gold)]/10";
 
   if (deferred) {
     const install = async () => {
