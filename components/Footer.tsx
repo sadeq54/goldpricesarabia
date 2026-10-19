@@ -5,6 +5,7 @@ import { Flag } from "@/components/Flag";
 import { InstallAppButton } from "@/components/InstallAppButton";
 import { Link } from "@/i18n/navigation";
 import { hasBuyGoldPage } from "@/lib/buy-gold-pages";
+import { hasCountryPage } from "@/lib/karat-pages";
 import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 import { SOCIAL_PROFILES } from "@/lib/social";
@@ -121,7 +122,7 @@ export async function Footer() {
               page is the "blocks of text that list cities and regions" Google's
               spam policy names; the full list lives on /gold-price. */}
           <ul className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm sm:grid-cols-3 md:grid-cols-5">
-            {FOOTER_MARKETS.map((slug) => {
+            {FOOTER_MARKETS.filter((slug) => hasCountryPage(locale, slug)).map((slug) => {
               const c = COUNTRY_BY_SLUG[slug];
               return (
                 <li key={slug} className="py-0.5">

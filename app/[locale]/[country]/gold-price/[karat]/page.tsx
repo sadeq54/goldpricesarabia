@@ -29,7 +29,7 @@ import {
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
 import { buildAlternates, buildOpenGraph, canonicalPath, SITE_URL } from "@/lib/metadata";
-import { countryKaratHref, countryKarats, hasCountryKaratPage } from "@/lib/karat-pages";
+import { countryKaratHref, countryKarats, hasCountryKaratPage, hasCountryPage } from "@/lib/karat-pages";
 import { faqPageSchema } from "@/lib/schemas";
 import { getCachedAllHistory, getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { gramUsd, priceDescription, priceTitle, spotDate } from "@/lib/seo";
@@ -318,7 +318,10 @@ export default async function CountryKaratPage({
             <RelatedLinks
               heading={nearby.heading}
               items={[
-                ...relatedCountries(slug, 4).map((nb) => ({
+                ...relatedCountries(slug, 12)
+                  .filter((nb) => hasCountryPage(locale, nb.slug))
+                  .slice(0, 4)
+                  .map((nb) => ({
                   href: countryKaratHref(locale, nb.slug, karat),
                   label: countryName(nb, locale),
                   note: inCurrency(locale, nb.currency),

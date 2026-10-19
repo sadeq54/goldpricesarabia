@@ -13,6 +13,8 @@
  * consolidate (answer 10015918). The other URLs 308 (proxy.ts) to the country's
  * buy-gold page when it exists, else to the country's gold price page.
  */
+import { countryKaratHref } from "@/lib/karat-pages";
+
 const EDITORIAL_COUNTRIES = new Set(["saudi-arabia", "uae", "egypt", "morocco"]);
 const EDITORIAL_LOCALES = new Set(["ar", "en"]);
 const KEPT_TYPES = new Set(["ar:morocco:bars", "ar:morocco:coins"]);
@@ -26,5 +28,5 @@ export function hasBuyGoldPage(locale: string, country: string, type?: string): 
 export function buyGoldTarget(locale: string, country: string, type?: string): string {
   if (hasBuyGoldPage(locale, country, type)) return type ? `/buy-gold/${country}/${type}` : `/buy-gold/${country}`;
   if (type && hasBuyGoldPage(locale, country)) return `/buy-gold/${country}`;
-  return `/${country}/gold-price/21k`;
+  return countryKaratHref(locale, country, "21k");
 }

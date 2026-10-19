@@ -1,7 +1,8 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { AdSensePlacement } from "@/components/AdSensePlacement";
 import { Link } from "@/i18n/navigation";
+import { hasCountryPage } from "@/lib/karat-pages";
 
 const KARAT_LINKS = [
   { href: "/gold-price/24k", key: "linkKarat24" as const },
@@ -10,10 +11,10 @@ const KARAT_LINKS = [
 ];
 
 const COUNTRY_LINKS = [
-  { href: "/jordan/gold-price/21k", key: "linkJordan" as const },
-  { href: "/saudi-arabia/gold-price/21k", key: "linkSaudi" as const },
-  { href: "/uae/gold-price/21k", key: "linkUAE" as const },
-  { href: "/egypt/gold-price/21k", key: "linkEgypt" as const },
+  { slug: "jordan", href: "/jordan/gold-price/21k", key: "linkJordan" as const },
+  { slug: "saudi-arabia", href: "/saudi-arabia/gold-price/21k", key: "linkSaudi" as const },
+  { slug: "uae", href: "/uae/gold-price/21k", key: "linkUAE" as const },
+  { slug: "egypt", href: "/egypt/gold-price/21k", key: "linkEgypt" as const },
 ];
 
 /**
@@ -27,6 +28,7 @@ const COUNTRY_LINKS = [
  */
 export function Sidebar() {
   const t = useTranslations("Sidebar");
+  const locale = useLocale();
 
   return (
     <aside className="space-y-4 lg:sticky lg:top-[96px] lg:self-start">
@@ -45,7 +47,7 @@ export function Sidebar() {
             </Link>
           ))}
           <div className="col-span-full my-1 hidden h-px bg-[var(--color-border)] lg:block" />
-          {COUNTRY_LINKS.map((l) => (
+          {COUNTRY_LINKS.filter((l) => hasCountryPage(locale, l.slug)).map((l) => (
             <Link
               key={l.href}
               href={l.href}

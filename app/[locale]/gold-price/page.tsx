@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { localeMeta } from "@/i18n/routing";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { countriesInRegion, countryName, REGIONS } from "@/lib/countries";
+import { hasCountryPage } from "@/lib/karat-pages";
 import { pick } from "@/lib/i18n-text";
 import {
   buildAlternates,
@@ -130,9 +131,8 @@ export default async function GoldPriceHubPage({
                     const perGram = (spot?.price_gram_24k ?? 0) * rate;
                     return (
                       <li key={c.slug}>
-                        <Link
-                          href={`/${c.slug}/gold-price/21k`}
-                          prefetch={false}
+                        <CountryCard
+                          href={hasCountryPage(locale, c.slug) ? `/${c.slug}/gold-price/21k` : null}
                           className="group flex items-center gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-3 transition hover:border-[var(--color-gold)]/40"
                         >
                           <Flag cc={c.cc} size={18} />
@@ -152,7 +152,7 @@ export default async function GoldPriceHubPage({
                               {c.currency}
                             </span>
                           </span>
-                        </Link>
+                        </CountryCard>
                       </li>
                     );
                   })}
@@ -163,5 +163,24 @@ export default async function GoldPriceHubPage({
         </div>
       </PageShell>
     </>
+  );
+}
+
+/** A country row: a link where the country has a page in this language, plain text otherwise. */
+function CountryCard({
+  href,
+  className,
+  children,
+}: {
+  href: string | null;
+  className: string;
+  children: React.ReactNode;
+}) {
+  return href ? (
+    <Link href={href} prefetch={false} className={className}>
+      {children}
+    </Link>
+  ) : (
+    <div className={className}>{children}</div>
   );
 }

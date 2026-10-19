@@ -33,15 +33,44 @@ const KEPT = new Set<string>([
   "tr:malaysia:24k", "hi:libya:24k",
 ]);
 
-export function hasCountryKaratPage(locale: string, country: string, karat: string): boolean {
-  const k = karat.toLowerCase();
-  return k === COUNTRY_HUB_KARAT || KEPT.has(`${locale}:${country}:${k}`);
+/**
+ * Turkish and Hindi 21K country pages exist only where readers in that language
+ * look: the home market, the Gulf for Hindi (the Indian diaspora), every page
+ * with a Google click in the 90 days to 2026-10-19, and every country that kept
+ * a karat page above. The other ~70 were translated templates with no country
+ * text (country notes are ar/en only) and earned 14 clicks between them in 90
+ * days; they 308 to /tr/gold-price or /hi/gold-price, which price every country.
+ */
+const FULL_HUB_LOCALES = new Set(["ar", "en"]);
+const EXTRA_HUBS = new Set<string>([
+  "tr:turkey", "tr:tunisia", "tr:morocco", "tr:algeria", "tr:hungary", "tr:iraq", "tr:south-africa",
+  "hi:india", "hi:saudi-arabia", "hi:uae", "hi:qatar", "hi:kuwait", "hi:bahrain", "hi:south-africa", "hi:malaysia",
+]);
+const KEPT_COUNTRIES = new Set([...KEPT].map((key) => key.split(":").slice(0, 2).join(":")));
+
+function hasHub(locale: string, country: string): boolean {
+  const key = `${locale}:${country}`;
+  return FULL_HUB_LOCALES.has(locale) || EXTRA_HUBS.has(key) || KEPT_COUNTRIES.has(key);
 }
 
-/** Locale-agnostic href for a country's karat, falling back to the 21K page that prices it. */
+export function hasCountryKaratPage(locale: string, country: string, karat: string): boolean {
+  const k = karat.toLowerCase();
+  return k === COUNTRY_HUB_KARAT ? hasHub(locale, country) : KEPT.has(`${locale}:${country}:${k}`);
+}
+
+/**
+ * Locale-agnostic href for a country's karat: its own page, else the country's
+ * 21K page that prices it, else the all-countries page of that language.
+ */
 export function countryKaratHref(locale: string, country: string, karat: string): string {
-  const k = hasCountryKaratPage(locale, country, karat) ? karat.toLowerCase() : COUNTRY_HUB_KARAT;
-  return `/${country}/gold-price/${k}`;
+  if (hasCountryKaratPage(locale, country, karat)) return `/${country}/gold-price/${karat.toLowerCase()}`;
+  if (hasHub(locale, country)) return `/${country}/gold-price/${COUNTRY_HUB_KARAT}`;
+  return "/gold-price";
+}
+
+/** Whether this country has any price page in this language. */
+export function hasCountryPage(locale: string, country: string): boolean {
+  return hasHub(locale, country);
 }
 
 /** Karats with their own page for this country and locale, in the order given. */

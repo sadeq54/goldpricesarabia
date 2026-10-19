@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Flag } from "@/components/Flag";
 import { PageShell } from "@/components/PageShell";
 import { Link } from "@/i18n/navigation";
+import { countryKaratHref } from "@/lib/karat-pages";
 import { localeMeta } from "@/i18n/routing";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { countryName, sortedCountries } from "@/lib/countries";
@@ -91,7 +92,7 @@ export default async function BestGoldPricePage({
                         // locale until 2026-10-16).
                         BEST_PRICE_COUNTRIES.has(country.slug)
                           ? `/best-gold-price/${country.slug}`
-                          : `/${country.slug}/gold-price/21k`
+                          : countryKaratHref(locale, country.slug, "21k")
                       }
                       className="flex items-center gap-2 font-semibold text-[var(--color-gold)] hover:underline"
                     >

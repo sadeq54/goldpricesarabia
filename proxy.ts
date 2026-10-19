@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { routing } from "./i18n/routing";
 import { buyGoldTarget, hasBuyGoldPage } from "./lib/buy-gold-pages";
-import { COUNTRY_HUB_KARAT, hasCountryKaratPage } from "./lib/karat-pages";
+import { countryKaratHref, hasCountryKaratPage } from "./lib/karat-pages";
 import { BILINGUAL_SECTIONS, SITE_URL } from "./lib/metadata";
 import { isKnownDynamicRoute } from "./lib/valid-routes";
 
@@ -135,7 +135,7 @@ function redirectMergedKarat(req: NextRequest): NextResponse | null {
   if (section !== "gold-price" || !isKnownDynamicRoute([country, section, karat])) return null;
   if (hasCountryKaratPage(locale, country, karat)) return null;
   const url = req.nextUrl.clone();
-  const path = `/${country}/gold-price/${COUNTRY_HUB_KARAT}`;
+  const path = countryKaratHref(locale, country, karat);
   url.pathname = locale === routing.defaultLocale ? path : `/${locale}${path}`;
   return withForwardedOrigin(req, NextResponse.redirect(url, 308));
 }

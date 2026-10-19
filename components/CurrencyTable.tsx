@@ -1,5 +1,6 @@
 import { Flag } from "@/components/Flag";
 import { Link } from "@/i18n/navigation";
+import { hasCountryPage } from "@/lib/karat-pages";
 import { COUNTRIES } from "@/lib/countries";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
@@ -89,7 +90,7 @@ export function CurrencyTable({
               return (
                 <tr key={code}>
                   <th scope="row" className="px-3 py-2.5 text-start text-sm font-medium">
-                    {country ? (
+                    {country && hasCountryPage(locale, country.slug) ? (
                       <Link
                         href={`/${country.slug}/gold-price/21k` as never}
                         className="transition-colors hover:text-[var(--color-gold)]"

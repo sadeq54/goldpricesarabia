@@ -6,6 +6,7 @@ import { isRtl } from "@/i18n/routing";
 import { countryName, sortedCountries } from "@/lib/countries";
 import { pick } from "@/lib/i18n-text";
 import { canonicalPath } from "@/lib/metadata";
+import { countryKaratHref } from "@/lib/karat-pages";
 
 const SITE = "https://goldpricesarabia.com";
 
@@ -88,7 +89,7 @@ export function WidgetBuilder({ locale }: { locale: string }) {
   const cName = countryName(country, locale);
 
   const embedSrc = `${SITE}${canonicalPath(locale, "/embed/ticker")}?country=${country.slug}&theme=${theme}`;
-  const backlinkHref = `${SITE}${canonicalPath(locale, `/${country.slug}/gold-price/21k`)}`;
+  const backlinkHref = `${SITE}${canonicalPath(locale, countryKaratHref(locale, country.slug, "21k"))}`;
   const anchor = anchorText(locale, cName);
   const iframeTitle = iframeTitleText(locale, cName);
 

@@ -40,6 +40,7 @@ import type { FxRates } from "@/lib/fx";
 import type { MetalsBundle } from "@/lib/goldapi";
 import { chartHistory, type MetalHistory } from "@/lib/history";
 import { pick } from "@/lib/i18n-text";
+import { hasCountryPage } from "@/lib/karat-pages";
 import { buildAlternates, buildOpenGraph, SITE_URL } from "@/lib/metadata";
 
 import { homeText } from "./page.i18n";
@@ -166,11 +167,11 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
 
   const countries = [
-    { c: t("country.jordan"), cc: "JO", url: "/jordan/gold-price/21k", note: t("country.jordanNote") },
-    { c: t("country.saudi"), cc: "SA", url: "/saudi-arabia/gold-price/21k", note: t("country.saudiNote") },
-    { c: t("country.uae"), cc: "AE", url: "/uae/gold-price/21k", note: t("country.uaeNote") },
-    { c: t("country.egypt"), cc: "EG", url: "/egypt/gold-price/21k", note: t("country.egyptNote") },
-  ];
+    { slug: "jordan", c: t("country.jordan"), cc: "JO", url: "/jordan/gold-price/21k", note: t("country.jordanNote") },
+    { slug: "saudi-arabia", c: t("country.saudi"), cc: "SA", url: "/saudi-arabia/gold-price/21k", note: t("country.saudiNote") },
+    { slug: "uae", c: t("country.uae"), cc: "AE", url: "/uae/gold-price/21k", note: t("country.uaeNote") },
+    { slug: "egypt", c: t("country.egypt"), cc: "EG", url: "/egypt/gold-price/21k", note: t("country.egyptNote") },
+  ].filter((x) => hasCountryPage(locale, x.slug));
   const allCountries = pick(locale, {
     en: "All countries",
     ar: "كل الدول",

@@ -2,6 +2,7 @@ import { createTranslator } from "next-intl";
 
 import { Flag } from "@/components/Flag";
 import { pick } from "@/lib/i18n-text";
+import { hasCountryPage } from "@/lib/karat-pages";
 import { canonicalPath } from "@/lib/metadata";
 import { staticMessages } from "@/lib/static-messages";
 
@@ -111,7 +112,7 @@ export function HomepageSeoHeader({
           {s.coverageP}
         </p>
         <ul className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5">
-          {MENA_COUNTRIES.map((c) => (
+          {MENA_COUNTRIES.filter((c) => hasCountryPage(locale, c.slug)).map((c) => (
             <li key={c.slug}>
               <a
                 href={canonicalPath(locale, `/${c.slug}/gold-price/21k`)}

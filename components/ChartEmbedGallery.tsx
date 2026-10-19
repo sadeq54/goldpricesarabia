@@ -7,6 +7,7 @@ import { LOCALE_META, isRtl, localeMeta, routing } from "@/i18n/routing";
 import { COUNTRIES, countryName, type Country } from "@/lib/countries";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 import { SITE_URL, canonicalPath } from "@/lib/metadata";
+import { countryKaratHref } from "@/lib/karat-pages";
 
 /** Currencies promoted to the top of the picker (same set as CurrencyTable). */
 const MAJOR = [
@@ -144,7 +145,7 @@ export function ChartEmbedGallery({ locale }: { locale: string }) {
   const country = COUNTRIES.find((c) => c.slug === slug) ?? COUNTRIES[0];
   const cur = country.currency;
   const cName = localCountryName(country, locale);
-  const pagePath = cur === "USD" ? "/gold-price/24k" : `/${country.slug}/gold-price/21k`;
+  const pagePath = cur === "USD" ? "/gold-price/24k" : countryKaratHref(locale, country.slug, "21k");
   const pageUrl = `${SITE_URL}${canonicalPath(locale, pagePath)}`;
   const imgPath = `/charts/gold/${cur.toLowerCase()}/${range}?lang=${lang}&unit=${unit}`;
   const imgUrl = `${SITE_URL}${imgPath}`;
