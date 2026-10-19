@@ -1,11 +1,12 @@
-import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic, Noto_Sans_Devanagari } from "next/font/google";
+import { Geist, IBM_Plex_Sans_Arabic, Noto_Sans_Devanagari } from "next/font/google";
 
 /**
  * Brand typography, self-hosted via next/font (zero layout shift, no
  * external <link> requests, automatic fallback metric adjustment).
  *
  * - Geist        → Latin UI + display (en, fr, tr). Modern grotesk, tight tracking.
- * - Geist Mono   → every price / numeric readout (tabular by design).
+ * - Prices use Geist too, with tabular figures (`.num` / `.font-mono` in
+ *   globals.css); Geist Mono was dropped 2026-10-19 for readability.
  * - IBM Plex Sans Arabic → Arabic + Urdu UI + display. Same industrial DNA as
  *   Geist, excellent rendering at data sizes, covers the Urdu-specific letters
  *   (ٹ ڈ ڑ ں ے ہ). Latin glyphs never used (Geist sits first in the stack),
@@ -16,12 +17,6 @@ import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic, Noto_Sans_Devanagari } from "n
 export const fontSans = Geist({
   subsets: ["latin", "latin-ext"],
   variable: "--font-geist",
-  display: "swap",
-});
-
-export const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
   display: "swap",
 });
 
@@ -40,4 +35,4 @@ export const fontDevanagari = Noto_Sans_Devanagari({
 });
 
 /** Class string carrying all font CSS variables — apply once on <html>. */
-export const fontVariables = `${fontSans.variable} ${fontMono.variable} ${fontArabic.variable} ${fontDevanagari.variable}`;
+export const fontVariables = `${fontSans.variable} ${fontArabic.variable} ${fontDevanagari.variable}`;

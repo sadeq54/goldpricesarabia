@@ -17,8 +17,6 @@ export const QUICK_LINKS: Array<{ href: string; label: LocaleText }> = [
   { href: "/gold-calculator", label: { en: "Calculator", ar: "الحاسبة", fr: "Calculateur", tr: "Hesaplayıcı", ur: "کیلکولیٹر", hi: "कैलकुलेटर" } },
   { href: "/gold-price", label: { en: "By country", ar: "أسعار حسب الدولة", fr: "Par pays", tr: "Ülkeye göre", ur: "ملک کے لحاظ سے", hi: "देश के अनुसार" } },
   { href: "/news", label: { en: "News", ar: "الأخبار", fr: "Actualités", tr: "Haberler", ur: "خبریں", hi: "समाचार" } },
-  { href: "/research", label: { en: "Research", ar: "الأبحاث", fr: "Recherche", tr: "Araştırma", ur: "تحقیق", hi: "शोध" } },
-  { href: "/methodology", label: { en: "Methodology", ar: "المنهجية", fr: "Méthodologie", tr: "Metodoloji", ur: "طریقۂ کار", hi: "कार्यप्रणाली" } },
 ];
 
 export const MENA_COUNTRIES: Array<{ slug: string; cc: string; name: LocaleText }> = [

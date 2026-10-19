@@ -5,7 +5,9 @@
      Geist carries Latin + digits; IBM Plex Sans Arabic catches Arabic + Urdu
      glyphs; Noto Sans Devanagari catches Hindi. */
   --font-sans: var(--font-geist), var(--font-arabic), var(--font-devanagari), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  /* Numbers use the text face with tabular digits (2026-10-19): monospace prices
+     read like code. Token name kept; `.font-mono` adds tabular figures below. */
+  --font-mono: var(--font-geist), var(--font-arabic), var(--font-devanagari), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   /* Dark theme (default) — warm charcoal neutrals + champagne gold.
      Token NAMES are load-bearing across every component; values only. */
@@ -82,7 +84,8 @@ html, body {
 }
 
 /* Every numeric readout aligns column-perfect. */
-.num {
+.num,
+.font-mono {
   font-variant-numeric: tabular-nums lining-nums;
 }
 
