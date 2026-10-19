@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { ArrowDown, ArrowUp, Radio, Wifi, WifiOff } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { useLivePrice, type SourceState } from "@/components/LivePriceProvider";
+import { useChangeCount, useLivePrice, type SourceState } from "@/components/LivePriceProvider";
 import type { GoldApiResponse } from "@/lib/goldapi";
 
 function useNow(intervalMs = 1000): number {
@@ -44,6 +43,7 @@ export function LiveGoldStream({ initialSpot }: { initialSpot?: GoldApiResponse 
   // Fall back to SSR snapshot until first WebSocket tick arrives — prevents
   // blank "$0.00" flash above the fold on cold loads.
   const xau = live.xau ?? initialSpot?.price ?? 0;
+  const xauTicks = useChangeCount(xau.toFixed(2));
   const chPct = live.changePct24 ?? initialSpot?.chp ?? 0;
   const up = chPct >= 0;
   const trend = up ? "var(--color-up)" : "var(--color-down)";
@@ -68,18 +68,14 @@ export function LiveGoldStream({ initialSpot }: { initialSpot?: GoldApiResponse 
           </div>
 
           <div className="mt-2 flex items-baseline gap-3">
-            <AnimatePresence mode="popLayout">
-              <motion.div
-                key={`med-${xau.toFixed(2)}`}
-                initial={{ opacity: 0, y: -6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 6 }}
-                transition={{ duration: 0.18 }}
-                className="font-mono text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-5xl"
-              >
-                {fmtUsd(xau)}
-              </motion.div>
-            </AnimatePresence>
+            {/* Keyed on the price: each tick remounts it and replays the CSS
+                `price-tick` drop-in (was a motion AnimatePresence swap). */}
+            <div
+              key={`med-${xau.toFixed(2)}`}
+              className={`font-mono text-3xl font-bold tracking-tight text-[var(--color-text)] sm:text-5xl${xauTicks > 0 ? " price-tick" : ""}`}
+            >
+              {fmtUsd(xau)}
+            </div>
             <span className="text-sm text-[var(--color-text-dim)]">{t("perOz")}</span>
           </div>
 
@@ -119,12 +115,10 @@ function SourceCard({ state: s }: { state: SourceState }) {
   const stale = s.ts > 0 && now - s.ts > 30_000;
   const spread = s.ask > 0 && s.bid > 0 ? s.ask - s.bid : 0;
   const trendColor = s.change_24h_pct >= 0 ? "var(--color-up)" : "var(--color-down)";
+  const lastTicks = useChangeCount(s.last.toFixed(2));
 
   return (
-    <motion.div
-      layout
-      className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card-hover)] p-4"
-    >
+    <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card-hover)] p-4">
       <div className="flex items-center justify-between">
         <span className="text-sm font-semibold text-[var(--color-text)]">{s.name}</span>
         <span
@@ -142,18 +136,12 @@ function SourceCard({ state: s }: { state: SourceState }) {
         </span>
       </div>
 
-      <AnimatePresence mode="popLayout">
-        <motion.div
-          key={s.last.toFixed(2)}
-          initial={{ opacity: 0, y: -3 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 3 }}
-          transition={{ duration: 0.15 }}
-          className="mt-2 font-mono text-xl font-bold text-[var(--color-text)]"
-        >
-          {fmtUsd(s.last)}
-        </motion.div>
-      </AnimatePresence>
+      <div
+        key={s.last.toFixed(2)}
+        className={`mt-2 font-mono text-xl font-bold text-[var(--color-text)]${lastTicks > 0 ? " price-tick" : ""}`}
+      >
+        {fmtUsd(s.last)}
+      </div>
 
       <div
         className="mt-1 inline-block rounded px-1.5 py-0.5 font-mono text-[10px] font-semibold"
@@ -175,7 +163,7 @@ function SourceCard({ state: s }: { state: SourceState }) {
         {t("ticks", { n: s.tick_count })}
         {s.ts > 0 ? ` · ${t("lastTick", { n: Math.max(0, Math.floor((now - s.ts) / 1000)) })}` : ""}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

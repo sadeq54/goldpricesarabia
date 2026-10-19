@@ -1,10 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { useLivePrice } from "@/components/LivePriceProvider";
-import { CountUp } from "@/components/motion/CountUp";
 import { KaratGridSkeleton } from "@/components/skeletons";
 import { isRtl } from "@/i18n/routing";
 import type { GoldApiResponse } from "@/lib/goldapi";
@@ -20,8 +18,6 @@ const KARATS = [
 
 const OZ_TO_GRAM = 31.1034768;
 
-const EASE = [0.22, 1, 0.36, 1] as const;
-
 const SYMBOL: Record<string, string> = {
   USD: "$",
   EUR: "€",
@@ -34,6 +30,13 @@ const SYMBOL: Record<string, string> = {
   EGP: "EGP ",
 };
 const symFor = (c: string) => SYMBOL[c] ?? `${c} `;
+
+/** Final formatted price (the old CountUp tween from 0 is gone; SSR shows the value). */
+const money = (n: number, sym: string) =>
+  `${sym}${(Number.isFinite(n) ? n : 0).toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
 
 export function KaratGrid({
   spot,
@@ -84,16 +87,7 @@ export function KaratGrid({
         </span>
       </div>
 
-      <motion.div
-        className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-50px" }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.09 } },
-        }}
-      >
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-5">
         {KARATS.map((k) => {
           // Derive per-gram from live XAU when streaming, else fallback to SSR snapshot.
           const liveOzUsd = live.xau ?? spot.price;
@@ -109,26 +103,17 @@ export function KaratGrid({
           const up = ch >= 0;
           const trend = up ? "var(--color-up)" : "var(--color-down)";
 
+          // Hover lift, glow and badge tilt were motion whileHover springs;
+          // plain CSS transitions on hover do the same with no JS.
           return (
-            <motion.div
+            <div
               key={k.key}
-              className="hover-gold-card-strong group relative min-w-0 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 will-change-transform"
-              variants={{
-                hidden: { opacity: 0, y: 22 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
-              }}
-              whileHover={{
-                y: -4,
-                transition: { duration: 0.3, ease: EASE },
-              }}
+              className="hover-gold-card-strong group relative min-w-0 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 transition-transform duration-300 motion-safe:hover:-translate-y-1"
             >
-              <motion.div
+              <div
                 aria-hidden
-                className="absolute -right-8 -top-8 h-24 w-24 rounded-full blur-2xl"
+                className="absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-30 blur-2xl transition-opacity duration-300 group-hover:opacity-[0.55]"
                 style={{ background: "radial-gradient(circle, var(--color-gold) 0%, transparent 70%)" }}
-                initial={{ opacity: 0.3 }}
-                whileHover={{ opacity: 0.55 }}
-                transition={{ duration: 0.3 }}
               />
 
               {/* Cards render ~170px wide at xl (5 across beside the sidebar), so
@@ -136,17 +121,15 @@ export function KaratGrid({
                   badge, title on its own row, unit glued to the price, change
                   chip beside the ounce line, one currency per row. */}
               <div className="flex items-center gap-2.5">
-                <motion.div
+                <div
                   aria-hidden
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-extrabold leading-none text-black"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-extrabold leading-none text-black transition-transform duration-300 motion-safe:hover:-rotate-6 motion-safe:hover:scale-[1.08]"
                   style={{
                     background: `linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-soft) ${k.purityNum * 100}%, #4a3a12 100%)`,
                   }}
-                  whileHover={{ scale: 1.08, rotate: -6 }}
-                  transition={{ type: "spring", stiffness: 320, damping: 18 }}
                 >
                   {k.key.replace("K", "")}
-                </motion.div>
+                </div>
                 <div className="min-w-0">
                   <div className="text-sm font-semibold leading-tight text-[var(--color-text)]">
                     {/* Arabic-script locales word the karat ("عيار 21" / "21 قیراط"), so the K is dropped. */}
@@ -159,14 +142,14 @@ export function KaratGrid({
               </div>
 
               <div className="num mt-3 flex flex-wrap items-baseline gap-x-1 font-mono text-lg font-bold leading-none tracking-tight text-[var(--color-text)]">
-                <CountUp value={local} decimals={2} prefix={ccySym} duration={1.1} />
+                <span>{money(local, ccySym)}</span>
                 <span className="whitespace-nowrap text-[11px] font-normal text-[var(--color-text-dim)]">
                   {t("perGramShort")}
                 </span>
               </div>
               <div className="mt-1.5 flex flex-wrap items-center justify-between gap-x-2 gap-y-1 text-[11px] text-[var(--color-text-muted)]">
                 <span className="num whitespace-nowrap font-mono">
-                  <CountUp value={localOz} decimals={2} prefix={ccySym} duration={1.1} />
+                  {money(localOz, ccySym)}
                   <span className="ms-0.5 text-[var(--color-text-dim)]">{t("perTroyOz")}</span>
                 </span>
                 <span
@@ -189,10 +172,10 @@ export function KaratGrid({
                   </div>
                 ))}
               </dl>
-            </motion.div>
+            </div>
           );
         })}
-      </motion.div>
+      </div>
     </section>
   );
 }

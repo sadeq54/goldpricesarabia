@@ -1,16 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import { ArrowDown, ArrowUp, Radio } from "lucide-react";
 import { useLocale } from "next-intl";
 
-import { useLivePrice } from "@/components/LivePriceProvider";
+import { useChangeCount, useLivePrice } from "@/components/LivePriceProvider";
 import { HeroSpotSkeleton } from "@/components/skeletons";
 import type { GoldApiResponse } from "@/lib/goldapi";
 import { pick } from "@/lib/i18n-text";
 
 const OZ_TO_GRAM = 31.1034768;
-const EASE = [0.22, 1, 0.36, 1] as const;
 
 const KARATS = [
   { k: "24K", purity: 1.0, pct: "99.9%" },
@@ -39,6 +37,8 @@ export function HeroBoard({ initialSpot }: { initialSpot: GoldApiResponse | null
   const live = useLivePrice();
 
   const xau = live.xau ?? initialSpot?.price ?? null;
+  const xauKey = xau === null ? "" : xau.toFixed(2);
+  const ticks = useChangeCount(xauKey);
   if (xau === null) return <HeroSpotSkeleton />;
 
   const spot = initialSpot;
@@ -79,7 +79,7 @@ export function HeroBoard({ initialSpot }: { initialSpot: GoldApiResponse | null
   ];
 
   return (
-    <motion.section
+    <section
       aria-label={pick(locale, {
         en: "Live gold price board",
         ar: "لوحة سعر الذهب المباشر",
@@ -89,9 +89,6 @@ export function HeroBoard({ initialSpot }: { initialSpot: GoldApiResponse | null
         hi: "लाइव सोने के भाव का बोर्ड",
       })}
       className="hero-board-bg card-shadow relative overflow-hidden rounded-2xl border border-[var(--color-border)]"
-      initial={{ opacity: 0, y: 18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.65, ease: EASE }}
     >
       <div aria-hidden className="hero-grid-overlay pointer-events-none absolute inset-0" />
 
@@ -119,18 +116,15 @@ export function HeroBoard({ initialSpot }: { initialSpot: GoldApiResponse | null
           </div>
 
           <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1" dir="ltr">
-            <AnimatePresence mode="popLayout" initial={false}>
-              <motion.span
-                key={`xau-${xau.toFixed(2)}`}
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 8 }}
-                transition={{ duration: 0.18 }}
-                className="num font-mono text-5xl font-bold leading-none tracking-tight text-[var(--color-text)] sm:text-6xl"
-              >
-                {usd(xau)}
-              </motion.span>
-            </AnimatePresence>
+            {/* Keyed on the price so each live tick remounts the span and replays
+                the CSS `price-tick` drop-in (was a motion AnimatePresence swap);
+                the class waits for the first change, so first paint is static. */}
+            <span
+              key={`xau-${xauKey}`}
+              className={`num font-mono text-5xl font-bold leading-none tracking-tight text-[var(--color-text)] sm:text-6xl${ticks > 0 ? " price-tick" : ""}`}
+            >
+              {usd(xau)}
+            </span>
             <span className="text-sm text-[var(--color-text-dim)]">
               {pick(locale, { en: "per troy oz", ar: "للأونصة", fr: "l'once", tr: "ons başına", ur: "فی اونس", hi: "प्रति औंस" })}
             </span>
@@ -275,6 +269,6 @@ export function HeroBoard({ initialSpot }: { initialSpot: GoldApiResponse | null
           </ul>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

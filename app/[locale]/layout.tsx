@@ -12,7 +12,6 @@ import { Footer } from "@/components/Footer";
 import { IntlClientProvider } from "@/components/IntlClientProvider";
 import { JsonLd } from "@/components/JsonLd";
 import { LivePriceProvider } from "@/components/LivePriceProvider";
-import { MotionRoot } from "@/components/motion/MotionRoot";
 import { PwaRegister } from "@/components/PwaRegister";
 import { localeMeta, routing } from "@/i18n/routing";
 import { ADSENSE_CLIENT } from "@/lib/ads";
@@ -599,9 +598,11 @@ function GoogleTags() {
   if (process.env.NEXT_PUBLIC_GTM_ID) {
     return (
       <>
+        {/* lazyOnload (owner's OK, 2026-10-19): GTM + GA4 are ~311 KB and were
+            competing with the page on phones; they now start after window load. */}
         <Script
           id="gtm-base"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');`,
           }}
@@ -623,9 +624,9 @@ function GoogleTags() {
       <>
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="ga-init" strategy="afterInteractive">
+        <Script id="ga-init" strategy="lazyOnload">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${process.env.NEXT_PUBLIC_GA_ID}',{anonymize_ip:true});`}
         </Script>
       </>
@@ -710,8 +711,8 @@ export default async function LocaleLayout({
       <body>
         {/*
           Tag Manager / Analytics — rendered via AnalyticsGate so it is skipped
-          on /embed/* widget routes (no GTM/GA inside partner iframes). GTM uses
-          `afterInteractive`: runs after hydration, no LCP/FCP cost.
+          on /embed/* widget routes (no GTM/GA inside partner iframes). GTM/GA use
+          `lazyOnload`: they start after window load, off the critical path.
         */}
         <Suspense fallback={null}>
           <AnalyticsGate />
@@ -720,16 +721,14 @@ export default async function LocaleLayout({
           <SiteJsonLd locale={locale} />
         </Suspense>
           <PwaRegister />
-          <MotionRoot>
-            <LivePriceProvider>
-              <I18nProvider locale={locale}>
-                {children}
-                <Suspense fallback={null}>
-                  <FooterGate />
-                </Suspense>
-              </I18nProvider>
-            </LivePriceProvider>
-          </MotionRoot>
+          <LivePriceProvider>
+            <I18nProvider locale={locale}>
+              {children}
+              <Suspense fallback={null}>
+                <FooterGate />
+              </Suspense>
+            </I18nProvider>
+          </LivePriceProvider>
       </body>
     </html>
   );

@@ -67,6 +67,23 @@ export function useLivePrice(): LivePrice {
   return useContext(Ctx);
 }
 
+/**
+ * How many times `value` has changed since mount: 0 on the server and on the
+ * first client render. Live price displays key on the value and add the
+ * `price-tick` CSS flash (globals.css) only when this is > 0, so every tick
+ * still animates but first paint never does.
+ */
+export function useChangeCount(value: string | number): number {
+  const [prev, setPrev] = useState(value);
+  const [count, setCount] = useState(0);
+  // React's "adjust state while rendering" pattern: no effect, no extra commit.
+  if (value !== prev) {
+    setPrev(value);
+    setCount(count + 1);
+  }
+  return count;
+}
+
 const initial = (k: SourceKey, n: string): SourceState => ({
   key: k,
   name: n,

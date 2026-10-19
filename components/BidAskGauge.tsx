@@ -1,14 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 
 import { useLivePrice } from "@/components/LivePriceProvider";
 import { BidAskGaugeSkeleton } from "@/components/skeletons";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
-
-const SPRING = { type: "spring" as const, stiffness: 110, damping: 22 };
 
 const SYMBOL: Record<string, string> = {
   USD: "$",
@@ -65,13 +62,7 @@ export function BidAskGauge({
     n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
   return (
-    <motion.div
-      className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5"
-      initial={{ opacity: 0, y: 14 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-card)] p-5">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold text-[var(--color-text)]">{t("heading")}</h3>
         <span className="text-[10px] uppercase tracking-wider text-[var(--color-text-dim)]">
@@ -84,22 +75,23 @@ export function BidAskGauge({
         <span>{t("high", { value: `${symbol}${fmt(hi)}` })}</span>
       </div>
 
+      {/* Band and marker sit at their live position from the server HTML on;
+          a CSS transition on left/width (was a motion spring) glides them when
+          a tick moves the price inside the day's range. */}
       <div className="relative mt-2 h-2 rounded-full bg-[var(--color-border)]">
-        <motion.div
-          className="absolute inset-y-0 rounded-full"
-          initial={{ left: "50%", width: 0, opacity: 0 }}
-          animate={{ left: `${bandLeft}%`, width: `${bandWidth}%`, opacity: 0.3 }}
-          transition={{ ...SPRING, delay: 0.15 }}
+        <div
+          className="absolute inset-y-0 rounded-full motion-safe:transition-[left,width] motion-safe:duration-300"
           style={{
+            left: `${bandLeft}%`,
+            width: `${bandWidth}%`,
+            opacity: 0.3,
             background: "linear-gradient(90deg, var(--color-up), var(--color-gold), var(--color-down))",
           }}
         />
-        <motion.div
-          className="absolute -top-1 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-[var(--color-bg-card)]"
-          initial={{ left: "50%", scale: 0 }}
-          animate={{ left: `${left}%`, scale: 1 }}
-          transition={{ ...SPRING, delay: 0.25 }}
+        <div
+          className="absolute -top-1 h-4 w-4 -translate-x-1/2 rounded-full border-2 border-[var(--color-bg-card)] motion-safe:transition-[left] motion-safe:duration-300"
           style={{
+            left: `${left}%`,
             background: "var(--color-gold)",
             boxShadow: "0 0 12px color-mix(in srgb, var(--color-gold) 60%, transparent)",
           }}
@@ -107,9 +99,9 @@ export function BidAskGauge({
       </div>
 
       <div className="mt-3 grid grid-cols-3 gap-3 text-xs">
-        <Stat label={t("bid")} value={`${symbol}${fmt(bid)}`} color="var(--color-up)" delay={0.35} />
-        <Stat label={t("mid")} value={`${symbol}${fmt(px)}`} color="var(--color-gold)" delay={0.42} />
-        <Stat label={t("ask")} value={`${symbol}${fmt(ask)}`} color="var(--color-down)" delay={0.49} />
+        <Stat label={t("bid")} value={`${symbol}${fmt(bid)}`} color="var(--color-up)" />
+        <Stat label={t("mid")} value={`${symbol}${fmt(px)}`} color="var(--color-gold)" />
+        <Stat label={t("ask")} value={`${symbol}${fmt(ask)}`} color="var(--color-down)" />
       </div>
       <div className="mt-2 text-center text-[11px] text-[var(--color-text-dim)]">
         {t("spread")}{" "}
@@ -118,22 +110,17 @@ export function BidAskGauge({
           {(ask - bid).toFixed(3)}
         </span>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
-function Stat({ label, value, color, delay }: { label: string; value: string; color: string; delay: number }) {
+function Stat({ label, value, color }: { label: string; value: string; color: string }) {
   return (
-    <motion.div
-      className="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-card-hover)] p-2 text-center"
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <div className="rounded-md border border-[var(--color-border)] bg-[var(--color-bg-card-hover)] p-2 text-center">
       <div className="text-[9px] uppercase tracking-wider text-[var(--color-text-dim)]">{label}</div>
       <div className="mt-0.5 font-mono text-sm font-semibold" style={{ color }}>
         {value}
       </div>
-    </motion.div>
+    </div>
   );
 }
