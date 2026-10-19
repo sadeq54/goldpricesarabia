@@ -85,11 +85,11 @@ export function karatFaqs({ locale, karat, upper, purity }: Ctx): KaratFaq[] {
         },
         {
           q: `هل سعر عيار ${kNum} المعروض هنا يشمل المصنعية؟`,
-          a: `لا. السعر المعروض هو السعر الفوري للذهب الخام فقط (سعر السوق العالمي). تضيف محلات المجوهرات مصنعية (5-30 ريال/جرام للمجوهرات المعقدة)، وضريبة القيمة المضافة (15% في السعودية، 5% في الإمارات، صفر في مصر). راجع صفحة المنهجية للتفاصيل.`,
+          a: `لا. السعر المعروض هو السعر الفوري للذهب الخام فقط (سعر السوق العالمي). تضيف محلات المجوهرات مصنعية يحددها كل محل، وتخضع المشغولات لضريبة القيمة المضافة (15% في السعودية و5% في الإمارات). راجع صفحة المنهجية للتفاصيل.`,
         },
         {
           q: `كم مرة يتم تحديث سعر عيار ${kNum}؟`,
-          a: `يُحدّث السعر كل ثانية عبر WebSocket من Binance وCoinbase وKraken (متوسط من ثلاث بورصات لمنع الانحراف)، باستخدام رمز PAXG/USD المدعوم 1:1 بسبائك ذهب فيزيائية معتمدة من LBMA.`,
+          a: `يُقرأ السعر الفوري من Swissquote كل خمس دقائق على الأقل، وما دامت الصفحة مفتوحة يتبع أسعار PAXG/USD اللحظية من Binance وCoinbase وKraken (الوسيط بين الثلاث). أما أسعار الصرف فهي أسعار متوسطة يومية.`,
         },
       ];
     case "fr":
@@ -131,11 +131,11 @@ export function karatFaqs({ locale, karat, upper, purity }: Ctx): KaratFaq[] {
         },
         {
           q: `Burada gösterilen ${kl} fiyatına işçilik dahil mi?`,
-          a: `Hayır. Gösterilen fiyat yalnızca ham altının spot karşılığıdır (dünya piyasa fiyatı). Kuyumcular işçilik ekler (işlemeli parçalarda genellikle gram başına 5-30 SAR) ve yerel KDV uygulanır (Suudi Arabistan: %15, BAE: %5, Mısır: yok). Ayrıntılar için metodoloji sayfasına bakın.`,
+          a: `Hayır. Gösterilen fiyat yalnızca ham altının spot karşılığıdır (dünya piyasa fiyatı). Kuyumcular her dükkânın belirlediği işçilik ücretini ekler ve takılara KDV uygulanır (Suudi Arabistan'da %15, BAE'de %5). Ayrıntılar için metodoloji sayfasına bakın.`,
         },
         {
           q: `${kl} fiyatı ne sıklıkla güncellenir?`,
-          a: `Fiyat, Binance, Coinbase ve Kraken'den WebSocket ile her saniye güncellenir (sapmayı önlemek için üç borsanın medyanı) ve London Good Delivery külçelerle 1:1 teminatlı PAXG/USD paritesi kullanılır.`,
+          a: `Spot fiyat Swissquote'tan en az beş dakikada bir okunur ve sayfa açıkken Binance, Coinbase ve Kraken'deki canlı PAXG/USD kotasyonlarını (üçünün medyanı) izler. Döviz kurları günlük orta piyasa kurlarıdır.`,
         },
       ];
     case "ur":
@@ -177,11 +177,11 @@ export function karatFaqs({ locale, karat, upper, purity }: Ctx): KaratFaq[] {
         },
         {
           q: `क्या यहाँ दिखाए गए ${kl} भाव में मेकिंग चार्ज शामिल है?`,
-          a: `नहीं। दिखाया गया भाव सिर्फ़ कच्चे सोने का स्पॉट-समतुल्य मूल्य है (विश्व बाज़ार भाव)। ज्वेलर्स मेकिंग चार्ज जोड़ते हैं (जटिल गहनों पर आमतौर पर 5-30 SAR/ग्राम) और स्थानीय VAT लागू होता है (सऊदी अरब: 15%, UAE: 5%, मिस्र: शून्य)। विवरण के लिए कार्यप्रणाली पेज देखें।`,
+          a: `नहीं। दिखाया गया भाव सिर्फ़ कच्चे सोने का स्पॉट-समतुल्य मूल्य है (विश्व बाज़ार भाव)। ज्वेलर्स हर दुकान का अपना मेकिंग चार्ज जोड़ते हैं और गहनों पर VAT लगता है (सऊदी अरब में 15%, UAE में 5%)। विवरण के लिए कार्यप्रणाली पेज देखें।`,
         },
         {
           q: `${kl} का भाव कितनी बार अपडेट होता है?`,
-          a: `भाव हर सेकंड Binance, Coinbase और Kraken से WebSocket के ज़रिए अपडेट होता है (विचलन रोकने के लिए तीनों एक्सचेंजों का मीडियन), और PAXG/USD जोड़ी का उपयोग होता है जो London Good Delivery सोने की छड़ों से 1:1 समर्थित है।`,
+          a: `स्पॉट भाव Swissquote से कम से कम हर पाँच मिनट में पढ़ा जाता है और पेज खुला रहने तक Binance, Coinbase और Kraken के लाइव PAXG/USD भावों (तीनों की माध्यिका) के साथ चलता है। विनिमय दरें दैनिक मध्य-बाज़ार दरें हैं।`,
         },
       ];
     default:
@@ -200,11 +200,11 @@ export function karatFaqs({ locale, karat, upper, purity }: Ctx): KaratFaq[] {
         },
         {
           q: `Does the ${upper} price shown here include making charges?`,
-          a: `No. The displayed price is the spot-equivalent raw gold value only (world market price). Jewellery shops add making charges (typically 5-30 SAR/gram for complex pieces), and local VAT applies (Saudi: 15%, UAE: 5%, Egypt: none). See the methodology page for details.`,
+          a: `No. The displayed price is the spot-equivalent raw gold value only (world market price). Jewellery shops add a making charge set by each shop, and jewellery carries VAT (15% in Saudi Arabia, 5% in the UAE). See the methodology page for details.`,
         },
         {
           q: `How often is the ${upper} price updated?`,
-          a: `The price updates every second via WebSocket aggregation from Binance, Coinbase and Kraken (median of three exchanges to prevent skew), using the PAXG/USD pair backed 1:1 by London Good Delivery gold bars.`,
+          a: `The spot price is read from Swissquote at least every five minutes and, while the page is open, follows live PAXG/USD quotes from Binance, Coinbase and Kraken (the median of the three). Exchange rates are daily mid-market rates.`,
         },
       ];
   }

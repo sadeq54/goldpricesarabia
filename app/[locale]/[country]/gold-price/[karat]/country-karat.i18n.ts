@@ -135,12 +135,12 @@ export function countryKaratFaqs(locale: string, { karat, country, currency, slu
         hi: `क्या ${country} के सोने के भाव में मेकिंग चार्ज और VAT शामिल है?`,
       }),
       a: pick(locale, {
-        en: `No. The displayed price is the raw spot-equivalent gold value only. ${vat}Jewellery shops add making charges (typically 5-30 local currency units per gram for complex pieces) and retailer margin (3-10%).`,
-        ar: `لا. السعر المعروض هو السعر الفوري للذهب الخام فقط. ${vat}تضيف محلات المجوهرات أيضاً مصنعية (تتراوح من 5 إلى 30 وحدة عملة محلية للجرام للقطع المعقدة) وهامش بائع التجزئة (3-10%).`,
+        en: `No. The displayed price is the raw spot-equivalent gold value only. ${vat}Jewellery shops add a making charge, which each shop sets, and their own margin.`,
+        ar: `لا. السعر المعروض هو السعر الفوري للذهب الخام فقط. ${vat}وتضيف محلات المجوهرات مصنعية يحددها كل محل وهامش ربحها.`,
         fr: `Non. Le prix affiché correspond uniquement à la valeur spot de l'or brut. ${vat}Les bijouteries ajoutent la façon (généralement 5 à 30 unités monétaires locales par gramme pour les pièces complexes) et une marge de détail (3 à 10 %).`,
-        tr: `Hayır. Gösterilen fiyat yalnızca ham altının spot karşılığıdır. ${vat}Kuyumcular buna işçilik (karmaşık parçalarda genellikle gram başına 5-30 yerel para birimi) ve perakende marjı (%3-10) ekler.`,
+        tr: `Hayır. Gösterilen fiyat yalnızca ham altının spot karşılığıdır. ${vat}Kuyumcular buna her dükkânın belirlediği işçilik ücretini ve kendi marjını ekler.`,
         ur: `نہیں۔ دکھائی گئی قیمت صرف خام سونے کی اسپاٹ قیمت ہے۔ ${vat}جیولرز اس میں بناوائی (پیچیدہ زیورات کے لیے عموماً فی گرام 5-30 مقامی کرنسی یونٹ) اور خوردہ منافع (3-10%) شامل کرتے ہیں۔`,
-        hi: `नहीं। दिखाया गया भाव सिर्फ़ कच्चे सोने का स्पॉट मूल्य है। ${vat}ज्वेलर्स इसमें मेकिंग चार्ज (जटिल गहनों के लिए आमतौर पर 5-30 स्थानीय मुद्रा इकाई प्रति ग्राम) और खुदरा मार्जिन (3-10%) जोड़ते हैं।`,
+        hi: `नहीं। दिखाया गया भाव सिर्फ़ कच्चे सोने का स्पॉट मूल्य है। ${vat}ज्वेलर्स इसमें हर दुकान का अपना मेकिंग चार्ज और अपना मार्जिन जोड़ते हैं।`,
       }),
     },
     {

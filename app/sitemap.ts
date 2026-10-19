@@ -27,7 +27,6 @@ function routeLastmod(path: string, fallback: Date): Date {
   //   /precious-metals/gold → /precious-metals/[metal]
   //   /buy-gold/usa         → /buy-gold/[country]
   //   /buy-gold/usa/coins   → /buy-gold/[country]/[type]
-  //   /best-gold-price/usa  → /best-gold-price/[country]
   // Non-default locales carry a prefix (`/en/...`, `/fr/...`) that the
   // lastmod keys never do — strip it so every locale shares one git date.
   const segments = path.split("/").filter(Boolean);
@@ -109,7 +108,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Live + spot + chart routes — high-traffic SEO targets.
   out.push(...dual("spot-gold", "hourly", 0.85));
-  out.push(...dual("live-gold-price", "hourly", 0.85));
   out.push(...dual("gold-price-chart", "hourly", 0.85));
   out.push(...dual("gold-price-per-ounce", "hourly", 0.8));
   out.push(...dual("gold-price-per-gram", "hourly", 0.8));
@@ -136,11 +134,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     out.push(...dual(`precious-metals/${m}`, "hourly", 0.7));
   }
 
-  // Best gold price hub + per-country.
-  out.push(...dual("best-gold-price", "daily", 0.7));
-  for (const c of ["usa", "canada", "singapore", "switzerland", "uk"]) {
-    out.push(...dual(`best-gold-price/${c}`, "daily", 0.6));
-  }
 
   // Buy gold pages — bullion coin/bar pricing changes daily-ish.
   // MENA markets (matches Footer's featured set) get tier-1 priority.

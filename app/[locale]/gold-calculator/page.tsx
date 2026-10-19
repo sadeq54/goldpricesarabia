@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Calculator } from "@/components/Calculator";
+import { PageFaq } from "@/components/PageFaq";
+import { pick } from "@/lib/i18n-text";
 import { PageShell } from "@/components/PageShell";
 import { CalculatorSkeleton } from "@/components/skeletons";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
@@ -108,6 +110,11 @@ export default async function GoldCalculatorPage({
           return <Calculator spot={calcSpot} fx={fx} />;
         })()}
       </Suspense>
+      <PageFaq
+        id="calculator-faq"
+        heading={pick(locale, { en: "Frequently asked questions", ar: "أسئلة شائعة", tr: "Sık sorulan sorular", hi: "अक्सर पूछे जाने वाले प्रश्न" })}
+        items={faqs}
+      />
     </PageShell>
   );
 }

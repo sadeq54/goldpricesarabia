@@ -154,7 +154,6 @@ export async function Footer() {
               title={t("chartsHeading")}
               links={[
                 { label: t("spotGold"), href: "/spot-gold" },
-                { label: t("livePrice"), href: "/live-gold-price" },
                 { label: t("priceChart"), href: "/gold-price-chart" },
                 { label: t("perOz"), href: "/gold-price-per-ounce" },
                 { label: t("perGram"), href: "/gold-price-per-gram" },
@@ -176,17 +175,6 @@ export async function Footer() {
                 { label: t("silver"), href: "/precious-metals/silver" },
                 { label: t("platinum"), href: "/precious-metals/platinum" },
                 { label: t("palladium"), href: "/precious-metals/palladium" },
-              ]}
-            />
-            <FooterColumn
-              title={t("bestPriceHeading")}
-              links={[
-                { label: t("bestPrice"), href: "/best-gold-price" },
-                { label: t("bestUSA"), href: "/best-gold-price/usa" },
-                { label: t("bestCanada"), href: "/best-gold-price/canada" },
-                { label: t("bestSingapore"), href: "/best-gold-price/singapore" },
-                { label: t("bestSwitzerland"), href: "/best-gold-price/switzerland" },
-                { label: t("bestUK"), href: "/best-gold-price/uk" },
               ]}
             />
           </div>

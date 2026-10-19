@@ -306,7 +306,7 @@ export default async function CountryKaratPage({
             </Suspense>
             <TradingViewChart currency={country.currency} />
 
-            <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="content" />
+            <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="content" faqItems={ckFaqs} />
 
             {/* After the price, before the FAQ: the reader has their answer and
                 is deciding whether to leave. */}

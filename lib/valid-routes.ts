@@ -64,9 +64,6 @@ const NEWS = new Set([
 ]);
 const BUY_GOLD_COUNTRIES = new Set(["usa", "uk", "canada", "australia", "saudi-arabia", "uae", "egypt", "morocco"]);
 const BUY_GOLD_TYPES = new Set(["coins", "small-coins", "bars"]);
-/** The only /best-gold-price/{country} pages that exist. Imported by the hub
- * and the country page so a link can never point at one that does not. */
-export const BEST_PRICE_COUNTRIES: ReadonlySet<string> = new Set(["usa", "canada", "singapore", "switzerland", "uk"]);
 const FIRST_YEAR = 2000;
 const LAST_YEAR = 2026;
 
@@ -100,8 +97,6 @@ export function isKnownDynamicRoute(segments: readonly string[]): boolean {
   if (a === "buy-gold" && segments.length === 3) {
     return BUY_GOLD_COUNTRIES.has(b) && BUY_GOLD_TYPES.has(c);
   }
-  // /best-gold-price/{country}
-  if (a === "best-gold-price" && segments.length === 2) return BEST_PRICE_COUNTRIES.has(b);
 
   return true;
 }

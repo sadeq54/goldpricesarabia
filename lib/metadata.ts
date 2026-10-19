@@ -21,7 +21,16 @@ export const LOCALES = routing.locales;
  * Now those URLs 308 to /en (proxy.ts), and hreflang + the sitemap list only
  * ar and en for these paths. Translate a section properly before removing it.
  */
-export const BILINGUAL_SECTIONS: ReadonlySet<string> = new Set(["news", "research"]);
+export const BILINGUAL_SECTIONS: ReadonlySet<string> = new Set([
+  "news",
+  "research",
+  // Spot and unit-price pages: thin translated templates in tr/hi with near-zero
+  // traffic; their FAQ was rewritten in ar/en only (content/tool-faqs.ts, 2026-10-19).
+  "spot-gold",
+  "gold-price-per-ounce",
+  "gold-price-per-gram",
+  "gold-price-per-kilo",
+]);
 const BILINGUAL_LOCALES = ["ar", "en"] as const;
 
 /** Locales a locale-agnostic path genuinely exists in. */

@@ -19,15 +19,15 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "هل تشمل الحاسبة المصنعية؟",
-      a: "لا. الحاسبة تعرض القيمة الفعلية للذهب الخام (السعر الفوري × النقاء × الوزن). تضيف محلات الذهب مصنعية (5-30 ريال/جرام للمجوهرات) وضريبة القيمة المضافة المحلية. النتيجة هي الحد الأدنى قبل أي هامش تجزئة.",
+      a: "لا. الحاسبة تعرض القيمة الفعلية للذهب الخام (السعر الفوري × النقاء × الوزن). تضيف محلات الذهب مصنعية يحددها كل محل وضريبة القيمة المضافة المحلية. النتيجة هي الحد الأدنى قبل أي هامش تجزئة.",
     },
     {
       q: "ما هي العملات المدعومة؟",
-      a: "أكثر من 40 عملة: USD، SAR، JOD، AED، EGP، EUR، GBP، JPY، CNY، INR، PKR وأكثر. أسعار الصرف تُحدّث يومياً من بيانات البنوك المركزية المفتوحة.",
+      a: "52 عملة، منها USD، SAR، JOD، AED، EGP، EUR، GBP، JPY، CNY، INR، PKR وأكثر. أسعار الصرف تُحدّث يومياً من بيانات البنوك المركزية المفتوحة.",
     },
     {
       q: "كم مرة تُحدّث الأسعار؟",
-      a: "السعر الفوري للذهب (XAU/USD) يُحدّث كل ثانية عبر WebSocket من Binance وCoinbase وKraken. أسعار صرف العملات تُحدّث كل ساعة من قاعدة بيانات fawazahmed0/currency-api.",
+      a: "يُقرأ السعر الفوري للذهب (XAU/USD) من Swissquote كل خمس دقائق على الأقل، ويتبع أسعار PAXG/USD اللحظية من Binance وCoinbase وKraken ما دامت الصفحة مفتوحة. أما أسعار الصرف فهي أسعار متوسطة يومية من fawazahmed0/currency-api.",
     },
   ],
   en: [
@@ -41,15 +41,15 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "Does the calculator include making charges?",
-      a: "No. The calculator shows the raw spot-equivalent gold value (spot price × purity × weight). Jewellery shops add making charges (typically 5-30 SAR/gram for jewellery) and local VAT. The result is the floor price before any retail premium.",
+      a: "No. The calculator shows the raw spot-equivalent gold value (spot price × purity × weight). Jewellery shops add a making charge set by each shop, and local VAT. The result is the floor price before any retail premium.",
     },
     {
       q: "Which currencies does the calculator support?",
-      a: "Over 40 currencies including USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR and more. Exchange rates update daily from open central-bank data.",
+      a: "52 currencies, including USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR and more. Exchange rates update daily from open central-bank data.",
     },
     {
       q: "How often are gold prices updated?",
-      a: "Spot gold (XAU/USD) updates every second via WebSocket from Binance, Coinbase and Kraken. Currency exchange rates refresh hourly from fawazahmed0/currency-api.",
+      a: "Spot gold (XAU/USD) is read from Swissquote at least every five minutes and follows live PAXG/USD quotes from Binance, Coinbase and Kraken while the page is open. Exchange rates are daily mid-market rates from fawazahmed0/currency-api.",
     },
   ],
   fr: [
@@ -85,15 +85,15 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "Hesaplayıcı işçiliği içeriyor mu?",
-      a: "Hayır. Hesaplayıcı ham altının spot karşılığını gösterir (spot fiyat × saflık × ağırlık). Kuyumcular işçilik (genellikle gram başına 5-30 SAR) ve yerel KDV ekler. Sonuç, perakende primi öncesi taban fiyattır.",
+      a: "Hayır. Hesaplayıcı ham altının spot karşılığını gösterir (spot fiyat × saflık × ağırlık). Kuyumcular her dükkânın belirlediği işçilik ücretini ve yerel KDV'yi ekler. Sonuç, perakende primi öncesi taban fiyattır.",
     },
     {
       q: "Hesaplayıcı hangi para birimlerini destekliyor?",
-      a: "USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR dahil 40'tan fazla para birimi. Döviz kurları açık merkez bankası verilerinden günlük güncellenir.",
+      a: "USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR dahil 52 para birimi. Döviz kurları açık merkez bankası verilerinden günlük güncellenir.",
     },
     {
       q: "Altın fiyatları ne sıklıkla güncellenir?",
-      a: "Spot altın (XAU/USD) Binance, Coinbase ve Kraken'den WebSocket ile her saniye güncellenir. Döviz kurları fawazahmed0/currency-api üzerinden saatlik yenilenir.",
+      a: "Spot altın (XAU/USD) Swissquote'tan en az beş dakikada bir okunur ve sayfa açıkken Binance, Coinbase ve Kraken'deki canlı PAXG/USD kotasyonlarını izler. Döviz kurları fawazahmed0/currency-api'den alınan günlük orta piyasa kurlarıdır.",
     },
   ],
   ur: [
@@ -129,15 +129,15 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "क्या कैलकुलेटर में मेकिंग चार्ज शामिल है?",
-      a: "नहीं। कैलकुलेटर कच्चे सोने का स्पॉट-समतुल्य मूल्य दिखाता है (स्पॉट भाव × शुद्धता × वज़न)। ज्वेलर्स मेकिंग चार्ज (आमतौर पर 5-30 SAR/ग्राम) और स्थानीय VAT जोड़ते हैं। नतीजा किसी भी रिटेल प्रीमियम से पहले का न्यूनतम भाव है।",
+      a: "नहीं। कैलकुलेटर कच्चे सोने का स्पॉट-समतुल्य मूल्य दिखाता है (स्पॉट भाव × शुद्धता × वज़न)। ज्वेलर्स हर दुकान का अपना मेकिंग चार्ज और स्थानीय VAT जोड़ते हैं। नतीजा किसी भी रिटेल प्रीमियम से पहले का न्यूनतम भाव है।",
     },
     {
       q: "कैलकुलेटर कौन-सी मुद्राएँ सपोर्ट करता है?",
-      a: "40 से अधिक मुद्राएँ: USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR और अन्य। विनिमय दरें केंद्रीय बैंकों के ओपन डेटा से रोज़ अपडेट होती हैं।",
+      a: "52 मुद्राएँ, जिनमें USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR और अन्य। विनिमय दरें केंद्रीय बैंकों के ओपन डेटा से रोज़ अपडेट होती हैं।",
     },
     {
       q: "सोने के भाव कितनी बार अपडेट होते हैं?",
-      a: "स्पॉट गोल्ड (XAU/USD) हर सेकंड Binance, Coinbase और Kraken से WebSocket के ज़रिए अपडेट होता है। मुद्रा विनिमय दरें हर घंटे fawazahmed0/currency-api से रिफ्रेश होती हैं।",
+      a: "स्पॉट गोल्ड (XAU/USD) Swissquote से कम से कम हर पाँच मिनट में पढ़ा जाता है और पेज खुला रहने तक Binance, Coinbase और Kraken के लाइव PAXG/USD भावों के साथ चलता है। विनिमय दरें fawazahmed0/currency-api की दैनिक मध्य-बाज़ार दरें हैं।",
     },
   ],
 };

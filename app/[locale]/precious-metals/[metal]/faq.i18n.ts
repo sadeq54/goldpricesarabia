@@ -100,6 +100,9 @@ const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 export function metalFaqs(slug: MetalSlug, id: string, locale: string): FaqQA[] {
   const f = METAL_FORMS[slug];
   const x = FACTS[slug];
+  // Only the drivers / uses / how-priced answers are published (2026-10-19): the
+  // first claimed a real-time table the page does not have, and the last was
+  // investment advice ("is X a good investment?").
   return pickList<FaqQA>(locale, {
     en: [
       { q: `What is the ${f.en} price today?`, a: `${f.en} price updates in real time in the table above. Priced in USD per troy ounce (${id}/USD). Use the calculator to convert to 40+ local currencies.` },
@@ -143,5 +146,5 @@ export function metalFaqs(slug: MetalSlug, id: string, locale: string): FaqQA[] 
       { q: `${f.hi.obl} का भाव कैसे तय होता है?`, a: `${f.hi.obl} का भाव प्रति ट्रॉय औंस (31.1035 ग्राम) अमेरिकी डॉलर में तय होता है। वैश्विक भाव बड़े एक्सचेंजों (COMEX, LBMA, शंघाई) पर बनता है। हम लाइव भाव Swissquote की स्पॉट फ़ीड के ज़रिये ट्रैक करते हैं।` },
       { q: `क्या ${f.hi.name} अच्छा निवेश है?`, a: `हर कीमती धातु का जोखिम प्रोफ़ाइल अलग है। सोना ज़्यादा स्थिर है (सुरक्षित ठिकाना)। चांदी ज़्यादा अस्थिर है और उसकी औद्योगिक मांग मज़बूत है। प्लैटिनम/पैलेडियम ऑटो उद्योग से जुड़े हैं। कई धातुओं में बाँटने से जोखिम घटता है।` },
     ],
-  });
+  }).slice(1, 4);
 }

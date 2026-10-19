@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { HeroSpot } from "@/components/HeroSpot";
+import { PageFaq } from "@/components/PageFaq";
 import { PageShell } from "@/components/PageShell";
 import { PriceChart } from "@/components/PriceChart";
 import {
@@ -16,6 +17,7 @@ import {
   getCachedSpot,
 } from "@/lib/cached-fetchers";
 import { chartHistory } from "@/lib/history";
+import { pick } from "@/lib/i18n-text";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
 import { faqPageSchema } from "@/lib/schemas";
 
@@ -67,7 +69,8 @@ export default async function MetalPage({
   const historyPromise = getCachedAllHistory("1y");
 
   const pageUrl = canonicalPath(locale, `/precious-metals/${metal}`);
-  const metalFaqSchema = faqPageSchema(pageUrl, metalFaqs(metal, id, locale), locale);
+  const faqItems = metalFaqs(metal, id, locale);
+  const metalFaqSchema = faqPageSchema(pageUrl, faqItems, locale);
 
   return (
     <PageShell
@@ -92,6 +95,11 @@ export default async function MetalPage({
           return <PriceChart histories={chartHistory(h)} fx={fx} initialMetal={id} />;
         })()}
       </Suspense>
+      <PageFaq
+        id="metal-faq"
+        heading={pick(locale, { en: "Frequently asked questions", ar: "أسئلة شائعة", tr: "Sık sorulan sorular", hi: "अक्सर पूछे जाने वाले प्रश्न" })}
+        items={faqItems}
+      />
     </PageShell>
   );
 }

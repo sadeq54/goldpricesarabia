@@ -23,6 +23,7 @@ import {
   CalculatorSkeleton,
 } from "@/components/skeletons";
 import { JsonLd } from "@/components/JsonLd";
+import { PageFaq } from "@/components/PageFaq";
 import { SeoStaticHeader } from "@/components/SeoStaticHeader";
 import type { FxRates } from "@/lib/fx";
 import type { GoldApiResponse } from "@/lib/goldapi";
@@ -263,6 +264,11 @@ export default async function KaratPage({
               <CalculatorSection sPromise={spotPromise} fxPromise={fxPromise} />
             </Suspense>
             <FollowCta locale={locale} />
+            <PageFaq
+              id={`karat-faq-${karat}`}
+              heading={pick(locale, { en: "Frequently asked questions", ar: "أسئلة شائعة", tr: "Sık sorulan sorular", hi: "अक्सर पूछे जाने वाले प्रश्न" })}
+              items={faqs}
+            />
 
 
             <RelatedLinks heading={pick(locale, RELATED_HEADING)} items={relatedLinks(locale)} />

@@ -17,9 +17,10 @@ import {
 } from "@/lib/cached-fetchers";
 import { chartHistory } from "@/lib/history";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
+import { PageFaq } from "@/components/PageFaq";
+import { FAQ_HEADING, SPOT_FAQ, toolFaq } from "@/content/tool-faqs";
 import { faqPageSchema } from "@/lib/schemas";
 
-import { spotGoldFaqs } from "./faq.i18n";
 
 export async function generateMetadata({
   params,
@@ -49,7 +50,8 @@ export default async function SpotGoldPage({
   const historyPromise = getCachedAllHistory("1y");
 
   const pageUrl = canonicalPath(locale, "/spot-gold");
-  const spotFaqSchema = faqPageSchema(pageUrl, spotGoldFaqs(locale), locale);
+  const faqs = toolFaq(SPOT_FAQ, locale);
+  const spotFaqSchema = faqPageSchema(pageUrl, faqs, locale);
 
   return (
     <PageShell
@@ -75,6 +77,7 @@ export default async function SpotGoldPage({
       <Suspense fallback={<BidAskGaugeSkeleton />}>
         {(async () => <BidAskGauge spot={await spotPromise} />)()}
       </Suspense>
+      <PageFaq id="spot-gold-faq" heading={locale === "ar" ? FAQ_HEADING.ar : FAQ_HEADING.en} items={faqs} />
     </PageShell>
   );
 }

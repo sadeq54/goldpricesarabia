@@ -51,7 +51,7 @@ export default async function OfflinePage({
       }),
     },
     {
-      href: "/live-gold-price",
+      href: "/spot-gold",
       label: pick(locale, {
         en: "Live gold price",
         ar: "سعر الذهب المباشر",

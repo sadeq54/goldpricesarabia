@@ -32,6 +32,7 @@ export function CountryGoldPriceHeader({
   slug,
   karat,
   part = "all",
+  faqItems,
 }: {
   locale: string;
   slug: string;
@@ -45,6 +46,9 @@ export function CountryGoldPriceHeader({
    * they came for (2026-10-15 mobile audit). It now renders after the tables.
    */
   part?: "intro" | "method" | "content" | "all";
+  /** The page's FAQPage JSON-LD items; shown instead of the built-in questions so
+   *  the visible FAQ and the structured data are the same text. */
+  faqItems?: { q: string; a: string }[];
 }) {
   const country = COUNTRY_BY_SLUG[slug];
   if (!country) return null;
@@ -129,7 +133,7 @@ export function CountryGoldPriceHeader({
           {faq.heading}
         </h2>
         <dl className="mt-4 space-y-4 text-sm">
-          {faq.items.map((item) => (
+          {(faqItems ?? faq.items).map((item) => (
             <div key={item.q}>
               <dt className="font-semibold text-[var(--color-text)]">{item.q}</dt>
               <dd className="mt-1 leading-relaxed text-[var(--color-text-muted)]">{item.a}</dd>

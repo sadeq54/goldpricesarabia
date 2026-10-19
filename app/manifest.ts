@@ -32,7 +32,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: "Live Gold Price",
         short_name: "Live",
-        url: "/live-gold-price",
+        url: "/spot-gold",
         icons: [{ src: "/icon-96.png", sizes: "96x96" }],
       },
       {

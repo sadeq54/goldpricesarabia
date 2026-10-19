@@ -92,14 +92,32 @@ function redirectUntranslated(req: NextRequest): NextResponse | null {
  * unrelated to gold (40 URLs, 33 Google clicks in 90 days). Its URLs 308 to the
  * homepage of the same locale.
  */
+const REMOVED_SECTIONS: Record<string, string> = {
+  cryptocurrency: "/",
+  // Same page as /spot-gold (live spot price), merged 2026-10-19.
+  "live-gold-price": "/spot-gold",
+};
+
 function redirectRemovedSection(req: NextRequest): NextResponse | null {
   const segments = req.nextUrl.pathname.split("/").filter(Boolean);
   const prefixed = segments.length > 0 && LOCALES.has(segments[0]);
   const section = prefixed ? segments[1] : segments[0];
-  if (section !== "cryptocurrency") return null;
-  const locale = prefixed ? segments[0] : routing.defaultLocale;
+  let target = section ? REMOVED_SECTIONS[section] : undefined;
+  let locale = prefixed ? segments[0] : routing.defaultLocale;
+  // /best-gold-price (removed 2026-10-19): it promised a dealer comparison but
+  // showed the converted spot price that /gold-price and the country pages show.
+  if (section === "best-gold-price") {
+    const country = prefixed ? segments[2] : segments[1];
+    target = country && isKnownDynamicRoute([country, "gold-price", "21k"])
+      ? countryKaratHref(locale, country, "21k")
+      : "/gold-price";
+  }
+  if (target === undefined) return null;
+  const targetSection = target.split("/")[1];
+  if (targetSection && BILINGUAL_SECTIONS.has(targetSection) && locale !== "ar" && locale !== "en") locale = "en";
   const url = req.nextUrl.clone();
-  url.pathname = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  url.pathname = target === "/" ? prefix || "/" : `${prefix}${target}`;
   return withForwardedOrigin(req, NextResponse.redirect(url, 308));
 }
 

@@ -30,7 +30,6 @@ const BODY = `# Gold Prices Arabia
 - [21K gold price](${SITE_URL}/en/gold-price/21k): 87.5% purity, dominant MENA karat
 - [18K gold price](${SITE_URL}/en/gold-price/18k): 75% purity
 - [14K gold price](${SITE_URL}/en/gold-price/14k): 58.3% purity
-- [Live gold price](${SITE_URL}/en/live-gold-price): WebSocket streaming view
 - [Spot gold](${SITE_URL}/en/spot-gold): XAU/USD spot, chart, bid/ask
 - [Gold price chart](${SITE_URL}/en/gold-price-chart): Historical chart with multi-currency overlay
 - [Gold price per gram](${SITE_URL}/en/gold-price-per-gram)
@@ -41,7 +40,6 @@ const BODY = `# Gold Prices Arabia
 - [Gold–silver ratio](${SITE_URL}/en/gold-silver-ratio)
 - [Shanghai Gold Exchange](${SITE_URL}/en/shanghai-gold-exchange)
 - [Gold calculator](${SITE_URL}/en/gold-calculator)
-- [Best gold price](${SITE_URL}/en/best-gold-price): Country-by-country price comparison
 - [Buying gold in Saudi Arabia, UAE, Egypt and Morocco](${SITE_URL}/en/buy-gold/saudi-arabia): VAT, hallmarks, coin and bar pricing
 - [Precious metals](${SITE_URL}/en/precious-metals): Gold, silver, platinum, palladium
 - [News](${SITE_URL}/en/news): Gold-market news feed

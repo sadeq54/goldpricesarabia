@@ -10,9 +10,10 @@ import {
 } from "@/components/skeletons";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
+import { PageFaq } from "@/components/PageFaq";
+import { FAQ_HEADING, OUNCE_FAQ, toolFaq } from "@/content/tool-faqs";
 import { faqPageSchema } from "@/lib/schemas";
 
-import { perOunceFaqs } from "./faq.i18n";
 
 export async function generateMetadata({
   params,
@@ -40,7 +41,8 @@ export default async function PerOzPage({
   const fxPromise = getCachedFxRates();
 
   const pageUrl = canonicalPath(locale, "/gold-price-per-ounce");
-  const perOzFaqSchema = faqPageSchema(pageUrl, perOunceFaqs(locale), locale);
+  const faqs = toolFaq(OUNCE_FAQ, locale);
+  const perOzFaqSchema = faqPageSchema(pageUrl, faqs, locale);
 
   return (
     <PageShell
@@ -71,6 +73,7 @@ export default async function PerOzPage({
           return <Calculator spot={calcSpot} fx={fx} />;
         })()}
       </Suspense>
+      <PageFaq id="gold-price-per-ounce-faq" heading={locale === "ar" ? FAQ_HEADING.ar : FAQ_HEADING.en} items={faqs} />
     </PageShell>
   );
 }

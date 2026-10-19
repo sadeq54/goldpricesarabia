@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
@@ -166,9 +165,7 @@ export default async function HistoricalPage({
               ))}
             </div>
 
-            <Suspense fallback={null}>
-              <YearFaq yearNum={yearNum} promise={histPromise} locale={locale} year={year} />
-            </Suspense>
+            <YearFaq yearNum={yearNum} promise={histPromise} locale={locale} year={year} />
           </section>
           <Sidebar />
         </div>

@@ -10,9 +10,10 @@ import {
 } from "@/components/skeletons";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph, canonicalPath } from "@/lib/metadata";
+import { PageFaq } from "@/components/PageFaq";
+import { FAQ_HEADING, GRAM_FAQ, toolFaq } from "@/content/tool-faqs";
 import { faqPageSchema } from "@/lib/schemas";
 
-import { perGramFaqs } from "./faq.i18n";
 
 export async function generateMetadata({
   params,
@@ -40,7 +41,8 @@ export default async function PerGramPage({
   const fxPromise = getCachedFxRates();
 
   const pageUrl = canonicalPath(locale, "/gold-price-per-gram");
-  const perGramFaqSchema = faqPageSchema(pageUrl, perGramFaqs(locale), locale);
+  const faqs = toolFaq(GRAM_FAQ, locale);
+  const perGramFaqSchema = faqPageSchema(pageUrl, faqs, locale);
 
   return (
     <PageShell
@@ -74,6 +76,7 @@ export default async function PerGramPage({
           return <Calculator spot={calcSpot} fx={fx} />;
         })()}
       </Suspense>
+      <PageFaq id="gold-price-per-gram-faq" heading={locale === "ar" ? FAQ_HEADING.ar : FAQ_HEADING.en} items={faqs} />
     </PageShell>
   );
 }
