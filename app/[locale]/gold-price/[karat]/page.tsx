@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -18,10 +17,6 @@ import { PriceTable } from "@/components/PriceTable";
 import { RecentPricesTable } from "@/components/RecentPricesTable";
 import { FollowCta } from "@/components/FollowCta";
 import { TradingViewChart } from "@/components/TradingViewChart";
-import {
-  BidAskGaugeSkeleton,
-  CalculatorSkeleton,
-} from "@/components/skeletons";
 import { JsonLd } from "@/components/JsonLd";
 import { PageFaq } from "@/components/PageFaq";
 import { SeoStaticHeader } from "@/components/SeoStaticHeader";
@@ -251,18 +246,12 @@ export default async function KaratPage({
             />
             <AdSensePlacement name="inContent" />
             <ChartImage currency="USD" locale={locale} pagePath={`/gold-price/${karat}`} range="1y" />
-            <Suspense fallback={null}>
-              <CurrencyTableSection promise={spotPromise} fxPromise={fxPromise} locale={locale} />
-            </Suspense>
+            <CurrencyTableSection promise={spotPromise} fxPromise={fxPromise} locale={locale} />
             {/* Karat cards and the interactive chart were removed 2026-10-15:
                 they repeated the karat table and the chart image above. */}
-            <Suspense fallback={<BidAskGaugeSkeleton />}>
-              <BidAskSection promise={spotPromise} />
-            </Suspense>
+            <BidAskSection promise={spotPromise} />
             <TradingViewChart />
-            <Suspense fallback={<CalculatorSkeleton />}>
-              <CalculatorSection sPromise={spotPromise} fxPromise={fxPromise} />
-            </Suspense>
+            <CalculatorSection sPromise={spotPromise} fxPromise={fxPromise} />
             <FollowCta locale={locale} />
             <PageFaq
               id={`karat-faq-${karat}`}

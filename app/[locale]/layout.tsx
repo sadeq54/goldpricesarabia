@@ -3,12 +3,13 @@ import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
 import Script from "next/script";
 
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { AdSenseScript, ConsentDefaultsScript } from "@/components/AdSenseScript";
 import { Footer } from "@/components/Footer";
+import { IntlClientProvider } from "@/components/IntlClientProvider";
 import { JsonLd } from "@/components/JsonLd";
 import { LivePriceProvider } from "@/components/LivePriceProvider";
 import { MotionRoot } from "@/components/motion/MotionRoot";
@@ -17,6 +18,7 @@ import { localeMeta, routing } from "@/i18n/routing";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import { fontVariables } from "@/lib/fonts";
 import { SITE_URL } from "@/lib/metadata";
+import { staticMessages } from "@/lib/static-messages";
 
 import "../globals.css";
 
@@ -507,14 +509,21 @@ const CLIENT_NAMESPACES = [
   "PriceChart",
 ] as const;
 
-async function I18nProvider({
+/**
+ * Synchronous on purpose: it used to `await getMessages()`, which made the
+ * whole <body> one Suspense boundary with a null fallback — the prerendered
+ * shell held no visible content and phones painted nothing until the entire
+ * streamed body had arrived (Lighthouse mobile: LCP render delay 92% of 8.7 s).
+ * staticMessages() is the same bundled catalogue, available without a request.
+ */
+function I18nProvider({
   locale,
   children,
 }: {
   locale: string;
   children: React.ReactNode;
 }) {
-  const messages = await getMessages();
+  const messages = staticMessages(locale);
   // Only what client components read: the full catalogue was serialised into
   // every page's HTML (~30 KB a locale) though server components never need it.
   // A client component using another namespace shows up as MISSING_MESSAGE
@@ -523,9 +532,9 @@ async function I18nProvider({
     CLIENT_NAMESPACES.filter((ns) => ns in messages).map((ns) => [ns, messages[ns]]),
   );
   return (
-    <NextIntlClientProvider messages={clientMessages} locale={locale}>
+    <IntlClientProvider messages={clientMessages} locale={locale}>
       {children}
-    </NextIntlClientProvider>
+    </IntlClientProvider>
   );
 }
 
@@ -713,14 +722,12 @@ export default async function LocaleLayout({
           <PwaRegister />
           <MotionRoot>
             <LivePriceProvider>
-              <Suspense fallback={null}>
-                <I18nProvider locale={locale}>
-                  {children}
-                  <Suspense fallback={null}>
-                    <FooterGate />
-                  </Suspense>
-                </I18nProvider>
-              </Suspense>
+              <I18nProvider locale={locale}>
+                {children}
+                <Suspense fallback={null}>
+                  <FooterGate />
+                </Suspense>
+              </I18nProvider>
             </LivePriceProvider>
           </MotionRoot>
       </body>

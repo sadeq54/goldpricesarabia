@@ -1,15 +1,9 @@
-import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { BidAskGauge } from "@/components/BidAskGauge";
 import { HeroSpot } from "@/components/HeroSpot";
 import { PageShell } from "@/components/PageShell";
 import { PriceChart } from "@/components/PriceChart";
-import {
-  BidAskGaugeSkeleton,
-  HeroSpotSkeleton,
-  PriceChartSkeleton,
-} from "@/components/skeletons";
 import {
   getCachedAllHistory,
   getCachedFxRates,
@@ -65,18 +59,12 @@ export default async function SpotGoldPage({
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(spotFaqSchema).replace(/</g, "\\u003c") }}
       />
-      <Suspense fallback={<HeroSpotSkeleton />}>
-        {(async () => <HeroSpot spot={await spotPromise} />)()}
-      </Suspense>
-      <Suspense fallback={<PriceChartSkeleton />}>
-        {(async () => {
-          const [h, fx] = await Promise.all([historyPromise, fxPromise]);
-          return <PriceChart histories={chartHistory(h)} fx={fx} />;
-        })()}
-      </Suspense>
-      <Suspense fallback={<BidAskGaugeSkeleton />}>
-        {(async () => <BidAskGauge spot={await spotPromise} />)()}
-      </Suspense>
+      {(async () => <HeroSpot spot={await spotPromise} />)()}
+      {(async () => {
+        const [h, fx] = await Promise.all([historyPromise, fxPromise]);
+        return <PriceChart histories={chartHistory(h)} fx={fx} />;
+      })()}
+      {(async () => <BidAskGauge spot={await spotPromise} />)()}
       <PageFaq id="spot-gold-faq" heading={locale === "ar" ? FAQ_HEADING.ar : FAQ_HEADING.en} items={faqs} />
     </PageShell>
   );

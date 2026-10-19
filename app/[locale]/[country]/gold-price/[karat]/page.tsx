@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
 import { notFound, permanentRedirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
@@ -16,10 +15,6 @@ import { KaratSwitcher } from "@/components/KaratSwitcher";
 import { RelatedLinks } from "@/components/RelatedLinks";
 import { Sidebar } from "@/components/Sidebar";
 import { TradingViewChart } from "@/components/TradingViewChart";
-import {
-  BidAskGaugeSkeleton,
-  CalculatorSkeleton,
-} from "@/components/skeletons";
 import {
   COUNTRIES,
   COUNTRY_BY_SLUG,
@@ -204,17 +199,15 @@ export default async function CountryKaratPage({
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ckFaqSchema).replace(/</g, "\\u003c") }}
       />
-      <Suspense fallback={null}>
-        <CountrySchema
-          spotPromise={spotPromise}
-          fxPromise={fxPromise}
-          currency={country.currency}
-          crumbs={schemaCrumbs}
-          pageUrl={pageUrl}
-          pageName={schemaPageName}
-        />
-      </Suspense>
-      <Header />
+      <CountrySchema
+        spotPromise={spotPromise}
+        fxPromise={fxPromise}
+        currency={country.currency}
+        crumbs={schemaCrumbs}
+        pageUrl={pageUrl}
+        pageName={schemaPageName}
+      />
+      <Header country={country.slug} />
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
         {/* next-intl <Link> adds the locale prefix itself — hrefs stay locale-agnostic. */}
         <Breadcrumb
@@ -282,28 +275,24 @@ export default async function CountryKaratPage({
               karats={countryKarats(locale, slug, VALID_KARATS)}
             />
 
-            <Suspense fallback={<CalculatorSkeleton />}>
-              <CalculatorSection
-                sPromise={spotPromise}
-                fxPromise={fxPromise}
-                defaultCurrency={country.currency}
-                defaultKarat={
-                  `price_gram_${karat as "24k" | "22k" | "21k" | "18k" | "14k"}` as "price_gram_24k"
-                }
-              />
-            </Suspense>
+            <CalculatorSection
+              sPromise={spotPromise}
+              fxPromise={fxPromise}
+              defaultCurrency={country.currency}
+              defaultKarat={
+                `price_gram_${karat as "24k" | "22k" | "21k" | "18k" | "14k"}` as "price_gram_24k"
+              }
+            />
 
             <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="method" />
 
             {/* Trader tools last: day range / spread and the TradingView chart
                 (loads only when tapped). Shoppers have their answer above. */}
-            <Suspense fallback={<BidAskGaugeSkeleton />}>
-              <BidAskSection
-                promise={spotPromise}
-                fxPromise={fxPromise}
-                displayCurrency={country.currency}
-              />
-            </Suspense>
+            <BidAskSection
+              promise={spotPromise}
+              fxPromise={fxPromise}
+              displayCurrency={country.currency}
+            />
             <TradingViewChart currency={country.currency} />
 
             <CountryGoldPriceHeader locale={locale} slug={slug} karat={karat} part="content" faqItems={ckFaqs} />

@@ -24,8 +24,6 @@ import { TradingViewChart } from "@/components/TradingViewChart";
 import {
   BidAskGaugeSkeleton,
   CalculatorSkeleton,
-  HeroSpotSkeleton,
-  MetalsStripSkeleton,
   PriceChartSkeleton,
 } from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
@@ -191,9 +189,9 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           <section className="min-w-0 space-y-8">
             <HomepageSeoHeader locale={locale} part="intro" />
 
-            <Suspense fallback={<HeroSpotSkeleton />}>
-              <HeroBoardSection promise={metalsPromise} />
-            </Suspense>
+            {/* Inline (data is "use cache"): a Suspense boundary here streamed the
+                board in later and pushed the country list down (CLS 0.28). */}
+            <HeroBoardSection promise={metalsPromise} />
 
             {/* Country chooser, right under the live price. This replaces the
                 old automatic IP-based redirect (GeoRedirect), which loaded the
@@ -226,9 +224,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               </Link>
             </section>
 
-            <Suspense fallback={<MetalsStripSkeleton />}>
-              <MetalsStripSection promise={metalsPromise} />
-            </Suspense>
+            <MetalsStripSection promise={metalsPromise} />
 
             <LazyMount minHeight={400} fallback={<PriceChartSkeleton />}>
               <Suspense fallback={<PriceChartSkeleton />}>
@@ -244,9 +240,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               </Suspense>
             </LazyMount>
 
-            <Suspense fallback={null}>
-              <CurrencyTableSection mPromise={metalsPromise} fxPromise={fxPromise} locale={locale} />
-            </Suspense>
+            <CurrencyTableSection mPromise={metalsPromise} fxPromise={fxPromise} locale={locale} />
 
             <AdSensePlacement name="inContent" />
 
@@ -256,9 +250,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
               </Suspense>
             </LazyMount>
 
-            <Suspense fallback={null}>
-              <ResearchTeaserSection promise={researchPromise} locale={locale} />
-            </Suspense>
+            <ResearchTeaserSection promise={researchPromise} locale={locale} />
 
             <HomepageSeoHeader locale={locale} part="content" />
 

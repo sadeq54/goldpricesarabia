@@ -1,11 +1,9 @@
-import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Calculator } from "@/components/Calculator";
 import { PageFaq } from "@/components/PageFaq";
 import { pick } from "@/lib/i18n-text";
 import { PageShell } from "@/components/PageShell";
-import { CalculatorSkeleton } from "@/components/skeletons";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph, canonicalPath, SITE_URL } from "@/lib/metadata";
 import { bundleSchemas, faqPageSchema, webApplicationSchema } from "@/lib/schemas";
@@ -96,20 +94,18 @@ export default async function GoldCalculatorPage({
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaPayload).replace(/</g, "\\u003c") }}
       />
-      <Suspense fallback={<CalculatorSkeleton />}>
-        {(async () => {
-          const [s, fx] = await Promise.all([spotPromise, fxPromise]);
-          const calcSpot = s
-            ? {
-                price_gram_24k: s.price_gram_24k,
-                price_gram_21k: s.price_gram_21k,
-                price_gram_18k: s.price_gram_18k,
-                price_gram_14k: s.price_gram_14k,
-              }
-            : { price_gram_24k: 0, price_gram_21k: 0, price_gram_18k: 0, price_gram_14k: 0 };
-          return <Calculator spot={calcSpot} fx={fx} />;
-        })()}
-      </Suspense>
+      {(async () => {
+        const [s, fx] = await Promise.all([spotPromise, fxPromise]);
+        const calcSpot = s
+          ? {
+              price_gram_24k: s.price_gram_24k,
+              price_gram_21k: s.price_gram_21k,
+              price_gram_18k: s.price_gram_18k,
+              price_gram_14k: s.price_gram_14k,
+            }
+          : { price_gram_24k: 0, price_gram_21k: 0, price_gram_18k: 0, price_gram_14k: 0 };
+        return <Calculator spot={calcSpot} fx={fx} />;
+      })()}
       <PageFaq
         id="calculator-faq"
         heading={pick(locale, { en: "Frequently asked questions", ar: "أسئلة شائعة", tr: "Sık sorulan sorular", hi: "अक्सर पूछे जाने वाले प्रश्न" })}

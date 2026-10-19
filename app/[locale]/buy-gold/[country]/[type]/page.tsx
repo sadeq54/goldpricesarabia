@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -6,7 +5,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Flag } from "@/components/Flag";
 import { HeroSpot } from "@/components/HeroSpot";
 import { PageShell } from "@/components/PageShell";
-import { HeroSpotSkeleton } from "@/components/skeletons";
 import { localeMeta } from "@/i18n/routing";
 import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
@@ -130,27 +128,23 @@ export default async function BuyGoldTypePage({
       introVars={{ country: name }}
       badge={<><Flag cc={c.cc} size={12} className="me-1" /> {name}</>}
     >
-      <Suspense fallback={<HeroSpotSkeleton />}>
-        {(async () => {
-          const [s, fx] = await Promise.all([spotPromise, fxPromise]);
-          return <HeroSpot spot={s} fx={fx} displayCurrency={c.currency} />;
-        })()}
-      </Suspense>
-      <Suspense fallback={null}>
-        {(async () => {
-          const [s, fx] = await Promise.all([spotPromise, fxPromise]);
-          return (
-            <DenomTable
-              spot={s}
-              fx={fx}
-              type={type as Type}
-              currency={c.currency}
-              locale={locale}
-              heading={t("denominationsTitle")}
-            />
-          );
-        })()}
-      </Suspense>
+      {(async () => {
+        const [s, fx] = await Promise.all([spotPromise, fxPromise]);
+        return <HeroSpot spot={s} fx={fx} displayCurrency={c.currency} />;
+      })()}
+      {(async () => {
+        const [s, fx] = await Promise.all([spotPromise, fxPromise]);
+        return (
+          <DenomTable
+            spot={s}
+            fx={fx}
+            type={type as Type}
+            currency={c.currency}
+            locale={locale}
+            heading={t("denominationsTitle")}
+          />
+        );
+      })()}
     </PageShell>
   );
 }

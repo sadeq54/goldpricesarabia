@@ -142,7 +142,7 @@ export function HeroSpot({
               {liveChp.toFixed(2)}%)
             </span>
             <span className="text-[var(--color-text-dim)]">
-              {t("vsPrev", { value: localPrev.toFixed(2) })}
+              {t("vsPrev", { value: `${symbol}${localPrev.toFixed(2)}` })}
             </span>
           </motion.div>
         </div>
@@ -161,7 +161,7 @@ export function HeroSpot({
             <span className="text-[var(--color-text-dim)]">/</span> {symbol}{localAsk.toFixed(2)}
           </div>
           <div className="mt-1 text-[10px] text-[var(--color-text-dim)]">
-            {t("spread", { value: localSpread.toString() })}
+            {t("spread", { value: `${symbol}${localSpread}` })}
           </div>
         </motion.div>
       </div>

@@ -172,11 +172,11 @@ export function changeHeader(locale: string, label: string): string {
 
 export function currencyIntro(locale: string, price: string): string {
   return pick(locale, {
-    en: `From the live spot of $${price} per ounce at hourly FX rates. Pick a country for its full page.`,
-    ar: `من السعر الفوري ${price} دولار للأونصة، بأسعار صرف محدّثة كل ساعة. اختر الدولة لصفحتها الكاملة.`,
+    en: `From the live spot of $${price} per ounce at daily mid-market exchange rates. Pick a country for its full page.`,
+    ar: `من السعر الفوري ${price} دولار للأونصة، بأسعار الصرف الوسطية اليومية. اختر الدولة لصفحتها الكاملة.`,
     fr: `À partir du spot en direct de ${price} $ l'once, aux taux de change horaires. Choisissez un pays pour sa page complète.`,
-    tr: `Ons başına ${price} $ canlı spot fiyatından, saatlik kurlarla. Tam sayfası için bir ülke seçin.`,
+    tr: `Ons başına ${price} $ canlı spot fiyatından, günlük orta piyasa kurlarıyla. Tam sayfası için bir ülke seçin.`,
     ur: `فی اونس ${price} ڈالر کی لائیو اسپاٹ قیمت سے، گھنٹہ وار ایکسچینج ریٹ پر۔ مکمل صفحے کے لیے ملک منتخب کریں۔`,
-    hi: `प्रति औंस $${price} के लाइव स्पॉट से, प्रति घंटा विनिमय दरों पर। पूरे पृष्ठ के लिए देश चुनें।`,
+    hi: `प्रति औंस $${price} के लाइव स्पॉट से, दैनिक मिड-मार्केट विनिमय दरों पर। पूरे पृष्ठ के लिए देश चुनें।`,
   });
 }

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 
@@ -27,13 +28,22 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function EmbedTickerPage({
-  params,
-  searchParams,
-}: {
+type TickerProps = {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{ country?: string; theme?: string }>;
-}) {
+};
+
+// searchParams are per-request: the body renders inside Suspense so the rest
+// of the site can be fully prerendered (no page-wide loading boundary).
+export default function EmbedTickerPage(props: TickerProps) {
+  return (
+    <Suspense fallback={null}>
+      <EmbedTickerBody {...props} />
+    </Suspense>
+  );
+}
+
+async function EmbedTickerBody({ params, searchParams }: TickerProps) {
   const { locale } = await params;
   const { country: countrySlug, theme: themeParam } = await searchParams;
   setRequestLocale(locale);

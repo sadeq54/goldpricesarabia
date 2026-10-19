@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { withLocales } from "@/lib/static-params";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -7,10 +6,6 @@ import { Calculator } from "@/components/Calculator";
 import { Flag } from "@/components/Flag";
 import { HeroSpot } from "@/components/HeroSpot";
 import { PageShell } from "@/components/PageShell";
-import {
-  CalculatorSkeleton,
-  HeroSpotSkeleton,
-} from "@/components/skeletons";
 import { Link } from "@/i18n/navigation";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
@@ -100,12 +95,10 @@ export default async function BuyGoldCountryPage({
         suppressHydrationWarning
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buyFaqSchema).replace(/</g, "\\u003c") }}
       />
-      <Suspense fallback={<HeroSpotSkeleton />}>
-        {(async () => {
-          const [s, fx] = await Promise.all([spotPromise, fxPromise]);
-          return <HeroSpot spot={s} fx={fx} displayCurrency={c.currency} />;
-        })()}
-      </Suspense>
+      {(async () => {
+        const [s, fx] = await Promise.all([spotPromise, fxPromise]);
+        return <HeroSpot spot={s} fx={fx} displayCurrency={c.currency} />;
+      })()}
 
       {subPages.length ? (
         <ul className="grid grid-cols-1 gap-3 md:grid-cols-3">
@@ -135,20 +128,18 @@ export default async function BuyGoldCountryPage({
         </section>
       ) : null}
 
-      <Suspense fallback={<CalculatorSkeleton />}>
-        {(async () => {
-          const [s, fx] = await Promise.all([spotPromise, fxPromise]);
-          const calcSpot = s
-            ? {
-                price_gram_24k: s.price_gram_24k,
-                price_gram_21k: s.price_gram_21k,
-                price_gram_18k: s.price_gram_18k,
-                price_gram_14k: s.price_gram_14k,
-              }
-            : { price_gram_24k: 0, price_gram_21k: 0, price_gram_18k: 0, price_gram_14k: 0 };
-          return <Calculator spot={calcSpot} fx={fx} defaultCurrency={c.currency} />;
-        })()}
-      </Suspense>
+      {(async () => {
+        const [s, fx] = await Promise.all([spotPromise, fxPromise]);
+        const calcSpot = s
+          ? {
+              price_gram_24k: s.price_gram_24k,
+              price_gram_21k: s.price_gram_21k,
+              price_gram_18k: s.price_gram_18k,
+              price_gram_14k: s.price_gram_14k,
+            }
+          : { price_gram_24k: 0, price_gram_21k: 0, price_gram_18k: 0, price_gram_14k: 0 };
+        return <Calculator spot={calcSpot} fx={fx} defaultCurrency={c.currency} />;
+      })()}
     </PageShell>
   );
 }

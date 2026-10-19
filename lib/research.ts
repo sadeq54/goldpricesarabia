@@ -256,9 +256,15 @@ function titleKey(title: string): string {
   return title.toLowerCase().replace(/[^a-z0-9؀-ۿ]+/g, "");
 }
 
+// Search APIs rank by keyword overlap, not topic: "gold price determinants"
+// returned a marketing paper on price perception and an optimisation
+// algorithm. Every listed study must be about gold by its own title.
+const ON_TOPIC = /\bgold\b|bullion|precious metal/i;
+
 function isValid(p: ResearchPaper): boolean {
   return (
     p.title.length >= 10 &&
+    ON_TOPIC.test(p.title) &&
     /^https?:\/\//i.test(p.url) &&
     (p.year === null || (p.year >= 1950 && p.year <= 2100))
   );

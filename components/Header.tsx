@@ -1,4 +1,3 @@
-import { headers } from "next/headers";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { BrandMark } from "@/components/BrandMark";
@@ -6,21 +5,13 @@ import { HeaderTicker } from "@/components/HeaderTicker";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileMenu } from "@/components/MobileMenu";
 import { Link } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
-import { COUNTRY_BY_SLUG } from "@/lib/countries";
 import { pick } from "@/lib/i18n-text";
 import { hasCountryKaratPage } from "@/lib/karat-pages";
 
-function extractCountrySlug(path: string): string | null {
-  const parts = path.split("/").filter(Boolean);
-  let i = 0;
-  if (parts[0] && (routing.locales as readonly string[]).includes(parts[0])) i = 1;
-  const slug = parts[i];
-  if (!slug) return null;
-  return COUNTRY_BY_SLUG[slug] ? slug : null;
-}
-
-export async function Header() {
+/** `country`: the page's country slug, so the karat nav points at that
+ *  country's pages. Passed by the page — reading request headers here made
+ *  every page dynamic. */
+export async function Header({ country }: { country?: string } = {}) {
   const t = await getTranslations("Header");
   const locale = await getLocale();
   const languageLabel = pick(locale, {
@@ -32,9 +23,6 @@ export async function Header() {
     hi: "भाषा",
   });
 
-  const h = await headers();
-  const path = h.get("x-pathname") ?? "";
-  const country = extractCountrySlug(path);
   // A country's own page where one exists (lib/karat-pages.ts), else the global karat page.
   const navItems = ["24k", "22k", "21k", "18k", "14k"].map((k) => ({
     href: country && hasCountryKaratPage(locale, country, k) ? `/${country}/gold-price/${k}` : `/gold-price/${k}`,
