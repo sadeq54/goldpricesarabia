@@ -42,28 +42,28 @@ export type Segment = string | { b: string };
 
 const DELIVERS: Record<"en" | "ar" | "tr" | "hi", Segment[]> = {
   en: [
-    "We publish ", { b: "live gold prices" }, " for 53 countries in 52 currencies. Each page opens with ",
+    "We publish ", { b: "live gold prices" }, " for 53 countries in 51 currencies. Each page opens with ",
     { b: "Swissquote's spot price" },
     ", which our server re-reads at least every five minutes; while the page stays open, the gold price follows the median of live PAXG/USD quotes on ",
     { b: "Binance" }, ", ", { b: "Coinbase" }, " and ", { b: "Kraken" },
     " (PAXG is a token backed one-to-one by London Good Delivery gold). Prices are converted at daily mid-market exchange rates. We cover five karats — 24K, 22K, 21K, 18K and 14K — plus silver, platinum and palladium.",
   ],
   ar: [
-    "ننشر ", { b: "أسعار الذهب الحية" }, " في 53 دولة بـ52 عملة. تفتح كل صفحة على ",
+    "ننشر ", { b: "أسعار الذهب الحية" }, " في 53 دولة بـ51 عملة. تفتح كل صفحة على ",
     { b: "سعر Swissquote الفوري" },
     "، الذي يعيد خادمنا قراءته كل خمس دقائق على الأقل؛ وما دامت الصفحة مفتوحة يتبع سعر الذهب الوسيط بين أسعار PAXG/USD اللحظية في ",
     { b: "Binance" }, " و", { b: "Coinbase" }, " و", { b: "Kraken" },
     " (وPAXG رمز مدعوم واحدًا لواحد بذهب London Good Delivery). وتُحوَّل الأسعار بأسعار الصرف الوسطية اليومية. نغطي خمسة عيارات — 24 و22 و21 و18 و14 — إلى جانب الفضة والبلاتين والبلاديوم.",
   ],
   tr: [
-    "53 ülke için 52 para biriminde ", { b: "canlı altın fiyatları" }, " yayımlıyoruz. Her sayfa, sunucumuzun en az beş dakikada bir yeniden okuduğu ",
+    "53 ülke için 51 para biriminde ", { b: "canlı altın fiyatları" }, " yayımlıyoruz. Her sayfa, sunucumuzun en az beş dakikada bir yeniden okuduğu ",
     { b: "Swissquote spot fiyatıyla" },
     " açılır; sayfa açık kaldığı sürece altın fiyatı ",
     { b: "Binance" }, ", ", { b: "Coinbase" }, " ve ", { b: "Kraken" },
     " üzerindeki canlı PAXG/USD fiyatlarının medyanını izler (PAXG, London Good Delivery altınıyla bire bir desteklenen bir tokendır). Fiyatlar günlük orta piyasa kurlarıyla çevrilir. Beş ayarı — 24, 22, 21, 18 ve 14 ayar — ayrıca gümüş, platin ve paladyumu kapsıyoruz.",
   ],
   hi: [
-    "हम 53 देशों के लिए 52 मुद्राओं में ", { b: "सोने के लाइव भाव" }, " प्रकाशित करते हैं। हर पेज ",
+    "हम 53 देशों के लिए 51 मुद्राओं में ", { b: "सोने के लाइव भाव" }, " प्रकाशित करते हैं। हर पेज ",
     { b: "Swissquote के स्पॉट भाव" },
     " से खुलता है, जिसे हमारा सर्वर कम से कम हर पाँच मिनट में दोबारा पढ़ता है; पेज खुला रहने तक सोने का भाव ",
     { b: "Binance" }, ", ", { b: "Coinbase" }, " और ", { b: "Kraken" },

@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/metadata";
 
 const BODY = `# Gold Prices Arabia
 
-> Live gold prices in real time across 53 countries and 52 currencies. Tracks 24K, 22K, 21K, 18K and 14K gold per gram, ounce and kilogram. Free. Server prices from Swissquote spot; gold also updates live from Binance, Coinbase and Kraken (PAXG/USD) while a page is open.
+> Live gold prices in real time across 53 countries and 51 currencies. Tracks 24K, 22K, 21K, 18K and 14K gold per gram, ounce and kilogram. Free. Server prices from Swissquote spot; gold also updates live from Binance, Coinbase and Kraken (PAXG/USD) while a page is open.
 
 ## About
 

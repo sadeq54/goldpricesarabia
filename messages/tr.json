@@ -9,7 +9,7 @@
     "title": "Altın Fiyatları Bugün Canlı | Gram ve Ons Altın USD, SAR, JOD, AED, EGP",
     "description": "Bugün canlı altın fiyatları: 24 ayar, 22 ayar, 21 ayar, 18 ayar ve 14 ayar altın USD, SAR, JOD, AED, EGP ve 40'tan fazla para biriminde; gümüş ve platin dahil. Üç küresel borsadan saniyede bir güncellenir.",
     "h1": "Altın Fiyatları Bugün Canlı",
-    "intro": "Gold Prices Arabia: 53 ülke ve 52 para biriminde altın, gümüş, platin ve paladyum için canlı spot fiyatlar. Altın fiyatı, Binance, Coinbase ve Kraken (PAXG/USD) verilerinin yaklaşık her saniye yenilenen canlı medyanıdır (sayfa açıkken); çeviri günlük orta piyasa kurlarıyla yapılır.",
+    "intro": "Gold Prices Arabia: 53 ülke ve 51 para biriminde altın, gümüş, platin ve paladyum için canlı spot fiyatlar. Altın fiyatı, Binance, Coinbase ve Kraken (PAXG/USD) verilerinin yaklaşık her saniye yenilenen canlı medyanıdır (sayfa açıkken); çeviri günlük orta piyasa kurlarıyla yapılır.",
     "aboutH2": "Gold Prices Arabia Hakkında — MENA için Canlı Altın",
     "aboutP1": "<b>Gold Prices Arabia</b>, canlı değerli metal fiyatlarını Arap dünyasına ve ötesine taşır: saf spot veri, marj yok, dolgu yok. Suudi Arabistan'dan Mısır'a ve küresel piyasalara — doğrudan kaynağından.",
     "aboutP2": "Gold Prices Arabia; altın (XAU), gümüş (XAG), platin (XPT) ve paladyum (XPD) için canlı spot fiyatları, ayar bazlı fiyatlarla (24, 22, 21, 18 ve 14 ayar) birlikte sunar — Arap ve Güney Asya kuyumculuğunun satıldığı ayarlar.",
@@ -30,7 +30,7 @@
     "title": "{karat} Altın Fiyatı Bugün | Gram ve Ons USD, SAR, JOD, AED",
     "description": "Bugün {karat} altın fiyatı gram, ons ve kilo bazında USD, Suudi Riyali, Ürdün Dinarı, BAE Dirhemi ve Mısır Lirası cinsinden, alış/satış ile. Üç borsadan canlı yayın.",
     "h1": "{karat} Altın Fiyatı Bugün",
-    "intro": "Bugünkü {karat} altın fiyatı, uluslararası spot altından (Swissquote XAU/USD; sayfa açıkken canlı PAXG/USD kotasyonları) türetilir ve günün orta piyasa kuruyla 52 para birimine çevrilir."
+    "intro": "Bugünkü {karat} altın fiyatı, uluslararası spot altından (Swissquote XAU/USD; sayfa açıkken canlı PAXG/USD kotasyonları) türetilir ve günün orta piyasa kuruyla 51 para birimine çevrilir."
   },
   "GoldPriceHub": {
     "h1": "Ülkelere Göre Altın Fiyatı — Canlı Fiyatlar",
@@ -229,7 +229,7 @@
       },
       {
         "q": "Hangi para birimleri destekleniyor?",
-        "a": "Kapsadığımız 53 pazarın her birinin yerel para birimi, toplam 52 para birimi (Suudi riyalinden Mısır lirasına ve Filipin pesosuna kadar), ayrıca ABD doları. Kurlar piyasa kurlarıdır; bankanızın kuru farklı olacaktır, işlemden önce teyit edin."
+        "a": "Kapsadığımız 53 pazarın her birinin yerel para birimi, toplam 51 para birimi (Suudi riyalinden Mısır lirasına ve Filipin pesosuna kadar), ayrıca ABD doları. Kurlar piyasa kurlarıdır; bankanızın kuru farklı olacaktır, işlemden önce teyit edin."
       },
       {
         "q": "Fiyatlar nereden geliyor?",
@@ -257,7 +257,7 @@
     "methodologyKaratH2": "Ayar fiyatları (24K, 22K, 21K, 18K, 14K)",
     "methodologyKarat": "Ayar başına gram fiyatı şöyle hesaplanır: spot ons fiyatı ÷ 31,1035 g × saflık; saflıklar %99,9 (24 ayar), %91,7 (22 ayar), %87,5 (21 ayar), %75 (18 ayar) ve %58,3 (14 ayar). Perakende primi, işçilik, rafinaj kaybı veya KDV eklenmez; bunlar saf spot karşılıklarıdır, bu yüzden kuyumcu fiyatı daha yüksek olur.",
     "methodologyFxH2": "Döviz kurları",
-    "methodologyFx": "Kapsadığımız 52 yerel para birimine çeviri, günlük orta piyasa kurlarını (merkez bankası ve piyasa referans kurları) sunan açık kaynaklı fawazahmed0/currency-api akışıyla yapılır. Bunu birkaç saatte bir yeniden okur ve perakende marjı eklemeyiz; işlemden önce bankanızın kurunu teyit edin.",
+    "methodologyFx": "Kapsadığımız 51 yerel para birimine çeviri, günlük orta piyasa kurlarını (merkez bankası ve piyasa referans kurları) sunan açık kaynaklı fawazahmed0/currency-api akışıyla yapılır. Bunu birkaç saatte bir yeniden okur ve perakende marjı eklemeyiz; işlemden önce bankanızın kurunu teyit edin.",
     "methodologyOtherH2": "Gümüş, platin, paladyum",
     "methodologyOther": "Gümüş (XAG), platin (XPT) ve paladyum (XPD) spot fiyatları Swissquote spot akışından gelir ve birkaç dakikada bir güncellenir; günlük değişim ve gün aralığı COMEX vadeli işlemlerinden (Yahoo Finance üzerinden) alınır. Bu piyasalar altından daha az likit olduğu için WebSocket ile yayınlanmaz; birkaç dakikalık güncelleme yeterlidir.",
     "methodologyHistoryH2": "Geçmiş veriler",
@@ -284,7 +284,7 @@
     "h1": "Sadeq Sayed Ahmad",
     "role": "Kurucu ve Baş Geliştirici",
     "bio1": "Sadeq Sayed Ahmad, yazılım geliştirici ve Gold Prices Arabia'nın kurucusudur. Platformu, uluslararası altın fiyatlandırmasını MENA bölgesindeki Arapça konuşan kullanıcılar için şeffaf ve erişilebilir kılmak amacıyla geliştirdi.",
-    "bio2": "Site, uluslararası spot altını (XAU/USD) Swissquote'tan alır, sayfa açıkken Binance, Coinbase ve Kraken'deki PAXG/USD kotasyonlarıyla canlı izler ve açık verilerden günlük orta piyasa kurlarıyla Suudi riyali, Ürdün dinarı, BAE dirhemi ve Mısır lirası dahil 52 yerel para birimine çevirir.",
+    "bio2": "Site, uluslararası spot altını (XAU/USD) Swissquote'tan alır, sayfa açıkken Binance, Coinbase ve Kraken'deki PAXG/USD kotasyonlarıyla canlı izler ve açık verilerden günlük orta piyasa kurlarıyla Suudi riyali, Ürdün dinarı, BAE dirhemi ve Mısır lirası dahil 51 yerel para birimine çevirir.",
     "bio3": "Sadeq alım satım veya yatırım tavsiyesi vermez. Platform, gözlemlenebilir piyasa verisi yayımlar; finansal yönlendirme değil. Alım satım veya yatırım önerisi arayan kullanıcılar, bulundukları ülkede lisanslı bir finansal danışmana başvurmalıdır.",
     "expertiseH2": "Özgeçmiş",
     "expertise1": "Platformu geliştirir ve sürdürür — gerçek zamanlı altın fiyatı takibi, 40'tan fazla para birimi dönüşümü ve Arapça öncelikli web deneyimi.",

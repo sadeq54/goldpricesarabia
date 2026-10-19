@@ -9,7 +9,7 @@
     "title": "Gold Price Today Live | Per Gram & Ounce in USD, SAR, JOD, AED, EGP",
     "description": "Live gold prices today for 24K, 22K, 21K, 18K and 14K in USD, SAR, JOD, AED, EGP and 40+ currencies, plus silver and platinum. Streamed every second from three global exchanges.",
     "h1": "Gold Price Today, Live",
-    "intro": "Gold Prices Arabia: live spot prices for gold, silver, platinum and palladium across 53 countries and 52 currencies. Gold is a live median of Binance, Coinbase and Kraken (PAXG/USD) refreshed roughly every second while a page is open, converted at daily mid-market exchange rates.",
+    "intro": "Gold Prices Arabia: live spot prices for gold, silver, platinum and palladium across 53 countries and 51 currencies. Gold is a live median of Binance, Coinbase and Kraken (PAXG/USD) refreshed roughly every second while a page is open, converted at daily mid-market exchange rates.",
     "aboutH2": "About Gold Prices Arabia — Live Gold for MENA",
     "aboutP1": "<b>Gold Prices Arabia</b> brings live precious-metal pricing to the Arab world and beyond: pure spot data, no markups, no fluff. From Saudi to Egypt to global markets — straight from the source.",
     "aboutP2": "Gold Prices Arabia surfaces live spot prices for gold (XAU), silver (XAG), platinum (XPT) and palladium (XPD) alongside karat-derived rates (24K, 22K, 21K, 18K, 14K) — the karats Arab and South Asian jewellery is sold in.",
@@ -30,7 +30,7 @@
     "title": "{karat} Gold Price Today | Per Gram & Ounce in USD, SAR, JOD, AED",
     "description": "{karat} gold price today per gram, ounce and kilo in USD, Saudi Riyal, Jordanian Dinar, UAE Dirham and Egyptian Pound, with bid/ask. Streamed live from three exchanges.",
     "h1": "{karat} Gold Price Today",
-    "intro": "Today's {karat} gold price, derived from international spot gold (Swissquote XAU/USD, then live PAXG/USD quotes while the page is open) and converted to 52 currencies at the day's mid-market rate."
+    "intro": "Today's {karat} gold price, derived from international spot gold (Swissquote XAU/USD, then live PAXG/USD quotes while the page is open) and converted to 51 currencies at the day's mid-market rate."
   },
   "GoldPriceHub": {
     "h1": "Gold Price by Country — Live Rates",
@@ -229,7 +229,7 @@
       },
       {
         "q": "Which currencies are supported?",
-        "a": "The local currency of each of the 53 markets we cover, 52 currencies in all, from the Saudi riyal and Egyptian pound to the Philippine peso, plus the US dollar. Exchange rates are market rates; your bank's rate will differ, so confirm it before a transaction."
+        "a": "The local currency of each of the 53 markets we cover, 51 currencies in all, from the Saudi riyal and Egyptian pound to the Philippine peso, plus the US dollar. Exchange rates are market rates; your bank's rate will differ, so confirm it before a transaction."
       },
       {
         "q": "Where do the prices come from?",
@@ -257,7 +257,7 @@
     "methodologyKaratH2": "Karat prices (24K, 22K, 21K, 18K, 14K)",
     "methodologyKarat": "Karat prices per gram are computed as: spot ounce price ÷ 31.1035 g × purity, with purities of 99.9% (24K), 91.7% (22K), 87.5% (21K), 75% (18K) and 58.3% (14K). No retailer premium, making charge, refining loss or VAT is added; these are pure spot equivalents, so a jeweller will quote above them.",
     "methodologyFxH2": "FX rates",
-    "methodologyFx": "Conversion into the 52 local currencies we cover uses the open-source fawazahmed0/currency-api feed of daily mid-market rates (central-bank and market reference rates). We re-read it every few hours and apply no retail spread, so confirm the counter rate with your bank before a transaction.",
+    "methodologyFx": "Conversion into the 51 local currencies we cover uses the open-source fawazahmed0/currency-api feed of daily mid-market rates (central-bank and market reference rates). We re-read it every few hours and apply no retail spread, so confirm the counter rate with your bank before a transaction.",
     "methodologyOtherH2": "Silver, platinum, palladium",
     "methodologyOther": "Silver (XAG), platinum (XPT) and palladium (XPD) spot prices come from the Swissquote spot feed and refresh every few minutes; the daily change and day range come from COMEX futures (via Yahoo Finance). These are not WebSocket-streamed because the underlying markets are less liquid than gold; a few minutes is sufficient.",
     "methodologyHistoryH2": "Historical data",
@@ -284,7 +284,7 @@
     "h1": "Sadeq Sayed Ahmad",
     "role": "Founder & Lead Developer",
     "bio1": "Sadeq Sayed Ahmad is a software developer and the founder of Gold Prices Arabia. He built the platform to make international gold pricing transparent and accessible to Arabic-speaking users across the MENA region.",
-    "bio2": "The site takes international spot gold (XAU/USD) from Swissquote, follows it live with PAXG/USD quotes from Binance, Coinbase and Kraken while a page is open, and converts it into 52 local currencies, including the Saudi riyal, Jordanian dinar, UAE dirham and Egyptian pound, using daily mid-market rates from open data.",
+    "bio2": "The site takes international spot gold (XAU/USD) from Swissquote, follows it live with PAXG/USD quotes from Binance, Coinbase and Kraken while a page is open, and converts it into 51 local currencies, including the Saudi riyal, Jordanian dinar, UAE dirham and Egyptian pound, using daily mid-market rates from open data.",
     "bio3": "Sadeq does not provide trading or investment advice. The platform publishes observable market data, not financial guidance. Users seeking trading or investment recommendations should consult a licensed financial advisor in their jurisdiction.",
     "expertiseH2": "Background",
     "expertise1": "Builds and maintains the platform — real-time gold price tracking, 40+ currency conversions, and Arabic-first web experience.",

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Gold Prices Arabia — Live Gold Prices",
     short_name: "Gold Prices Arabia",
     description:
-      "Live gold prices for the Arab world and beyond. 53 countries, 52 currencies, every karat — streamed in real time.",
+      "Live gold prices for the Arab world and beyond. 53 countries, 51 currencies, every karat — streamed in real time.",
     // Stable identity across renames/start_url changes — lets browsers treat
     // future manifest edits as an update of the same installed app.
     id: "/",

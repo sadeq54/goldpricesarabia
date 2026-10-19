@@ -142,7 +142,7 @@ export function JsonLd({
     name: "Gold Prices Arabia",
     alternateName: "أسعار الذهب العربية",
     description:
-      "Live gold prices across 53 countries and 52 currencies, from Swissquote spot with live PAXG/USD updates from Binance, Coinbase and Kraken.",
+      "Live gold prices across 53 countries and 51 currencies, from Swissquote spot with live PAXG/USD updates from Binance, Coinbase and Kraken.",
     inLanguage: SITE_LANGS,
     publisher: { "@id": `${siteUrl}/#org` },
     potentialAction: {

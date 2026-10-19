@@ -23,7 +23,7 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "ما هي العملات المدعومة؟",
-      a: "52 عملة، منها USD، SAR، JOD، AED، EGP، EUR، GBP، JPY، CNY، INR، PKR وأكثر. أسعار الصرف تُحدّث يومياً من بيانات البنوك المركزية المفتوحة.",
+      a: "51 عملة، منها USD، SAR، JOD، AED، EGP، EUR، GBP، JPY، CNY، INR، PKR وأكثر. أسعار الصرف تُحدّث يومياً من بيانات البنوك المركزية المفتوحة.",
     },
     {
       q: "كم مرة تُحدّث الأسعار؟",
@@ -45,7 +45,7 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "Which currencies does the calculator support?",
-      a: "52 currencies, including USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR and more. Exchange rates update daily from open central-bank data.",
+      a: "51 currencies, including USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR and more. Exchange rates update daily from open central-bank data.",
     },
     {
       q: "How often are gold prices updated?",
@@ -89,7 +89,7 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "Hesaplayıcı hangi para birimlerini destekliyor?",
-      a: "USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR dahil 52 para birimi. Döviz kurları açık merkez bankası verilerinden günlük güncellenir.",
+      a: "USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR dahil 51 para birimi. Döviz kurları açık merkez bankası verilerinden günlük güncellenir.",
     },
     {
       q: "Altın fiyatları ne sıklıkla güncellenir?",
@@ -133,7 +133,7 @@ const FAQS: { en: CalcFaq[]; ar: CalcFaq[]; fr: CalcFaq[]; tr: CalcFaq[]; ur: Ca
     },
     {
       q: "कैलकुलेटर कौन-सी मुद्राएँ सपोर्ट करता है?",
-      a: "52 मुद्राएँ, जिनमें USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR और अन्य। विनिमय दरें केंद्रीय बैंकों के ओपन डेटा से रोज़ अपडेट होती हैं।",
+      a: "51 मुद्राएँ, जिनमें USD, SAR, JOD, AED, EGP, EUR, GBP, JPY, CNY, INR, PKR और अन्य। विनिमय दरें केंद्रीय बैंकों के ओपन डेटा से रोज़ अपडेट होती हैं।",
     },
     {
       q: "सोने के भाव कितनी बार अपडेट होते हैं?",
