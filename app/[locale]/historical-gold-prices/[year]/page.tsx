@@ -8,7 +8,9 @@ import { Sidebar } from "@/components/Sidebar";
 import { TradingViewChart } from "@/components/TradingViewChart";
 import { Link } from "@/i18n/navigation";
 import { isRtl } from "@/i18n/routing";
+import { YEAR_CONTEXT, YEAR_CONTEXT_HEADING } from "@/content/year-context";
 import { getCachedAllHistory } from "@/lib/cached-fetchers";
+import { pick } from "@/lib/i18n-text";
 import type { HistoricalPoint, MetalHistory } from "@/lib/history";
 import { pointsForYear, yearStats, type YearStats } from "@/lib/year-stats";
 import { faqPageSchema } from "@/lib/schemas";
@@ -67,6 +69,9 @@ export default async function HistoricalPage({
   setRequestLocale(locale);
 
   const t = yearPageText(locale, year);
+  // Hand-written year context exists in ar/en only; tr/hi omit it rather than show English.
+  const yearContext = YEAR_CONTEXT[yearNum];
+  const context = yearContext && (locale === "ar" || locale === "en") ? yearContext[locale] : null;
 
   // Recent years come from the 5y feed; older years from the full series (GC=F since 2000).
   const histPromise = getCachedAllHistory(yearNum >= CURRENT_YEAR - 4 ? "5y" : "max");
@@ -135,6 +140,15 @@ export default async function HistoricalPage({
             <YearAnswer yearNum={yearNum} promise={histPromise} locale={locale} />
 
             <YearStats yearNum={yearNum} promise={histPromise} locale={locale} />
+
+            {context ? (
+              <section aria-labelledby="year-context-heading" className="space-y-2">
+                <h2 id="year-context-heading" className="text-xl font-semibold text-[var(--color-text)]">
+                  {pick(locale, YEAR_CONTEXT_HEADING).replace("{year}", String(yearNum))}
+                </h2>
+                <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">{context}</p>
+              </section>
+            ) : null}
 
             <TradingViewChart />
 
