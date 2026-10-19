@@ -18,9 +18,6 @@ import { COUNTRIES } from "@/lib/countries";
 const COUNTRY_SLUGS = new Set(COUNTRIES.map((c) => c.slug));
 const KARATS = new Set(["24k", "22k", "21k", "18k", "14k"]);
 const METALS = new Set(["gold", "silver", "platinum", "palladium"]);
-const CRYPTO = new Set([
-  "bitcoin", "ethereum", "tether", "binancecoin", "ripple", "usd-coin", "solana", "tron", "dogecoin",
-]);
 /**
  * Every `/news/{slug}`. Hand-maintained rather than imported from
  * `content/news/*` on purpose: this module is bundled into the edge
@@ -96,8 +93,6 @@ export function isKnownDynamicRoute(segments: readonly string[]): boolean {
   if (a === "historical-gold-prices" && segments.length === 2) return isYear(b);
   // /precious-metals/{metal}
   if (a === "precious-metals" && segments.length === 2) return METALS.has(b);
-  // /cryptocurrency/{coin}
-  if (a === "cryptocurrency" && segments.length === 2) return CRYPTO.has(b);
   // /news/{slug}
   if (a === "news" && segments.length === 2) return NEWS.has(b);
   // /buy-gold/{country}[/{type}]

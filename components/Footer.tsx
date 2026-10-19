@@ -4,7 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Flag } from "@/components/Flag";
 import { InstallAppButton } from "@/components/InstallAppButton";
 import { Link } from "@/i18n/navigation";
-import { countryName, sortedCountries } from "@/lib/countries";
+import { COUNTRY_BY_SLUG, countryName } from "@/lib/countries";
 import { pick, type LocaleText } from "@/lib/i18n-text";
 import { SOCIAL_PROFILES } from "@/lib/social";
 
@@ -23,6 +23,20 @@ const BY_COUNTRY: LocaleText = {
   tr: "Ülkeye göre altın fiyatı →",
   ur: "ملک کے لحاظ سے سونے کی قیمت ←",
   hi: "देश के अनुसार सोने का भाव →",
+};
+
+/** The nine markets of the daily social posts, which also lead Search Console clicks. */
+const FOOTER_MARKETS = ["saudi-arabia", "uae", "egypt", "jordan", "kuwait", "qatar", "bahrain", "lebanon", "morocco"] as const;
+
+const BUY_GOLD_COUNTRIES = ["saudi-arabia", "uae", "egypt", "morocco"] as const;
+
+const BUY_GOLD: LocaleText = {
+  en: "Buying gold",
+  ar: "شراء الذهب",
+  fr: "Acheter de l'or",
+  tr: "Altın satın alma",
+  ur: "سونا خریدنا",
+  hi: "सोना ख़रीदना",
 };
 
 const RESEARCH: LocaleText = {
@@ -85,8 +99,6 @@ export async function Footer() {
   const locale = await getLocale();
   const year = COPYRIGHT_YEAR;
 
-  const countries = sortedCountries(locale);
-
   return (
     <footer className="mt-16 border-t border-[var(--color-border)] bg-[var(--color-bg-card)] text-[var(--color-text)]">
       <section className="border-b border-[var(--color-border)] px-4 py-10 sm:px-6">
@@ -103,30 +115,25 @@ export async function Footer() {
               {pick(locale, BY_COUNTRY)}
             </Link>
           </header>
-          {/* Split countries into chunks of 50 to avoid the >60 children
-              DOM-size penalty flagged by Lighthouse. */}
-          {Array.from({ length: Math.ceil(countries.length / 50) }).map((_, chunkIdx) => (
-            <ul
-              key={chunkIdx}
-              className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
-            >
-              {countries.slice(chunkIdx * 50, (chunkIdx + 1) * 50).map((c) => (
-                <li key={c.slug} className="py-0.5">
+          {/* Main markets only. A grid of all 53 "Gold price in X" links on every
+              page is the "blocks of text that list cities and regions" Google's
+              spam policy names; the full list lives on /gold-price. */}
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm sm:grid-cols-3 md:grid-cols-5">
+            {FOOTER_MARKETS.map((slug) => {
+              const c = COUNTRY_BY_SLUG[slug];
+              return (
+                <li key={slug} className="py-0.5">
                   <Link
-                    href={`/${c.slug}/gold-price/21k`}
+                    href={`/${slug}/gold-price/21k`}
                     className="group flex items-center gap-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-gold)]"
-                    title={`${countryName(c, locale)} · ${c.currency}`}
                   >
                     <Flag cc={c.cc} size={14} />
-
-                    <span className="truncate text-xs font-medium">
-                      {t("countryItem", { name: countryName(c, locale) })}
-                    </span>
+                    <span className="truncate text-xs font-medium">{countryName(c, locale)}</span>
                   </Link>
                 </li>
-              ))}
-            </ul>
-          ))}
+              );
+            })}
+          </ul>
         </div>
       </section>
 
@@ -179,59 +186,15 @@ export async function Footer() {
                 { label: t("bestUK"), href: "/best-gold-price/uk" },
               ]}
             />
-            <FooterColumn
-              title={t("cryptoHeading")}
-              links={[
-                { label: t("bitcoin"), href: "/cryptocurrency/bitcoin" },
-                { label: t("ethereum"), href: "/cryptocurrency/ethereum" },
-                { label: t("tether"), href: "/cryptocurrency/tether" },
-                { label: t("binance"), href: "/cryptocurrency/binancecoin" },
-                { label: t("ripple"), href: "/cryptocurrency/ripple" },
-                { label: t("usdc"), href: "/cryptocurrency/usd-coin" },
-                { label: t("solana"), href: "/cryptocurrency/solana" },
-                { label: t("tron"), href: "/cryptocurrency/tron" },
-                { label: t("dogecoin"), href: "/cryptocurrency/dogecoin" },
-                { label: t("moreCrypto"), href: "/cryptocurrency" },
-              ]}
-            />
           </div>
 
           <div className="space-y-6">
             <FooterColumn
-              title={t("buySAHeading")}
-              links={[
-                { label: t("saPrices"), href: "/buy-gold/saudi-arabia" },
-                { label: t("saCoins"), href: "/buy-gold/saudi-arabia/coins" },
-                { label: t("saSmallCoins"), href: "/buy-gold/saudi-arabia/small-coins" },
-                { label: t("saBars"), href: "/buy-gold/saudi-arabia/bars" },
-              ]}
-            />
-            <FooterColumn
-              title={t("buyAEHeading")}
-              links={[
-                { label: t("aePrices"), href: "/buy-gold/uae" },
-                { label: t("aeCoins"), href: "/buy-gold/uae/coins" },
-                { label: t("aeSmallCoins"), href: "/buy-gold/uae/small-coins" },
-                { label: t("aeBars"), href: "/buy-gold/uae/bars" },
-              ]}
-            />
-            <FooterColumn
-              title={t("buyEGHeading")}
-              links={[
-                { label: t("egPrices"), href: "/buy-gold/egypt" },
-                { label: t("egCoins"), href: "/buy-gold/egypt/coins" },
-                { label: t("egSmallCoins"), href: "/buy-gold/egypt/small-coins" },
-                { label: t("egBars"), href: "/buy-gold/egypt/bars" },
-              ]}
-            />
-            <FooterColumn
-              title={t("buyMAHeading")}
-              links={[
-                { label: t("maPrices"), href: "/buy-gold/morocco" },
-                { label: t("maCoins"), href: "/buy-gold/morocco/coins" },
-                { label: t("maSmallCoins"), href: "/buy-gold/morocco/small-coins" },
-                { label: t("maBars"), href: "/buy-gold/morocco/bars" },
-              ]}
+              title={pick(locale, BUY_GOLD)}
+              links={BUY_GOLD_COUNTRIES.map((slug) => ({
+                label: countryName(COUNTRY_BY_SLUG[slug], locale),
+                href: `/buy-gold/${slug}`,
+              }))}
             />
           </div>
         </div>

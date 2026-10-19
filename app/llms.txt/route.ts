@@ -44,7 +44,6 @@ const BODY = `# Gold Prices Arabia
 - [Best gold price](${SITE_URL}/en/best-gold-price): Country-by-country price comparison
 - [Buy gold (USA, UK, Canada, Australia)](${SITE_URL}/en/buy-gold/usa): Coin + bar pricing
 - [Precious metals](${SITE_URL}/en/precious-metals): Gold, silver, platinum, palladium
-- [Cryptocurrency prices](${SITE_URL}/en/cryptocurrency): BTC, ETH, USDT, BNB, XRP, USDC, SOL, TRX, DOGE
 - [News](${SITE_URL}/en/news): Gold-market news feed
 - [Research](${SITE_URL}/en/research): Daily digest of the most-cited peer-reviewed studies on gold (inflation hedge, safe haven, price drivers, portfolio allocation) aggregated from arXiv, OpenAlex, Crossref and Semantic Scholar
 - [Widgets](${SITE_URL}/en/widgets): Embeddable price widgets, chart-image embeds and the free JSON endpoint- [Methodology](${SITE_URL}/en/methodology): Exactly how every price is computed (sources, formulas, update cadence, limitations)

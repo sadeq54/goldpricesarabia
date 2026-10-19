@@ -87,6 +87,22 @@ function redirectUntranslated(req: NextRequest): NextResponse | null {
 }
 
 /**
+ * The cryptocurrency section was removed on 2026-10-19: a CoinGecko price feed
+ * unrelated to gold (40 URLs, 33 Google clicks in 90 days). Its URLs 308 to the
+ * homepage of the same locale.
+ */
+function redirectRemovedSection(req: NextRequest): NextResponse | null {
+  const segments = req.nextUrl.pathname.split("/").filter(Boolean);
+  const prefixed = segments.length > 0 && LOCALES.has(segments[0]);
+  const section = prefixed ? segments[1] : segments[0];
+  if (section !== "cryptocurrency") return null;
+  const locale = prefixed ? segments[0] : routing.defaultLocale;
+  const url = req.nextUrl.clone();
+  url.pathname = locale === routing.defaultLocale ? "/" : `/${locale}`;
+  return withForwardedOrigin(req, NextResponse.redirect(url, 308));
+}
+
+/**
  * A country's other karats were merged into its 21K page, which prices all five
  * (lib/karat-pages.ts). Their URLs 308 there so links and indexed URLs keep working.
  */
@@ -190,6 +206,9 @@ export default function middleware(req: NextRequest) {
 
   const untranslated = redirectUntranslated(req);
   if (untranslated) return untranslated;
+
+  const removedSection = redirectRemovedSection(req);
+  if (removedSection) return removedSection;
 
   const merged = redirectMergedKarat(req);
   if (merged) return merged;

@@ -4,7 +4,6 @@ import { join } from "node:path";
 
 import { routing } from "@/i18n/routing";
 import { COUNTRIES as COUNTRY_DATA } from "@/lib/countries";
-import { CRYPTO_LIST } from "@/lib/crypto";
 import { canonicalPath, localesForPath, SITE_URL } from "@/lib/metadata";
 import { ARTICLES } from "@/content/news/articles";
 
@@ -26,7 +25,6 @@ function routeLastmod(path: string, fallback: Date): Date {
   //   /saudi-arabia/gold-price/21k → /[country]/gold-price/[karat]
   //   /historical-gold-prices/2025 → /historical-gold-prices/[year]
   //   /precious-metals/gold → /precious-metals/[metal]
-  //   /cryptocurrency/bitcoin → /cryptocurrency/[coin]
   //   /buy-gold/usa         → /buy-gold/[country]
   //   /buy-gold/usa/coins   → /buy-gold/[country]/[type]
   //   /best-gold-price/usa  → /best-gold-price/[country]
@@ -137,10 +135,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const m of ["gold", "silver", "platinum", "palladium"]) {
     out.push(...dual(`precious-metals/${m}`, "hourly", 0.7));
   }
-
-  // Crypto pages.
-  out.push(...dual("cryptocurrency", "hourly", 0.55));
-  for (const c of CRYPTO_LIST) out.push(...dual(`cryptocurrency/${c.slug}`, "hourly", 0.5));
 
   // Best gold price hub + per-country.
   out.push(...dual("best-gold-price", "daily", 0.7));
