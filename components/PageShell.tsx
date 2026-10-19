@@ -51,7 +51,7 @@ export function PageShell(props: PageShellProps) {
   const {
     badge,
     children,
-    showFaq = true,
+    showFaq = false,
     showChart = true,
     chartCurrency,
   } = props;

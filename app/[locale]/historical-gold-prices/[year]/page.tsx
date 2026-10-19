@@ -3,7 +3,6 @@ import { withLocales } from "@/lib/static-params";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 
-import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { PriceChartSkeleton } from "@/components/skeletons";
 import { Sidebar } from "@/components/Sidebar";
@@ -160,7 +159,6 @@ export default async function HistoricalPage({
             <Suspense fallback={null}>
               <YearFaq yearNum={yearNum} promise={histPromise} locale={locale} year={year} />
             </Suspense>
-            <Faq />
           </section>
           <Sidebar />
         </div>

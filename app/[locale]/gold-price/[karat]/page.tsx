@@ -9,7 +9,6 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { Calculator } from "@/components/Calculator";
 import { ChartImage } from "@/components/ChartImage";
 import { CurrencyTable } from "@/components/CurrencyTable";
-import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { KaratSwitcher } from "@/components/KaratSwitcher";
 import { RelatedLinks } from "@/components/RelatedLinks";
@@ -269,7 +268,6 @@ export default async function KaratPage({
             </Suspense>
             <FollowCta locale={locale} />
 
-            <Faq />
 
             <RelatedLinks heading={pick(locale, RELATED_HEADING)} items={relatedLinks(locale)} />
           </section>

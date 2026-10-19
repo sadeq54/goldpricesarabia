@@ -306,63 +306,6 @@ export function JsonLd({
         }
       : null;
 
-  const faq = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${siteUrl}/#faq`,
-    inLanguage: "en",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How often are gold prices updated on Gold Prices Arabia?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Live gold prices stream in real time via WebSocket from Binance, Coinbase and Kraken. The site computes a median across exchanges every tick (typically multiple updates per second), so visitors always see the freshest possible spot gold price.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Which gold karats does Gold Prices Arabia cover?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Gold Prices Arabia covers 24K (99.9 percent pure), 22K (91.7 percent pure), 21K (87.5 percent pure), 18K (75 percent pure) and 14K (58.3 percent pure), the five most-traded karats across MENA, South Asian and global jewellery markets.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Which currencies does Gold Prices Arabia show?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "USD, JOD (Jordanian Dinar), SAR (Saudi Riyal), AED (UAE Dirham), EGP (Egyptian Pound), plus EUR, GBP, JPY, CHF, AUD, CAD and 30+ more — totalling 40+ currencies across 46 countries.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where do the live prices come from?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Live spot gold streams from PAXG/USD WebSocket feeds across Binance, Coinbase and Kraken. PAXG (PAX Gold) is a token backed 1:1 by physical 1 oz London Good Delivery gold bars held in Brink's vaults and audited monthly by Withum.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is Gold Prices Arabia free to use?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Gold Prices Arabia is free for personal and informational use. Always confirm with a licensed jeweller or bullion dealer before buying or selling.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Does Gold Prices Arabia track silver, platinum and palladium?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Silver (XAG), Platinum (XPT) and Palladium (XPD) prices are tracked and updated every few minutes from the Swissquote spot feed. Gold (XAU) is the only metal currently streamed via real-time WebSocket.",
-        },
-      },
-    ],
-  };
-
   // Quotation = real-time entity signal. Tells Google "this is a live price
   // snapshot at a specific time" — strengthens commodity-data entity graph.
   const quotation = spot
@@ -386,7 +329,6 @@ export function JsonLd({
     payload.push(breadcrumbList);
     if (webPage) payload.push(webPage);
   }
-  if (!pageOnly) payload.push(faq);
   payload.push(...products);
   if (financialProduct) payload.push(financialProduct);
   if (exchangeRate) payload.push(exchangeRate);

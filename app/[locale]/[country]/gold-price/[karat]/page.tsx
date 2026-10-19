@@ -9,7 +9,6 @@ import { CountryGoldPriceHeader } from "@/components/CountryGoldPriceHeader";
 import { countryPageText } from "@/components/CountryGoldPriceHeader.i18n";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ChartImage } from "@/components/ChartImage";
-import { Faq } from "@/components/Faq";
 import { Header } from "@/components/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { KaratGuide } from "@/components/KaratGuide";
@@ -316,7 +315,6 @@ export default async function CountryKaratPage({
                 is deciding whether to leave. */}
             <FollowCta locale={locale} countrySlug={slug} />
 
-            <Faq />
 
             <RelatedLinks heading={related.heading} items={related.items} />
 

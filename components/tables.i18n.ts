@@ -100,12 +100,12 @@ export function priceTableCaption(locale: string, cur: string): string {
 
 export function priceTableFootnote(locale: string, cur: string): string {
   return pick(locale, {
-    en: `Prices are the global spot (median of Binance, Coinbase and Kraken) converted to ${cur} at an hourly FX rate, before making charges, retailer margin and local tax. Bid/ask are the live spot quotes.`,
-    ar: `الأسعار هي السعر الفوري العالمي (وسيط Binance وCoinbase وKraken) محوّلًا إلى ${cur} بسعر صرف محدّث كل ساعة، قبل المصنعية وهامش المحل وأي ضريبة محلية. «شراء/بيع» هما سعرا العرض والطلب الفوريان.`,
+    en: `Prices are international spot gold (Swissquote XAU/USD, then live PAXG/USD quotes while the page is open) converted to ${cur} at the day's mid-market rate, before making charges, retailer margin and local tax. Bid/ask are the live spot quotes.`,
+    ar: `الأسعار هي السعر الفوري العالمي للذهب (XAU/USD من Swissquote، ثم أسعار PAXG/USD اللحظية ما دامت الصفحة مفتوحة) محوّلًا إلى ${cur} بسعر الصرف المتوسط لليوم، قبل المصنعية وهامش المحل وأي ضريبة محلية. «شراء/بيع» هما سعرا العرض والطلب الفوريان.`,
     fr: `Les prix correspondent au spot mondial (médiane de Binance, Coinbase et Kraken) converti en ${cur} au taux de change horaire, hors façon, marge du détaillant et taxes locales. Achat/vente sont les cotations spot en direct.`,
-    tr: `Fiyatlar, küresel spotun (Binance, Coinbase ve Kraken medyanı) saatlik kurla ${cur} cinsine çevrilmiş hâlidir; işçilik, satıcı marjı ve yerel vergi dahil değildir. Alış/satış canlı spot kotasyonlarıdır.`,
+    tr: `Fiyatlar, uluslararası spot altının (Swissquote XAU/USD; sayfa açıkken canlı PAXG/USD kotasyonları) günün orta piyasa kuruyla ${cur} cinsine çevrilmiş hâlidir; işçilik, satıcı marjı ve yerel vergi dahil değildir. Alış/satış canlı spot kotasyonlarıdır.`,
     ur: `قیمتیں عالمی اسپاٹ (Binance، Coinbase اور Kraken کی میڈین) ہیں جو گھنٹہ وار ایکسچینج ریٹ سے ${cur} میں بدلی گئی ہیں، بنوائی، دکاندار کے منافع اور مقامی ٹیکس سے پہلے۔ خرید/فروخت لائیو اسپاٹ کوٹس ہیں۔`,
-    hi: `भाव वैश्विक स्पॉट (Binance, Coinbase और Kraken की माध्यिका) हैं जो प्रति घंटा विनिमय दर से ${cur} में बदले गए हैं, मेकिंग चार्ज, विक्रेता मार्जिन और स्थानीय कर से पहले। खरीद/बिक्री लाइव स्पॉट कोट हैं।`,
+    hi: `भाव अंतरराष्ट्रीय स्पॉट सोना हैं (Swissquote XAU/USD, फिर पेज खुला रहने तक लाइव PAXG/USD भाव) जो दिन की मध्य-बाज़ार विनिमय दर से ${cur} में बदले गए हैं, मेकिंग चार्ज, विक्रेता मार्जिन और स्थानीय कर से पहले। खरीद/बिक्री लाइव स्पॉट कोट हैं।`,
   });
 }
 

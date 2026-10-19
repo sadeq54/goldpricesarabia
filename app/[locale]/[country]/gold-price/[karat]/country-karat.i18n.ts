@@ -117,12 +117,12 @@ export function countryKaratFaqs(locale: string, { karat, country, currency, slu
         hi: `आज ${country} में ${k} सोने का भाव क्या है?`,
       }),
       a: pick(locale, {
-        en: `${k} gold price in ${country} updates every second in the table above, denominated in ${currency}. The price is derived from the global spot ounce price (XAU/USD) sourced from Binance, Coinbase and Kraken, divided by 31.1035 grams per troy ounce, multiplied by the purity ratio (${purity}), and converted at the daily ${currency}/USD FX rate.`,
-        ar: `سعر الذهب ${k} في ${country} يُحدّث كل ثانية في الجدول أعلاه بـ${currency}. السعر مشتق من السعر الفوري العالمي للأونصة (XAU/USD) من Binance وCoinbase وKraken، مقسوماً على 31.1035 جرام لكل أونصة، مضروباً بنسبة النقاء (${purity})، ثم مضروباً بسعر صرف ${currency}/USD اليومي.`,
+        en: `${k} gold price in ${country} is shown in ${currency} in the table above and keeps moving while the page is open. The price is derived from the international spot ounce price (XAU/USD, from Swissquote and live PAXG/USD quotes), divided by 31.1035 grams per troy ounce, multiplied by the purity ratio (${purity}), and converted at the daily ${currency}/USD FX rate.`,
+        ar: `يظهر سعر الذهب ${k} في ${country} بـ${currency} في الجدول أعلاه ويواصل التحرك ما دامت الصفحة مفتوحة. السعر مشتق من السعر الفوري العالمي للأونصة (XAU/USD من Swissquote وأسعار PAXG/USD اللحظية)، مقسوماً على 31.1035 جرام لكل أونصة، مضروباً بنسبة النقاء (${purity})، ثم محوّلاً بسعر صرف ${currency}/USD اليومي.`,
         fr: `Le prix de l'or ${k} pour ${country} est actualisé chaque seconde dans le tableau ci-dessus, en ${currency}. Il est dérivé du prix spot mondial de l'once (XAU/USD) fourni par Binance, Coinbase et Kraken, divisé par 31,1035 grammes par once troy, multiplié par le taux de pureté (${purity}) et converti au taux de change quotidien ${currency}/USD.`,
-        tr: `${country} ${k} altın fiyatı yukarıdaki tabloda ${currency} cinsinden her saniye güncellenir. Fiyat, Binance, Coinbase ve Kraken'den alınan küresel spot ons fiyatının (XAU/USD) troy ons başına 31,1035 grama bölünmesi, saflık oranıyla (${purity}) çarpılması ve günlük ${currency}/USD kuruyla çevrilmesiyle elde edilir.`,
+        tr: `${country} ${k} altın fiyatı yukarıdaki tabloda ${currency} cinsinden gösterilir ve sayfa açıkken hareket etmeye devam eder. Fiyat, uluslararası spot ons fiyatının (XAU/USD; Swissquote ve canlı PAXG/USD kotasyonları) troy ons başına 31,1035 grama bölünmesi, saflık oranıyla (${purity}) çarpılması ve günlük ${currency}/USD kuruyla çevrilmesiyle elde edilir.`,
         ur: `${country} میں ${k} سونے کی قیمت اوپر کے جدول میں ${currency} میں ہر سیکنڈ اپ ڈیٹ ہوتی ہے۔ قیمت Binance، Coinbase اور Kraken سے حاصل عالمی اسپاٹ اونس قیمت (XAU/USD) کو فی ٹرائے اونس 31.1035 گرام پر تقسیم، خلوص کے تناسب (${purity}) سے ضرب اور روزانہ ${currency}/USD شرحِ مبادلہ پر تبدیل کر کے نکالی جاتی ہے۔`,
-        hi: `${country} में ${k} सोने का भाव ऊपर की तालिका में ${currency} में हर सेकंड अपडेट होता है। भाव Binance, Coinbase और Kraken से लिए गए वैश्विक स्पॉट औंस भाव (XAU/USD) को प्रति ट्रॉय औंस 31.1035 ग्राम से भाग देकर, शुद्धता अनुपात (${purity}) से गुणा करके और दैनिक ${currency}/USD विनिमय दर पर बदलकर निकाला जाता है।`,
+        hi: `${country} में ${k} सोने का भाव ऊपर की तालिका में ${currency} में दिखता है और पेज खुला रहने तक बदलता रहता है। भाव अंतरराष्ट्रीय स्पॉट औंस भाव (XAU/USD, Swissquote और लाइव PAXG/USD भावों से) को प्रति ट्रॉय औंस 31.1035 ग्राम से भाग देकर, शुद्धता अनुपात (${purity}) से गुणा करके और दैनिक ${currency}/USD विनिमय दर पर बदलकर निकाला जाता है।`,
       }),
     },
     {
@@ -189,12 +189,12 @@ export function countryKaratFaqs(locale: string, { karat, country, currency, slu
         hi: `${country} में सोने का भाव कितनी बार अपडेट होता है?`,
       }),
       a: pick(locale, {
-        en: `Spot price updates every second via WebSocket. The ${currency}/USD exchange rate updates hourly from open central-bank data. The price you see is the live global price converted to the local currency.`,
-        ar: `السعر الفوري يُحدّث كل ثانية عبر WebSocket. سعر صرف ${currency}/USD يُحدّث كل ساعة من بيانات البنوك المركزية المفتوحة. السعر الذي تراه هو السعر اللحظي العالمي مُحوّلاً للعملة المحلية.`,
+        en: `The spot price is refreshed from Swissquote at least every five minutes and moves with live PAXG/USD quotes while the page is open. The ${currency}/USD exchange rate is the day's mid-market rate from open central-bank data. The price you see is the global spot price converted to the local currency.`,
+        ar: `يُحدَّث السعر الفوري من Swissquote كل خمس دقائق على الأقل، ويتحرك مع أسعار PAXG/USD اللحظية ما دامت الصفحة مفتوحة. سعر صرف ${currency}/USD هو السعر المتوسط لليوم من بيانات البنوك المركزية المفتوحة. السعر الذي تراه هو السعر الفوري العالمي مُحوّلاً للعملة المحلية.`,
         fr: `Le prix spot est actualisé chaque seconde via WebSocket. Le taux ${currency}/USD est actualisé toutes les heures à partir des données ouvertes des banques centrales. Le prix affiché est le prix mondial en direct converti en devise locale.`,
-        tr: `Spot fiyat WebSocket üzerinden her saniye güncellenir. ${currency}/USD kuru, merkez bankalarının açık verilerinden saatlik güncellenir. Gördüğünüz fiyat, yerel para birimine çevrilmiş canlı küresel fiyattır.`,
+        tr: `Spot fiyat Swissquote'tan en az beş dakikada bir yenilenir ve sayfa açıkken canlı PAXG/USD kotasyonlarıyla hareket eder. ${currency}/USD kuru, merkez bankalarının açık verilerinden günün orta piyasa kurudur. Gördüğünüz fiyat, yerel para birimine çevrilmiş küresel spot fiyattır.`,
         ur: `اسپاٹ قیمت WebSocket کے ذریعے ہر سیکنڈ اپ ڈیٹ ہوتی ہے۔ ${currency}/USD شرحِ مبادلہ مرکزی بینکوں کے اوپن ڈیٹا سے ہر گھنٹے اپ ڈیٹ ہوتی ہے۔ جو قیمت آپ دیکھتے ہیں وہ مقامی کرنسی میں تبدیل شدہ لائیو عالمی قیمت ہے۔`,
-        hi: `स्पॉट भाव WebSocket के ज़रिए हर सेकंड अपडेट होता है। ${currency}/USD विनिमय दर केंद्रीय बैंकों के ओपन डेटा से हर घंटे अपडेट होती है। जो भाव आप देखते हैं वह स्थानीय मुद्रा में बदला हुआ लाइव वैश्विक भाव है।`,
+        hi: `स्पॉट भाव Swissquote से कम से कम हर पाँच मिनट में ताज़ा होता है और पेज खुला रहने तक लाइव PAXG/USD भावों के साथ बदलता है। ${currency}/USD विनिमय दर केंद्रीय बैंकों के ओपन डेटा से दिन की मध्य-बाज़ार दर है। जो भाव आप देखते हैं वह स्थानीय मुद्रा में बदला हुआ वैश्विक स्पॉट भाव है।`,
       }),
     },
   ];

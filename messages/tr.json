@@ -33,7 +33,7 @@
     "title": "{karat} Altın Fiyatı Bugün | Gram ve Ons USD, SAR, JOD, AED",
     "description": "Bugün {karat} altın fiyatı gram, ons ve kilo bazında USD, Suudi Riyali, Ürdün Dinarı, BAE Dirhemi ve Mısır Lirası cinsinden, alış/satış ile. Üç borsadan canlı yayın.",
     "h1": "{karat} Altın Fiyatı Bugün",
-    "intro": "Bugünkü {karat} altın fiyatı, küresel spot fiyattan (Binance, Coinbase ve Kraken'in PAXG/USD üzerinden canlı medyanı) türetilir ve saatlik döviz kuruyla 40'tan fazla para birimine çevrilir.",
+    "intro": "Bugünkü {karat} altın fiyatı, uluslararası spot altından (Swissquote XAU/USD; sayfa açıkken canlı PAXG/USD kotasyonları) türetilir ve günün orta piyasa kuruyla 52 para birimine çevrilir.",
     "backHome": "← Tüm ayarlara dön"
   },
   "GoldPriceHub": {
@@ -257,7 +257,7 @@
   },
   "SubPage": {
     "spotGoldH1": "Spot Altın Fiyatı (XAU/SAR Canlı)",
-    "spotGoldIntro": "Canlı spot altın (XAU/USD): Binance, Coinbase ve Kraken'in PAXG/USD üzerinden gerçek zamanlı medyanı, yaklaşık her saniye yenilenir.",
+    "spotGoldIntro": "Canlı spot altın (XAU/USD): en az beş dakikada bir yenilenen Swissquote spot fiyatı; sayfa açıkken Binance, Coinbase ve Kraken'deki PAXG/USD'nin canlı medyanı.",
     "livePriceH1": "Canlı Altın Fiyatı MENA (Gerçek Zamanlı XAU)",
     "livePriceIntro": "MENA bölgesi genelinde Suudi Riyali, BAE Dirhemi, Mısır Lirası, Ürdün Dinarı ve 40'tan fazla para biriminde canlı altın fiyatı. Binance, Coinbase ve Kraken'den gerçek zamanlı WebSocket medyanı.",
     "priceChartH1": "Altın Fiyatı Grafiği",
@@ -272,7 +272,7 @@
     "ratioIntro": "Canlı altın/gümüş oranı — bir ons altının kaç ons gümüşe eşit olduğu. Tarihsel ortalama ~50–60.",
     "ratioCurrent": "Güncel oran",
     "sgeH1": "Shanghai Gold Exchange Altın Fiyatı",
-    "sgeIntro": "Çin Yuanı (CNY) cinsinden canlı altın fiyatı: spot XAU/USD'den (Binance, Coinbase ve Kraken medyanı) saatlik döviz kurlarıyla türetilir. Shanghai Gold Exchange için bir gösterge.",
+    "sgeIntro": "Çin yuanı (CNY) cinsinden canlı altın fiyatı: spot XAU/USD'den (Swissquote, ardından canlı PAXG/USD kotasyonları) günün orta piyasa kuruyla türetilir. Şanghay Altın Borsası için bir göstergedir, resmi fiyatı değildir.",
     "calcH1": "Altın Fiyatı Hesaplama",
     "calcIntro": "Herhangi bir altın ağırlığının (gram, ons, kilogram) değerini istediğiniz ayar ve para biriminde hesaplayın.",
     "widgetsH1": "Web Siteleri İçin Altın Fiyatı Grafikleri",
@@ -335,19 +335,19 @@
     "items": [
       {
         "q": "Gold Prices Arabia altın fiyatlarını ne sıklıkla günceller?",
-        "a": "Spot altın fiyatı, Binance, Coinbase ve Kraken'den (fiziksel altın külçeleriyle 1:1 teminatlı PAXG/USD paritesi) WebSocket üzerinden yaklaşık her saniye yenilenir; sapmayı önlemek için üçünün medyanı alınır. Gümüş, platin ve paladyum her dakika, döviz kurları her saat güncellenir."
+        "a": "Sayfa, Swissquote'tan alınan ve en az beş dakikada bir yenilenen XAU/USD spot fiyatıyla açılır. Sayfa açık kaldıkça fiyat, Binance, Coinbase ve Kraken'deki canlı PAXG/USD kotasyonlarıyla (üçünün medyanı) hareket eder; PAXG, tahsisli altın külçelerle 1:1 desteklenen bir tokendir. Döviz kurları günlük orta piyasa kurlarıdır."
       },
       {
         "q": "Hangi ayarları takip edebilirim?",
-        "a": "Gold Prices Arabia 24 ayar (saf altın), 21 ayar (%87,5 saflık — Suudi Arabistan ve Ürdün'de baskın ayar), 18 ayar (%75 saflık — BAE ve Mısır'da yaygın) ve 14 ayar (%58,3 saflık) altını kapsar."
+        "a": "Beş ayar: 24 ayar (%99,9 altın), 22 ayar (%91,7), 21 ayar (%87,5), 18 ayar (%75) ve 14 ayar (%58,3); her biri gram, ons ve kilo olarak, Körfez ve Güney Asya pazarlarında ayrıca tola olarak."
       },
       {
         "q": "Hangi para birimleri destekleniyor?",
-        "a": "ABD Doları (USD), Ürdün Dinarı (JOD), Suudi Riyali (SAR), BAE Dirhemi (AED) ve Mısır Lirası (EGP). Döviz kurları sabittir — herhangi bir işlemden önce bankanızla teyit edin."
+        "a": "Kapsadığımız 53 pazarın her birinin yerel para birimi, toplam 52 para birimi (Suudi riyalinden Mısır lirasına ve Filipin pesosuna kadar), ayrıca ABD doları. Kurlar piyasa kurlarıdır; bankanızın kuru farklı olacaktır, işlemden önce teyit edin."
       },
       {
         "q": "Fiyatlar nereden geliyor?",
-        "a": "Spot fiyat, Binance, Coinbase ve Kraken'in PAXG/USD kotasyonlarının canlı medyanıdır. Ayar fiyatları, spot fiyatın 31,1035 grama bölünüp standart saflık oranıyla (24 ayar %99,9; 22 ayar %91,7; 21 ayar %87,5; 18 ayar %75; 14 ayar %58,3) çarpılmasıyla türetilir."
+        "a": "Ons fiyatı uluslararası spot altındır (Swissquote, ardından canlı PAXG medyanı). Bir ayarın gram fiyatı, ons fiyatının 31,1035 grama bölünüp ayarın saflığıyla çarpılması ve kurla çevrilmesiyle bulunur. Bu, işçilik, bayi marjı ve vergi öncesi spot değerdir; kuyumcu fiyatı daha yüksek olur."
       },
       {
         "q": "Gold Prices Arabia ücretsiz mi?",
@@ -357,7 +357,7 @@
   },
   "InfoPage": {
     "aboutH1": "Gold Prices Arabia Hakkında",
-    "aboutIntro": "Gold Prices Arabia, MENA altın piyasası için bağımsız bir canlı fiyat referansıdır. Spot altını (XAU/USD) Binance, Coinbase ve Kraken'deki PAXG/USD WebSocket akışlarından toplar, ardından her saniye 40'tan fazla perakende para birimine ve dört ayar saflığına çevirir.",
+    "aboutIntro": "Gold Prices Arabia, Arap dünyası ve ötesindeki altın piyasası için bağımsız bir canlı fiyat referansıdır. Uluslararası spot altını (Swissquote XAU/USD, ardından canlı PAXG/USD kotasyonları) alır, beş ayara ve 53 pazarın yerel para birimine çeviririz; böylece okur kuyumcunun fiyatını spotla karşılaştırabilir.",
     "aboutMissionH2": "Misyonumuz",
     "aboutMission": "Canlı spot altın fiyatını — ve Suudi Riyali, Ürdün Dinarı, BAE Dirhemi, Mısır Lirası ile 36 diğer para birimindeki perakende karşılıklarını — Arap dünyası ve ötesindeki her tüketici, kuyumcu ve yatırımcı için ücretsiz, doğru ve az reklamlı hâle getirmek.",
     "aboutTeamH2": "Yayın ekibi",
@@ -367,17 +367,17 @@
     "methodologyH1": "Metodoloji — Altın fiyatlarını nasıl hesaplıyoruz",
     "methodologyIntro": "Bu sitedeki her rakam, gözlemlenebilir üçüncü taraf piyasa verilerinden türetilir. Verinin tam olarak nasıl alındığı, dönüştürüldüğü ve sunulduğu aşağıdadır.",
     "methodologySpotH2": "Spot altın (XAU/USD)",
-    "methodologySpot": "Spot altın, üç WebSocket akışının tik başına medyanı olarak hesaplanır: Binance PAXG/USDT, Coinbase PAXG-USD ve Kraken PAXG/USD. PAX Gold (PAXG), Brink's kasalarında tutulan ve Withum tarafından aylık denetlenen fiziksel 1 oz London Good Delivery altın külçeleriyle 1:1 teminatlı bir ERC-20 token'ıdır. PAXG, LBMA spot referansının birkaç sent yakınında işlem görür. Üç platformun medyanını kullanmak, tek bir borsadaki aykırı değerlerin gösterilen fiyatı bozmasını önler.",
+    "methodologySpot": "Altın, gümüş, platin ve paladyum spot fiyatları Swissquote'un XAU/USD (ve XAG, XPT, XPD) spot akışından gelir; sunucu bunu en az beş dakikada bir yeniden okur ve sayfa bu fiyatla açılır. Sayfa açık kaldıkça altın fiyatı, tek bir platformun fiyatı saptırmaması için üçünün medyanı alınarak Binance, Coinbase ve Kraken'deki canlı PAXG/USD kotasyonlarıyla hareket eder. PAX Gold (PAXG), tahsisli 1 onsluk London Good Delivery külçeleriyle 1:1 desteklenen bir tokendir ve spotun birkaç sent yakınında işlem görür. Günlük değişim ve aralık, spota göre ölçeklenen COMEX altın vadelisinden (Yahoo Finance üzerinden) gelir.",
     "methodologyKaratH2": "Ayar fiyatları (24K, 21K, 18K, 14K)",
-    "methodologyKarat": "Gram başına ayar fiyatları şöyle hesaplanır: gram_başına_spot × saflık_oranı; saflık oranları World Gold Council'e göre %99,9 (24K), %87,5 (21K), %75 (18K), %58,3 (14K) şeklindedir. Perakende primi, rafine kaybı veya KDV eklenmez — bunlar saf spot karşılıklardır. Yerel kuyumcular bu rakamın üzerine prim uygular.",
+    "methodologyKarat": "Ayar başına gram fiyatı şöyle hesaplanır: spot ons fiyatı ÷ 31,1035 g × saflık; saflıklar %99,9 (24 ayar), %91,7 (22 ayar), %87,5 (21 ayar), %75 (18 ayar) ve %58,3 (14 ayar). Perakende primi, işçilik, rafinaj kaybı veya KDV eklenmez; bunlar saf spot karşılıklarıdır, bu yüzden kuyumcu fiyatı daha yüksek olur.",
     "methodologyFxH2": "Döviz kurları",
-    "methodologyFx": "JOD, SAR, AED, EGP ve 36 diğer para birimine dönüşüm, merkez bankası orta kurlarından günde bir kez yenilenen açık kaynaklı fawazahmed0/currency-api akışını kullanır. Perakende makası uygulamıyoruz — gişe kurlarını bankanızla teyit edin.",
+    "methodologyFx": "Kapsadığımız 52 yerel para birimine çeviri, günlük orta piyasa kurlarını (merkez bankası ve piyasa referans kurları) sunan açık kaynaklı fawazahmed0/currency-api akışıyla yapılır. Bunu birkaç saatte bir yeniden okur ve perakende marjı eklemeyiz; işlemden önce bankanızın kurunu teyit edin.",
     "methodologyOtherH2": "Gümüş, platin, paladyum",
     "methodologyOther": "Gümüş (XAG), platin (XPT) ve paladyum (XPD) spot fiyatları Swissquote spot akışından gelir ve birkaç dakikada bir güncellenir; günlük değişim ve gün aralığı COMEX vadeli işlemlerinden (Yahoo Finance üzerinden) alınır. Bu piyasalar altından daha az likit olduğu için WebSocket ile yayınlanmaz; birkaç dakikalık güncelleme yeterlidir.",
     "methodologyHistoryH2": "Geçmiş veriler",
     "methodologyHistory": "Altına ait geçmiş günlük OHLC verileri, GC=F (COMEX altın vadeli işlemleri) ve XAU=X sembolleri için query1.finance.yahoo.com üzerinden Yahoo Finance'ten alınır. Veriler 24 saat önbelleğe alınır.",
     "methodologyLimitsH2": "Bilinen sınırlamalar",
-    "methodologyLimits": "1) PAXG/USD, LBMA spotu için bir vekildir — son derece yakın korelasyon gösterir ancak LBMA fiksingi değildir. 2) Döviz kurları orta kurdur — bankanızın perakende kuru %0,5–3 farklı olacaktır. 3) Ayar fiyatları perakende primi, rafine kaybı ve KDV/vergiyi içermez. 4) /cryptocurrency/* altındaki kripto fiyatları, 5 dakikalık aralıklarla önbelleğe alınan CoinGecko verilerini kullanır.",
+    "methodologyLimits": "1) Spot uluslararası bir referanstır; LBMA fixingi veya herhangi bir yerel borsanın fiyatı değildir. 2) Kurlar günlük orta piyasa kurlarıdır; bankanızın perakende kuru yaklaşık %0,5–3 farklı olur. 3) Ayar fiyatlarına perakende primi, işçilik, rafinaj kaybı ve KDV/vergi dahil değildir. 4) /cryptocurrency/* sayfalarındaki kripto fiyatları 5 dakikalık önbellekle CoinGecko'dan gelir.",
     "editorialH1": "Yayın standartları",
     "editorialIntro": "Gold Prices Arabia bir fiyat referans yayınıdır. Veri yayımlarız, finansal tavsiye değil.",
     "editorialIndependenceH2": "Yayın bağımsızlığı",
@@ -398,7 +398,7 @@
     "h1": "Sadeq Sayed Ahmad",
     "role": "Kurucu ve Baş Geliştirici",
     "bio1": "Sadeq Sayed Ahmad, yazılım geliştirici ve Gold Prices Arabia'nın kurucusudur. Platformu, uluslararası altın fiyatlandırmasını MENA bölgesindeki Arapça konuşan kullanıcılar için şeffaf ve erişilebilir kılmak amacıyla geliştirdi.",
-    "bio2": "Site, canlı spot altını (XAU/USD) Binance, Coinbase ve Kraken'deki PAXG/USD WebSocket akışlarından toplar; ardından bu fiyatları açık merkez bankası verilerinden alınan günlük orta kurlarla — Suudi Riyali, Ürdün Dinarı, BAE Dirhemi ve Mısır Lirası dahil — 40'tan fazla perakende para birimine çevirir.",
+    "bio2": "Site, uluslararası spot altını (XAU/USD) Swissquote'tan alır, sayfa açıkken Binance, Coinbase ve Kraken'deki PAXG/USD kotasyonlarıyla canlı izler ve açık verilerden günlük orta piyasa kurlarıyla Suudi riyali, Ürdün dinarı, BAE dirhemi ve Mısır lirası dahil 52 yerel para birimine çevirir.",
     "bio3": "Sadeq alım satım veya yatırım tavsiyesi vermez. Platform, gözlemlenebilir piyasa verisi yayımlar; finansal yönlendirme değil. Alım satım veya yatırım önerisi arayan kullanıcılar, bulundukları ülkede lisanslı bir finansal danışmana başvurmalıdır.",
     "expertiseH2": "Özgeçmiş",
     "expertise1": "Platformu geliştirir ve sürdürür — gerçek zamanlı altın fiyatı takibi, 40'tan fazla para birimi dönüşümü ve Arapça öncelikli web deneyimi.",
