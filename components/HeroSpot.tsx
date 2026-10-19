@@ -35,11 +35,15 @@ export function HeroSpot({
 }) {
   const t = useTranslations("HeroSpot");
 
-  const live = useLivePrice();
+  const feed = useLivePrice();
 
   if (!spot) {
     return <HeroSpotSkeleton />;
   }
+
+  // The live feed is PAXG, i.e. gold: overlay it on gold only, never on the
+  // silver/platinum/palladium heroes (they showed the gold price once it connected).
+  const live = spot.metal === "XAU" ? feed : { ...feed, xau: null, bid: null, ask: null, high24: null, low24: null, change24: null, changePct24: null, isLive: false };
 
   // Overlay streaming values when available; fall back to SSR spot snapshot.
   const liveXau = live.xau ?? spot.price;
