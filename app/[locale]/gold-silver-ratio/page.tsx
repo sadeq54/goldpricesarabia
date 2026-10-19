@@ -1,6 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageShell } from "@/components/PageShell";
+import { ExplainerSection } from "@/components/ExplainerSection";
+import { RATIO_EXPLAINER } from "@/content/explainers";
 import { getCachedMetals } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
 
@@ -65,6 +67,7 @@ export default async function GoldSilverRatioPage({
           </div>
         </div>
       </section>
+      <ExplainerSection id="ratio-explainer" locale={locale} text={RATIO_EXPLAINER} />
     </PageShell>
   );
 }

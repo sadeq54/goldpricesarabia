@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PageShell } from "@/components/PageShell";
+import { ExplainerSection } from "@/components/ExplainerSection";
+import { CHART_EXPLAINER } from "@/content/explainers";
 import { PriceChart } from "@/components/PriceChart";
 import { PriceChartSkeleton } from "@/components/skeletons";
 import { getCachedAllHistory, getCachedFxRates } from "@/lib/cached-fetchers";
@@ -46,6 +48,7 @@ export default async function GoldPriceChartPage({
           return <PriceChart histories={chartHistory(h)} fx={fx} />;
         })()}
       </Suspense>
+      <ExplainerSection id="chart-explainer" locale={locale} text={CHART_EXPLAINER} />
     </PageShell>
   );
 }

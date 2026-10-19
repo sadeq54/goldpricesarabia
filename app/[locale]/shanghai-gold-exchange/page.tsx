@@ -1,13 +1,10 @@
-import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { ExplainerSection } from "@/components/ExplainerSection";
 import { HeroSpot } from "@/components/HeroSpot";
 import { KaratGrid } from "@/components/KaratGrid";
 import { PageShell } from "@/components/PageShell";
-import {
-  HeroSpotSkeleton,
-  KaratGridSkeleton,
-} from "@/components/skeletons";
+import { SGE_EXPLAINER } from "@/content/explainers";
 import { getCachedFxRates, getCachedSpot } from "@/lib/cached-fetchers";
 import { buildAlternates, buildOpenGraph } from "@/lib/metadata";
 
@@ -43,18 +40,17 @@ export default async function ShanghaiGoldPage({
       titleKey="sgeH1"
       introKey="sgeIntro"
     >
-      <Suspense fallback={<HeroSpotSkeleton />}>
-        {(async () => {
-          const [s, fx] = await Promise.all([spotPromise, fxPromise]);
-          return <HeroSpot spot={s} fx={fx} displayCurrency="CNY" />;
-        })()}
-      </Suspense>
-      <Suspense fallback={<KaratGridSkeleton />}>
-        {(async () => {
-          const [s, fx] = await Promise.all([spotPromise, fxPromise]);
-          return <KaratGrid spot={s} fx={fx} displayCurrency="CNY" />;
-        })()}
-      </Suspense>
+      {/* Inline, not in Suspense: an inner boundary streamed the prices after the
+          footer, outside <main>. Data is "use cache". */}
+      {(async () => {
+        const [s, fx] = await Promise.all([spotPromise, fxPromise]);
+        return <HeroSpot spot={s} fx={fx} displayCurrency="CNY" />;
+      })()}
+      {(async () => {
+        const [s, fx] = await Promise.all([spotPromise, fxPromise]);
+        return <KaratGrid spot={s} fx={fx} displayCurrency="CNY" />;
+      })()}
+      <ExplainerSection id="sge-explainer" locale={locale} text={SGE_EXPLAINER} />
     </PageShell>
   );
 }
