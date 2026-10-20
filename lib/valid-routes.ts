@@ -17,7 +17,7 @@ import { COUNTRIES } from "@/lib/countries";
 
 const COUNTRY_SLUGS = new Set(COUNTRIES.map((c) => c.slug));
 const KARATS = new Set(["24k", "22k", "21k", "18k", "14k"]);
-const METALS = new Set(["gold", "silver", "platinum", "palladium"]);
+const METALS = new Set(["silver", "platinum", "palladium"]); // gold 308s to /spot-gold
 /**
  * Every `/news/{slug}`. Hand-maintained rather than imported from
  * `content/news/*` on purpose: this module is bundled into the edge

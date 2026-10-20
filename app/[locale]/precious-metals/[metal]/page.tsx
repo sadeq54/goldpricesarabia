@@ -28,7 +28,8 @@ const METAL_ID: Record<MetalSlug, "XAU" | "XAG" | "XPT" | "XPD"> = {
 const isMetal = (s: string): s is MetalSlug => (METAL_SLUGS as readonly string[]).includes(s);
 
 export function generateStaticParams() {
-  return withLocales(METAL_SLUGS.map((metal) => ({ metal })));
+  // gold is served by /spot-gold (proxy 308).
+  return withLocales(METAL_SLUGS.filter((m) => m !== "gold").map((metal) => ({ metal })));
 }
 
 export async function generateMetadata({

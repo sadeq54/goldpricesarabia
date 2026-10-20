@@ -130,7 +130,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Precious metals hub + per-metal pages.
   out.push(...dual("precious-metals", "daily", 0.7));
-  for (const m of ["gold", "silver", "platinum", "palladium"]) {
+  for (const m of ["silver", "platinum", "palladium"]) { // gold → /spot-gold
     out.push(...dual(`precious-metals/${m}`, "hourly", 0.7));
   }
 

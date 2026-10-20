@@ -657,7 +657,7 @@ Bookmark [our 24K page](/gold-price/24k) for the daily reference, and check it b
 ## How to track each metal
 
 We publish prices for all four metals:
-- [Gold](/precious-metals/gold) — Swissquote XAU/USD spot, re-read at least every 5 minutes; while the page is open it follows the median of live PAXG/USD quotes on Binance, Coinbase and Kraken
+- [Gold](/spot-gold) — Swissquote XAU/USD spot, re-read at least every 5 minutes; while the page is open it follows the median of live PAXG/USD quotes on Binance, Coinbase and Kraken
 - [Silver](/precious-metals/silver) — Swissquote XAG/USD spot, re-read at least every 5 minutes
 - [Platinum](/precious-metals/platinum) — Swissquote XPT/USD spot, re-read at least every 5 minutes
 - [Palladium](/precious-metals/palladium) — Swissquote XPD/USD spot, re-read at least every 5 minutes
@@ -725,7 +725,7 @@ Bookmark our [precious-metals hub](/precious-metals) to track all four; each met
 ## كيف تتتبّع كل معدن
 
 ننشر أسعار المعادن الأربعة:
-- [الذهب](/precious-metals/gold) — سعر XAU/USD الفوري من Swissquote، يُعاد قراءته كل 5 دقائق على الأكثر؛ وأثناء فتح الصفحة يتبع الوسيط لأسعار PAXG/USD الحية على Binance و Coinbase و Kraken
+- [الذهب](/spot-gold) — سعر XAU/USD الفوري من Swissquote، يُعاد قراءته كل 5 دقائق على الأكثر؛ وأثناء فتح الصفحة يتبع الوسيط لأسعار PAXG/USD الحية على Binance و Coinbase و Kraken
 - [الفضة](/precious-metals/silver) — سعر XAG/USD الفوري من Swissquote، يُعاد قراءته كل 5 دقائق على الأكثر
 - [البلاتين](/precious-metals/platinum) — سعر XPT/USD الفوري من Swissquote، يُعاد قراءته كل 5 دقائق على الأكثر
 - [البلاديوم](/precious-metals/palladium) — سعر XPD/USD الفوري من Swissquote، يُعاد قراءته كل 5 دقائق على الأكثر

@@ -169,7 +169,7 @@ export async function Footer() {
             <FooterColumn
               title={t("metalsHeading")}
               links={[
-                { label: t("gold"), href: "/precious-metals/gold" },
+                { label: t("gold"), href: "/spot-gold" },
                 { label: t("silver"), href: "/precious-metals/silver" },
                 { label: t("platinum"), href: "/precious-metals/platinum" },
                 { label: t("palladium"), href: "/precious-metals/palladium" },

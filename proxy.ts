@@ -115,6 +115,11 @@ function redirectRemovedSection(req: NextRequest): NextResponse | null {
       ? countryKaratHref(locale, country, "21k")
       : "/gold-price";
   }
+  // /precious-metals/gold (merged 2026-10-20): the same XAU spot price and hero
+  // as /spot-gold; silver, platinum and palladium keep their pages.
+  if (section === "precious-metals" && (prefixed ? segments[2] : segments[1]) === "gold") {
+    target = "/spot-gold";
+  }
   if (target === undefined) return null;
   const targetSection = target.split("/")[1];
   if (targetSection && BILINGUAL_SECTIONS.has(targetSection) && locale !== "ar" && locale !== "en") locale = "en";

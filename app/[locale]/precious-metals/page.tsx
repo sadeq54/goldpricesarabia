@@ -53,7 +53,7 @@ export default async function PreciousMetalsPage({
         {METALS.map((m) => (
           <li key={m.slug}>
             <Link
-              href={`/precious-metals/${m.slug}`}
+              href={m.slug === "gold" ? "/spot-gold" : `/precious-metals/${m.slug}`}
               className="block rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-card)] p-4 transition hover:border-[var(--color-gold)]/40"
             >
               <div className="text-sm font-semibold text-[var(--color-gold)]">
